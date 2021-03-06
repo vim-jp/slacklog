@@ -6472,6 +6472,855 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1615020058.001600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020058.001600">6日 17:40:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020058001600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>trait Formatter&lt;T, P&gt;<br>where<br>    P: Provider&lt;T&gt;,<br>{<br>    fn name(&amp;self) -&gt; String;<br>    fn format(&amp;self, p: P, msg: T) -&gt; String;<br>}</pre><br>上記のような trait があった時に <code>name</code> を利用しようとすると &#34;type annotations need&#34; と言われるのですが、書き方がわからないので誰かヘルプ...<br><br><pre>let provider = DummyProvider {};<br>let formatter = DummyFormatter {};<br>assert_eq!(formatter.format(provider, &#34;Hello&#34;), &#34;Hello&#34;);<br>// 以下では `name` に対して<br>//<br>//      [rustc E0282] [E] type annotations need<br>//      cannot infer type for type parameter `T` declared on the trait `Formatter`<br>//<br>// が出るが、どうタイプアノテーションを書けば良いのかわからない<br>assert_eq!(formatter.name(), &#34;Dummy Formatter&#34;);<br><br>// 以下のようにトレイトオブジェクトにすれば回避可能だが、不必要な変換な気がして、気になる<br>// let formatter = &amp;formatter as &amp;dyn Formatter&lt;&amp;&#39;static str, DummyProvider&gt;;<br>// assert_eq!(formatter.name(), &#34;Dummy Formatter&#34;);</pre><br>詳細コード<br><a href='https://gist.github.com/lambdalisue/55c13967f79ef91647bb420d4453becd'>https://gist.github.com/lambdalisue/55c13967f79ef91647bb420d4453becd</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020599.003700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1615020599.003700">6日 17:49:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020599003700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Formatter::name(&amp;formatter) の書き方にすれば Formatter に型アノテーションが付けられないでしょうか？ちょっと今スマホなので手元で試せないのですが。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020645.004200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020645.004200">6日 17:50:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020645004200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それも試したのですが、多分難しい気がしています...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020650.004400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020650.004400">6日 17:50:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020650004400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                もう一度描いてみよう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020742.004800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020742.004800">6日 17:52:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020742004800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あれ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020762.005300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020762.005300">6日 17:52:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020762005300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いけたっぽいです 🙇‍♂️ さっき試してたのは、これよりも遥かに複雑なバージョンだったので、違うところで詰まってたのかも
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020771.005600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020771.005600">6日 17:52:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020771005600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>        assert_eq!(<br>            Formatter::&lt;&amp;&#39;static str, DummyProvider&gt;::name(&amp;formatter),<br>            &#34;Dummy Formatter&#34;<br>        );</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020775.005800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020775.005800">6日 17:52:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020775005800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これで通りました 🙇‍♂️
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="monaqa, Toru3">
+                              <img class="slacklog-emoji" alt="blob_tada" title="blob_tada" src="/slacklog/emojis/blob_tada.gif"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020930.006600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020930.006600">6日 17:55:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020930006600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                質問をするために整理するといつの間にか解決に最も近い場所にいる、あるあるだ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020942.006900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1615020942.006900">6日 17:55:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020942006900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ベアプログラミングだ 🐻
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615020989.007800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615020989.007800">6日 17:56:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615020989007800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                弊社には昔から知っている仲が良い Haskeler がいるので、よくテディベアになってもらってますw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027095.008700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615027095.008700">6日 19:38:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027095008700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                詰んだ...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027119.009000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615027119.009000">6日 19:38:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027119009000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>#[async_trait]<br>pub trait Operator&lt;&#39;a, S, R&gt;: Sync<br>where<br>    S: Sender&lt;Payload&gt; + Send + &#39;a,<br>    R: Receiver&lt;Payload&gt; + Send + &#39;a,<br>{<br>    async fn init(&amp;self, context: Arc&lt;Context&gt;) -&gt; Result&lt;()&gt;<br>    where<br>        &#39;a: &#39;async_trait;<br><br>    async fn exec(<br>        &amp;self,<br>        sender: &amp;mut S,<br>        receiver: &amp;mut Pin&lt;&amp;mut R&gt;,<br>        context: Arc&lt;Context&gt;,<br>    ) -&gt; Result&lt;()&gt;;<br>}</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027145.009500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615027145.009500">6日 19:39:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027145009500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                こういう感じのトレイトをトレイトオブジェクトにできなくて詰んでいる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027172.009900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615027172.009900">6日 19:39:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027172009900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いや、これだけみても「できるじゃん」となるな...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027194.010300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1615027194.010300">6日 19:39:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027194010300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                トレイトオブジェクトナニモワカッテナイ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027196.010400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615027196.010400">6日 19:39:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027196010400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                S, R が <code>init</code> の段階だと確定できなくて
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027211.010900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615027211.010900">6日 19:40:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027211010900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>exec</code> の段階で初めて確定するからトレイトオブジェクトにできない...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027225.011200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1615027225.011200">6日 19:40:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027225011200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Rust 勉強したいとずっと思ってるけどまったく時間が取れてない…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027237.011500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615027237.011500">6日 19:40:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027237011500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ムッチャむずい。おもに async
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027501.015100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1615027501.015100">6日 19:45:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027501015100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Rustの非同期プログラミングも最近勉強しはじめましたが、難しいですね。 Arc とか Mutex とか全然慣れない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615027529.015300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615027529.015300">6日 19:45:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615027529015300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                難しい...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615029361.016300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615029361.016300">6日 20:16:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615029361016300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>#[async_trait]<br>pub trait Operator {<br>    async fn init(&amp;self, context: Arc&lt;Context&gt;) -&gt; Result&lt;()&gt;;<br><br>    async fn exec&lt;S, R&gt;(<br>        &amp;self,<br>        sender: &amp;mut S,<br>        receiver: &amp;mut Pin&lt;&amp;mut R&gt;,<br>        context: Arc&lt;Context&gt;,<br>    ) -&gt; Result&lt;()&gt;<br>    where<br>        S: Sender&lt;Payload&gt; + Send,<br>        R: Receiver&lt;Payload&gt; + Send;<br>}<br><br>pub enum EnumOperator {<br>    Abort(crate::abort::Abort),<br>    Echo(crate::echo::Echo),<br>}<br><br>impl EnumOperator {<br>    async fn init(&amp;self, context: Arc&lt;Context&gt;) -&gt; Result&lt;()&gt; {<br>        match self {<br>            Self::Abort(abort) =&gt; abort.init(context).await,<br>            Self::Echo(echo) =&gt; echo.init(context).await,<br>        }<br>    }<br><br>    async fn exec&lt;S, R&gt;(<br>        &amp;self,<br>        sender: &amp;mut S,<br>        receiver: &amp;mut Pin&lt;&amp;mut R&gt;,<br>        context: Arc&lt;Context&gt;,<br>    ) -&gt; Result&lt;()&gt;<br>    where<br>        S: Sender&lt;Payload&gt; + Send,<br>        R: Receiver&lt;Payload&gt; + Send,<br>    {<br>        match self {<br>            Self::Abort(abort) =&gt; abort.exec(sender, receiver, context).await,<br>            Self::Echo(echo) =&gt; echo.exec(sender, receiver, context).await,<br>        }<br>    }<br>}</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615029373.016700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615029373.016700">6日 20:16:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615029373016700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                トレイトオブジェクトが使えないなら Enum でやればいいじゃん（脳筋
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615030528.016900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615030528.016900">6日 20:35:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615030528016900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://www.possiblerust.com/guide/enum-or-trait-object'>https://www.possiblerust.com/guide/enum-or-trait-object</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615030528.016900">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://www.possiblerust.com/icon.png" alt="Possible Rust" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://www.possiblerust.com/guide/enum-or-trait-object" target="_blank" rel="noopener noreferrer">Enum or Trait Object</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Rust has two major mechanisms for delegating logic: enums and trait objects, and it may be unclear when to use one or the other. In this post, I will walk through how each works, what the tradeoffs are, and how to choose the right option for your code.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615030538.017300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615030538.017300">6日 20:35:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615030538017300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                わりとよくやる感じなんですかね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615030609.017500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615030609.017500">6日 20:36:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615030609017500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://docs.rs/trait_enum/0.5.0/trait_enum/'>https://docs.rs/trait_enum/0.5.0/trait_enum/</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615030609.017500">
+              
+    <div class="d-flex">
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://docs.rs/trait_enum/0.5.0/trait_enum/" target="_blank" rel="noopener noreferrer">trait_enum - Rust</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">API documentation for the Rust <code>trait_enum</code> crate.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615030670.017700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615030670.017700">6日 20:37:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615030670017700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://docs.rs/enum_dispatch/0.3.5/enum_dispatch/'>https://docs.rs/enum_dispatch/0.3.5/enum_dispatch/</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615030670.017700">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://docs.rs/favicon.ico" alt="docs.rs" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://docs.rs/enum_dispatch/0.3.5/enum_dispatch/" target="_blank" rel="noopener noreferrer">enum_dispatch - Rust</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">API documentation for the Rust <code>enum_dispatch</code> crate.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615036895.018400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615036895.018400">6日 22:21:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615036895018400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>enum_dispatch</code> 使う方法で解決しそうです 🎉
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615037189.018900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1615037189.018900">6日 22:26:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615037189018900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                筋肉はすべてを解決する..かはともかく解決しそうでよかった
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615037427.019100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615037427.019100">6日 22:30:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615037427019100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                💪
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615037993.019800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1615037993.019800">6日 22:39:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615037993019800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                トレイトオブジェクトと enum、結構どっち使うか迷うんですよね。いっつもトレイトオブジェクトうまく使いこなせなくて結局 enum 使ったりするんですが
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615038190.020400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615038190.020400">6日 22:43:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615038190020400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんか enum という発想がなかなか出てこなくて大変でした
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615038232.021400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615038232.021400">6日 22:43:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615038232021400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                できれば変更に対してオープンな方がいいですが、まぁ固定でも良い
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615038244.021700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615038244.021700">6日 22:44:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615038244021700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>type ExecImpl = Box&lt;dyn for&lt;&#39;a&gt; FnOnce(Box&lt;dyn Sender&lt;Payload&gt; + Send + &#39;a&gt;, Pin&lt;Box&lt;dyn Receiver&lt;Payload&gt; + Send + &#39;a&gt;&gt;, Arc&lt;Context&gt;) -&gt; FutA&lt;&#39;a, Result&lt;()&gt;&gt; + Send + Sync&gt;;</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615038261.022100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1615038261.022100">6日 22:44:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1615038261022100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Future からむと Send と Sync とライフタイムで肩がヤバイ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
