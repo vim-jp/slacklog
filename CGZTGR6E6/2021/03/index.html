@@ -4358,6 +4358,286 @@ call s:is_deno()
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1615476143.004600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1615476143.004600">12日 00:22:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615476143004600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                移行の仕方知らなかったからよさそう<br><a href='https://buildersbox.corp-sansan.com/entry/2021/03/10/110000'>https://buildersbox.corp-sansan.com/entry/2021/03/10/110000</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615476143.004600">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://buildersbox.corp-sansan.com/icon/touch" alt="Sansan Builders Blog" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://buildersbox.corp-sansan.com/entry/2021/03/10/110000" target="_blank" rel="noopener noreferrer">まだ間に合う！node-sass（LibSass）から sass（Dart Sass）への移行 - Sansan Builders Blog</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">こんにちは。 Eight で エンジニアをしている鳥山（@pvcresin）です。 違う違うと自分に言い聞かせていますが、おそらく花粉症になってしまいました 🥺 在宅勤務で良かったです。 今回は Sass のコンパイルに使用しているライブラリを node-sass（LibSass）から sass（Dart Sass）に移行した話をしたいと思います。</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615533052.005100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1615533052.005100">12日 16:10:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615533052005100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://zenn.dev/mizchi/articles/template-literal-types-for-unit'>https://zenn.dev/mizchi/articles/template-literal-types-for-unit</a><br>これぞ Template Literal Types ってとこかね
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615533052.005100">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://zenn.dev/images/icon.png" alt="Zenn" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://zenn.dev/mizchi/articles/template-literal-types-for-unit" target="_blank" rel="noopener noreferrer">Template Literal Types で「単位を持つ数値」の文字列型をきれいに扱いたい</a>
+          </span>
+        </div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615548905.005300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1615548905.005300">12日 20:35:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615548905005300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                PropsとしてComponentを渡すときにComponentの型を縛ることって可能でしょうか<br>イメージこんなコードなんですが、ReactElementを使った時点でダメそうで辛い
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F01RS1HHN0G/______.ts" target="_blank" rel="noopener noreferrer">
+                  <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
+                  </a>
+                  <pre><code class='language-typescript'>const PropsComponent: FC&lt;{ foo: string; bar: number }&gt; = (props) =&gt; &lt;div&gt;{props.foo}&lt;/div&gt;;
+type PropsComponentType = typeof PropsComponent;
+type PropsComponentPropsType = ComponentProps&lt;typeof PropsComponent&gt;;
+
+const Children: FC&lt;{ component: ReactElement&lt;PropsComponentPropsType, PropsComponentType&gt; }&gt; = (props) =&gt; (
+  &lt;div&gt;{props.component}&lt;/div&gt;
+);
+
+export const Parent: FC = () =&gt; &lt;Children component={&lt;PropsComponent foo=&#34;foo&#34; bar={1} /&gt;} /&gt;;
+export const Parent2: FC = () =&gt; &lt;Children component={&lt;div /&gt;} /&gt;; // =&gt; こっちも通っちゃう</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615560439.006200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1615560439.006200">12日 23:47:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615560439006200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                質問: normalize.css つかっているんですが、こういう系のデファクトって normalize.css であってます?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615560490.006500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1615560490.006500">12日 23:48:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615560490006500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すでに 2 年前から更新がないなこれ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615560581.006800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1615560581.006800">12日 23:49:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615560581006800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://coliss.com/articles/build-websites/operation/css/css-reset-for-modern-browser.html'>https://coliss.com/articles/build-websites/operation/css/css-reset-for-modern-browser.html</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615560581.006800">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://coliss.com/favicon.ico" alt="コリス" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://coliss.com/articles/build-websites/operation/css/css-reset-for-modern-browser.html" target="_blank" rel="noopener noreferrer">2021年、モダンブラウザに適したCSSリセットのまとめ</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">CSSにおけるブラウザによる互換性の問題はWeb制作でモダンブラウザをターゲットにした場合、以前に比べるとはるかに少なくなりました。昔から使用している無理なCSSリセットやすべてをリセットする必要は全</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615560686.007500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1615560686.007500">12日 23:51:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615560686007500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/filipelinhares/ress'>https://github.com/filipelinhares/ress</a><br>Inherit from Normalize って書いてますが、使ったことなかったです…
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615560686.007500">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/filipelinhares/ress" target="_blank" rel="noopener noreferrer">filipelinhares/ress</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">🚿 A modern CSS reset. Contribute to filipelinhares/ress development by creating an account on GitHub.</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615561072.008300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1615561072.008300">12日 23:57:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615561072008300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                react のドキュメント(gatsby)は normalize.css みたいですね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615561084.008500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1615561084.008500">12日 23:58:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1615561084008500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
