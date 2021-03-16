@@ -12968,7 +12968,7 @@
               </div>
               <details class="details-reset mt-3">
                 <summary class="btn-link">
-                  <span class="f5">1 件の返信 最終返信:13:38:09 <span class="dropdown-caret"></span>
+                  <span class="f5">2 件の返信 最終返信:16日 11:22:26 <span class="dropdown-caret"></span>
                   </span>
                 </summary>
                 <div class="border mt-2">
@@ -12986,6 +12986,22 @@
                     </div>
                     <div class="overflow-hidden">
                       go.modのexcludeでうまくいかないかな、って思いついたことはある。試したことはないけど…バージョンまで指定する必要があるからダメかな。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1615861346.004600">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Hajime Hoshi</span>
+                      <a href="#ts-1615861346.004600">16日 11:22:26</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      これ VScode の自動 import 補完で発生した疑惑があるようです。うげー
                     </div>
                   </div>
                 </div>
@@ -13850,6 +13866,399 @@
             <div class="overflow-hidden mb-3">
               <div class="pt-1 pb-1">
                 テスト時にはいいかも
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615823193.485400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1615823193.485400">16日 00:46:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615823193485400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                うおー PSD ファイルを embed して、 png に変換して、 base64 エンコードして、HTML の img タグに埋め込めたー！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615823236.485600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1615823236.485600">16日 00:47:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615823236485600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>package main<br><br>import (<br>	&#34;bytes&#34;<br>	_ &#34;embed&#34;<br>	&#34;encoding/base64&#34;<br>	&#34;image&#34;<br>	&#34;image/png&#34;<br>	&#34;syscall/js&#34;<br><br>	_ &#34;&lt;http://github.com/oov/psd|github.com/oov/psd&gt;&#34;<br>)<br><br>//go:embed assets/image.psd<br>var psd []byte<br><br>func main() {<br>	c := make(chan struct{}, 0)<br>	js.Global().Set(&#34;decodePsd&#34;, js.FuncOf(decodePsd))<br>	&lt;-c<br>}<br><br>func decodePsd(this js.Value, args []js.Value) interface{} {<br>	img, _, err := image.Decode(bytes.NewReader(psd))<br>	if err != nil {<br>		panic(err)<br>	}<br>	out := new(bytes.Buffer)<br>	err = png.Encode(out, img)<br>	if err != nil {<br>		panic(err)<br>	}<br>	enc := base64.StdEncoding.EncodeToString(out.Bytes())<br>	return js.ValueOf(enc)<br>}</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615823250.485800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1615823250.485800">16日 00:47:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615823250485800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>&lt;html&gt;<br>    &lt;head&gt;<br>       &lt;meta charset=&#34;utf-8&#34;&gt;<br>       &lt;script src=&#34;wasm_exec.js&#34;&gt;&lt;/script&gt;<br>       &lt;script&gt;<br>           (async function loadAndRunGoWasm() {<br>               const go = new Go();<br>               const response = await fetch(&#34;main.wasm&#34;);<br>               const buffer = await response.arrayBuffer();<br>               const result = await WebAssembly.instantiate(buffer, go.importObject);<br>               go.run(result.instance);<br>               const img = window.decodePsd();<br>               const el = document.getElementById(&#34;img&#34;);<br>               el.src = &#34;data:image/png;base64,&#34; + img;<br>         })();<br>       &lt;/script&gt;<br>    &lt;/head&gt;<br>    &lt;body&gt;<br>        &lt;img id=&#34;img&#34;&gt;<br>    &lt;/body&gt;<br>&lt;/html&gt;</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615823269.486100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1615823269.486100">16日 00:47:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615823269486100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                疲れた…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="eihigh, ଳ kato ଳ, KoRoN, Hajime Hoshi, kuu">
+                              <img class="slacklog-emoji" alt="gopher-dance" title="gopher-dance" src="/slacklog/emojis/gopher-dance.gif"><span class="ml-1">5</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615858382.000600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1615858382.000600">16日 10:33:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615858382000600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                夏時間好きじゃないなあ<br><a href='https://github.com/golang/go/commit/a9b3c4bd0602f95afc58328d9953534f5e5fe4f6'>https://github.com/golang/go/commit/a9b3c4bd0602f95afc58328d9953534f5e5fe4f6</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615858382.000600">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/golang/go/commit/a9b3c4bd0602f95afc58328d9953534f5e5fe4f6" target="_blank" rel="noopener noreferrer">time: add Time.IsDST() to check if its Location is in Daylight Saving… · golang/go@a9b3c4b</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">…s Time Fixes #42102 Change-Id: I2cd2fdf67c794c3e99ed1c24786f7f779da73962 GitHub-Last-Rev: bbfa92135734cbd55895012fa492e51686a7b58b GitHub-Pull-Request: golang/go#42103 Reviewed-on: <a href='https://go-re'>https://go-re</a>...</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615858513.002300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1615858513.002300">16日 10:35:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615858513002300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                二重夏時間のときに2を返すIFにしないと(目がぐるぐる<br>正直地獄だろうなあ...この手の
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615859278.004400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1615859278.004400">16日 10:47:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615859278004400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そういえばvim-jpのどこかでmapのパフォーマンスの話になってたっけ<br><a href='https://github.com/golang/go/issues/45021'>https://github.com/golang/go/issues/45021</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615859278.004400">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/golang/go/issues/45021" target="_blank" rel="noopener noreferrer">runtime: performance of map[string(bytes)]++ · Issue #45021 · golang/go</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">Currently using map[string]*int to count []byte values is significantly faster than using map[string]int. This came up in <a href='https://benhoyt.com/writings/count-words/'>https://benhoyt.com/writings/count-words/</a> post. It would be nicer if map[st...</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615861346.004600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1615861346.004600">16日 11:22:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615861346004600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これ VScode の自動 import 補完で発生した疑惑があるようです。うげー
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1615778307.467600">Go で v1 と v2 の同時 imp ...</a>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615902849.006000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1615902849.006000">16日 22:54:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615902849006000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                色んな端末に対応した画像エンコーダ <a href='https://github.com/BourgeoisBear/rasterm'>https://github.com/BourgeoisBear/rasterm</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1615902849.006000">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/BourgeoisBear/rasterm" target="_blank" rel="noopener noreferrer">BourgeoisBear/rasterm</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">encode images to iTerm / Kitty / SIXEL (terminal) inline graphics protocols - BourgeoisBear/rasterm</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615903008.006400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1615903008.006400">16日 22:56:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615903008006400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                イース
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615903193.006900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1615903193.006900">16日 22:59:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615903193006900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                分かる人の年齢層...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615903195.007000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1615903195.007000">16日 22:59:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615903195007000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ラスターターミナルでラスターミナル
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615903218.007200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1615903218.007200">16日 23:00:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615903218007200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いぃっすね～
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615903235.007500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1615903235.007500">16日 23:00:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615903235007500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                このロゴ、やっぱなんか特徴的ですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1615903347.007900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1615903347.007900">16日 23:02:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1615903347007900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                longcatを思い出した
               </div>
 
               <div>
