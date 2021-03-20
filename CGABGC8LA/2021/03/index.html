@@ -17726,6 +17726,1117 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1616198016.083200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+              <a href="#ts-1616198016.083200">20日 08:53:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616198016083200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Goで標準入力からデータを読み取った後に tcell で stdin を使おうとすると<br>inappropriate ioctl for device ってになるんですが、stdin が tty じゃないからだと思いますが、データを読み取ったあとに stdin を tty にする方法ってあるんでしょうか？
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">36 件の返信 最終返信:09:47:10 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1616199605.085600">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616199605.085600">20日 09:20:05</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      標準入出力のファイルディスクリプタ(fd)が tty=端末ファイルにつながってるか一般のファイルにつながってるかはプログラム起動時点すなわちシェルがfdを作った時点で決まっちゃってるから変えられないんじゃないかな。なので仮に標準出力のfdをioctlでtty属性に変えられても意味がない(というか変えられない)<br><br>WindowsならAttachConsoleでつなぐこともできるかもだけど、むかしやったときは新しいコンソールが開いた気もする。<br><br>UNIX (Linux) なら /proc 下か /dev 下に今繋がってる tty があるだろうからそれを tcell に教えてあげられればできそうなものだけども。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616199690.086000">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616199690.086000">20日 09:21:30</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      なるほど…
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616199715.086800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616199715.086800">20日 09:21:55</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      Linuxは/dev/ttyありますね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616199728.087300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616199728.087300">20日 09:22:08</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      Windowsは諦めるか…
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616199893.087500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616199893.087500">20日 09:24:53</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      っていうかそもそもtcellにtty指定して始める方法あるの? ってところから調べないと。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200031.087700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616200031.087700">20日 09:27:11</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      Windowsはココで救われそうな気もする。<br><br><a href='https://github.com/gdamore/tcell/blob/fcaa20f283682d6bbe19ceae067b37df3dc699d7/console_win.go#L158'>https://github.com/gdamore/tcell/blob/fcaa20f283682d6bbe19ceae067b37df3dc699d7/console_win.go#L158</a>
+                    </div>
+                      
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/gdamore/tcell/blob/fcaa20f283682d6bbe19ceae067b37df3dc699d7/console_win.go#L158" target="_blank" rel="noopener noreferrer">gdamore/tcell</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">Tcell is an alternate terminal package, similar in some ways to termbox, but better in others. - gdamore/tcell</div>
+    </div>
+
+                  </div>
+                  <div class="p-2" id="ts-1616200239.088000">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616200239.088000">20日 09:30:39</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      UNIXのほうはココが問題そう。<br><br><a href='https://github.com/gdamore/tcell/blob/f4d402906fa3d330545365abbf970c048e677b35/tscreen_unix.go#L98-L100'>https://github.com/gdamore/tcell/blob/f4d402906fa3d330545365abbf970c048e677b35/tscreen_unix.go#L98-L100</a>
+                    </div>
+                      
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/gdamore/tcell/blob/f4d402906fa3d330545365abbf970c048e677b35/tscreen_unix.go#L98-L100" target="_blank" rel="noopener noreferrer">gdamore/tcell</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">Tcell is an alternate terminal package, similar in some ways to termbox, but better in others. - gdamore/tcell</div>
+    </div>
+
+                  </div>
+                  <div class="p-2" id="ts-1616200330.088500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616200330.088500">20日 09:32:10</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      tScreenの入出力を os.Stdxx に決め打ちしたうえで GetStateをos.Stdin.Fd() にしてるでしょ。たぶんココで失敗してる。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200368.088700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616200368.088700">20日 09:32:48</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      とりあえずココを tty につなぐように変えたらいけるんじゃないかなぁ。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200381.088900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616200381.088900">20日 09:33:01</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      Windowsはさっき見た通りすでに救われてる。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200542.089100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616200542.089100">20日 09:35:42</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ああそうか。WindowsはそもそもCONIN$とCONOUT$以外にコンソールファイルを得る手段がないんだ。だから最初から正しい方法で取得している。<br><br>一方でUNIXはSTDIN/OUTがコンソールが繋がってることがほとんどだからだいたいのケースで問題ない。そのせいでエッジケースにとっては正しくない。<br><br>なるほどなぁ。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200589.089300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616200589.089300">20日 09:36:29</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      なるほど
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200601.089500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616200601.089500">20日 09:36:41</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ちょっとコード見てみます<br>ありがとうございます
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200686.089800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616200686.089800">20日 09:38:06</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      Linuxは以前は問題なく動いていたんすけど、どうやら↑の修正で動かくなったようです
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200713.090000">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616200713.090000">20日 09:38:33</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      お、そうなん?
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200810.090200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616200810.090200">20日 09:40:10</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      はい、チョット前までのtcellは動いていたんですよね<br>貼って頂いた箇所↓は原因のような気がします<br>過去の実装もちょっと追ってみてます<br><pre>term.GetState(int(os.Stdin.Fd()))</pre>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616200998.090500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616200998.090500">20日 09:43:18</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <pre>	if t.in, e = os.OpenFile(&#34;/dev/tty&#34;, os.O_RDONLY, 0); e != nil {<br>		goto failed<br>	}<br>	if t.out, e = os.OpenFile(&#34;/dev/tty&#34;, os.O_WRONLY, 0); e != nil {<br>		goto failed<br>	}</pre>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201005.090700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201005.090700">20日 09:43:25</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      動いていたときのtcellの実装
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201015.090900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201015.090900">20日 09:43:35</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <code>/dev/tty</code>を使っていたみたいですね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201021.091100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201021.091100">20日 09:43:41</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      なるほどなぁ
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201022.091300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616201022.091300">20日 09:43:42</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ちゃんとしてるwww
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201028.091500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616201028.091500">20日 09:43:48</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      Linuxしか動かないねこれ
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201033.091700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201033.091700">20日 09:43:53</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ですよね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201041.091900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201041.091900">20日 09:44:01</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      むー
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201058.092100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201058.092100">20日 09:44:18</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ちょっとissueを投げるか
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201060.092300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616201060.092300">20日 09:44:20</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      なのでMacとかUNIX対応みたいなcommit
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201062.092500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201062.092500">20日 09:44:22</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      議論したほうが良さそう
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201065.092700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616201065.092700">20日 09:44:25</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      になってるでしょ
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201067.092900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616201067.092900">20日 09:44:27</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      いや
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201088.093100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616201088.093100">20日 09:44:48</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      tscreen_linux.go作って昔の実装を足すPRすれば?
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201111.093300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201111.093300">20日 09:45:11</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あー
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201124.093500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201124.093500">20日 09:45:24</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      そもそもどういう方向性で修正すべきかって話してからかなって思っていました
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201172.093700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1616201172.093700">20日 09:46:12</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      意図が前述のとおりかは履歴かissueで確認できると思いますよ。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201220.093900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201220.093900">20日 09:47:00</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      たしかに
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201228.094100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201228.094100">20日 09:47:08</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      みてみます
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1616201230.094300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ゴリラ（筋トレはじめました）</span>
+                      <a href="#ts-1616201230.094300">20日 09:47:10</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ありがとうございます
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616198460.083600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1616198460.083600">20日 09:01:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616198460083600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                わかりみ <a href='https://github.com/golang/go/issues/45108'>https://github.com/golang/go/issues/45108</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1616198460.083600">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/golang/go/issues/45108" target="_blank" rel="noopener noreferrer">proposal: cmd/vet: checker to warn when marshaling an exported error field · Issue #45108 · golang/go</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">This proposal is to add a new vet checker that warns when an exported error field of a struct is marshaled. Currently what will happen is that as error is an interface this will use the marshaling ...</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616199605.085600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1616199605.085600">20日 09:20:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616199605085600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                標準入出力のファイルディスクリプタ(fd)が tty=端末ファイルにつながってるか一般のファイルにつながってるかはプログラム起動時点すなわちシェルがfdを作った時点で決まっちゃってるから変えられないんじゃないかな。なので仮に標準出力のfdをioctlでtty属性に変えられても意味がない(というか変えられない)<br><br>WindowsならAttachConsoleでつなぐこともできるかもだけど、むかしやったときは新しいコンソールが開いた気もする。<br><br>UNIX (Linux) なら /proc 下か /dev 下に今繋がってる tty があるだろうからそれを tcell に教えてあげられればできそうなものだけども。
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1616198016.083200">Goで標準入力からデータを読み取った後に ...</a>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616235094.094700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1616235094.094700">20日 19:11:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616235094094700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://sue445.hatenablog.com/entry/2021/03/20/075551'>https://sue445.hatenablog.com/entry/2021/03/20/075551</a><br>大概はGitHub版使ってるかもだけど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237435.095500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1616237435.095500">20日 19:50:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237435095500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                gopls で <code>syscall/js</code> が import できないって言われる…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237458.095700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237458.095700">20日 19:50:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237458095700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それは多分あるあるな問題ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237473.096000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237473.096000">20日 19:51:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237473096000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                GOOS=js をちゃんとコンフィグに書いておくと解決する、するが…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237542.096200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1616237542.096200">20日 19:52:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237542096200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237546.096400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1616237546.096400">20日 19:52:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237546096400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほどなー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237555.096600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237555.096600">20日 19:52:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237555096600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://twitter.com/belbaoverhill/status/1365786783464763394'>https://twitter.com/belbaoverhill/status/1365786783464763394</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1616237555.096600">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://pbs.twimg.com/profile_images/193602994/Greece2008_normal.jpg" alt="twitter" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="f6 text-gray-light">Hana @belbaoverhill</span>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="mt-2"><a href='https://twitter.com/hajimehoshi'>@hajimehoshi</a> If you happen to put all js target files in a separate folder, you can import the folder with a separate folder level setting (buildTag) and use multiroot workspace. Yeah i feel your pain tough.</div>
+    </div>
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="20" height="20" src="https://a.slack-edge.com/80588/img/services/twitter_pixel_snapped_32.png" />
+      </div>
+      <div class="flex-self-baseline f5 ml-2">
+        Twitter
+      </div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237573.097200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237573.097200">20日 19:52:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237573097200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                別ディレクトリごとに置いてディレクトリレベルで制御すれば直るね、ということですが
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237594.097800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237594.097800">20日 19:53:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237594097800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そのためにパッケージ掘るのもな…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237733.098300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1616237733.098300">20日 19:55:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237733098300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vim-lsp + vim-lps-settings なので <code>.vim-lsp-settings/settings.json</code> とかで治せるかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237745.098500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237745.098500">20日 19:55:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237745098500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど vim
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237782.099100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237782.099100">20日 19:56:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237782099100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                エディタ、 GOOS については量子重ね合わせ的な解釈 (?)をして欲しいという気持ちがある
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237795.099500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237795.099500">20日 19:56:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237795099500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                GOOS=js なときとそうでないとき両方が混在
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237837.099900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1616237837.099900">20日 19:57:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237837099900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それぞれ片方でエラーになるので、なにも許容してくれない結果返したりして
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237879.100400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616237879.100400">20日 19:57:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237879100400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                最大公約数的アプローチだと厳しい…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237974.100900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1616237974.100900">20日 19:59:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237974100900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>settings.json</code> でやれること<br><pre>    cmd (List ex: [&#39;clangd-6.0&#39;, &#39;-enable-snippets&#39;])<br>    initialization_options (Dictionary)<br>    whitelist (List)<br>    blacklist (List)<br>    config (Dictionary)<br>    workspace_config (Dictionary)<br>    disabled (Boolean)<br>    root_uri (String)<br>    root_uri_patterns (List)<br>    semantic_highlight (Dictionary)</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616237997.101400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1616237997.101400">20日 19:59:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616237997101400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                んー 環境変数は cmd とかでやるしかないかな？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616238421.102500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1616238421.102500">20日 20:07:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616238421102500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそもGoとして、特定のOSに特化した処理(下回りではなく)があるっていうのは、想定される開発スタイルなんだろうか<br>これ自体というよりは、syscall/jsが上で必要になるか、みたいな意味で
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616238457.103200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1616238457.103200">20日 20:07:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616238457103200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ただ、スシテム個別の部分を実装するのは必要で、そういう人たちがgoplsをどう手懐けてるかは知りたいですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616238556.103500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616238556.103500">20日 20:09:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616238556103500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                寿司テム
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616238576.104100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616238576.104100">20日 20:09:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616238576104100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分は割と OS ごとに違う実装のコードが必要なものをかいてますけど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616238578.104400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1616238578.104400">20日 20:09:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616238578104400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>{<br>  &#34;gopls&#34; : {<br>    &#34;cmd&#34;: [&#34;set GOOS=js &amp;&amp;&#34;, &#34;gopls&#34;]<br>  }<br>}</pre><br>強引な設定
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616238583.104500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hajime Hoshi</span>
+              <a href="#ts-1616238583.104500">20日 20:09:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616238583104500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                gopls を諦めるということで決着つけました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1616238674.105200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1616238674.105200">20日 20:11:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1616238674105200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                wasm 用のプロジェクトなので、gopls を GOOS 指定で起動することにしました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
