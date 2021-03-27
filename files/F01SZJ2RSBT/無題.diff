@@ -1,0 +1,14 @@
+diff --git a/src/language-client/client.ts b/src/language-client/client.ts
+index 68e09aec..2799ae90 100644
+--- a/src/language-client/client.ts
++++ b/src/language-client/client.ts
+@@ -4097,6 +4097,9 @@ export abstract class BaseLanguageClient {
+ 
+   private initializeFeatures(_connection: IConnection): void {
+     let documentSelector = this._clientOptions.documentSelector
++    if (this.name === "efm") {
++      this._capabilities.codeActionProvider = { codeActionKinds: ['quickfix'] }
++    }
+     for (let feature of this._features) {
+       feature.initialize(this._capabilities, documentSelector)
+     }
