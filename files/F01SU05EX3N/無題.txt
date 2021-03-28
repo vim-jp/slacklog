@@ -1,0 +1,22 @@
+# nNコマンドの挙動を自然にする
+
+Vimの検索には、マッチを前方から行う`/`と後方から行う`?`があります。  
+マッチした対象の移動には`n``N`を利用しますが、`/`と`?`で移動の方向が変わり直感的でないことがあります。  
+この挙動を変更したい場合以下のスクリプトを`.vimrc`に書くと良いでしょう。  
+
+```vim
+nnoremap <expr> n 'Nn'[v:searchforward]
+nnoremap <expr> N 'nN'[v:searchforward]
+```
+
+上のスクリプトは検索の方向によっての値の変わる`v:searchforward`を利用して`n``N`のどちらのキーを展開するか決定します。  
+
+-------------------------------------------------------------------------------
+元となった投稿: [Vim-jp Slack](https://vim-jp.org/slacklog/C03C4RC9F/2021/01/#ts-1611373043.021300) @yutkat
+> @yutkat  
+> ```vim
+> nnoremap <expr> n  'Nn'[v:searchforward]
+> nnoremap <expr> N  'nN'[v:searchforward]
+> ```
+
+まとめ kato-k (@uvrub)
