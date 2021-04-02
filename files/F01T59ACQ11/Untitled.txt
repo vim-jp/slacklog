@@ -1,0 +1,13 @@
+$ cat sample.txt
+aaa
+bbbb
+ccccc
+
+dddd
+eeeee
+ffffff
+
+$ head -3 sample.txt > f ; tail -3 sample.txt | paste -d ' ' f - ; rm -f f
+aaa dddd
+bbbb eeeee
+ccccc ffffff

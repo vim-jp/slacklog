@@ -1,0 +1,63 @@
+~/tmp/git-stash-test master*
+❯ cat foo.txt
+hoge
+foo
+bar
+piyo
+
+~/tmp/git-stash-test master*
+❯ git show stash
+commit d90fa647a1824141c982e3a71823e0123a5226e5 (refs/stash)
+Merge: cf8222e b0b4dea
+Author: Naoaki Ueda <uedan@solutionware.jp>
+Date:   Fri Apr 2 15:24:11 2021 +0900
+
+    WIP on master: cf8222e initial
+
+diff --cc foo.txt
+index 44837e5,44837e5..55cb96c
+--- a/foo.txt
++++ b/foo.txt
+@@@ -1,4 -1,4 +1,4 @@@
+  hoge
+--foo
+++bar
+  bar
+  piyo
+
+~/tmp/git-stash-test master*
+❯ sed -i -e 's/foo/par/' foo.txt
+
+~/tmp/git-stash-test master*
+❯ git diff
+diff --git a/foo.txt b/foo.txt
+index 44837e5..e5d0f6a 100644
+--- a/foo.txt
++++ b/foo.txt
+@@ -1,4 +1,4 @@
+ hoge
+-foo
++par
+ bar
+ piyo
+
+~/tmp/git-stash-test master*
+❯ git stash pop
+error: Your local changes to the following files would be overwritten by merge:
+        foo.txt
+Please commit your changes or stash them before you merge.
+Aborting
+The stash entry is kept in case you need it again.
+
+~/tmp/git-stash-test master*
+❯ git diff
+diff --git a/foo.txt b/foo.txt
+index 44837e5..e5d0f6a 100644
+--- a/foo.txt
++++ b/foo.txt
+@@ -1,4 +1,4 @@
+ hoge
+-foo
++par
+ bar
+ piyo
