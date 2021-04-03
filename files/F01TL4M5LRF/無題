@@ -1,0 +1,27 @@
+type PassedProps = {
+  session: Session
+}
+
+type ContainerProps = {
+  handleSignOut: () => Promise<void>
+}
+
+type Props = PassedProps & ContainerProps
+
+const Component: FC<Props> = ({ session, handleSignOut }) => (
+  <>
+    <Text>Name: {session.user.name}</Text>
+    <Button onClick={handleSignOut}>Sign out</Button>
+    <hr />
+  </>
+)
+
+export const StyledComponent = styled(Component)``
+
+const ContainerComponent: FC<PassedProps> = (props) => {
+  const handleSignOut = () => signOut()
+
+  return <StyledComponent {...props} handleSignOut={handleSignOut} />
+}
+
+export const WithSession = ContainerComponent
