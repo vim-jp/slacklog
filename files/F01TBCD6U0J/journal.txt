@@ -1,0 +1,273 @@
+-- Journal begins at Sat 2021-04-03 15:04:12 JST, ends at Tue 2021-04-06 04:51:22 JST. --
+Apr 06 04:49:34 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.PolicyKit1' unit='polkit.service' requested by ':1.7' (uid=1000 pid=462 comm="/usr/bin/pkttyagent --notify-fd 5 --fallback ")
+Apr 06 04:49:34 kyoh86-desktop systemd[1]: Starting Authorization Manager...
+Apr 06 04:49:34 kyoh86-desktop polkitd[465]: Started polkitd version 0.118
+Apr 06 04:49:34 kyoh86-desktop polkitd[465]: Loading rules from directory /etc/polkit-1/rules.d
+Apr 06 04:49:34 kyoh86-desktop polkitd[465]: Loading rules from directory /usr/share/polkit-1/rules.d
+Apr 06 04:49:34 kyoh86-desktop polkitd[465]: Finished loading, compiling and executing 6 rules
+Apr 06 04:49:34 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'org.freedesktop.PolicyKit1'
+Apr 06 04:49:34 kyoh86-desktop systemd[1]: Started Authorization Manager.
+Apr 06 04:49:34 kyoh86-desktop polkitd[465]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+Apr 06 04:49:34 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=polkit comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:34 kyoh86-desktop polkitd[465]: Registered Authentication Agent for unix-process:460:2715 (system bus name :1.7 [/usr/bin/pkttyagent --notify-fd 5 --fallback], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+Apr 06 04:49:34 kyoh86-desktop kernel: kauditd_printk_skb: 10 callbacks suppressed
+Apr 06 04:49:34 kyoh86-desktop kernel: audit: type=1130 audit(1617652174.425:44): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=polkit comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop audit[480]: USER_AUTH pid=480 uid=1000 auid=1000 ses=1 msg='op=PAM:authentication grantors=pam_faillock,pam_permit,pam_faillock acct="root" exe="/usr/lib/polkit-1/polkit-agent-helper-1" hostname=kyoh86-desktop addr=? terminal=tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop audit[480]: USER_ACCT pid=480 uid=1000 auid=1000 ses=1 msg='op=PAM:accounting grantors=pam_unix,pam_permit,pam_time acct="root" exe="/usr/lib/polkit-1/polkit-agent-helper-1" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1100 audit(1617652179.246:45): pid=480 uid=1000 auid=1000 ses=1 msg='op=PAM:authentication grantors=pam_faillock,pam_permit,pam_faillock acct="root" exe="/usr/lib/polkit-1/polkit-agent-helper-1" hostname=kyoh86-desktop addr=? terminal=tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1101 audit(1617652179.247:46): pid=480 uid=1000 auid=1000 ses=1 msg='op=PAM:accounting grantors=pam_unix,pam_permit,pam_time acct="root" exe="/usr/lib/polkit-1/polkit-agent-helper-1" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop polkitd[465]: Operator of unix-process:460:2715 successfully authenticated as unix-user:root to gain TEMPORARY authorization for action org.freedesktop.systemd1.manage-units for system-bus-name::1.9 [systemctl start gdm] (owned by unix-user:kyoh86)
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Stopping Getty on tty1...
+Apr 06 04:49:39 kyoh86-desktop audit[390]: CRED_DISP pid=390 uid=0 auid=1000 ses=1 msg='op=PAM:setcred grantors=pam_securetty,pam_shells,pam_faillock,pam_permit,pam_faillock acct="kyoh86" exe="/usr/bin/login" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop login[390]: pam_unix(login:session): session closed for user kyoh86
+Apr 06 04:49:39 kyoh86-desktop polkitd[465]: Unregistered Authentication Agent for unix-process:460:2715 (system bus name :1.7, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+Apr 06 04:49:39 kyoh86-desktop audit[390]: USER_END pid=390 uid=0 auid=1000 ses=1 msg='op=PAM:session_close grantors=pam_loginuid,pam_keyinit,pam_limits,pam_unix,pam_permit,pam_mail,pam_systemd,pam_env acct="kyoh86" exe="/usr/bin/login" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1104 audit(1617652179.253:47): pid=390 uid=0 auid=1000 ses=1 msg='op=PAM:setcred grantors=pam_securetty,pam_shells,pam_faillock,pam_permit,pam_faillock acct="kyoh86" exe="/usr/bin/login" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1106 audit(1617652179.253:48): pid=390 uid=0 auid=1000 ses=1 msg='op=PAM:session_close grantors=pam_loginuid,pam_keyinit,pam_limits,pam_unix,pam_permit,pam_mail,pam_systemd,pam_env acct="kyoh86" exe="/usr/bin/login" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: getty@tty1.service: Deactivated successfully.
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Stopped Getty on tty1.
+Apr 06 04:49:39 kyoh86-desktop audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=getty@tty1 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1131 audit(1617652179.254:49): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=getty@tty1 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: session-1.scope: Deactivated successfully.
+Apr 06 04:49:39 kyoh86-desktop systemd-logind[388]: Session 1 logged out. Waiting for processes to exit.
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Starting GNOME Display Manager...
+Apr 06 04:49:39 kyoh86-desktop systemd-logind[388]: Removed session 1.
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Started GNOME Display Manager.
+Apr 06 04:49:39 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=gdm comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.Accounts' unit='accounts-daemon.service' requested by ':1.13' (uid=0 pid=483 comm="/usr/bin/gdm ")
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1130 audit(1617652179.273:50): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=gdm comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Reached target User and Group Name Lookups.
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Starting Accounts Service...
+Apr 06 04:49:39 kyoh86-desktop accounts-daemon[486]: started daemon version 0.6.55
+Apr 06 04:49:39 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'org.freedesktop.Accounts'
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Started Accounts Service.
+Apr 06 04:49:39 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=accounts-daemon comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1130 audit(1617652179.281:51): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=accounts-daemon comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop audit[490]: USER_AUTH pid=490 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:authentication grantors=pam_succeed_if,pam_permit acct="gdm" exe="/usr/lib/gdm-session-worker" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop audit[490]: USER_ACCT pid=490 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:accounting grantors=pam_succeed_if,pam_permit acct="gdm" exe="/usr/lib/gdm-session-worker" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1100 audit(1617652179.287:52): pid=490 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:authentication grantors=pam_succeed_if,pam_permit acct="gdm" exe="/usr/lib/gdm-session-worker" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop kernel: audit: type=1101 audit(1617652179.287:53): pid=490 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:accounting grantors=pam_succeed_if,pam_permit acct="gdm" exe="/usr/lib/gdm-session-worker" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop audit[490]: CRED_ACQ pid=490 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:setcred grantors=pam_permit acct="gdm" exe="/usr/lib/gdm-session-worker" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop audit[490]: SYSCALL arch=c000003e syscall=1 success=yes exit=3 a0=9 a1=7ffcf0dc9830 a2=3 a3=78 items=0 ppid=483 pid=490 auid=120 uid=0 gid=120 euid=0 suid=0 fsuid=0 egid=120 sgid=120 fsgid=120 tty=(none) ses=3 comm="gdm-session-wor" exe="/usr/lib/gdm-session-worker" key=(null)
+Apr 06 04:49:39 kyoh86-desktop audit: PROCTITLE proctitle=67646D2D73657373696F6E2D776F726B6572205B70616D2F67646D2D6C61756E63682D656E7669726F6E6D656E745D
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Created slice User Slice of UID 120.
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Starting User Runtime Directory /run/user/120...
+Apr 06 04:49:39 kyoh86-desktop systemd-logind[388]: New session 3 of user gdm.
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Finished User Runtime Directory /run/user/120.
+Apr 06 04:49:39 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=user-runtime-dir@120 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Starting User Manager for UID 120...
+Apr 06 04:49:39 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.home1' unit='dbus-org.freedesktop.home1.service' requested by ':1.18' (uid=0 pid=495 comm="(systemd) ")
+Apr 06 04:49:39 kyoh86-desktop dbus-daemon[387]: [system] Activation via systemd failed for unit 'dbus-org.freedesktop.home1.service': Unit dbus-org.freedesktop.home1.service not found.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: pam_systemd_home(systemd-user:account): systemd-homed is not available: Unit dbus-org.freedesktop.home1.service not found.
+Apr 06 04:49:39 kyoh86-desktop audit[495]: USER_ACCT pid=495 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:accounting grantors=pam_access,pam_unix,pam_permit,pam_time acct="gdm" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop audit[495]: CRED_ACQ pid=495 uid=0 auid=4294967295 ses=4294967295 msg='op=PAM:setcred grantors=? acct="gdm" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=failed'
+Apr 06 04:49:39 kyoh86-desktop audit[495]: SYSCALL arch=c000003e syscall=1 success=yes exit=3 a0=9 a1=7ffe34667b20 a2=3 a3=78 items=0 ppid=1 pid=495 auid=120 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4 comm="(systemd)" exe="/usr/lib/systemd/systemd" key=(null)
+Apr 06 04:49:39 kyoh86-desktop audit: PROCTITLE proctitle="(systemd)"
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: pam_warn(systemd-user:setcred): function=[pam_sm_setcred] flags=0x8002 service=[systemd-user] terminal=[] user=[gdm] ruser=[<unknown>] rhost=[<unknown>]
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: pam_unix(systemd-user:session): session opened for user gdm(uid=120) by (uid=0)
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: pam_env(systemd-user:session): deprecated reading of user environment enabled
+Apr 06 04:49:39 kyoh86-desktop audit[495]: USER_START pid=495 uid=0 auid=120 ses=4 msg='op=PAM:session_open grantors=pam_loginuid,pam_loginuid,pam_keyinit,pam_limits,pam_unix,pam_permit,pam_mail,pam_systemd,pam_env acct="gdm" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop audit: BPF prog-id=22 op=LOAD
+Apr 06 04:49:39 kyoh86-desktop audit[495]: SYSCALL arch=c000003e syscall=321 success=yes exit=8 a0=5 a1=7ffcb3306620 a2=78 a3=7ffcb3306620 items=0 ppid=1 pid=495 auid=120 uid=120 gid=120 euid=120 suid=120 fsuid=120 egid=120 sgid=120 fsgid=120 tty=(none) ses=4 comm="systemd" exe="/usr/lib/systemd/systemd" key=(null)
+Apr 06 04:49:39 kyoh86-desktop audit: PROCTITLE proctitle="(systemd)"
+Apr 06 04:49:39 kyoh86-desktop audit: BPF prog-id=22 op=UNLOAD
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Queued start job for default target Main User Target.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Created slice User Application Slice.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Reached target Paths.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Reached target Timers.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Starting D-Bus User Message Bus Socket.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on GnuPG network certificate management daemon.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on GnuPG cryptographic agent and passphrase cache (restricted).
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on GnuPG cryptographic agent (ssh-agent emulation).
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on GnuPG cryptographic agent and passphrase cache.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on p11-kit server.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on Multimedia System.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on Sound System.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Listening on D-Bus User Message Bus Socket.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Reached target Sockets.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Reached target Basic System.
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Started User Manager for UID 120.
+Apr 06 04:49:39 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=user@120 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Starting Update XDG user dir configuration...
+Apr 06 04:49:39 kyoh86-desktop systemd[1]: Started Session 3 of user gdm.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: xdg-user-dirs-update.service: Deactivated successfully.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Finished Update XDG user dir configuration.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Reached target Main User Target.
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Startup finished in 40ms.
+Apr 06 04:49:39 kyoh86-desktop gdm-launch-environment][490]: pam_env(gdm-launch-environment:session): deprecated reading of user environment enabled
+Apr 06 04:49:39 kyoh86-desktop audit[490]: USER_START pid=490 uid=0 auid=120 ses=3 msg='op=PAM:session_open grantors=pam_loginuid,pam_keyinit,pam_succeed_if,pam_permit,pam_systemd,pam_env acct="gdm" exe="/usr/lib/gdm-session-worker" hostname=kyoh86-desktop addr=? terminal=/dev/tty1 res=success'
+Apr 06 04:49:39 kyoh86-desktop systemd[495]: Started D-Bus User Message Bus.
+Apr 06 04:49:39 kyoh86-desktop gnome-session[509]: gnome-session-binary[509]: WARNING: Failed to upload environment to systemd: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name "org.freedesktop.systemd1" does not exist
+Apr 06 04:49:39 kyoh86-desktop gnome-session-binary[509]: WARNING: Failed to upload environment to systemd: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name "org.freedesktop.systemd1" does not exist
+Apr 06 04:49:39 kyoh86-desktop gnome-session[509]: gnome-session-binary[509]: WARNING: Failed to reset failed state of units: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name "org.freedesktop.systemd1" does not exist
+Apr 06 04:49:39 kyoh86-desktop gnome-session-binary[509]: WARNING: Failed to reset failed state of units: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name "org.freedesktop.systemd1" does not exist
+Apr 06 04:49:39 kyoh86-desktop gnome-session-binary[509]: WARNING: Falling back to non-systemd startup procedure due to error: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name "org.freedesktop.systemd1" does not exist
+Apr 06 04:49:39 kyoh86-desktop gnome-session[509]: gnome-session-binary[509]: WARNING: Falling back to non-systemd startup procedure due to error: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name "org.freedesktop.systemd1" does not exist
+Apr 06 04:49:39 kyoh86-desktop gnome-shell[517]: Boot VGA GPU /dev/dri/card0 selected as primary
+Apr 06 04:49:40 kyoh86-desktop gnome-shell[517]: Disabling DMA buffer screen sharing for driver 'nouveau'.
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Activating service name='org.a11y.Bus' requested by ':1.4' (uid=120 pid=517 comm="/usr/bin/gnome-shell ")
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Successfully activated service 'org.a11y.Bus'
+Apr 06 04:49:40 kyoh86-desktop org.gnome.Shell.desktop[548]: (WW) Option "-listen" for file descriptors is deprecated
+Apr 06 04:49:40 kyoh86-desktop org.gnome.Shell.desktop[548]: Please use "-listenfd" instead.
+Apr 06 04:49:40 kyoh86-desktop org.gnome.Shell.desktop[548]: (WW) Option "-listen" for file descriptors is deprecated
+Apr 06 04:49:40 kyoh86-desktop org.gnome.Shell.desktop[548]: Please use "-listenfd" instead.
+Apr 06 04:49:40 kyoh86-desktop org.gnome.Shell.desktop[548]: glamor: No eglstream capable devices found
+Apr 06 04:49:40 kyoh86-desktop gnome-shell[517]: Skipping parental controls support as it’s disabled
+Apr 06 04:49:40 kyoh86-desktop gnome-shell[517]: Unset XDG_SESSION_ID, getCurrentSessionProxy() called outside a user session. Asking logind directly.
+Apr 06 04:49:40 kyoh86-desktop gnome-shell[517]: Will monitor session 3
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.locale1' unit='dbus-org.freedesktop.locale1.service' requested by ':1.22' (uid=120 pid=517 comm="/usr/bin/gnome-shell ")
+Apr 06 04:49:40 kyoh86-desktop audit: BPF prog-id=23 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop audit: BPF prog-id=24 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop audit: BPF prog-id=25 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop kernel: kauditd_printk_skb: 17 callbacks suppressed
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1334 audit(1617652180.506:65): prog-id=23 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1334 audit(1617652180.506:66): prog-id=24 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1334 audit(1617652180.506:67): prog-id=25 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Starting Locale Service...
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'org.freedesktop.locale1'
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Started Locale Service.
+Apr 06 04:49:40 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-localed comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1130 audit(1617652180.522:68): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-localed comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Activating service name='org.freedesktop.portal.IBus' requested by ':1.6' (uid=120 pid=554 comm="ibus-daemon --panel disable ")
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Successfully activated service 'org.freedesktop.portal.IBus'
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.UPower' unit='upower.service' requested by ':1.22' (uid=120 pid=517 comm="/usr/bin/gnome-shell ")
+Apr 06 04:49:40 kyoh86-desktop audit: BPF prog-id=26 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop audit: BPF prog-id=27 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Starting Daemon for power management...
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1334 audit(1617652180.722:69): prog-id=26 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1334 audit(1617652180.722:70): prog-id=27 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop systemd[495]: Starting Sound Service...
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.GeoClue2' unit='geoclue.service' requested by ':1.22' (uid=120 pid=517 comm="/usr/bin/gnome-shell ")
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Starting Location Lookup Service...
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.RealtimeKit1' unit='rtkit-daemon.service' requested by ':1.25' (uid=120 pid=570 comm="/usr/bin/pulseaudio --daemonize=no --log-target=jo")
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Starting RealtimeKit Scheduling Policy Service...
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'org.freedesktop.RealtimeKit1'
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Started RealtimeKit Scheduling Policy Service.
+Apr 06 04:49:40 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=rtkit-daemon comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop rtkit-daemon[576]: Successfully called chroot.
+Apr 06 04:49:40 kyoh86-desktop rtkit-daemon[576]: Successfully dropped privileges.
+Apr 06 04:49:40 kyoh86-desktop rtkit-daemon[576]: Successfully limited resources.
+Apr 06 04:49:40 kyoh86-desktop rtkit-daemon[576]: Canary thread running.
+Apr 06 04:49:40 kyoh86-desktop rtkit-daemon[576]: Watchdog thread running.
+Apr 06 04:49:40 kyoh86-desktop rtkit-daemon[576]: Running.
+Apr 06 04:49:40 kyoh86-desktop polkitd[465]: Registered Authentication Agent for unix-session:3 (system bus name :1.22 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1130 audit(1617652180.758:71): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=rtkit-daemon comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop rtkit-daemon[576]: Successfully made thread 570 of process 570 owned by '120' high priority at nice level -11.
+Apr 06 04:49:40 kyoh86-desktop rtkit-daemon[576]: Supervising 1 threads of 1 processes of 1 users.
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='fi.w1.wpa_supplicant1' unit='wpa_supplicant.service' requested by ':1.27' (uid=973 pid=574 comm="/usr/lib/geoclue ")
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Starting WPA supplicant...
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'fi.w1.wpa_supplicant1'
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Started WPA supplicant.
+Apr 06 04:49:40 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=wpa_supplicant comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop wpa_supplicant[589]: Successfully initialized wpa_supplicant
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1130 audit(1617652180.795:72): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=wpa_supplicant comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.Avahi' unit='dbus-org.freedesktop.Avahi.service' requested by ':1.29' (uid=973 pid=574 comm="/usr/lib/geoclue ")
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Activation via systemd failed for unit 'dbus-org.freedesktop.Avahi.service': Unit dbus-org.freedesktop.Avahi.service not found.
+Apr 06 04:49:40 kyoh86-desktop geoclue[574]: Failed to connect to avahi service: Daemon not running
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'org.freedesktop.GeoClue2'
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Started Location Lookup Service.
+Apr 06 04:49:40 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=geoclue comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1130 audit(1617652180.796:73): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=geoclue comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Activating service name='org.gnome.Shell.Notifications' requested by ':1.3' (uid=120 pid=517 comm="/usr/bin/gnome-shell ")
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[538]: dbus-daemon[538]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=120 pid=517 comm="/usr/bin/gnome-shell ")
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[538]: dbus-daemon[538]: Successfully activated service 'org.a11y.atspi.Registry'
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[610]: SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.30' (uid=120 pid=630 comm="/usr/lib/gsd-rfkill ")
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Activating service name='org.freedesktop.systemd1' requested by ':1.12' (uid=120 pid=612 comm="/usr/lib/gsd-sharing ")
+Apr 06 04:49:40 kyoh86-desktop audit: BPF prog-id=28 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop audit: BPF prog-id=29 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop audit: BPF prog-id=30 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop kernel: audit: type=1334 audit(1617652180.837:74): prog-id=28 op=LOAD
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Starting Hostname Service...
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Activated service 'org.freedesktop.systemd1' failed: Process org.freedesktop.systemd1 exited with status 1
+Apr 06 04:49:40 kyoh86-desktop gsd-sharing[612]: Failed to StopUnit service: GDBus.Error:org.freedesktop.DBus.Error.Spawn.ChildExited: Process org.freedesktop.systemd1 exited with status 1
+Apr 06 04:49:40 kyoh86-desktop gsd-sharing[612]: Failed to StopUnit service: GDBus.Error:org.freedesktop.DBus.Error.Spawn.ChildExited: Process org.freedesktop.systemd1 exited with status 1
+Apr 06 04:49:40 kyoh86-desktop gsd-sharing[612]: Failed to StopUnit service: GDBus.Error:org.freedesktop.DBus.Error.Spawn.ChildExited: Process org.freedesktop.systemd1 exited with status 1
+Apr 06 04:49:40 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Successfully activated service 'org.gnome.Shell.Notifications'
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'org.freedesktop.UPower'
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Started Daemon for power management.
+Apr 06 04:49:40 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=upower comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Apr 06 04:49:40 kyoh86-desktop systemd[1]: Started Hostname Service.
+Apr 06 04:49:40 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-hostnamed comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:40 kyoh86-desktop kernel: rfkill: input handler disabled
+Apr 06 04:49:41 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Activating service name='org.freedesktop.portal.IBus' requested by ':1.32' (uid=120 pid=728 comm="ibus-daemon --panel disable -r --xim ")
+Apr 06 04:49:41 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Successfully activated service 'org.freedesktop.portal.IBus'
+Apr 06 04:49:41 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.ColorManager' unit='colord.service' requested by ':1.39' (uid=120 pid=619 comm="/usr/lib/gsd-color ")
+Apr 06 04:49:41 kyoh86-desktop systemd[1]: Starting Manage, Install and Generate Color Profiles...
+Apr 06 04:49:41 kyoh86-desktop gnome-session-binary[509]: Entering running state
+Apr 06 04:49:41 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Activating service name='org.gnome.Shell.Screencast' requested by ':1.24' (uid=120 pid=634 comm="/usr/lib/gsd-media-keys ")
+Apr 06 04:49:41 kyoh86-desktop xbrlapi.desktop[750]: openConnection: connect: No such file or directory
+Apr 06 04:49:41 kyoh86-desktop xbrlapi.desktop[750]: cannot connect to braille devices daemon brltty at :0
+Apr 06 04:49:41 kyoh86-desktop dbus-daemon[387]: [system] Successfully activated service 'org.freedesktop.ColorManager'
+Apr 06 04:49:41 kyoh86-desktop systemd[1]: Started Manage, Install and Generate Color Profiles.
+Apr 06 04:49:41 kyoh86-desktop audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=colord comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:41 kyoh86-desktop gsd-media-keys[634]: Failed to grab accelerator for keybinding settings:playback-repeat
+Apr 06 04:49:41 kyoh86-desktop gsd-media-keys[634]: Failed to grab accelerator for keybinding settings:hibernate
+Apr 06 04:49:41 kyoh86-desktop gsd-media-keys[634]: Failed to grab accelerator for keybinding settings:playback-random
+Apr 06 04:49:41 kyoh86-desktop gsd-media-keys[634]: Failed to grab accelerator for keybinding settings:rfkill
+Apr 06 04:49:41 kyoh86-desktop dbus-daemon[387]: [system] Activating via systemd: service name='org.freedesktop.Avahi' unit='dbus-org.freedesktop.Avahi.service' requested by ':1.42' (uid=974 pid=776 comm="/usr/lib/colord-sane ")
+Apr 06 04:49:41 kyoh86-desktop dbus-daemon[387]: [system] Activation via systemd failed for unit 'dbus-org.freedesktop.Avahi.service': Unit dbus-org.freedesktop.Avahi.service not found.
+Apr 06 04:49:41 kyoh86-desktop kernel: usb 3-1.2: reset high-speed USB device number 5 using xhci_hcd
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Supervising 1 threads of 1 processes of 1 users.
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Successfully made thread 783 of process 570 owned by '120' RT at priority 5.
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Supervising 2 threads of 1 processes of 1 users.
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Supervising 2 threads of 1 processes of 1 users.
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Successfully made thread 784 of process 570 owned by '120' RT at priority 5.
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Supervising 3 threads of 1 processes of 1 users.
+Apr 06 04:49:41 kyoh86-desktop gnome-shell[517]: Registering session with GDM
+Apr 06 04:49:41 kyoh86-desktop /usr/lib/gdm-wayland-session[508]: dbus-daemon[508]: [session uid=120 pid=508] Successfully activated service 'org.gnome.Shell.Screencast'
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Supervising 3 threads of 1 processes of 1 users.
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Successfully made thread 792 of process 570 owned by '120' RT at priority 5.
+Apr 06 04:49:41 kyoh86-desktop rtkit-daemon[576]: Supervising 4 threads of 1 processes of 1 users.
+Apr 06 04:49:42 kyoh86-desktop rtkit-daemon[576]: Supervising 4 threads of 1 processes of 1 users.
+Apr 06 04:49:42 kyoh86-desktop rtkit-daemon[576]: Successfully made thread 793 of process 570 owned by '120' RT at priority 5.
+Apr 06 04:49:42 kyoh86-desktop rtkit-daemon[576]: Supervising 5 threads of 1 processes of 1 users.
+Apr 06 04:49:42 kyoh86-desktop rtkit-daemon[576]: Supervising 5 threads of 1 processes of 1 users.
+Apr 06 04:49:42 kyoh86-desktop rtkit-daemon[576]: Successfully made thread 794 of process 570 owned by '120' RT at priority 5.
+Apr 06 04:49:42 kyoh86-desktop rtkit-daemon[576]: Supervising 6 threads of 1 processes of 1 users.
+Apr 06 04:49:42 kyoh86-desktop systemd[495]: Started Sound Service.
+Apr 06 04:49:49 kyoh86-desktop systemd[1]: Stopping User Manager for UID 1000...
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Stopped target Main User Target.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Stopped target Basic System.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Stopped target Paths.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Stopped target Sockets.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Stopped target Timers.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: dbus.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed D-Bus User Message Bus Socket.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: dirmngr.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed GnuPG network certificate management daemon.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: gpg-agent-browser.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: gpg-agent-extra.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed GnuPG cryptographic agent and passphrase cache (restricted).
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: gpg-agent-ssh.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed GnuPG cryptographic agent (ssh-agent emulation).
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: gpg-agent.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed GnuPG cryptographic agent and passphrase cache.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: p11-kit-server.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed p11-kit server.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: pipewire.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed Multimedia System.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: pulseaudio.socket: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Closed Sound System.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Removed slice User Application Slice.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Reached target Shutdown.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: systemd-exit.service: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Finished Exit the Session.
+Apr 06 04:49:49 kyoh86-desktop systemd[449]: Reached target Exit the Session.
+Apr 06 04:49:49 kyoh86-desktop systemd[450]: pam_warn(systemd-user:setcred): function=[pam_sm_setcred] flags=0x8004 service=[systemd-user] terminal=[] user=[kyoh86] ruser=[<unknown>] rhost=[<unknown>]
+Apr 06 04:49:49 kyoh86-desktop systemd[1]: user@1000.service: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[1]: Stopped User Manager for UID 1000.
+Apr 06 04:49:49 kyoh86-desktop audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=user@1000 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:49 kyoh86-desktop kernel: kauditd_printk_skb: 5 callbacks suppressed
+Apr 06 04:49:49 kyoh86-desktop kernel: audit: type=1131 audit(1617652189.368:80): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=user@1000 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:49 kyoh86-desktop systemd[1]: Stopping User Runtime Directory /run/user/1000...
+Apr 06 04:49:49 kyoh86-desktop systemd[1]: run-user-1000.mount: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[495]: run-user-1000.mount: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[1]: user-runtime-dir@1000.service: Deactivated successfully.
+Apr 06 04:49:49 kyoh86-desktop systemd[1]: Stopped User Runtime Directory /run/user/1000.
+Apr 06 04:49:49 kyoh86-desktop audit[1]: SERVICE_STOP pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=user-runtime-dir@1000 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+Apr 06 04:49:49 kyoh86-desktop systemd[1]: Removed slice User Slice of UID 1000.
+Apr 06 04:49:49 kyoh86-desktop kernel: audit: type=1131 audit(1617652189.373:81): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=user-runtime-dir@1000 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
