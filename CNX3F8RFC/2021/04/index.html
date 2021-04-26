@@ -16347,6 +16347,857 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1619394106.145600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1619394106.145600">26日 08:41:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619394106145600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                fzfがdevelだからめっちゃ新しい？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619396686.147200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1619396686.147200">26日 09:24:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619396686147200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                @peacock0803sz 途中まで作れてるんで、暇あれば適当なタイミングで試してみて貰えるといいかもです<br><a href='https://github.com/yuki-yano/fzf-preview-deno.zsh'>https://github.com/yuki-yano/fzf-preview-deno.zsh</a><br><br>zshプラグインとして動くかがbinフォルダの扱いとか含めちょっと確認できてないんで最悪直で読み込んでもらえたら動くかと思います。<br>自分の設定は<br><pre>path=(~/workspace/fzf-preview-deno.zsh/bin(N-/) $path)<br>source ~/workspace/fzf-preview-deno.zsh/fzf-preview.zsh<br><br>bindkey &#39; &#39;    fp-auto-snippet<br>bindkey &#39;^m&#39;   fp-auto-snippet-and-accept-line<br>bindkey &#39;^x^s&#39; fp-insert-snippet<br>bindkey &#39;^t&#39;   fp-completion</pre><br>な感じです
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="peacock0803sz">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">39 件の返信 最終返信:13:56:16 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1619396783.147500">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619396783.147500">26日 09:26:23</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あとは <code>~/.config/fzf-preview.zsh/config.yml</code> が必要で、自分はこんな感じです
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619396839.147900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619396839.147900">26日 09:27:19</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      主要機能は大体移植出来てて、あとやるとしたらplaceholder周りとか細かいとこやっていかないといけない感じ
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619397000.148200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619397000.148200">26日 09:30:00</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      もしデバッグやりたかったら、こういう風に実行ファイルに渡せばfzfに渡す元コマンドとかオプションが確認できます<br><pre>$ echo &#34;kill &#34; | bin/fzf-preview-deno --mode=completion<br>success<br>ps -ef | sed 1d<br><br>--bind=&#34;ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,?:toggle-preview&#34; --expect=&#34;alt-enter&#34; --ansi --height=&#39;80%&#39; --multi --prompt=&#39;Kill Process&gt; &#39;<br>awk &#39;{print $2}&#39;</pre>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619410871.149200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619410871.149200">26日 13:21:11</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      すごい。とりあえず動いてそうです、既存のfzf-preview.zshのgit補完系はまだって感じです?<br>PATHまわりちょっと変えたけどzshrcこんな感じです<br><pre>export PATH=&#34;$(ghq root)/github.com/yuki-yano/fzf-preview-deno.zsh/bin/:$PATH&#34;<br>source $(ghq root)/github.com/yuki-yano/fzf-preview-deno.zsh/fzf-preview.zsh<br><br>bindkey &#39; &#39;    fp-auto-snippet<br>bindkey &#39;^m&#39;   fp-auto-snippet-and-accept-line<br>bindkey &#39;^x^s&#39; fp-insert-snippet<br>bindkey &#39;^t&#39;   fp-completion</pre>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619410903.149400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619410903.149400">26日 13:21:43</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      git addとかいくつか入れてますね<br>TabじゃなくてC-tって今のところ試してますが
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619410915.149600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619410915.149600">26日 13:21:55</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あとcheckoutとかは動くはず
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619410961.149800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619410961.149800">26日 13:22:41</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      具体的にはここに書いてるやつですね<br><a href='https://github.com/yuki-yano/fzf-preview-deno.zsh/blob/11dfbbaedeeabcaffa3c6a04cfd25daf004f06ad/src/completion/source/git.ts#L17-L66'>https://github.com/yuki-yano/fzf-preview-deno.zsh/blob/11dfbbaedeeabcaffa3c6a04cfd25daf004f06ad/src/completion/source/git.ts#L17-L66</a>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411064.150200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411064.150200">26日 13:24:24</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      まぁ、これについてはsettings.ymlに自前で補完設定書いちゃえば動かせるではあります
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411172.150400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411172.150400">26日 13:26:12</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <pre>$ echo &#34;git checkout &#34; | bin/fzf-preview-deno --mode=completion<br>success<br>git for-each-ref refs/heads refs/remotes --color=always --format=&#39;%(color:green)[branch]%09%(color:reset)%(color:magenta)%(refname:short)%(color:reset) %(color:yellow)%(authordate:short) %(color:reset) %(color:blue)[%(authorname)]%(color:reset)%09&#39; 2&gt; /dev/null | column -t<br>[[ &#39;{1}&#39; == &#39;[branch]&#39; ]] &amp;&amp; git log {2} --decorate --pretty=&#39;format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]&#39; --date=iso --graph --color=always || [[ &#39;{1}&#39; == &#39;[tag]&#39; ]] &amp;&amp; git log {2} --pretty=&#39;format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]&#39; --date=iso --graph --color=always  || [[ &#39;{1}&#39; == &#39;[commit]&#39; ]] &amp;&amp; git show --color=always {2} || [[ &#39;{1}&#39; == &#39;[reflog]&#39; ]] &amp;&amp; git show --color=always {2}<br>--bind=&#34;ctrl-b:reload(git for-each-ref refs/heads refs/remotes --color=always --format=&#39;%(color:green)[branch]%09%(color:reset)%(color:magenta)%(refname:short)%(color:reset) %(color:yellow)%(authordate:short) %(color:reset) %(color:blue)[%(authorname)]%(color:reset)%09&#39; 2&gt; /dev/null | column -t),ctrl-c:reload(git log --decorate --color=always --format=&#39;%C(green)[commit]  %Creset%C(magenta)%h%Creset %C(yellow)%cr %x09%Creset [%C(blue)%an%Creset] %x09%C(auto)%s %d&#39;),ctrl-t:reload(git for-each-ref refs/tags --color=always --format=&#39;%(color:green)[tag]%09%(color:reset)%(color:magenta)%(refname:short)%(color:reset) %(color:yellow)%(authordate:short) %(color:reset) %(color:blue)[%(authorname)]%(color:reset)%09&#39; 2&gt; /dev/null | column -t),ctrl-r:reload(git reflog --decorate --color=always --format=&#39;%C(green)[reflog]  %Creset%C(magenta)%h%Creset %C(yellow)%cr %x09%Creset [%C(blue)%an%Creset] %x09%C(auto)%s %d&#39; 2&gt; /dev/null)&#34; --expect=&#34;alt-enter&#34; --ansi --height=&#39;80%&#39; --header=&#39;C-b: branch, C-c: commit, C-t: tag, C-r: reflog&#39; --preview-window=&#39;down&#39; --prompt=&#39;Git Checkout&gt; &#39; --no-sort<br>awk &#39;{ print $2 }&#39;</pre><br>とかでgit checkoutの補完コマンドが確認できます
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411210.150600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411210.150600">26日 13:26:50</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      見返すと思ったより異常な設定している
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411318.150900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619411318.150900">26日 13:28:38</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <pre>$ echo &#34;git add&#34; | /home/yoichi/ghq/github.com/yuki-yano/fzf-preview-deno.zsh/bin/fzf-preview-deno --mode=completion<br>failure</pre><br>お?何かがおかしい...
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411337.151100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411337.151100">26日 13:28:57</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あ、 <code>git add</code>の後ろにspaceですね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411386.151300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411386.151300">26日 13:29:46</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ここで実際に補完開始するときのBUFFERを渡すので<br>echoの末尾にスペース入れとかないと補完の正規表現にマッチしないです
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411736.151500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619411736.151500">26日 13:35:36</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ありがとうございます。エラッタ出るの一瞬なので取れないんですが、C-tで補完が効いてないな...<br>どこかでevalしてるのがno match foundっぽいです(C-tが他と被ってないかは見ました
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411817.152100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411817.152100">26日 13:36:57</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      echoのデバッグ結果は出ます？
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411862.152800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411862.152800">26日 13:37:42</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      補完時はechoの結果を変数に入れてevalしてるんですよね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411887.153100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619411887.153100">26日 13:38:07</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      デバッグはこんなのです<br><pre>$ echo &#34;git add &#34; | /home/yoichi/ghq/github.com/yuki-yano/fzf-preview-deno.zsh/bin/fzf-preview-deno --mode=completion<br>success<br>git add<br>git -c color.status=always status --short<br>[[ \$(git diff -- {-1}) ]] &amp;&amp; git diff --color=always -- {-1} || [[ \$(git diff --cached -- {-1} ) ]] &amp;&amp; git diff --cached --color=always -- {-1} || bat --color=always --style=grid --theme=gruvbox-dark {-1} 2&gt;/dev/null || exa --color=always --tree {-1} 2&gt;/dev/null<br>--bind=ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,?:toggle-preview --expect=&#34;alt-enter&#34; --ansi --height=&#39;80%&#39; --multi --prompt=&#39;Git Add Files&gt; &#39;</pre>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411907.153500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411907.153500">26日 13:38:27</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      そこは通ってるのか・・・
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411920.153900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411920.153900">26日 13:38:40</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あー、exaあたりかも
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411939.154600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411939.154600">26日 13:38:59</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      batとかexaを適当に叩くの良くないな
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411964.154800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619411964.154800">26日 13:39:24</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あー、exa入ってないあるかもです...
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619411996.155600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619411996.155600">26日 13:39:56</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ちょっと後でその辺確認します、ひとまず何も出さないでいい気がする
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412060.155800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619412060.155800">26日 13:41:00</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      exa, bat入れたけどだめそうです...
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412084.156400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412084.156400">26日 13:41:24</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      うーん、何だろう
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412132.157700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412132.157700">26日 13:42:12</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      そこまで動けば問題ない気がするんだけど<br>checkoutの方も同じです？
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412215.157900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619412215.157900">26日 13:43:35</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      同じですね。一応デバッグ出力も出しときます。<br><pre>$ echo &#34;git checkout &#34; | /home/yoichi/ghq/github.com/yuki-yano/fzf-preview-deno.zsh/bin/fzf-preview-deno --mode=completion<br>success<br>git checkout<br>git for-each-ref refs/heads refs/remotes --color=always --format=&#39;%(color:green)[branch]%09%(color:reset)%(color:magenta)%(refname:short)%(color:reset) %(color:yellow)%(authordate:short) %(color:reset) %(color:blue)[%(authorname)]%(color:reset)%09&#39; 2&gt; /dev/null | column -t<br>[[ &#39;{1}&#39; == &#39;[branch]&#39; ]] &amp;&amp; git log {2} --decorate --pretty=&#39;format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]&#39; --date=iso --graph --color=always || [[ &#39;{1}&#39; == &#39;[tag]&#39; ]] &amp;&amp; git log {2} --pretty=&#39;format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]&#39; --date=iso --graph --color=always  || [[ &#39;{1}&#39; == &#39;[commit]&#39; ]] &amp;&amp; git show --color=always {2} || [[ &#39;{1}&#39; == &#39;[reflog]&#39; ]] &amp;&amp; git show --color=always {2}<br>--bind=ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,?:toggle-preview --expect=&#34;alt-enter&#34; --ansi --height=&#39;80%&#39; --prompt=&#39;Git Checkout&gt; &#39; --no-sort</pre>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412498.158500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412498.158500">26日 13:48:18</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      うーん、まず再現したいな
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412555.158700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619412555.158700">26日 13:49:15</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      minimalなzshrc作ってみます
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412661.159700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412661.159700">26日 13:51:01</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あ、どっちかっていうと上のコマンドをfzfに渡してどこでエラー吐くか見て貰った方がいいかも
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412682.160000">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412682.160000">26日 13:51:22</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あー、理解した
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412692.160500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412692.160500">26日 13:51:32</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      2行目の出力バグってますね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412728.161700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412728.161700">26日 13:52:08</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      バグってるっていうか、自分が仕様変更したはずなんだけど古いフォーマットで出てそう<br>2行目自体不要にしたんですよね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412755.162500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412755.162500">26日 13:52:35</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      今ちょっと外に出たんで、帰ったらmainのコード確認します
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412776.163200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412776.163200">26日 13:52:56</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      もしくは一旦git pullかなぁ
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412826.163400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">peacock0803sz</span>
+                      <a href="#ts-1619412826.163400">26日 13:53:46</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      一旦git pullしたら動きました(あってるかどうかはわからない
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412839.163900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412839.163900">26日 13:53:59</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <a href='https://github.com/yuki-yano/fzf-preview-deno.zsh/blob/11dfbbaedeeabcaffa3c6a04cfd25daf004f06ad/src/app.ts#L83'>https://github.com/yuki-yano/fzf-preview-deno.zsh/blob/11dfbbaedeeabcaffa3c6a04cfd25daf004f06ad/src/app.ts#L83</a><br>多分ここがずれてたんだと思います
+                    </div>
+                      
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/yuki-yano/fzf-preview-deno.zsh/blob/11dfbbaedeeabcaffa3c6a04cfd25daf004f06ad/src/app.ts#L83" target="_blank" rel="noopener noreferrer">yuki-yano/fzf-preview-deno.zsh</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">Contribute to yuki-yano/fzf-preview-deno.zsh development by creating an account on GitHub.</div>
+    </div>
+
+                  </div>
+                  <div class="p-2" id="ts-1619412865.164800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412865.164800">26日 13:54:25</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ひとまずよかった<br>これでユーザ定義補完含めて動くはず
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412901.165600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412901.165600">26日 13:55:01</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      試しに自分の設定のkillとか入れてみるとそれっぽくなると思います
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1619412976.166500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1619412976.166500">26日 13:56:16</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      正直あとはデフォルト設定で便利なの入れたらほぼ移植できてるんで終わりでは？ってなってます
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619396783.147500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1619396783.147500">26日 09:26:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619396783147500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あとは <code>~/.config/fzf-preview.zsh/config.yml</code> が必要で、自分はこんな感じです
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1619396686.147200">&lt;@UD1FQV38V&gt; 途中まで作れて ...</a>
+            </span>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F020BQ2JG73/%E7%84%A1%E9%A1%8C.yaml" target="_blank" rel="noopener noreferrer">
+                  <span class="f5">[[ダウンロード: 無題(YAML)]]</span>
+                  </a>
+                  <pre><code class='language-yaml'>snippets:
+  - name: git status
+    keyword: gs
+    snippet: git status --short --branch
+  - name: git add
+    keyword: ga
+    snippet: git add {{file}}
+  - name: git add all
+    keyword: gaa
+    snippet: git add --all
+  - name: git commit
+    keyword: gci
+    snippet: git commit
+  - name: git commit message
+    keyword: gcim
+    snippet: git commit -m &#39;{{commit_message}}&#39;
+  - name: git commit fixup
+    keyword: gcif
+    snippet: git commit --fixup {{commit_id}}
+  - name: git diff
+    keyword: gd
+    snippet: git diff {{branch}}
+  - name: git diff file
+    keyword: gd
+    snippet: git diff -- {{file}}
+  - name: git diff branch file
+    keyword: gd
+    snippet: git diff {{branch}} -- {{file}}
+  - name: git diff 2 branch
+    keyword: gd
+    snippet: git diff {{branch1}} {{brahcn2}}
+  - name: git diff 2 branch file
+    keyword: gd
+    snippet: git diff {{branch1}} {{brahcn2}} -- {{file}}
+  - name: git diff cached
+    keyword: gd
+    snippet: git diff --cached
+  - name: git diff cached file
+    keyword: gd
+    snippet: git diff --cached -- {{file}}
+  - name: git checkout
+    keyword: gco
+    snippet: git checkout {{branch}}
+  - name: git checkout file
+    keyword: gcof
+    snippet: git checkout -- {{file}}
+  - name: git checkout branch file
+    keyword: gcof
+    snippet: git checkout {{branch}} -- {{file}}
+  - name: git checkout track
+    keyword: gcot
+    snippet: git checkout --track {{origin_branch}}
+  - name: git reset
+    keyword: gre
+    snippet: git reset {{branch}}
+  - name: git reset file
+    keyword: gre
+    snippet: git reset -- {{file}}
+  - name: git reset hard
+    keyword: gre
+    snippet: git reset --hard {{branch}}
+  - name: git stash
+    keyword: gst
+    snippet: git stash
+  - name: git stash list
+    keyword: gstl
+    snippet: git stash list
+  - name: git stash show {{stash}}
+    keyword: gsts
+    snippet: git stash show {{stash}}
+  - name: git stash apply
+    keyword: gsta
+    snippet: git stash apply {{stash}}
+  - name: git stash pop
+    keyword: gstp
+    snippet: git stash pop {{stash}}
+  - name: git stash drop
+    keyword: gstd
+    snippet: git stash drop {{stash}}
+  - name: git rebase squash
+    keyword: squash
+    snippet: git rebase --interactive --autosquash {{branch}}
+  - name: git rebase squash auto
+    keyword: squash
+    snippet: GIT_EDITOR=cat git rebase --interactive --autosquash {{branch}}
+  - name: git main branch
+    keyword: main_branch
+    snippet: basename &#34;$(git symbolic-ref --short refs/remotes/origin/HEAD)&#34;
+
+  - name: tms
+    keyword: t
+    snippet: tms
+  - name: tmux swap pane
+    keyword: ts
+    snippet: tmux swap-pane -t
+
+  - name: &#34;null&#34;
+    keyword: &#34;null&#34;
+    snippet: &#34;&gt;/dev/null 2&gt;&amp;1&#34;
+  - name: stdout to null
+    keyword: null1
+    snippet: &#34;&gt;/dev/null&#34;
+  - name: stderr to null
+    keyword: null2
+    snippet: &#34;2&gt;/dev/null&#34;
+
+  - name: pipe xargs
+    keyword: pipe_xargs
+    snippet: &#34;| xargs -I{} {{command}} {}&#34;
+  - name: pipe awk
+    keyword: pipe_awk
+    snippet: &#34;| awk &#39;{ print ${{column}} }&#39;&#34;
+
+  - name: disable desktop
+    keyword: disable_desktop
+    snippet: defaults write com.apple.finder CreateDesktop -boolean false; killall Finder
+  - name: enable desktop
+    keyword: enable_desktop
+    snippet: defaults write com.apple.finder CreateDesktop -boolean true; killall Finder
+
+completions:
+  - name: kill
+    patterns: 
+      - &#34;^kill( -9)? $&#34;
+    sourceCommand: &#34;ps -ef | sed 1d&#34;
+    options:
+      --multi: true
+      --prompt: &#34;&#39;Kill Process&gt; &#39;&#34;
+    callback: &#34;awk &#39;{print $2}&#39;&#34;
+</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619397121.148700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1619397121.148700">26日 09:32:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619397121148700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ある程度書いてみたら結局pmyとある程度似たインターフェイスになってしまっていた<br><a href='https://github.com/relastle/pmy/'>https://github.com/relastle/pmy/</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619413755.167900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1619413755.167900">26日 14:09:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619413755167900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                上のzshプラグイン、fzf以外にもやってることあるしdeno-benri.zshとかでいい気がしてきた
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619413854.168200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-04-14/1081287266064_cb2d6ab85d9530d8a126_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yutkat</span>
+              <a href="#ts-1619413854.168200">26日 14:10:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619413854168200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                設定ってデフォルト提供されない感じなんですかね？？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619413935.168800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1619413935.168800">26日 14:12:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619413935168800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                するつもりです<br>今いくつかは入れてますね
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="yutkat">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619413988.170000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1619413988.170000">26日 14:13:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619413988170000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                snippetや自動展開をデフォでmapさせるか迷う
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619414036.170300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1619414036.170300">26日 14:13:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1619414036170300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ffd.zshとかでもいいかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
