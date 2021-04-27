@@ -1,0 +1,126 @@
+[233 ms] Start: Resolving Remote
+[234 ms] Setting up container: /jolly_mirzakhani
+[235 ms] Start: Run: docker inspect --type container /jolly_mirzakhani
+[537 ms] Start: Check Docker is running
+[537 ms] Start: Run: docker version --format {{.Server.APIVersion}}
+[785 ms] Server API version: 1.41
+[786 ms] Start: Inspecting container
+[786 ms] Start: Run: docker inspect --type container a51930f49cb35026612f1ec35af5228100463bcab502e3393bd9515cd5e23fcc
+[1013 ms] Start: Run in container: /bin/sh
+[1015 ms] Start: Run in container: uname -m
+[1693 ms] x86_64
+[1693 ms] 
+[1694 ms] Start: Run in container: (cat /etc/os-release || cat /usr/lib/os-release) 2>/dev/null
+[1718 ms] PRETTY_NAME="Debian GNU/Linux 10 (buster)"
+NAME="Debian GNU/Linux"
+VERSION_ID="10"
+VERSION="10 (buster)"
+VERSION_CODENAME=buster
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+[1718 ms] 
+[1719 ms] Start: Run in container: cat /etc/passwd
+[1744 ms] Start: Run in container: test -d /var/lib/jetty/.vscode-server-insiders
+[1760 ms] 
+[1761 ms] 
+[1761 ms] Exit code 1
+[1762 ms] Start: Run in container: test -d /var/lib/jetty/.vscode-remote
+[1765 ms] 
+[1765 ms] 
+[1765 ms] Exit code 1
+[1766 ms] Start: Run in container: set -o noclobber ; mkdir -p '/var/lib/jetty/.vscode-server-insiders/data/Machine' && { > '/var/lib/jetty/.vscode-server-insiders/data/Machine/.writeMachineSettingsMarker' ; } 2> /dev/null
+[1827 ms] 
+[1828 ms] 
+[1828 ms] Start: Run in container: cat /var/lib/jetty/.vscode-server-insiders/data/Machine/settings.json
+[1851 ms] 
+[1851 ms] /bin/cat: /var/lib/jetty/.vscode-server-insiders/data/Machine/settings.json: No such file or directory
+[1851 ms] Exit code 1
+[1852 ms] Start: Run in container: test -d /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129
+[1855 ms] 
+[1855 ms] 
+[1855 ms] Exit code 1
+[1856 ms] Installing VS Code Server for commit ce791d27dc9889a392f4d29abefe9c53eb0b5129
+[1857 ms] Start: Downloading VS Code Server
+[1857 ms] ce791d27dc9889a392f4d29abefe9c53eb0b5129 x64 insider 
+[7444 ms] Start: Installing VS Code Server
+[7444 ms] Start: Run in container: mkdir -p /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129_1619480111161
+[7503 ms] 
+[7504 ms] 
+[7541 ms] Start: Run in container: (dd iflag=fullblock bs=8192 count=3869 2>/dev/null; dd iflag=fullblock bs=5974 count=1 2>/dev/null) | tar --no-same-owner -xz --strip-components 1 -C /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129_1619480111161
+[10537 ms] 
+[10537 ms] 
+[10538 ms] Start: Run in container: mv -n /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129_1619480111161 /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129
+[10573 ms] 
+[10573 ms] 
+[10574 ms] Start: Launching Remote-Containers helper.
+[10574 ms] Start: Run: gpgconf --list-dir agent-extra-socket
+[10577 ms] Start: Run in container: cat <<'EOF-/tmp/jetty/vscode-remote-containers-9b58a66b3942fd9d306c26c8d2dcfc40ce388ebc.js' >/tmp/jetty/vscode-remote-containers-9b58a66b3942fd9d306c26c8d2dcfc40ce388ebc.js
+[10600 ms] 
+[10600 ms] 
+[10600 ms] Start: Run in container: # Test for /var/lib/jetty/.ssh/known_hosts and ssh
+[10606 ms] ssh not found
+[10607 ms] 
+[10607 ms] Exit code 1
+[10607 ms] Start: Run in container: cat <<'EOF-/tmp/jetty/vscode-remote-containers-server-9b58a66b3942fd9d306c26c8d2dcfc40ce388ebc.js' >/tmp/jetty/vscode-remote-containers-server-9b58a66b3942fd9d306c26c8d2dcfc40ce388ebc.js
+[10607 ms] Start: Run in container: /bin/sh
+[10609 ms] Start: Run in container: command -v git >/dev/null 2>&1 && git config --system credential.helper '!f() { /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129/node /tmp/jetty/vscode-remote-containers-9b58a66b3942fd9d306c26c8d2dcfc40ce388ebc.js $*; }; f' || true
+[10637 ms] 
+[10637 ms] 
+[10637 ms] Start: Run in container: /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129/node /tmp/jetty/vscode-remote-containers-server-9b58a66b3942fd9d306c26c8d2dcfc40ce388ebc.js
+[10941 ms] 
+[10941 ms] 
+[10941 ms] Start: Preparing Extensions
+[10941 ms] Start: Run in container: set -o noclobber ; mkdir -p '/var/lib/jetty/.vscode-server-insiders/data/Machine' && { > '/var/lib/jetty/.vscode-server-insiders/data/Machine/.installExtensionsMarker' ; } 2> /dev/null
+[11009 ms] 
+[11010 ms] 
+[11012 ms] Extensions cache, install extensions: None
+[11012 ms] Start: Run in container: test -d /var/lib/jetty/.vscode-server-insiders/extensionsCache && ls /var/lib/jetty/.vscode-server-insiders/extensionsCache || true
+[11019 ms] 
+[11020 ms] 
+[11021 ms] Extensions cache, copy to remote: None
+[11021 ms] Start: Run in container: for pid in `cd /proc && ls -d [0-9]*`; do { echo $pid ; readlink /proc/$pid/cwd ; readlink /proc/$pid/ns/mnt ; cat /proc/$pid/stat | tr "
+[12601 ms] Start: Starting VS Code Server
+[12601 ms] Start: Run in container: /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129/server.sh --log debug --force-disable-user-env --use-host-proxy --port 0 --extensions-download-dir /var/lib/jetty/.vscode-server-insiders/extensionsCache --start-server
+[13584 ms] 
+
+*
+* Visual Studio Code Server
+*
+* Reminder: You may only use this software with Visual Studio family products,
+* as described in the license https://aka.ms/vscode-remote/license
+*
+
+Extension host agent listening on 39649
+
+[13584 ms] Start: Run in container: echo 39649 >/var/lib/jetty/.vscode-server-insiders/data/Machine/.devport
+[13597 ms] 
+[13598 ms] 
+[13598 ms] Port forwarding for container port 39649 starts listening on local port.
+[13600 ms] Port forwarding local port 39649 to container port 39649
+[13603 ms] Start: Run in container: /bin/sh -c # Watch installed extensions
+[13603 ms] Start: Run in container: /bin/sh -c # Watch machine settings
+[13604 ms] 
+
+------------------------
+Published Ports:
+8080/tcp -> 0.0.0.0:8888
+------------------------
+
+[13610 ms] Start: Run in container: # Test for /var/lib/jetty/.gitconfig and git
+[13651 ms] Port forwarding connection from 60203 > 39649 > 39649 in the container.
+[13651 ms] Start: Run in container: /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129/node -e 
+[13670 ms] git not found
+[13670 ms] 
+[13670 ms] Exit code 1
+[13671 ms] Start: Run in container: command -v git >/dev/null 2>&1 && git config --global credential.helper '!f() { /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129/node /tmp/jetty/vscode-remote-containers-9b58a66b3942fd9d306c26c8d2dcfc40ce388ebc.js $*; }; f' || true
+[13705 ms] 
+[13706 ms] 
+[15574 ms] [23:35:19] Extension host agent started.
+[16224 ms] Port forwarding connection from 60248 > 39649 > 39649 in the container.
+[16224 ms] Start: Run in container: /var/lib/jetty/.vscode-server-insiders/bin/ce791d27dc9889a392f4d29abefe9c53eb0b5129/node -e 
+[16732 ms] [23:35:20] [::ffff:127.0.0.1][b6878395][ManagementConnection] New connection established.
+[17527 ms] [23:35:21] [::ffff:127.0.0.1][84aa32d8][ExtensionHostConnection] New connection established.
+[17550 ms] [23:35:21] [::ffff:127.0.0.1][84aa32d8][ExtensionHostConnection] <450> Launched Extension Host Process.
+[21086 ms] Extensions cache, remote removals: None
