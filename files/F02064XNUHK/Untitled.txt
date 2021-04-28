@@ -1,0 +1,30 @@
+$ cat test.go
+package main
+
+func main() {
+        a := make([]byte, 0x7fffffff)
+        //a = append(a, 0)
+        println(len(a))
+}
+
+koron@fate ~/tmp
+$ GOARCH=386 go run test.go
+runtime: out of memory: cannot allocate 2147483648-byte block (4128768 in use)
+fatal error: out of memory
+
+goroutine 1 [running]:
+runtime.throw(0xda8268, 0xd)
+        C:/Local/Go/current/src/runtime/panic.go:1117 +0x64 fp=0x11854f28 sp=0x11854f14 pc=0xd6c924
+runtime.(*mcache).allocLarge(0xe30088, 0x7fffffff, 0xe30101, 0x1180e3c0)
+        C:/Local/Go/current/src/runtime/mcache.go:226 +0x250 fp=0x11854f58 sp=0x11854f28 pc=0xd4f8c0
+runtime.mallocgc(0x7fffffff, 0xd9ec40, 0xd44201, 0x1180e3f0)
+        C:/Local/Go/current/src/runtime/malloc.go:1078 +0x738 fp=0x11854fa0 sp=0x11854f58 pc=0xd49e88
+runtime.makeslice(0xd9ec40, 0x7fffffff, 0x7fffffff, 0x1180e3f0)
+        C:/Local/Go/current/src/runtime/slice.go:98 +0x4f fp=0x11854fb4 sp=0x11854fa0 pc=0xd7d8df
+main.main()
+        C:/Users/koron/tmp/test.go:4 +0x33 fp=0x11854fc8 sp=0x11854fb4 pc=0xd965b3
+runtime.main()
+        C:/Local/Go/current/src/runtime/proc.go:225 +0x237 fp=0x11854ff0 sp=0x11854fc8 pc=0xd6eb17
+runtime.goexit()
+        C:/Local/Go/current/src/runtime/asm_386.s:1315 +0x1 fp=0x11854ff4 sp=0x11854ff0 pc=0xd91e71
+exit status 2
