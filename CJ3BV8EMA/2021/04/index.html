@@ -7221,6 +7221,341 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1619765947.205800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-21/845371963286_95ddba03e75998445ed3_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">statiolake</span>
+              <a href="#ts-1619765947.205800">30日 15:59:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619765947205800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                現在手に入る Neovim 0.5.0 (nightly) における sign の挙動がよくわからないのですが、これはどこかのバグでしょうか？<br><pre>NVIM v0.5.0-dev+1283-g59eae3b38<br>Build type: RelWithDebInfo<br>LuaJIT 2.1.0-beta3<br>Compilation: C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x64/cl.exe /DWIN32 /D_WINDOWS /W3 /MD /Zi /O2 /Ob1 /DNDEBUG /W3 -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -DWIN32 -D_WIN32_WINNT=0x0600 -DINCLUDE_GENERATED_DECLARATIONS -DNVIM_MSGPACK_HAS_FLOAT32 -DNVIM_UNIBI_HAS_VAR_FROM -DMIN_LOG_LEVEL=3 -ID:/a/neovim/neovim/build/config -ID:/a/neovim/neovim/src -ID:/a/neovim/neovim/nvim-deps/usr/include -ID:/a/neovim/neovim/build/src/nvim/auto -ID:/a/neovim/neovim/build/include<br>Compiled by runneradmin@fv-az152-644<br><br>Features: -acl +iconv +tui<br>See &#34;:help feature-compile&#34;<br><br>      システム vimrc: &#34;$VIM\sysinit.vim&#34;<br>       省略時の $VIM: &#34;C:/Program Files/nvim/share/nvim&#34;<br><br>Run :checkhealth for more info</pre><br>この環境で次のようなスクリプトを用意して（仮に <code>repro.vim</code> とします）、<br><pre>set nocompatible<br>set number<br>set relativenumber<br>set signcolumn=yes<br>sign define test texthl=ErrorMsg text=!<br>sign place 10 name=test line=5</pre><br>*追記* <code>number</code>と <code>signcolumn</code> は関係ありませんでした。 <code>nocompatible</code> もいらないようです。 <code>signcolumn=yes</code> だけは、なくしてしまうと負数にならずに単に消えてしまうようになります（それでも挙動は他と異なっている）。私の手元では次で確認できます。<br><pre>set signcolumn=yes<br>sign define test texthl=ErrorMsg text=!<br>sign place 10 name=test line=5</pre><br>適当に10行ほどあるファイルを開くと5行目にサインが表示されるかと思いますが、この5行目を削除して <code>sign place</code> をすると、サインの行数がとんでもない値になってしまいます。
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F020B4KCKPG/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="/slacklog/files/F020B4KCKPG/image.png" width="341" height="394" alt="image.png" />
+                  </a>
+                </div>
+                <div>
+                  <a href="/slacklog/files/F020ER7DZPF/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="/slacklog/files/F020ER7DZPF/image.png" width="659" height="595" alt="image.png" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619765986.206700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-21/845371963286_95ddba03e75998445ed3_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">statiolake</span>
+              <a href="#ts-1619765986.206700">30日 15:59:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619765986206700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                （<code>nvim -u repro.vim test.txt</code> のようにして開いています。）
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619766122.208300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-21/845371963286_95ddba03e75998445ed3_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">statiolake</span>
+              <a href="#ts-1619766122.208300">30日 16:02:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619766122208300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                通常の Vim や正常に動いていた頃の Neovim では、削除された次の行（新しい5行目）にサインが移動していました。<br>（以前まで使っていた Neovim 0.5.0 のバージョンはこちらです）<br><pre>NVIM v0.5.0-dev+1062-gcc1851c9f<br>Build type: RelWithDebInfo<br>LuaJIT 2.1.0-beta3<br>Compilation: C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x64/cl.exe /DWIN32 /D_WINDOWS /W3 /MD /Zi /O2 /Ob1 /DNDEBUG /W3 -D_CRT_SECURE_NO_WARNINGS -D_CRT_NONSTDC_NO_DEPRECATE -DWIN32 -D_WIN32_WINNT=0x0600 -DINCLUDE_GENERATED_DECLARATIONS -DNVIM_MSGPACK_HAS_FLOAT32 -DNVIM_UNIBI_HAS_VAR_FROM -DMIN_LOG_LEVEL=3 -ID:/a/neovim/neovim/build/config -ID:/a/neovim/neovim/src -IC:/projects/nvim-deps/usr/include -ID:/a/neovim/neovim/build/src/nvim/auto -ID:/a/neovim/neovim/build/include<br>Compiled by runneradmin@fv-az152-378<br><br>Features: -acl +iconv +tui<br>See &#34;:help feature-compile&#34;<br><br>      システム vimrc: &#34;$VIM\sysinit.vim&#34;<br>       省略時の $VIM: &#34;C:/Program Files/nvim/share/nvim<br>&#34;<br><br>Run :checkhealth for more info</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619766337.209500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-21/845371963286_95ddba03e75998445ed3_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">statiolake</span>
+              <a href="#ts-1619766337.209500">30日 16:05:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619766337209500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ちなみにこれで何に困っているかというと、signify という Git の差分があればサインで表示してくれるプラグインがエラーになることです。この変な負値をパースできないようです。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619766411.209900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-04-14/1081287266064_cb2d6ab85d9530d8a126_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yutkat</span>
+              <a href="#ts-1619766411.209900">30日 16:06:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619766411209900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                私は再現しないですね・・・Windows固有？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619766511.210500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-04-14/1081287266064_cb2d6ab85d9530d8a126_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yutkat</span>
+              <a href="#ts-1619766511.210500">30日 16:08:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619766511210500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                というかなんか微妙にバージョン古いですね。私はこれです（Linux）<br>NVIM v0.5.0-dev+1282-gfbe18d9ca
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619766624.211000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-12-11/867720789380_f60f5087fdb99d81307c_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">halkn</span>
+              <a href="#ts-1619766624.211000">30日 16:10:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619766624211000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                私も再現しないですね <code>NVIM v0.5.0-dev+1282-gfbe18d9ca</code>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619766679.212100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-12-11/867720789380_f60f5087fdb99d81307c_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">halkn</span>
+              <a href="#ts-1619766679.212100">30日 16:11:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619766679212100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                プラグインのsignifyも入ってて特に問題なしですが、LinuxなのでWindows固有かもですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619766824.214700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-08/1348424454194_84c7c831f57e6d47035d_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hidekazu Ikeno</span>
+              <a href="#ts-1619766824.214700">30日 16:13:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619766824214700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それっぽい issue がありましたが、同じものかな? 再現できないってんで閉じられてます。<br><br><a href='https://github.com/neovim/neovim/issues/14331'>https://github.com/neovim/neovim/issues/14331</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1619766824.214700">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/neovim/neovim/issues/14331" target="_blank" rel="noopener noreferrer">Signcolum number breaking on master · Issue #14331 · neovim/neovim</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">nvim --version: NVIM v0.5.0-dev+1233-g82ac44d01 vim -u DEFAULTS (version: ) behaves differently? Yes Operating system/version: mac os catalina Terminal name/version: Alacritty 0.7.2 $TERM: tmux-256...</div>
+    </div>
+
+            </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">1 件の返信 最終返信:16:22:58 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1619767378.215200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-21/845371963286_95ddba03e75998445ed3_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">statiolake</span>
+                      <a href="#ts-1619767378.215200">30日 16:22:58</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ありがとうございます。<br>拝見しましたが、同じものかどうか私にはよくわかりません...。私の件は、画面表示が変というよりは内部的に値がおかしなことになっているように見えます。
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619766834.215000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-21/845371963286_95ddba03e75998445ed3_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">statiolake</span>
+              <a href="#ts-1619766834.215000">30日 16:13:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619766834215000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど......。バージョンはこれ GitHub Releases からさっき取得したもので、2時間前のものです。ただ、昨日 1282 で試したときも同じだったので、ここのバージョン差ではなさそうです。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619767410.215700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-12-11/867720789380_f60f5087fdb99d81307c_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">halkn</span>
+              <a href="#ts-1619767410.215700">30日 16:23:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619767410215700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、windowsだと再現しました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619767451.216400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-12-11/867720789380_f60f5087fdb99d81307c_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">halkn</span>
+              <a href="#ts-1619767451.216400">30日 16:24:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619767451216400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>NVIM v0.5.0-dev+1283-g59eae3b38</code><br>versionこれです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1619767568.218300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-21/845371963286_95ddba03e75998445ed3_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">statiolake</span>
+              <a href="#ts-1619767568.218300">30日 16:26:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1619767568218300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                確認していただきありがとうございます。<br>うーん、再現されるなら私個人の環境の問題という可能性はほぼなくなりましたし、おそらくこれは正しい挙動ではないですよね...。<br>issue に投げてみることにしようかと思います。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
