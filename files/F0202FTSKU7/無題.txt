@@ -1,0 +1,31 @@
+function s:imeOff()
+  call system("fcitx-remote -c")
+endfunction
+
+function s:imeOn()
+  call system("fcitx-remote -o")
+endfunction
+
+function s:imeStat()
+  return system("$HOME/.config/nvim/imests")
+endfunction
+
+function ImeAutoOff()
+  let w:ime_status = s:imeStat()
+  call s:imeOff()
+endfunction
+
+function ImeAutoOn()
+  if !exists("w:ime_status")
+    let w:ime_status = 0
+  end
+  if w:ime_status
+    call s:imeOn()
+  end
+endfunction
+
+augroup InsertHook
+  autocmd!
+  autocmd InsertLeave * call ImeAutoOff()
+  autocmd InsertEnter * call ImeAutoOn()
+augroup END
