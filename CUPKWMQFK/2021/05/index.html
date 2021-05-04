@@ -150,6 +150,186 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1620126733.017700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/6b58a0397ae4e1045da22ce63cd61012.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0020-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">バクダンくん</span>
+              <a href="#ts-1620126733.017700">4日 20:12:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1620126733017700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/vim/vim/issues/4288'>https://github.com/vim/vim/issues/4288</a><br>よくわからないなーって前から思ってたけど <code>:terminal</code> のパース挙動が実際に謎だった……<br><code>:term &#34;/bin/sh&#34;</code> はOKで <code>:term &#39;/bin/sh&#39;</code> はだめ（ファイル <code>&#39;/bin/sh&#39;</code> が存在しないと言われる）
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1620126733.017700">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/vim/vim/issues/4288" target="_blank" rel="noopener noreferrer">:terminal quoting rules undocumented · Issue #4288 · vim/vim</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">Summary The :terminal command seems to handle quotes (both single and double) somewhat unconventionally, and the precise behavior does not seem to be documented. This occurs in 8.0.1453, 8.0.1766, ...</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620126760.018100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1620126760.018100">4日 20:12:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1620126760018100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                確かダブルクォートを特別扱いしてるんですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620126779.018400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1620126779.018400">4日 20:12:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1620126779018400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                undocumentedなのよくないと思ってる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620126977.019500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1620126977.019500">4日 20:16:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1620126977019500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そういやヘルプ翻訳してて<br><pre>また、前のコマンドが実行される前に、先行入力を探す時に式が評価されることがある<br>ことを覚えておいてください。例えば: &gt;<br>	func StoreColumn()<br>	  let g:column = col(&#39;.&#39;)<br>	  return &#39;x&#39;<br>	endfunc<br>	nnoremap &lt;expr&gt; x StoreColumn()<br>	nmap ! f!x<br>g:column に &#34;f!&#34; 実行前の値がある、つまり &#34;x&#34; が評価されるのが &#34;f!&#34; の実行前で<br>あることに気付くでしょう。<br>これは評価のマッピングの文字の前に &lt;Ignore&gt; を挿入することで解決できます: &gt;<br>	nmap ! f!&lt;Ignore&gt;x</pre><br>(指摘で訳は変更になる可能性があります)<br>これ、たぶんundocumentedなだけで、以前からこういう挙動だったと思われる...Vim難しい
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="バクダンくん, monaqa, kuu, Shougo">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">4</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620128932.019800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1620128932.019800">4日 20:48:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1620128932019800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ひえー。プラグイン作るときにバグとして埋め込みそうな仕様だ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620129175.020300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1620129175.020300">4日 20:52:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1620129175020300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>&lt;Ignore&gt;</code> 知らんかった… Vim なんもわからん…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620129188.020600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1620129188.020600">4日 20:53:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1620129188020600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                help の翻訳いつもありがとうございます…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
