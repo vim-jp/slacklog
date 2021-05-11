@@ -1,0 +1,67 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Transform: AWS::Serverless-2016-10-31
+
+Description: Create Applications
+
+Parameters:
+  Environment:
+    Description: Environment symbol
+    Type: String
+    AllowedValues:
+      - dev
+      - prd
+
+Globals:
+  Function:
+    Runtime: python3.8
+    Handler: index.lambda_handler
+
+Conditions:
+  IsDevelop: !Equals [!Ref Environment, dev]
+
+Resources:
+  ### Boolean 直接指定
+  FunctionA1:                   # enabledになって欲しい -> enabled
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Function-a1
+      InlineCode: |
+        def lambda_handler(event, context):
+            return { 'statusCode': 200, 'body': 'Hello from Lambda!' }
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? 2100)
+            Enabled: true
+
+  FunctionA2:                   # disabledになって欲しい -> disabled
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Function-a2
+      InlineCode: |
+        def lambda_handler(event, context):
+            return { 'statusCode': 200, 'body': 'Hello from Lambda!' }
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? 2100)
+            Enabled: false
+
+  ### IsDevelop を使う方法
+  # !If [ IsDevelop, False, True ] を使う
+  FunctionB3:                   # !If [ IsDevelop, False, True ] -> disabled になって欲しい -> enabled!?
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Function-b3
+      InlineCode: |
+        def lambda_handler(event, context):
+            return { 'statusCode': 200, 'body': 'Hello from Lambda!' }
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? 2100)
+            Enabled: !If [ IsDevelop, False, True ]
