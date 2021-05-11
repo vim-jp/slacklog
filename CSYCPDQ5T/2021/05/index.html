@@ -437,6 +437,453 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1620722205.022600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-04-14/1081287266064_cb2d6ab85d9530d8a126_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yutkat</span>
+              <a href="#ts-1620722205.022600">11日 17:36:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620722205022600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                CloudでもVimがしたい消してもいいかもですねwこのチャンネルたしかmattnさんが勢いで作ったときの説明文のままなんで
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620722297.023100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">peacock</span>
+              <a href="#ts-1620722297.023100">11日 17:38:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620722297023100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vim-jpっぽいのでこれはこれでいいかなってｗｗ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620725330.023200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1620725330.023200">11日 18:28:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620725330023200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                せっかく分けてもらったので、最近の困ったを投稿します。<br><br>Cloudwatch EventをdevだけDisableにしたいと思ってます。<br>下記SAMのテンプレートをtemplate.ymlで保存し、<br><code>sam deploy --stack-name sam-schedule-minimum --parameter-overrides Environment=dev --capabilities CAPABILITY_IAM</code><br>でデプロイすると <code>true</code>, <code>false</code> を即値で書いた場合はちゃんと動くのですが、 <code>Fn::If</code> を使うと動かないという事象があります。。
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F021HR662NN/template.yml.yaml" target="_blank" rel="noopener noreferrer">
+                  <span class="f5">[[ダウンロード: template.yml(YAML)]]</span>
+                  </a>
+                  <pre><code class='language-yaml'>AWSTemplateFormatVersion: &#34;2010-09-09&#34;
+
+Transform: AWS::Serverless-2016-10-31
+
+Description: Create Applications
+
+Parameters:
+  Environment:
+    Description: Environment symbol
+    Type: String
+    AllowedValues:
+      - dev
+      - prd
+
+Globals:
+  Function:
+    Runtime: python3.8
+    Handler: index.lambda_handler
+
+Conditions:
+  IsDevelop: !Equals [!Ref Environment, dev]
+
+Resources:
+  ### Boolean 直接指定
+  FunctionA1:                   # enabledになって欲しい -&gt; enabled
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Function-a1
+      InlineCode: |
+        def lambda_handler(event, context):
+            return { &#39;statusCode&#39;: 200, &#39;body&#39;: &#39;Hello from Lambda!&#39; }
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? 2100)
+            Enabled: true
+
+  FunctionA2:                   # disabledになって欲しい -&gt; disabled
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Function-a2
+      InlineCode: |
+        def lambda_handler(event, context):
+            return { &#39;statusCode&#39;: 200, &#39;body&#39;: &#39;Hello from Lambda!&#39; }
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? 2100)
+            Enabled: false
+
+  ### IsDevelop を使う方法
+  # !If [ IsDevelop, False, True ] を使う
+  FunctionB3:                   # !If [ IsDevelop, False, True ] -&gt; disabled になって欲しい -&gt; enabled!?
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Function-b3
+      InlineCode: |
+        def lambda_handler(event, context):
+            return { &#39;statusCode&#39;: 200, &#39;body&#39;: &#39;Hello from Lambda!&#39; }
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? 2100)
+            Enabled: !If [ IsDevelop, False, True ]
+</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620725346.023500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1620725346.023500">11日 18:29:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620725346023500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F021J213E9H/Screenshot_2021-05-11_18-26-55.png" target="_blank" rel="noopener noreferrer">
+                  <img src="/slacklog/files/F021J213E9H/Screenshot_2021-05-11_18-26-55.png" width="799" height="374" alt="Screenshot_2021-05-11_18-26-55.png" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620725511.024000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1620725511.024000">11日 18:31:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620725511024000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/aws/serverless-application-model/issues/214'>https://github.com/aws/serverless-application-model/issues/214</a><br>これがあると上手くいくのかなってところまで調べました。<br>SAMへのコントリビュート話になりそう。。？
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1620725511.024000">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/aws/serverless-application-model/issues/214" target="_blank" rel="noopener noreferrer">Conditional event attachment · Issue #214 · aws/serverless-application-model</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">If conditional resource creation is eventually supported you might also have to support conditional events as in the following example where in some environments a bucket might not already exist an...</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620725861.024300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1620725861.024300">11日 18:37:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620725861024300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                というか、SAMテンプレート、単にCloudformationのJSONへのラッパーな気がしたので、vim-jpの無ければ作る論で言うと自分専用のDSLを作っちゃうという説があります。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="YABUKI Yukiharu">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620727314.025800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2017-12-09/284380828226_585d265f54113004e478_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">dohq</span>
+              <a href="#ts-1620727314.025800">11日 19:01:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620727314025800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                SAM(Cloudformation)使ってないから分からん…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620727403.027200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2017-12-09/284380828226_585d265f54113004e478_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">dohq</span>
+              <a href="#ts-1620727403.027200">11日 19:03:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620727403027200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                yaml相手ならベースとなるファイル用意してyttでコネるけどsamの組み込み構文使わんの？ってもったいない気がしないでもない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620727438.027400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1620727438.027400">11日 19:03:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620727438027400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お、ytt知らない子です。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620727476.027600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2017-12-09/284380828226_585d265f54113004e478_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">dohq</span>
+              <a href="#ts-1620727476.027600">11日 19:04:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620727476027600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://carvel.dev/ytt/'>https://carvel.dev/ytt/</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620727505.027900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1620727505.027900">11日 19:05:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620727505027900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vmwareが作ってるんですね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620727516.028400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1620727516.028400">11日 19:05:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620727516028400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                &gt; VMware Tanzu<br>&gt; Cloud native open source from VMware
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620727574.029400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2017-12-09/284380828226_585d265f54113004e478_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">dohq</span>
+              <a href="#ts-1620727574.029400">11日 19:06:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620727574029400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですねー<br>元々k14sっていうツール群でpivotalにいた人達が作ってたんですがM&amp;Aされてtanzu配下になりました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620727650.029900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2017-12-09/284380828226_585d265f54113004e478_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">dohq</span>
+              <a href="#ts-1620727650.029900">11日 19:07:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CSYCPDQ5T/p1620727650029900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://blog.ik.am/entries/544'>https://blog.ik.am/entries/544</a><br><a href='https://event.cloudnativedays.jp/cndo2021/talks/851'>https://event.cloudnativedays.jp/cndo2021/talks/851</a><br>makingの解説分かりやすいです。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1620727650.029900">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://event.cloudnativedays.jp/assets/favicon-54ba83b188a78702c2db24ae0b0c3d4e0e9ee466b0715a4e61b56fdec9ad45d2.ico" alt="CloudNative Days Spring 2021 ONLINE" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://event.cloudnativedays.jp/cndo2021/talks/851" target="_blank" rel="noopener noreferrer">yttでYAML王に俺はなる | CloudNative Days Spring 2021 ONLINE</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Kubernetesにアプリをデプロイするのにhelmやkustomizeを使う方は多いのではないでしょうか？もう少し柔軟にカスタマイズしたいと思ったことはないですか？あるいはjsonnetやcueと</div>
+      </div>
+      <div class="d-flex">
+        <div class="mt-2">
+          <img src="https://dreamkast-prd-bucket.s3.ap-northeast-1.amazonaws.com/avatar/86e629e33b9bdc0f3ed242003e5e35b0.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAY2XP2REMN5V3CQV6%2F20210511%2Fap-northeast-1%2Fs3%2Faws4_request&X-Amz-Date=20210511T100733Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEBYaDmFwLW5vcnRoZWFzdC0xIkcwRQIgF4nbJaVwTbF0xNqr9vitIOdevsU0OURkC4Z7bjQXrKICIQDywKkwuguiVo2WlM5MOBjpFf0HbuD5WIlriPsWoLf%2FtSrHAwif%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDYwNzE2NzA4ODkyMCIMOurtL8Y3cBipx2QvKpsDn4o%2BqrUcstasxTkwjHaDGvm7bZkpEe4TceprZBLZzJZk%2F6IgUF9Tmq4kDM5dmPzxIDsY2V4KNeWVyaNG0ZXDwrkTlfKvGFK%2BsnZQSSw5wThzXBH4qnyszJL%2F%2Fma0trO3SgJN%2FqFMo8oJrRPQOWqYGxMbgw%2FY8nOcZbP0Vc5KCTJh9OZC12ttFoAtgJSBmNogGWaFYtUg68BqJZQDfQ1Io8bpxsn8RsFNVxitQbM4B%2FF%2F8ueXwI7qVmzEekd9PdR9ZlDoUPo8a3oKqj9DBMVmB4f%2BggdMOFme0T3SCuAfHNS5G8GI6R%2BGQYVrKIGExD91zb3ilppRnV1Zk8AvQwUKyTNdYjjZTTyjn0H99iYwJOl%2BHnEmmZHUyuKqXDTHErhrmHkTXfn9lT38XwiimlGBf2wPeVnNRsI439aCt2%2F9LFpHFL2HGhgwexr%2FiPFWPi2hgVqRrtGzHhMioTOmsMZ%2BsrJHgpHccBNRyx2Yu1u4RyH16jMec4i4HDHxvkF%2FaBjRIdWSmnZ1NIk%2F%2FPWH49H9h0V0CBwrgPo9%2BW90MJG86IQGOusBbBaS15p3M9dRob%2FWC5%2FldWAwqjUPIsZ3avGUZ1L1jKcZ3acEAsvjwAChR%2Fszey76wHVlQ9ZTsi%2Bn6NzJvUrkJIlr8EwoGcRa12TVm1k4pM81dNDzLPuYeu%2FWImlgVP9f9i4SJvLvZdx6fUsNO68%2FNZ982V0hGjoQi5bWI52BVHmPbgIh6lxDsXpip7NN%2FQu%2B7ccmofrS5S%2FcNWaK00smLU23zSobvgDswyjw6WQGFUOWzMWMN88DCO%2BW95yv2IG%2BZAJ0zwXH2cNfUUM%2FA2TFLtDd9ZwGG%2B19Si0Y6mN7KROaLvJmnTVoR1mhHQ%3D%3D&X-Amz-Signature=972204c41fb595477f2cd6fad77f7c0cec4905cde7a1ce04fe243124e4f910a3" width="80" alt="yttでYAML王に俺はなる | CloudNative Days Spring 2021 ONLINE" />
+        </div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
