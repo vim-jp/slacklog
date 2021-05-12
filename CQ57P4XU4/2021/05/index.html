@@ -3038,6 +3038,497 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1620785776.392000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1620785776.392000">12日 11:16:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620785776392000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                チャンネルトピッックが3.14のままだ<br>lspとjson-rpcのspecで言及されるstringってcharsetで指定されたutf-8を言ってますよね?<br><br>私は不正なutf-8でtextDocument/didChangeが飛んで困ってるんですけど、<br>そうでなくとも古いperl, pythonなどはencoding: cp932とか出来ますが<br>lspはutf-8以外でのコーディングを切り捨てているんでしょうか?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620785908.392600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1620785908.392600">12日 11:18:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620785908392600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ファイルのエンコーディングとは別でRPCがutf-8固定だっていうことではないのですか?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620786692.393200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tennashi</span>
+              <a href="#ts-1620786692.393200">12日 11:31:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620786692393200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <del>spec の言う string は UTF-16 ですかね、多分</del><br>違う気がしてきた
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">5 件の返信 最終返信:11:55:34 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1620787097.395500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1620787097.395500">12日 11:38:17</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      標準入出力に出てる文字列は UTF-8<br>でも spec の記述は TypeScript なので JavaScript に準じて UTF-16 なのでは?? って思ったけど、gopls とかでわざわざ変換するようなコードがあった記憶がない
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1620787382.398800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">octaltree</span>
+                      <a href="#ts-1620787382.398800">12日 11:43:02</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      カウントするときの特別な関数はそれぞれつくってるみたいな話を聞きます 直接実装みたわけではない
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1620787683.403300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1620787683.403300">12日 11:48:03</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あ、そうですね、オフセット計算は<del>ちゃんと</del>UTF-16でやってます
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1620787778.403600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1620787778.403600">12日 11:49:38</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      仕様を TypeScript の string として書いてるんだったら実は UTF-16 ということになってるのか...?? というやつです
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1620788134.404700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1620788134.404700">12日 11:55:34</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あ、JSON RPC 仕様を TypeScript で書き下してる部分もあるし、UTF-8 ということでよいのかもしれない
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620786726.393600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1620786726.393600">12日 11:32:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620786726393600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー、不正なUTF-8の問題もあるのか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787093.395400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1620787093.395400">12日 11:38:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787093395400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                困ったときのてんなしさん和訳<br><a href='https://github.com/tennashi/lsp_spec_ja#content-part'>https://github.com/tennashi/lsp_spec_ja#content-part</a><br>&gt; 実際のメッセージの中身が含まれる。リクエスト、レスポンス、通知を記述するために、 コンテント部には <a href='https://www.jsonrpc.org/'>JSON-RPC</a> が使われる。コンテント部 は <code>Content-Type</code> フィールドで与えられる <code>charset</code> でエンコードされる。デフォル トで <code>utf-8</code> であり、今は唯一サポートされるエンコード形式である。サーバまたはク ライアントが <code>utf-8</code> 以外のエンコード形式のヘッダを受信した場合は、エラーを返す べきである。<br>&gt; (以前のバージョンでは <code>utf8</code> が使われていたが、これは<a href='http://www.iana.org/assignments/character-sets/character-sets.xhtml'>仕様</a>による と正しいエンコード形式名ではない。) 後方互換性のため、サーバ、クライアント双方 は <code>utf8</code> を <code>utf-8</code> として扱うことを強く推奨する。<br>UTF-16 は TextDocuments のオフセット周りの話ですかね<br><a href='https://github.com/tennashi/lsp_spec_ja#text-documents'>https://github.com/tennashi/lsp_spec_ja#text-documents</a><br>&gt; 現在のプロトコルは文字列として表現できる中身を持つテキストドキュメントのために 調整されている。現在はバイナリドキュメントはサポートされていない。ドキュメント 内の位置(後述の <code>Position</code> の定義を参照)は0始まりの行と文字オフセットとして表さ れる。オフセットは UTF-16 文字表現を基にする。そのため文字列 <code>a𐐀b</code> を考えると、 UTF-16 で <code>𐐀</code> は2文字単位として表現されるため、文字 <code>a</code> のオフセットは0、<code>𐐀</code> の オフセットは1、<code>b</code> のオフセットは3となる。クライアントとサーバ双方が文字列を同 じ行表現に分割することを保証するために、LSP では <code>\n</code>、<code>\r\n</code>、<code>\r</code> という EOL 文字列を指定する。
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1620787093.395400">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://github.com/tennashi/lsp_spec_ja#content-part" target="_blank" rel="noopener noreferrer">tennashi/lsp_spec_ja</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">LSP 仕様の日本語訳. Contribute to tennashi/lsp_spec_ja development by creating an account on GitHub.</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787156.396100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1620787156.396100">12日 11:39:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787156396100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                今見たところjson-rpcは文字エンコーディングに言及はないみたいです。<br>lspは<br>&gt;Content-Type field. It defaults to utf-8, which is the only encoding supported right now.<br>と言っているのでcp932とかeucjpとか切り捨てているように見えます。自分の解釈が信じられなかったので改めて聞きました。<br><br>&gt;lspとjson-rpcのstringってcharsetで指定されたutf-8を言ってますよね?<br>lspでNumberは定義されているがstringについての定義はないので<br>jsonパースさえ壊れなければ任意のバイト列だったりしないかなとこの質問したくなりました。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787196.396800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1620787196.396800">12日 11:39:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787196396800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                utf8でないものデシアライズできない問題ありますが
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787249.397500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1620787249.397500">12日 11:40:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787249397500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                lspが対応していないのでバッファに不正utf-8ある状態でdidChangeしようとしちゃいけないが答えですかね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787373.398500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1620787373.398500">12日 11:42:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787373398500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー、でもバッファのエンコーディングの指定は特に無い気がしますね。 Content Part 本体は UTF-8 じゃないとだめっぽいけど。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787378.398700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1620787378.398700">12日 11:42:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787378398700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>Content-Type	string	The mime type of the content part. Defaults to application/vscode-jsonrpc; charset=utf-8</pre><br>とあるけど、うーん、言及がないというのは?
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">2 件の返信 最終返信:11:45:55 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1620787473.400400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">octaltree</span>
+                      <a href="#ts-1620787473.400400">12日 11:44:33</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      &gt;Base Protocol JSON structures<br>&gt;The following TypeScript definitions describe the base JSON-RPC protocol:<br>&gt;Numbers<br>numberは定義してるけどstringは定義してないという重箱の隅です
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1620787555.401600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Tsuyoshi CHO</span>
+                      <a href="#ts-1620787555.401600">12日 11:45:55</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あー、はいなるほど
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787413.399700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1620787413.399700">12日 11:43:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787413399700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まあバッファとかについては、そのエディタ次第だから?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787446.400200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1620787446.400200">12日 11:44:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787446400200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いや、とはいえ Text Document の Position とかは UTF-16 文字表現を基に計算するわけだから、 UTF-16 には従ってないとそもそも計算できないのか…？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787512.401200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1620787512.401200">12日 11:45:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787512401200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                処理はUTF-16で実施せよ、内部保持は自由、ContentでやりとりするときはUTF-8にエンコードせよ、ということでは?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787622.403200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1620787622.403200">12日 11:47:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787622403200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                JSONはJSONだから、個別のstringはエンコードについては全体のエンコードに沿う、くらいなんじゃないかなとは思った。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787831.403900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1620787831.403900">12日 11:50:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787831403900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                &gt; 内部保持は自由、ContentでやりとりするときはUTF-8にエンコードせよ<br>この解釈が正しい気がする<br>lsp上では内部保持が不正utf-8なタイミングでtextDocument/didChange送るのが間違ってそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787876.404300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1620787876.404300">12日 11:51:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787876404300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                RPCに入れるstringはvalidじゃないとまずいですよね....
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1620787999.404500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1620787999.404500">12日 11:53:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1620787999404500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ありがとうございます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
