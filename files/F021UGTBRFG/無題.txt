@@ -1,0 +1,59 @@
+let s:line = ""
+
+fun! s:get_history() abort
+  let output = readfile(glob("~/.zsh_history"))
+  let history = []
+  let tmp = []
+  for line in output
+    if line =~ '\\n$'
+      call add(tmp, line)
+    else
+      if !empty(tmp)
+        call add(history, join(tmp))
+        let tmp = []
+      endif
+      call add(history, line)
+    endif
+  endfor
+  return history
+endfun
+
+fun! CompleteMonths(findstart, base)
+  " 単語の始点を検索する
+  if a:findstart
+    let s:line = getline('.')
+    let start = col('.') - 1
+    while start > 0
+      let start -= 1
+    endwhile
+    return start
+  else
+    let res = []
+    let histories = s:get_history()
+
+    for history in histories
+      if history =~ "^" .. s:line
+        call add(res, history)
+      endif
+    endfor
+    return res
+  endif
+endfun
+
+func! s:complete() abort
+  set completeopt+=noinsert
+  call feedkeys("\<C-x>\<C-u>")
+endfunc
+
+fun! EnableAutocomplete() abort
+  "mapclear <buffer>
+  setlocal completefunc=CompleteMonths
+  augroup asyncomplete
+    autocmd!
+    autocmd InsertCharPre <buffer> call s:complete()
+  augroup END
+endfunc
+
+new
+nnoremap <buffer> q :bw!<CR>
+call EnableAutocomplete()
