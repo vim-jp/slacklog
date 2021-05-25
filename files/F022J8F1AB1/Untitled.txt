@@ -1,0 +1,32 @@
+@@ -1,6 +1,7 @@
+ package slacklog
+ import (
++	"encoding/json"
+ 	"errors"
+ 	"fmt"
+ 	"html"
+@@ -14,7 +15,6 @@
+ 	"strings"
+ 	"sync"
+ 	"text/template"
+-	"encoding/json"
+ 	"github.com/kyokomi/emoji"
+ 	"github.com/slack-go/slack"
+@@ -285,7 +285,7 @@
+ 			"stringsJoin":      strings.Join,
+ 			"genAttachedURL": func(ts json.Number, fromURL string) string {
+ 				timestamp := string(ts)
+-				if len(strings.Split(timestamp, ".")) < 2{
++				if len(strings.Split(timestamp, ".")) < 2 {
+ 					return ""
+ 				}
+ 				postTime := TsToDateTime(timestamp)
+@@ -293,7 +293,7 @@
+ 				if len(c) < 2 {
+ 					return ""
+ 				}
+-				channel := c[len(c) - 2]
++				channel := c[len(c)-2]
+ 				return fmt.Sprintf("/%s/%d/%02d/#ts-%s", channel, postTime.Year(), postTime.Month(), ts)
+ 			},
+ 			"isSlackMessage": func(fromURL string) bool {
