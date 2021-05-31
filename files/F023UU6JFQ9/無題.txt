@@ -1,0 +1,289 @@
+[u1@98e7d44c2fbd gnutls-3.6.16]$ ./configure --help
+`configure' configures GnuTLS 3.6.16 to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+  -q, --quiet, --silent   do not print `checking ...' messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for `--cache-file=config.cache'
+  -n, --no-create         do not create output files
+      --srcdir=DIR        find the sources in DIR [configure dir or `..']
+
+Installation directories:
+  --prefix=PREFIX         install architecture-independent files in PREFIX
+                          [/usr/local]
+  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+                          [PREFIX]
+
+By default, `make install' will install all the files in
+`/usr/local/bin', `/usr/local/lib' etc.  You can specify
+an installation prefix other than `/usr/local' using `--prefix',
+for instance `--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --bindir=DIR            user executables [EPREFIX/bin]
+  --sbindir=DIR           system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR        program executables [EPREFIX/libexec]
+  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --runstatedir=DIR       modifiable per-process data [LOCALSTATEDIR/run]
+  --libdir=DIR            object code libraries [EPREFIX/lib]
+  --includedir=DIR        C header files [PREFIX/include]
+  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+  --infodir=DIR           info documentation [DATAROOTDIR/info]
+  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]
+  --mandir=DIR            man documentation [DATAROOTDIR/man]
+  --docdir=DIR            documentation root [DATAROOTDIR/doc/gnutls]
+  --htmldir=DIR           html documentation [DOCDIR]
+  --dvidir=DIR            dvi documentation [DOCDIR]
+  --pdfdir=DIR            pdf documentation [DOCDIR]
+  --psdir=DIR             ps documentation [DOCDIR]
+
+Program names:
+  --program-prefix=PREFIX            prepend PREFIX to installed program names
+  --program-suffix=SUFFIX            append SUFFIX to installed program names
+  --program-transform-name=PROGRAM   run sed PROGRAM on installed program names
+
+System types:
+  --build=BUILD     configure for building on BUILD [guessed]
+  --host=HOST       cross-compile to build programs to run on HOST [BUILD]
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-silent-rules   less verbose build output (undo: "make V=1")
+  --disable-silent-rules  verbose build output (undo: "make V=0")
+  --enable-dependency-tracking
+                          do not reject slow dependency extractors
+  --disable-dependency-tracking
+                          speeds up one-time build
+  --disable-largefile     omit support for large files
+  --enable-threads={isoc|posix|isoc+posix|windows}
+                          specify multithreading API
+  --disable-threads       build without multithread safety
+  --enable-code-coverage  Whether to enable code coverage support
+  --disable-maintainer-mode
+                          disable make rules and dependencies not useful (and
+                          sometimes confusing) to the casual installer
+  --disable-bash-tests    skip some tests that badly need bash
+  --disable-doc           don't generate any documentation
+  --enable-manpages       install manpages even if disable-doc is given
+  --disable-tools         don't compile any tools
+  --disable-cxx           unconditionally disable the C++ library
+  --enable-dyn-ncrypt     use ncrypt dynamically
+  --disable-hardware-acceleration
+                          unconditionally disable hardware acceleration
+  --disable-tls13-interop disable TLS1.3 interoperability testing with openssl
+  --disable-padlock       unconditionally disable padlock acceleration
+  --disable-strict-der-time
+                          allow non compliant DER time values
+  --enable-sha1-support   allow SHA1 as an acceptable hash for cert digital
+                          signatures
+  --enable-ssl3-support   enable support for the SSL 3.0 protocol
+  --disable-ssl2-support  disable support for the SSL 2.0 client hello
+  --disable-dtls-srtp-support
+                          disable support for the DTLS-SRTP extension
+  --disable-alpn-support  disable support for the Application Layer Protocol
+                          Negotiation (ALPN) extension
+  --disable-heartbeat-support
+                          disable support for the heartbeat extension
+  --disable-srp-authentication
+                          disable the SRP authentication support
+  --disable-psk-authentication
+                          disable the PSK authentication support
+  --disable-anon-authentication
+                          disable the anonymous authentication support
+  --disable-dhe           disable the DHE support
+  --disable-ecdhe         disable the ECDHE support
+  --disable-gost          disable the GOST support
+  --enable-cryptodev      enable cryptodev support
+  --disable-ocsp          disable OCSP support
+  --enable-openssl-compatibility
+                          enable the OpenSSL compatibility library
+  --disable-tests         don't compile or run any tests
+  --enable-fuzzer-target  make a library intended for testing - not production
+  --enable-gtk-doc        use gtk-doc to build documentation [[default=no]]
+  --enable-gtk-doc-html   build documentation in html format [[default=yes]]
+  --enable-gtk-doc-pdf    build documentation in pdf format [[default=no]]
+  --disable-nls           do not use Native Language Support
+  --disable-rpath         do not hardcode runtime library paths
+  --enable-seccomp-tests  unconditionally enable tests with seccomp
+  --enable-cross-guesses={conservative|risky}
+                          specify policy for cross-compilation guesses
+  --enable-ld-version-script
+                          enable linker version script (default is enabled
+                          when possible)
+  --enable-valgrind-tests try to run self tests under valgrind
+  --disable-full-test-suite
+                          disable running very slow components of test suite
+  --enable-oldgnutls-interop
+                          enable interoperability testing with old gnutls
+                          version
+  --disable-gcc-warnings  turn off lots of GCC warnings (for developers)
+  --enable-static[=PKGS]  build static libraries [default=no]
+  --enable-shared[=PKGS]  build shared libraries [default=yes]
+  --enable-fast-install[=PKGS]
+                          optimize for fast installation [default=yes]
+  --disable-libtool-lock  avoid locking (might break parallel builds)
+  --enable-fips140-mode   enable FIPS140-2 mode
+  --disable-non-suiteb-curves
+                          disable curves not in SuiteB
+  --disable-libdane       disable the built of libdane
+  --disable-nls           disable nls support in libopts
+  --enable-local-libopts  Use the supplied libopts tearoff code
+  --enable-libopts-install
+                          Install libopts with client installation
+  --disable-optional-args not wanting optional option args
+  --enable-guile          build GNU Guile bindings
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-gcov=GCOV        use given GCOV for coverage (GCOV=gcov).
+  --with-nettle-mini      Link against a mini-nettle (that includes mini-gmp)
+  --with-included-libtasn1
+                          use the included libtasn1
+  --with-html-dir=PATH    path to installed docs
+  --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
+  --with-libiconv-prefix[=DIR]  search for libiconv in DIR/include and DIR/lib
+  --without-libiconv-prefix     don't search for libiconv in includedir and libdir
+  --with-libintl-prefix[=DIR]  search for libintl in DIR/include and DIR/lib
+  --without-libintl-prefix     don't search for libintl in includedir and libdir
+  --with-libseccomp-prefix[=DIR]  search for libseccomp in DIR/include and DIR/lib
+  --without-libseccomp-prefix     don't search for libseccomp in includedir and libdir
+  --with-libcrypto-prefix[=DIR]  search for libcrypto in DIR/include and DIR/lib
+  --without-libcrypto-prefix     don't search for libcrypto in includedir and libdir
+  --with-librt-prefix[=DIR]  search for librt in DIR/include and DIR/lib
+  --without-librt-prefix     don't search for librt in includedir and libdir
+  --with-libpthread-prefix[=DIR]  search for libpthread in DIR/include and DIR/lib
+  --without-libpthread-prefix     don't search for libpthread in includedir and libdir
+  --with-included-unistring
+                          disable linking with system libunistring
+  --with-libev-prefix[=DIR]  search for libev in DIR/include and DIR/lib
+  --without-libev-prefix     don't search for libev in includedir and libdir
+  --with-pic[=PKGS]       try to use only PIC/non-PIC objects [default=use
+                          both]
+  --with-aix-soname=aix|svr4|both
+                          shared library versioning (aka "SONAME") variant to
+                          provide on AIX, [default=aix].
+  --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
+  --with-sysroot[=DIR]    Search for dependent libraries within DIR (or the
+                          compiler's sysroot if not specified).
+  --with-libdl-prefix[=DIR]  search for libdl in DIR/include and DIR/lib
+  --without-libdl-prefix     don't search for libdl in includedir and libdir
+  --with-fips140-key      specify the FIPS140 HMAC key for integrity
+  --without-idn           disable support for IDNA
+  --with-unbound-root-key-file
+                          specify the unbound root key file
+  --with-system-priority-file
+                          specify the system-wide config file (set empty to
+                          disable)
+  --with-default-priority-string
+                          specify the default priority string used by
+                          gnutls_set_default_priority (default is NORMAL)
+  --without-p11-kit       Build without p11-kit and PKCS#11 support
+  --without-tpm           Disable TPM (trousers) support.
+  --with-trousers-lib=LIB set the location of the trousers library
+  --with-autoopts-config  specify the config-info script
+  --with-regex-header     a reg expr header is specified
+  --with-libregex         libregex installation prefix
+  --with-libregex-cflags  libregex compile flags
+  --with-libregex-libs    libregex link command arguments
+  --with-default-trust-store-pkcs11=URI
+                          use the given pkcs11 uri as default trust store
+  --with-default-trust-store-dir=DIR
+                          use the given directory as default trust store
+  --with-default-trust-store-file=FILE
+                          use the given file default trust store
+  --with-default-crl-file=FILE
+                          use the given CRL file as default
+  --with-default-blacklist-file=FILE
+                          use the given certificate blacklist file as default
+  --with-guile-site-dir=DIR
+                          guile site directory for gnutls, default is guile
+                          system settings
+  --with-guile-site-ccache-dir=DIR
+                          guile ccache directory for gnutls, default is guile
+                          system settings
+  --with-guile-extension-dir=DIR
+                          guile extension directory for gnutls, default is
+                          guile system settings
+
+Some influential environment variables:
+  PKG_CONFIG  path to pkg-config utility
+  PKG_CONFIG_PATH
+              directories to add to pkg-config's search path
+  PKG_CONFIG_LIBDIR
+              path overriding pkg-config's built-in search path
+  CC          C compiler command
+  CFLAGS      C compiler flags
+  LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
+              nonstandard directory <lib dir>
+  LIBS        libraries to pass to the linker, e.g. -l<library>
+  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
+              you have headers in a nonstandard directory <include dir>
+  CPP         C preprocessor
+  CCAS        assembler compiler command (defaults to CC)
+  CCASFLAGS   assembler compiler flags (defaults to CFLAGS)
+  CXX         C++ compiler command
+  CXXFLAGS    C++ compiler flags
+  YACC        The `Yet Another Compiler Compiler' implementation to use.
+              Defaults to the first program found out of: `bison -y', `byacc',
+              `yacc'.
+  YFLAGS      The list of arguments that will be passed by default to $YACC.
+              This script will default YFLAGS to the empty string to avoid a
+              default value of `-d' given by some make applications.
+  NETTLE_CFLAGS
+              C compiler flags for NETTLE, overriding pkg-config
+  NETTLE_LIBS linker flags for NETTLE, overriding pkg-config
+  HOGWEED_CFLAGS
+              C compiler flags for HOGWEED, overriding pkg-config
+  HOGWEED_LIBS
+              linker flags for HOGWEED, overriding pkg-config
+  GMP_CFLAGS  C compiler flags for gmp
+  GMP_LIBS    linker flags for gmp
+  LIBTASN1_CFLAGS
+              C compiler flags for LIBTASN1, overriding pkg-config
+  LIBTASN1_LIBS
+              linker flags for LIBTASN1, overriding pkg-config
+  GTKDOC_DEPS_CFLAGS
+              C compiler flags for GTKDOC_DEPS, overriding pkg-config
+  GTKDOC_DEPS_LIBS
+              linker flags for GTKDOC_DEPS, overriding pkg-config
+  PYTHON      the Python interpreter
+  LT_SYS_LIBRARY_PATH
+              User-defined run-time library search path.
+  CXXCPP      C++ preprocessor
+  CMOCKA_CFLAGS
+              C compiler flags for CMOCKA, overriding pkg-config
+  CMOCKA_LIBS linker flags for CMOCKA, overriding pkg-config
+  LIBIDN2_CFLAGS
+              C compiler flags for LIBIDN2, overriding pkg-config
+  LIBIDN2_LIBS
+              linker flags for LIBIDN2, overriding pkg-config
+  P11_KIT_CFLAGS
+              C compiler flags for P11_KIT, overriding pkg-config
+  P11_KIT_LIBS
+              linker flags for P11_KIT, overriding pkg-config
+  GUILE_CFLAGS
+              C compiler flags for GUILE, overriding pkg-config
+  GUILE_LIBS  linker flags for GUILE, overriding pkg-config
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
