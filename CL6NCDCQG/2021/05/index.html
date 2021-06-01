@@ -28853,6 +28853,706 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1622465660.407600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622465660.407600">31日 21:54:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622465660407600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='/slacklog/CJMV3MSLR/'>#question</a> から移ってきました<br><a href='https://vim-jp.slack.com/archives/CJMV3MSLR/p1622465551028700'>https://vim-jp.slack.com/archives/CJMV3MSLR/p1622465551028700</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1622465660.407600">
+              
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">manjaroでL2TPのVPNを使いたく↓に従って設定しました。<br><code>ip verify</code>が通って、 <code>ipsec auto --up L2TP-PSK</code>は <code>IPsec SA established</code>を返す(スニペット参照)のですが、<br><code>ip link</code>を実行しても <code>ppp</code>から始まるdeviceが見つかりません……。何を見落としているのでしょうか。<br><a href='https://wiki.archlinux.org/title/Openswan_L2TP/IPsec_VPN_client_setup'>https://wiki.archlinux.org/title/Openswan_L2TP/IPsec_VPN_client_setup</a></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622467636.408400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622467636.408400">31日 22:27:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622467636408400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>/etc/ppp/options.l2tpd.client</code> のパスワードとか適当なのに書き換えても <code>ipsec auto --up</code> のメッセージが変わらないっていうことはユーザー認証に進めてない……？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622468676.410300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622468676.410300">31日 22:44:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622468676410300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                IPsec SA establishedでIPsecには成功してるから、次はL2TPの認証をしないといけなくて、そこでコケてるってことか。ちょっと理解。<br>archwikiに従えば <code>echo &#34;c vpn-connection&#34; &gt; /var/run/xl2tpd/l2tp-control</code> で認照できるはず……と。<br>しかし権限がないので、<br><pre>echo &#34;c vpn-connection&#34; | sudo tee /var/run/xl2tpd/l2tp-control<br>sudo sh -c &#39;echo &#34;c vpn-connection&#34; &gt; /var/run/xl2tpd/l2tp-control&#39;</pre><br>の2パターンを試したがpppが現れる気配がない……。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622468916.410700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1622468916.410700">31日 22:48:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622468916410700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                l2tp は Linux で使うの、茨なんですよね…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="atusy, todashuta">
+                              <img class="slacklog-emoji" alt="totemoturai" title="totemoturai" src="/slacklog/emojis/totemoturai.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622468952.411100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1622468952.411100">31日 22:49:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622468952411100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://www.osarusystem.com/misc/l2tp_ipsec_client.html'>https://www.osarusystem.com/misc/l2tp_ipsec_client.html</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1622468952.411100">
+              
+    <div class="d-flex">
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://www.osarusystem.com/misc/l2tp_ipsec_client.html" target="_blank" rel="noopener noreferrer">Ubuntu 20.04 へ L2TP/IPsec クライアントの構築</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Ubuntu 20.04 へ L2TP/IPsec クライアントを構築するために xl2tpd と strongSwan を導入します。</div>
+      </div>
+      <div class="d-flex">
+        <div class="mt-2">
+          <img src="https://www.osarusystem.com/image/thumbnail/ubuntu.png?2m2MdnS6NTd3Xu4a" width="80" alt="Ubuntu 20.04 へ L2TP/IPsec クライアントの構築" />
+        </div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622468963.411500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1622468963.411500">31日 22:49:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622468963411500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Ubuntu だけど、この辺参考になるかも？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622469255.411600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-05-13/1105762495703_ba20bc886c8f30c85e78_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">YABUKI Yukiharu</span>
+              <a href="#ts-1622469255.411600">31日 22:54:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622469255411600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                network-manager は使わない？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622469374.412900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622469374.412900">31日 22:56:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622469374412900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                mtu小さくしてみたりしてるものの、改善の気配なし……。<br><br>network-managerでも接続に失敗したんですよね……。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="YABUKI Yukiharu, kkiyama117">
+                              <img class="slacklog-emoji" alt="tsurai_orange" title="tsurai_orange" src="/slacklog/emojis/tsurai_orange.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622469666.413200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/5fdfdb07562333a5563abfb18ec29560.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0006-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kkiyama117</span>
+              <a href="#ts-1622469666.413200">31日 23:01:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622469666413200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                手元にnetworkmanager-strongswanで接続しているmanjaro機があります
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="atusy">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622469747.414000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622469747.414000">31日 23:02:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622469747414000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                もっかい挑戦してみます！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622469753.414100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1622469753.414100">31日 23:02:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622469753414100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そういえば諸事情でopenfortivpn使ってたな
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="atusy">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622469763.414200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/5fdfdb07562333a5563abfb18ec29560.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0006-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kkiyama117</span>
+              <a href="#ts-1622469763.414200">31日 23:02:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622469763414200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                多少ならお話伺えるかもです、似たエラーの時は、（network-managerでもそうではなくてもなんですが、)アルゴリズムが対応してなくて駄目だったりしました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622469873.415000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622469873.415000">31日 23:04:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622469873415000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そういえばnetwork-managerではそこ入力してませんでした。<br>Phase 1 algorithms: 3des-sha1-modp1024<br>Phase 2 algorithms: 3des-sha1<br>です
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622470204.415300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622470204.415300">31日 23:10:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622470204415300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                network managerにすると <code>Connection activation failed</code>ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622470340.415500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/5fdfdb07562333a5563abfb18ec29560.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0006-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kkiyama117</span>
+              <a href="#ts-1622470340.415500">31日 23:12:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622470340415500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                上でおっしゃる通りならxl2tpdをロギングしてエラーの原因っぽいやつを拾うしかないですかね……
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622470492.417000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622470492.417000">31日 23:14:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622470492417000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                と思ってxl2pd logで検索してたんですけど、ログの取り方がイマイチ分からず……。<br><code>systemctl status xl2pd.service</code>では Connection 0 closed to 192.168.1.1, port 1701 (Timeout)でした
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622470551.417900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622470551.417900">31日 23:15:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622470551417900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                &gt; どうやら、<code>NetworkManager.conf</code>の<code>[keyfile]</code>セクションに*<code>unmanaged-devices</code>*が設定されているためNetworkManagerの管理下にデバイスが入っていない <a href='https://blog.komeho.info/2020/03/05/19137/'>https://blog.komeho.info/2020/03/05/19137/</a><br><pre>cat /etc/NetworkManager/NetworkManager.conf</pre><br>が空なせいか……？
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1622470551.417900">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://blog.komeho.info/wp-content/uploads/2019/09/favicon.jpeg" alt="いつか、そのとき、あの場所で。rev.2" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://blog.komeho.info/2020/03/05/19137/" target="_blank" rel="noopener noreferrer">[Ubuntu][NetworkManager] Connection activation failedとなり、NetworkManagerから制御できなかった。</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">そもそもの問題とあるUbuntuがインストールされたArm板で作業していたところ、NetworkManager(nmcli)でデバイスの設定が有効にならない現象に遭遇しました。</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622470605.418100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/5fdfdb07562333a5563abfb18ec29560.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0006-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kkiyama117</span>
+              <a href="#ts-1622470605.418100">31日 23:16:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622470605418100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                networkmanagerを使って設定したいんでしたっけ？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622470692.419000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622470692.419000">31日 23:18:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622470692419000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                繋がりさえすればGUIでさくさくなnetworkmanagerの方がありがたいです。networkmanagerが失敗してたので、xl2tpdとかに手を出してました。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622470908.419100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/5fdfdb07562333a5563abfb18ec29560.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0006-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kkiyama117</span>
+              <a href="#ts-1622470908.419100">31日 23:21:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622470908419100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                networkmanagerなら自分はaurでnetworkmaneger-strongswanを入れて設定しています
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622471010.419600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622471010.419600">31日 23:23:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622471010419600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                community入りしてるみたいで、そちらをインストール済みです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622471146.419700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/5fdfdb07562333a5563abfb18ec29560.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0006-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kkiyama117</span>
+              <a href="#ts-1622471146.419700">31日 23:25:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622471146419700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                多分networkmanagerのguiを開いて接続の追加の中にstrongswanの項目があるのでそれを追加する形になるかと思います。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622471223.420000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622471223.420000">31日 23:27:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622471223420000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                OH初歩的なところ見逃してました……。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622471228.420200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622471228.420200">31日 23:27:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622471228420200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                やってみます!
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kkiyama117">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622471622.420400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/5fdfdb07562333a5563abfb18ec29560.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0006-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kkiyama117</span>
+              <a href="#ts-1622471622.420400">31日 23:33:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622471622420400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                おっしゃる感じだとPPPが問題そうなので基本的には「VPN」のタブの<br>・「ユーザ認証」<br>・「PPP Settings」<br>の中をごちゃごちゃする感じになると思います。<br>（完全にエスパーになってしまいまい申し訳無いんですが)大体MPPEを使用するかどうかの設定辺りをいじると良さそうです。その辺りをいじりつつnetworkmanagerのログのエラーをひたすらググるとよいのではと思います。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="atusy">
+                              <span>🙌1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622471821.421000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622471821.421000">31日 23:37:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622471821421000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ありがとうございます。いろいろ試してみます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1622471924.421900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1622471924.421900">31日 23:38:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CL6NCDCQG/p1622471924421900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                確かにstrongswanがあったのでお試し中。Pre shared keyのはずなのに相変わらずfail……。ちょっと再起動してみます。
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F0248KCRW2U/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="/slacklog/files/F0248KCRW2U/image_1024.png" width="1024" height="827" alt="image.png" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
