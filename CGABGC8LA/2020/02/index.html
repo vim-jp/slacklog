@@ -17393,6 +17393,9 @@ func main() {
       <div class="d-flex">
         <div class="mt-2"><pre>package main<br><br>import (<br>	&#34;sync&#34;<br>	&#34;time&#34;<br>)<br><br>func worker(wg *sync.WaitGroup, q &lt;-chan int) {<br>	defer wg.Done()<br>	for i := range q {<br>		// 処理<br>		println(&#34;処理&#34;, i)<br>	}<br>	println(&#34;停止&#34;)<br>}<br><br>func main() {<br>	q := make(chan int)<br>	var wg sync.WaitGroup<br>	wg.Add(1)<br>	go worker(&amp;wg, q)<br><br>	after := time.After(5 * time.Second)<br>	t := time.NewTicker(1 * time.Second)<br>loop:<br>	for {<br>		select {<br>		case &lt;-after:<br>			// もうやめる<br>			t.Stop()<br>			break loop<br>		case &lt;-t.C:<br>			// リクエストを投げる<br>			q &lt;- 1<br>		}<br>	}<br><br>	close(q)<br>	wg.Wait()<br>}</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CGABGC8LA/2020/02/#ts-1581526798.019900" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -22845,6 +22848,9 @@ func main() {
       <div class="d-flex">
         <div class="mt-2"><pre><br>11. ファイル検索                                        *file-searching*<br> <br>{Vimが |+path_extra| 機能付きでコンパイルされたときのみ有効}<br> <br>現在の所、オプション &#39;path&#39;, &#39;cdpath&#39;, &#39;tags&#39; と|finddir()|, |findfile()| で、<br>本節で説明する「ファイル検索」にしたがってワイルドカードの展開が行われる。<br>それ以外のコマンドでは |wildcards| という少し異なるルールにしたがう。<br> <br>ファイル検索には以下の3種類がある:<br></pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C03C4RC9F/2020/02/#ts-1582116803.314400" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -36195,6 +36201,9 @@ func main() {
       <div class="d-flex">
         <div class="mt-2">epoch time == unix time 的な使われ方をすることも多いけど、Wikipedia を wiki と呼ぶような感じじゃね？とか思ったりします。<br>RubyのドキュメントもPythonのも、開始の日時を (Unix) Epoch と呼んでいるだけですね。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CGABGC8LA/2020/02/#ts-1582794323.273900" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -40407,7 +40416,7 @@ func main() {
               <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/e4e01fb8b7105e61e3876224139503ab.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-48.png" />
             </div>
             <div>
-              <span class="text-bold mr-1">niw</span>
+              <span class="text-bold mr-1">Yoshimasa Niwa</span>
               <a href="#ts-1582913573.429700">29日 03:12:53</a>
               <span class="Label Label--outline">
                 <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1582913573429700" target="_blank" rel="noopener noreferrer">Slack</a>
@@ -40452,7 +40461,7 @@ func main() {
               <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/e4e01fb8b7105e61e3876224139503ab.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-48.png" />
             </div>
             <div>
-              <span class="text-bold mr-1">niw</span>
+              <span class="text-bold mr-1">Yoshimasa Niwa</span>
               <a href="#ts-1582913595.430300">29日 03:13:15</a>
               <span class="Label Label--outline">
                 <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1582913595430300" target="_blank" rel="noopener noreferrer">Slack</a>
@@ -40474,7 +40483,7 @@ func main() {
               <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/e4e01fb8b7105e61e3876224139503ab.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-48.png" />
             </div>
             <div>
-              <span class="text-bold mr-1">niw</span>
+              <span class="text-bold mr-1">Yoshimasa Niwa</span>
               <a href="#ts-1582913614.430900">29日 03:13:34</a>
               <span class="Label Label--outline">
                 <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1582913614430900" target="_blank" rel="noopener noreferrer">Slack</a>
@@ -40496,7 +40505,7 @@ func main() {
               <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/e4e01fb8b7105e61e3876224139503ab.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-48.png" />
             </div>
             <div>
-              <span class="text-bold mr-1">niw</span>
+              <span class="text-bold mr-1">Yoshimasa Niwa</span>
               <a href="#ts-1582913618.431100">29日 03:13:38</a>
               <span class="Label Label--outline">
                 <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1582913618431100" target="_blank" rel="noopener noreferrer">Slack</a>
@@ -40518,7 +40527,7 @@ func main() {
               <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/e4e01fb8b7105e61e3876224139503ab.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-48.png" />
             </div>
             <div>
-              <span class="text-bold mr-1">niw</span>
+              <span class="text-bold mr-1">Yoshimasa Niwa</span>
               <a href="#ts-1582913631.431400">29日 03:13:51</a>
               <span class="Label Label--outline">
                 <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1582913631431400" target="_blank" rel="noopener noreferrer">Slack</a>

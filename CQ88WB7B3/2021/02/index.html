@@ -457,6 +457,9 @@
       <div class="d-flex">
         <div class="mt-2">とりあえずすぐできそうな運用カバーは <a href='https://vim-jp.slack.com/archives/CQ88WB7B3/p1611554087020800'>https://vim-jp.slack.com/archives/CQ88WB7B3/p1611554087020800</a> みたいにやって、<br>.vim を global gitignore する、かな。？<br>ただ、頑張ればもう少しプログラマティックにして自分専用のルートマーカーでvimrc使って制御できたりするのかな…（やってる人いるのかな）</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ88WB7B3/2021/01/#ts-1611557859.047400" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -2575,6 +2578,9 @@
       <div class="d-flex">
         <div class="mt-2"><pre>function! s:switch_coc_deno() abort<br>  let path = empty(expand(&#39;%&#39;)) ? &#39;.&#39; : &#39;%:p:h&#39;<br>  if empty(finddir(&#34;node_modules&#34;, path . &#39;;&#39;))<br>    call coc#config(&#39;deno.enable&#39;, v:true)<br>    call coc#config(&#39;tsserver.enable&#39;, v:false)<br>  else<br>    call coc#config(&#39;deno.enable&#39;, v:false)<br>    call coc#config(&#39;tsserver.enable&#39;, v:true)<br>  endif<br>endfunction<br>augroup my-coc-deno<br>  autocmd BufRead,BufNewFile *.ts ++once call s:switch_coc_deno()<br>augroup END</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJ3BV8EMA/2021/02/#ts-1612632274.373300" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -3233,6 +3239,9 @@
       <div class="d-flex">
         <div class="mt-2">自動切り替え、そこだけプラグインにしちゃってもいいかなっておもている</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJ3BV8EMA/2021/02/#ts-1612844318.038300" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -3369,6 +3378,9 @@
       <div class="d-flex">
         <div class="mt-2">coc.nvimで <code>coc-tsserver</code> を使っているんですが、補完後にカーソルの位置が正しいところに移動してくれません。他の <code>coc-go</code> などは正常に動くのですがどなたか原因に心当たりある方いらっしゃいますか？</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJMV3MSLR/2021/02/#ts-1612883257.465700" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -4587,6 +4599,9 @@
       <div class="d-flex">
         <div class="mt-2">いや普通に Vim プラグインとして指定しただけで動かなくてすぐ諦めたので...</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJ3BV8EMA/2021/02/#ts-1612840324.497400" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -5475,6 +5490,9 @@
       <div class="d-flex">
         <div class="mt-2">*どの Language Server Client 使ってます？*<br><br><br>vim-lsp  <br><br><code>██████████ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢</code>  |  43% (20)<br><br>@presuku, @yoshitia, @obcat + 17 more<br>coc  <br><br><code>████████ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢</code>  |  33% (15)<br><br>@nmurayama, @sminamot, @takets + 12 more<br><br>使ってない  <br><br><code>█ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢</code>  |  7% (3)<br><br>@Shohei Fujii, @Shougo, @rbtnn<br>nvim-lsp  <br><br><code>███ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢</code>  |  15% (7)<br><br>@YAMAMOTO Yuji, @Hidekazu Ikeno, @0ta2 + 4 more<br><br>vim-lsc  <br><br><code> ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢ ⁢</code>  |  2% (1)<br><br>@dohq<br>*Total Votes*: 46<br><br><br>Sender: @mattn | 🔓 *Responses:* Non-Anonymous | *🕤 Closes: *&lt;!date^1616160940^{date_short} at {time}|Mar 19, 2021 at 13:35 PM&gt;<br><br>😄 Get insight on your meeting’s effectiveness with our <a href='https://app.polly.ai/templates/global/meeting-feedback?utm_source=poll-message&amp;utm_medium=slack&amp;utm_term=meeting-feedback-template'>meeting feedback template</a><br><br><a href='https://vim-jp.slack.com/archives/CLKR04BEF/p1613568942243500'>View original message</a></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/02/#ts-1613568942.243500" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -5483,7 +5501,7 @@
         <div class="clearfix m-3" id="ts-1613627977.209200">
           <div class="border-bottom">
             <div class="float-left mr-2">
-              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/dc8d7b0277a1646d6842105241e8bef5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0021-48.png" />
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-07/2142670108851_3d1b3f13bb9f1bf4cdc6_48.jpg" />
             </div>
             <div>
               <span class="text-bold mr-1">peacock</span>
@@ -6283,6 +6301,9 @@
       <div class="d-flex">
         <div class="mt-2">cocについて質問させて下さい。<br>c++用にcoc-clangdをインストールしています。<br>Cocでソースコードをフォーマットしたところ、tab = 2 spaceになっていたので、tab = 4 spaceでフォーマットするように変更しようと考えています。<br>ネットで30分以上調べてもわからなかったので、教えていただけると嬉しいです。<br><br>試したこと<br>ソースと同じフォルダに .compile_flags.txt を作り、 IndentWidth: 8 と書き込む (参照元:<a href='https://uchan.hateblo.jp/entry/2018/12/29/104132'>https://uchan.hateblo.jp/entry/2018/12/29/104132</a>)<br>vim-clang-formatを導入し、IndentWidth: 8を設定した<br>ユーザーフォルダに .clang-formatファイルを作り、IndentWidth: 8と設定する</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJMV3MSLR/2021/02/#ts-1613714839.303000" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -6778,6 +6799,9 @@
       <div class="d-flex">
         <div class="mt-2">vim-tsdetect に破壊変更、ドキュメントないけど v2 まで来てしまった。tsdetect.mode だけで管理していたものを .mode と .configType にわけました。<br>追加機能で <code>coc.source.file.trimSameExts</code> を設定するようになりました、デフォルトで触りますがオフれます。<br>これで、ファイル名補完の .ts ありなしが自動で切り替わるようになります。<br><br>( 実際に tsdetect 自分でつかって deno / node 行ったり来たりしてますがいまのところなかなか快適。おすすめは tsdetect.configType を CocConfig で workspace に設定して .vim/coc-settings.json を git に入れないようにする、一番安定しているのはこれだと思います )</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ88WB7B3/2021/02/#ts-1613824764.004700" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>

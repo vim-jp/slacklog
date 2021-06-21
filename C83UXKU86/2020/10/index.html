@@ -4070,6 +4070,9 @@
       <div class="d-flex">
         <div class="mt-2">いったん纏めると<br>* いまの現象はパイプは関係ない (<code>echo 1 | vim ...</code> でなくても再現する)<br>* vim 起動後に <code>py3</code> コマンドを実行すると数回に1回固まる<br>* 8.2.1381 があやしい <a href='https://github.com/vim/vim/commit/56b8dc331dc7f499c8221ed7d1c7795ad5e3bdeb'>https://github.com/vim/vim/commit/56b8dc331dc7f499c8221ed7d1c7795ad5e3bdeb</a><br>で良いですか？</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2020/10/#ts-1602130815.180300" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -4101,6 +4104,9 @@
       <div class="d-flex">
         <div class="mt-2">ちょっと原点に戻ってみるか。<br><a href='https://github.com/vim-jp/issues/issues/1250'>https://github.com/vim-jp/issues/issues/1250</a><br>&gt; 調査の結果 <code>Py_Initialize</code> の中で <code>io.py</code> が呼ばれ、Windows 専用のロジックで標準入力オブジェクトが初期化できずに Py_FatalError が呼ばれる。そこで abort してしまいクラッシュ。<br>標準入力オブジェクトが初期化できないってのは何の API(?) がエラーになってるのだろう？ freopen 以外の手段は何かあるだろうか。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2020/10/#ts-1602084738.152800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -4545,6 +4551,9 @@
       <div class="d-flex">
         <div class="mt-2">お、8.2.1812 で再現した。昨日は再現しなかったのに。<br><code>vim --clean -c &#34;py3 print(1)&#34;</code></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C83UXKU86/2020/10/#ts-1602133079.221100" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -8576,6 +8585,9 @@
       <div class="d-flex">
         <div class="mt-2"><code>gjlh</code> で右に行って戻った後だと再現しない。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C83UXKU86/2020/10/#ts-1603024825.346300" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -14042,6 +14054,9 @@
       <div class="d-flex">
         <div class="mt-2">うーん、起きる時は起きるのだけど、再現条件がわからない…<br><a href='https://github.com/obcat/vim-hitspop'>https://github.com/obcat/vim-hitspop</a><br>:term を閉じた際(中で動いてるシェルを終了して閉じている)に、↑このプラグインが作るポップアップ内にフォーカスしてしまうことがある。一度入ると、フォーカス移そうとしてもポップアップでは許可されないと言われて抜けられず、popupclear(1) で無理矢理抜けられるが、恐らくメモリ破壊か何かが起きてそのうちクラッシュする。さっき statusline の一部がメモリ破壊っぽい謎の表示壊れが起きてしばらく操作してたら落ちた</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C03C4RC9F/2020/10/#ts-1604126528.030000" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>

@@ -66,6 +66,9 @@
       <div class="d-flex">
         <div class="mt-2"><pre>git config --global commit.verbose true</pre><br>しておけば常に diff が出るようになって便利</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/02/#ts-1612195471.041800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -97,6 +100,9 @@
       <div class="d-flex">
         <div class="mt-2">そういえば昔 digraph に関する記事を書いたな<br><a href='https://qiita.com/monaqa/items/dcd43a53d3040293142a'>https://qiita.com/monaqa/items/dcd43a53d3040293142a</a></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C016J5KFARM/2021/02/#ts-1612235388.185800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -128,6 +134,9 @@
       <div class="d-flex">
         <div class="mt-2">これだ <a href='https://twitter.com/kuuote/status/1344664505758879745'>https://twitter.com/kuuote/status/1344664505758879745</a></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJ3BV8EMA/2021/02/#ts-1612275886.180800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -159,6 +168,9 @@
       <div class="d-flex">
         <div class="mt-2"><pre>function! CopyHover()<br>  let l:hover = join(CocAction(&#39;getHover&#39;))<br>  if empty(l:hover) | echoerr &#34;No Hover!&#34; | return | endif<br>  let @+ = l:hover<br>  let @* = l:hover<br>  echom &#34;Hover copied!&#34;<br>endfunction<br><br>nnoremap &lt;silent&gt; &lt;leader&gt;k :call CopyHover()&lt;CR&gt;</pre><br>私はこうマッピングした</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CMBKN4MNE/2021/02/#ts-1612444636.062700" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -190,6 +202,9 @@
       <div class="d-flex">
         <div class="mt-2">必ずフロートウィンドウにフォーカスするマッピング<br><br><pre><br>&#34; Focus floating window with &lt;C-w&gt;&lt;C-w&gt; &#123;&#123;{<br>if has(&#39;nvim&#39;)<br>  function! s:focus_floating() abort<br>    if !empty(nvim_win_get_config(win_getid()).relative)<br>      wincmd p<br>      return<br>    endif<br>    for winnr in range(1, winnr(&#39;$&#39;))<br>      let winid = win_getid(winnr)<br>      let conf = nvim_win_get_config(winid)<br>      if conf.focusable &amp;&amp; !empty(conf.relative)<br>        call win_gotoid(winid)<br>        return<br>      endif<br>    endfor<br>  endfunction<br>  nnoremap &lt;silent&gt; &lt;C-w&gt;&lt;C-w&gt; :&lt;C-u&gt;call &lt;SID&gt;focus_floating()&lt;CR&gt;<br>endif<br>&#34; }}}</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJ3BV8EMA/2021/02/#ts-1612446594.298800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -221,6 +236,9 @@
       <div class="d-flex">
         <div class="mt-2"><pre>nnoremap &lt;buffer&gt;&lt;silent&gt; gK :&lt;C-u&gt;CocCommand rust-analyzer.openDocs&lt;CR&gt;</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CMBKN4MNE/2021/02/#ts-1612507909.082600" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -252,6 +270,9 @@
       <div class="d-flex">
         <div class="mt-2">glacierは草が生えない方</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CSYCPDQ5T/2020/10/#ts-1603939491.170800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -371,6 +392,9 @@
       <div class="d-flex">
         <div class="mt-2">今更ながら、 <code>:setlocal iskeyword+=:</code> とすることで少し vim script が書きやすくなることに気づいた</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CUPKWMQFK/2021/02/#ts-1612617956.030900" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -402,6 +426,9 @@
       <div class="d-flex">
         <div class="mt-2"><pre>function! s:switch_coc_deno() abort<br>  if exists(&#39;g:coc_deno&#39;)<br>    return<br>  endif<br>  let path = empty(expand(&#39;%&#39;)) ? &#39;.&#39; : &#39;%:p:h&#39;<br>  if empty(finddir(&#34;node_modules&#34;, path . &#39;;&#39;))<br>    call coc#config(&#39;deno.enable&#39;, v:true)<br>    call coc#config(&#39;tsserver.enable&#39;, v:false)<br>  else<br>    call coc#config(&#39;deno.enable&#39;, v:false)<br>    call coc#config(&#39;tsserver.enable&#39;, v:true)<br>  endif<br>endfunction<br>augroup my-coc-deno<br>  autocmd BufRead,BufNewFile *.ts ++once call s:switch_coc_deno()<br>augroup END</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJ3BV8EMA/2021/02/#ts-1612632274.373300" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -433,6 +460,9 @@
       <div class="d-flex">
         <div class="mt-2">人差し指でなぞる感覚で字を書けるようになれば字を書く時に指が疲れにくくなる</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CS1NKB9B2/2021/02/#ts-1612687309.273500" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -464,6 +494,9 @@
       <div class="d-flex">
         <div class="mt-2">📝 プラグインの読み込み順によってColorSchemeに依存した設定がブレるのを回避する<br><br><pre>function! s:setup_depends_colorscheme()<br>  &#34; ... colorschemeに依存する設定<br>endfunction<br>if g:colors_name ==# &#39;monokai&#39;<br>  call s:setup_depends_colorscheme()<br>else<br>  autocmd ColorScheme monokai ++once call s:setup_depends_colorscheme()<br>endif</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CUPKWMQFK/2021/02/#ts-1612795099.042800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -495,6 +528,9 @@
       <div class="d-flex">
         <div class="mt-2">数時間前の話題だけど、しばらくキー触らなかったらaマーク付けるようにして、`<code>a</code> で触り始める直前位置に行けるようにしてます<br><pre>augroup MyMarkGroup<br>  autocmd!<br>  autocmd CursorMoved * call &lt;SID&gt;start_or_restart_holdtimer()<br>augroup END<br>function! s:start_or_restart_holdtimer() abort<br>  if exists(&#39;g:timer_cursorholdmark&#39;)<br>    call timer_stop(g:timer_cursorholdmark)<br>  endif<br>  let g:timer_cursorholdmark = timer_start(4000, expand(&#39;&lt;SID&gt;&#39;)..&#39;mark_cursorhold&#39;)<br>endfunction<br>function! s:mark_cursorhold(id) abort<br>  if &amp;buftype == &#39;&#39;<br>    normal! ma<br>  endif<br>  unlet g:timer_cursorholdmark<br>endfunction</pre><br>そういうプラグイン探したらありそうだけどtimer使ってみたかった</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C03C4RC9F/2021/02/#ts-1612799011.050100" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -526,6 +562,9 @@
       <div class="d-flex">
         <div class="mt-2">coc-tsserverとcoc-denolandが同時に起動したら死ぬので<br><code>~/.vim/coc-settings.json</code> で<br><pre>  &#34;tsserver.enable&#34;: false,<br>  &#34;deno.enable&#34;: false,<br>  &#34;deno.unstable&#34;: true,</pre><br>しておいて、<br><pre>  function! s:switch_coc_ts() abort<br>    let l:path = empty(expand(&#39;%&#39;)) ? &#39;.&#39; : &#39;%:p:h&#39;<br>    if empty(finddir(&#39;node_modules&#39;, l:path . &#39;;&#39;))<br>      call coc#config(&#39;deno.enable&#39;, v:true)<br>      call coc#config(&#39;tsserver.enable&#39;, v:false)<br>    else<br>      call coc#config(&#39;deno.enable&#39;, v:false)<br>      call coc#config(&#39;tsserver.enable&#39;, v:true)<br>    endif<br>  endfunction<br><br>  autocmd FileType typescript,typescript.tsx ++once call s:switch_coc_ts()</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJ3BV8EMA/2021/02/#ts-1612841140.017600" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -601,6 +640,9 @@
       <div class="d-flex">
         <div class="mt-2">でもチルダはオペレータにしないのがおすすめです。単語の頭を大文字にするとき<br>~w.w.ww.w みたいな感じで使うのが便利なので</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJMV3MSLR/2021/02/#ts-1612939467.480700" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -632,6 +674,9 @@
       <div class="d-flex">
         <div class="mt-2"><a href='https://ke-complex-modifications.pqrs.org/build/extra_descriptions/vim_mode_plus.json.html'>https://ke-complex-modifications.pqrs.org/build/extra_descriptions/vim_mode_plus.json.html</a><br><br>こちらですね、capslockがnormalモードへのprefixキーになっておりまして<br>hjkl移動や、ヤンク、ペースト、vモード、行削除等々できますので感動しておりました...<br></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJMV3MSLR/2021/02/#ts-1613448182.094600" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -663,6 +708,9 @@
       <div class="d-flex">
         <div class="mt-2"><pre>function! s:yank_without_indent() abort<br>  normal! gvy<br>  let content = getreg(v:register, 1, v:true)<br>  let leading = min(map(copy(content), { _, v -&gt; len(matchstr(v, &#39;^\s*&#39;)) }))<br>  call map(content, { _, v -&gt; v[leading:] })<br>  call setreg(v:register, content, getregtype(v:register))<br>endfunction<br>vnoremap gy &lt;Esc&gt;:&lt;C-u&gt;call &lt;SID&gt;yank_without_indent()&lt;CR&gt;</pre><br>インデントが深いコードとかを Slack に貼る時に便利（インデントを消してコピーしてくれるマッピング）</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C03C4RC9F/2021/02/#ts-1613567607.316100" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -694,6 +742,9 @@
       <div class="d-flex">
         <div class="mt-2">よかったです。ちなみに特定の機能を探すときは<code>:h function-list</code> が便利だったりします 🔎</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJMV3MSLR/2021/02/#ts-1613726265.328000" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -725,6 +776,9 @@
       <div class="d-flex">
         <div class="mt-2">読書会で読んでるvimrcから設定を拝借する時に出典を控えるのに <code>:Gina browse --exact --yank</code> が便利な事を知った</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/02/#ts-1613832807.005000" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -756,6 +810,9 @@
       <div class="d-flex">
         <div class="mt-2">↑すいません、あんま関係なかったかもです。<br><pre>:Gina browse [{options}] [{treeish}]</pre><br>の <code>treeish</code> のところに <code>:</code> を指定すればいいっぽいです。自分の環境だと<br><pre>:Gina browse --exact --yank :</pre><br>でいけました</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/02/#ts-1613961950.010200" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -787,6 +844,9 @@
       <div class="d-flex">
         <div class="mt-2">ソースコードの範囲を指定することもできるのがポイント（設定によるかもですが）</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/02/#ts-1613955365.007600" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -818,6 +878,9 @@
       <div class="d-flex">
         <div class="mt-2"><code>0&lt;C-d&gt;</code> と打つと0とインデントが全て消えた</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJMV3MSLR/2021/02/#ts-1614086812.046700" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -849,6 +912,9 @@
       <div class="d-flex">
         <div class="mt-2">その方法を取るのなら <code>git commit -v</code> を覚えておくと捗ります</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJMV3MSLR/2021/02/#ts-1614172321.079100" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -880,6 +946,9 @@
       <div class="d-flex">
         <div class="mt-2">自分は<br><pre>function! s:is_deno() abort<br>  if finddir(&#39;node_modules&#39;, expand(&#39;%:p:h&#39;) . &#39;;&#39;) ==# &#39;&#39;<br>    let g:quickrun_config[&#39;typescript&#39;] = {&#39;command&#39;: &#39;deno&#39;, &#39;cmdopt&#39;: &#39;run&#39;}<br>  else<br>  endif<br>endfunction</pre><br>こんな感じなのを vimrc に雑に入れました</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CGZTGR6E6/2021/02/#ts-1614221952.235200" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -911,6 +980,9 @@
       <div class="d-flex">
         <div class="mt-2">宗教勧誘、ホントに見くびらないほうがいいです。大事なのはとにかく、閉じた空間に行かないこと。少しでも怪しいと感じたら、勧誘者が次のアクションを取る前に家族や友人に相談する時間を捻出すること。日頃からそれが可能な人間関係を保っておくこと。あたりですかね。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C01BAQYHBMX/2021/02/#ts-1614248059.091400" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -942,6 +1014,9 @@
       <div class="d-flex">
         <div class="mt-2">勧誘者は心理学のプロだと思ったほうがいいです。少なくとも、心理学的に有効な戦略を教わっているはずです。<br>「あ、これイエスと言うまで帰れないやつだな」「なんか色々してもらっちゃったし、断るのもな」「まあ次の集会に行くというだけならいいか」という感情を突いてきます。<br>私も結局勧誘者（と思しき人）と LINE 交換までしてしまった（帰ってから即ブロックしたけど）</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C01BAQYHBMX/2021/02/#ts-1614248177.097000" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -973,6 +1048,9 @@
       <div class="d-flex">
         <div class="mt-2">実は宗教勧誘にあった数カ月後に心理学の講義で「カルト集団の手口」みたいなのをやっていて、その手法がまさに数ヶ月前に自分が遭った手法とドンピシャだったんですよね。<br>自分から団体名を名乗らない。雑談中に自分と共通の趣味を持っていると言い、親近感を与える。閉じた空間に誘い込む。次の連絡を取り付ける。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C01BAQYHBMX/2021/02/#ts-1614248302.102900" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -1366,6 +1444,9 @@
       <div class="d-flex">
         <div class="mt-2">悪い大人に騙されないようにするには<br>• 知らない人からアンケートなどの名目で話しかけられたときは、まず目的と所属団体を尋ねる<br>• アポなし訪問での契約は基本断る（絶対に即断即決しない）<br>• 初対面の人にはとりあえずVimを勧めてみる<br>• Vimの素晴らしさが分かる人とだけ友達になる<br>みたいな自分ルールを予め取り決めておくのが大事な気がしますね。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C01BAQYHBMX/2021/02/#ts-1614249727.134100" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -1397,6 +1478,9 @@
       <div class="d-flex">
         <div class="mt-2">仕事の時間を確保するの、難しいですね。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C03C4RC9F/2021/02/#ts-1614325190.356100" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -1428,6 +1512,9 @@
       <div class="d-flex">
         <div class="mt-2">diffしたいファイルを画面分割で開いて<br><code>windo diffthis</code><br>で差分確認するのはよくやりますね</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C03C4RC9F/2021/02/#ts-1614420499.060500" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -1459,6 +1546,9 @@
       <div class="d-flex">
         <div class="mt-2"><a href='https://b.hatena.ne.jp/entry/s/thevaluable.dev/vim-advanced/'>https://b.hatena.ne.jp/entry/s/thevaluable.dev/vim-advanced/</a><br>お、はてブでテックのトップにあるな</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C03C4RC9F/2021/02/#ts-1614497378.124400" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -1490,6 +1580,9 @@
       <div class="d-flex">
         <div class="mt-2">ここで主要ディストロで何が落ちてくるか見れますね。<br><a href='https://repology.org/project/vim/versions'>https://repology.org/project/vim/versions</a><br>私はCaskをメンテしてるのですが、そこで参考にしてたりします。<br><a href='https://github.com/cask/cask/issues/523'>https://github.com/cask/cask/issues/523</a></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/02/#ts-1614498913.332400" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -1521,6 +1614,9 @@
       <div class="d-flex">
         <div class="mt-2"><pre>autocmd BufWritePre *.go  call execute(&#39;LspDocumentFormatSync&#39;) | call execute(&#39;LspCodeActionSync source.organizeImports&#39;)</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2021/02/#ts-1614522542.126500" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -1552,6 +1648,9 @@
       <div class="d-flex">
         <div class="mt-2">こうなった</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2021/02/#ts-1614523430.139700" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>

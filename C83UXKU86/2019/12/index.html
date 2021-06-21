@@ -158,6 +158,9 @@
       <div class="d-flex">
         <div class="mt-2">雑パッチ<br><pre>diff --git a/src/normal.c b/src/normal.c<br>index ca2a48c08..8152d8203 100644<br>--- a/src/normal.c<br>+++ b/src/normal.c<br>@@ -4449,7 +4449,7 @@ nv_brackets(cmdarg_T *cap)<br>     if (  (cap-&gt;cmdchar == &#39;[&#39;<br> 		&amp;&amp; vim_strchr((char_u *)&#34;{(*/#mM&#34;, cap-&gt;nchar) != NULL)<br> 	    || (cap-&gt;cmdchar == &#39;]&#39;<br>-		&amp;&amp; vim_strchr((char_u *)&#34;})*/#mM&#34;, cap-&gt;nchar) != NULL))<br>+		&amp;&amp; vim_strchr((char_u *)&#34;}()*/#mM&#34;, cap-&gt;nchar) != NULL))<br>     {<br> 	if (cap-&gt;nchar == &#39;*&#39;)<br> 	    cap-&gt;nchar = &#39;/&#39;;<br>@@ -4481,6 +4481,9 @@ nv_brackets(cmdarg_T *cap)<br> 		    pos = &amp;new_pos;	/* use last one found */<br> 		break;<br> 	    }<br>+	    if (cap-&gt;cmdchar == &#39;]&#39; &amp;&amp; cap-&gt;nchar == &#39;(&#39;) {<br>+		++pos-&gt;col;<br>+	    }<br> 	    prev_pos = new_pos;<br> 	    curwin-&gt;w_cursor = *pos;<br> 	    new_pos = *pos;</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C03C4RC9F/2019/12/#ts-1575506004.222800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -691,6 +694,9 @@
       <div class="d-flex">
         <div class="mt-2">autoloadの名前空間が狭すぎる&amp;コード上にそのまま現れるから短くしたくなる、って感じか。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2019/12/#ts-1575861183.244200" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -2549,6 +2555,9 @@
       <div class="d-flex">
         <div class="mt-2"><a href='https://github.com/vim/vim/commit/a9e9679de3ef082ee29868ab404283dfc53258f2'>patch 8.2.0019: cannot number of lines of another buffer</a><br>patch 8.2.0019: cannot number of lines of another buffer<br><br>Problem:    Cannot number of lines of another buffer.<br>Solution:   Add &#34;linecount&#34; to getbufinfo(). (Yasuhiro Matsumoto,<br>            closes #5370)</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C0NUFLFU3/2019/12/#ts-1576619257.003900" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -8730,11 +8739,17 @@ let g:lsp_fold_enabled = 0</code></pre>
       <div class="d-flex">
         <div class="mt-2">... 背景透過がVIMDLLでは動かない可能性ありだなw</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C83UXKU86/2019/12/#ts-1576998535.047200" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
     <div class="d-flex">
     </div>
       <div class="d-flex">
         <div class="mt-2">復活!</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C83UXKU86/2019/12/#ts-1577000145.053500" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -10603,11 +10618,17 @@ let g:lsp_fold_enabled = 0</code></pre>
       <div class="d-flex">
         <div class="mt-2"><pre>function! s:foo()<br>endfunction</pre><br>これでも出るやんw</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C83UXKU86/2019/12/#ts-1577439922.144100" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
     <div class="d-flex">
     </div>
       <div class="d-flex">
         <div class="mt-2"><pre>function! s:on_buf_wipeout(buf) abort<br>    if has_key(s:file_content, a:buf)<br>        call remove(s:file_content, a:buf)<br>    endif<br>endfunction</pre><br>この行だけでやっても出ますね。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C83UXKU86/2019/12/#ts-1577439856.143600" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -10744,6 +10765,9 @@ let g:lsp_fold_enabled = 0</code></pre>
       <div class="d-flex">
         <div class="mt-2">vimlparser のバグっぽい。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C83UXKU86/2019/12/#ts-1577419181.119200" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>

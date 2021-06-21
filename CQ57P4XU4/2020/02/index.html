@@ -4685,6 +4685,9 @@
       <div class="d-flex">
         <div class="mt-2">質問です。vim-lsp の <code>:LspDefinition</code> を以下のコードの main()中のfoo()の位置で実行したところ、候補が2つ表示されるようでしたが、これはなぜなのでしょうか？<br><pre>package main<br><br>import &#34;fmt&#34;<br><br>func foo() {<br>	fmt.Println(&#34;hello&#34;)<br>}<br><br>func main() {<br>	foo() // ← ここにカーソルがある状態で `:Lsp Definition` を実行<br>}</pre><br>表示された候補は以下の2つです。<br><pre>\dev\go\test_lspdefinition\main.go|5 col 6| func foo() {<br>\dev\go\test_lspdefinition\main.go|3 col 8| import &#34;fmt&#34;</pre><br>foo() の定義は1つなので、即時ジャンプするのかな？と思っていたんですが、そういうコマンドではないのでしょうか？</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CJMV3MSLR/2020/02/#ts-1580818858.459000" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
               <details class="details-reset mt-3">
@@ -13859,6 +13862,9 @@ io.UnsupportedOperation: underlying stream is not seekable
       <div class="d-flex">
         <div class="mt-2">あ、いえいえ。tyru さんが今出した pr の話です。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1581303665.357500" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
     <div class="d-flex">
       <div>
         <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/github.png" alt="GitHub" />
@@ -17193,6 +17199,9 @@ io.UnsupportedOperation: underlying stream is not seekable
       <div class="d-flex">
         <div class="mt-2">&#34;MSじゃないほう&#34; の pyls で $0 を見てしまった。最近、更新があった最新版で起こってるようで <code>pip3 install python-language-server==0.31.7</code> でバージョン落としたら問題なかった。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1581331547.402900" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -25204,6 +25213,9 @@ io.UnsupportedOperation: underlying stream is not seekable
       <div class="d-flex">
         <div class="mt-2">この設定入れると動くようになりました<br><pre>let g:lsp_settings = {<br>      \  &#39;gopls&#39;: {<br>      \    &#39;initialization_options&#39;: {<br>      \      &#39;matcher&#39;: &#39;fuzzy&#39;,<br>      \     }<br>      \  }<br>      \}</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C7R6QENT1/2020/02/#ts-1581140202.017300" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -28666,6 +28678,9 @@ io.UnsupportedOperation: underlying stream is not seekable
       <div class="d-flex">
         <div class="mt-2">起動時メッセージ<br><pre>function lsp#enable[19]..&lt;SNR&gt;35_register_events[18]..&lt;SNR&gt;35_on_text_document_did_open[6]..&lt;SNR&gt;35_ensure_flush[1]..lsp#utils#step#start[1]..&lt;SNR&gt;95_next[9]..&lt;lambda&gt;6[1]..&lt;SNR&gt;35_ensure_start[47]..&lt;SNR&gt;95_callback[1]..&lt;SNR&gt;95_next[9]..&lt;lambda&gt;7[1]..&lt;SNR&gt;35_ensure_init[57]..&lt;SNR&gt;35_send_request[7]..lsp#client#send_request[1]..&lt;SNR&gt;96_lsp_send[36]..async#job#send[1]..&lt;SNR&gt;97_job_send の処理中にエラーが検出されました:<br>行    6:<br>E631: ch_sendraw(): 書き込みに失敗しました</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1581734406.283800" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
                   </div>
                   <div class="p-2" id="ts-1581736761.289100">
@@ -38143,6 +38158,9 @@ Mon 17 Feb 2020 06:20:17 PM JST:[&#34;s:on_text_document_did_close()&#34;,3]
       <div class="d-flex">
         <div class="mt-2">・ローカルにefm-langserverをインストールしてあった<br>・<del>/.config/efm-langserver/config.yamlがない<br>・<code>let g:lsp_settings[&#39;efm-langserver&#39;] = { &#39;disabled&#39;: v:false }</code> としている<br><br>状態で起動すると、<br><br>1. ローカルにあるefm-langserverを起動しようとする<br>2. configがないのでエラー<br>3. efm-langserverの設定が有効にならない<br>4. LspInstallServerしたところでefm-langserverの設定が入ってないのでインストールもされない<br><br>という悪循環に陥ってしまう<br><br>要は<br>・ローカルにefm-langserverをインストールしてあった<br>・</del>/.config/efm-langserver/config.yamlがない<br>という半端な状態が悪いですね。間違って消してしまってたみたいなので、config.yaml復活させて事なきを得ました</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1581737218.290600" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -42253,6 +42271,9 @@ Mon 17 Feb 2020 06:20:17 PM JST:[&#34;s:on_text_document_did_close()&#34;,3]
       <div class="d-flex">
         <div class="mt-2">sqls もそういうコマンド作ってもいいかも。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1582101550.123900" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -51664,6 +51685,9 @@ Mon 17 Feb 2020 06:20:17 PM JST:[&#34;s:on_text_document_did_close()&#34;,3]
       <div class="d-flex">
         <div class="mt-2">今は asyncomplete にしています。deoplete-vim-lsp ユーザ多いなら改善したほうがよさそうだ。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1582159470.288000" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -57396,6 +57420,9 @@ Mon 17 Feb 2020 06:20:17 PM JST:[&#34;s:on_text_document_did_close()&#34;,3]
       <div class="d-flex">
         <div class="mt-2">quickfix にするならガサ消しガサ入れ必須になるので「ワシのさっきの grep 結果どこにやったんや！消すなゴルァ」という人も出てくるしなぁ。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1582599942.068200" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -58082,6 +58109,9 @@ Mon 17 Feb 2020 06:20:17 PM JST:[&#34;s:on_text_document_did_close()&#34;,3]
       <div class="d-flex">
         <div class="mt-2"><pre>diff --git a/autoload/lsp.vim b/autoload/lsp.vim<br>index e5f0feb..d66c116 100644<br>--- a/autoload/lsp.vim<br>+++ b/autoload/lsp.vim<br>@@ -85,6 +85,10 @@ function! lsp#get_server_info(server_name) abort<br>     return s:servers[a:server_name][&#39;server_info&#39;]<br> endfunction<br> <br>+function! lsp#get_server_root_uri(server_name) abort<br>+    return get(s:servers[a:server_name][&#39;server_info&#39;], &#39;root_uri_resolved&#39;, &#39;&#39;)<br>+endfunction<br>+<br> function! lsp#get_server_capabilities(server_name) abort<br>     let l:server = s:servers[a:server_name]<br>     return has_key(l:server, &#39;init_result&#39;) ? l:server[&#39;init_result&#39;][&#39;result&#39;][&#39;capabilities&#39;] : {}<br>@@ -507,16 +511,12 @@ function! s:ensure_init(buf, server_name, cb) abort<br>     if has_key(l:server_info, &#39;root_uri&#39;)<br>         let l:root_uri = l:server_info[&#39;root_uri&#39;](l:server_info)<br> 	endif<br>-    if empty(l:root_uri)<br>-        let l:root_uri = lsp#utils#get_default_root_uri()<br>-    endif<br>-<br>     if empty(l:root_uri)<br>         let l:msg = s:new_rpc_error(&#39;ignore initialization lsp server due to empty root_uri&#39;, { &#39;server_name&#39;: a:server_name, &#39;lsp_id&#39;: l:server[&#39;lsp_id&#39;] })<br>         call lsp#log(l:msg)<br>-        call a:cb(l:msg)<br>-        return<br>+        let l:root_uri = lsp#utils#get_default_root_uri()<br>     endif<br>+    let l:server[&#39;server_info&#39;][&#39;root_uri_resolved&#39;] = l:root_uri<br> <br>     if has_key(l:server_info, &#39;capabilities&#39;)<br>         let l:capabilities = l:server_info[&#39;capabilities&#39;]</pre></div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1582081795.096900" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -62689,6 +62719,9 @@ Mon 17 Feb 2020 06:20:17 PM JST:[&#34;s:on_text_document_did_close()&#34;,3]
       <div class="d-flex">
         <div class="mt-2">ujihisaさんの英語力には憧れます…</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1582731640.193500" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
@@ -65280,6 +65313,9 @@ Mon 17 Feb 2020 06:20:17 PM JST:[&#34;s:on_text_document_did_close()&#34;,3]
       <div class="d-flex">
         <div class="mt-2">で、現在考えてるのが sqls でクエリ流したら vim 側でテーブルを表示するといった事を考えていて、だとすると結果を echo で出すのかポップアップで出すのか、 split window で出すのか、どうすればいいかなーと。</div>
       </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CQ57P4XU4/2020/02/#ts-1582874051.320500" target="_blank" rel="noopener noreferrer">slacklog</a>
+      </span>
 
             </div>
             </div>
