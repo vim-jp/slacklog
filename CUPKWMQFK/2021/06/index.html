@@ -128,6 +128,608 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1624280709.112600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624280709.112600">21日 22:05:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624280709112600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                visualモードで選択した領域を即座にハイライト検索したいんですけど、そういう機能ってあるんですかね？（inc-hlsearchのvisualモード版みたいなの）
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624280720.112900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624280720.112900">21日 22:05:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624280720112900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>augroup instant-visual-highlight<br>    au!<br>    autocmd CursorMoved,CursorHold * call Visualmatch()<br>augroup END<br><br>function! Visualmatch()<br>    if exists(&#34;s:visual_match_id&#34;)<br>        call matchdelete(s:visual_match_id)<br>        unlet s:visual_match_id<br>    endif<br>    if index([&#39;v&#39;, &#39;&#39;], mode()) != -1 &amp;&amp; line(&#39;v&#39;) == line(&#39;.&#39;)<br>        let len_of_char_of_v   = strlen(matchstr(getline(&#39;v&#39;), &#39;.&#39;, col(&#39;v&#39;)-1))<br>        let len_of_char_of_dot = strlen(matchstr(getline(&#39;.&#39;), &#39;.&#39;, col(&#39;.&#39;)-1))<br>        let selected_column_idx = {<br>                    \&#39;first&#39;: min([<br>                                \col(&#39;v&#39;)-1,<br>                                \col(&#39;.&#39;)-1<br>                                \]),<br>                    \&#39;last&#39; : max([<br>                                \col(&#39;v&#39;)-2+len_of_char_of_v,<br>                                \col(&#39;.&#39;)-2+len_of_char_of_dot<br>                                \])<br>                    \}<br>        let s:visual_match_id = matchadd(&#39;Search&#39;, getline(&#39;.&#39;)[selected_column_idx[&#39;first&#39;]:selected_column_idx[&#39;last&#39;]])<br>    endif<br>endfunction</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624280736.113200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624280736.113200">21日 22:05:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624280736113200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                突貫工事で作ってみたんですけど、車輪の再発明してそうな感じがすごいする
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624280865.113400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1624280865.113400">21日 22:07:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624280865113400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/haya14busa/vim-asterisk'>https://github.com/haya14busa/vim-asterisk</a> こういうやつ？
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Tsuyoshi CHO">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624280865.113400">
+              
+    <div class="d-flex">
+        <div>haya14busa/vim-asterisk</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">❄️ *-Improved</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624280914.114000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624280914.114000">21日 22:08:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624280914114000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これは入れてます。便利ですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624280992.114900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1624280992.114900">21日 22:09:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624280992114900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー、理解した<br>asteriskとはずれてますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624281007.115300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1624281007.115300">21日 22:10:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624281007115300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                見たことないのでプラグインチャンスな気がする(知らないだけかも)
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="woodyZootopia">
+                              <img class="slacklog-emoji" alt="ablobwaggle" title="ablobwaggle" src="/slacklog/emojis/ablobwaggle.gif"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624281043.115900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624281043.115900">21日 22:10:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624281043115900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vscodeで、マウスドラッグしたら自動でハイライトされるの見て羨ましくなったんですよね
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <img class="slacklog-emoji" alt="goodpoem" title="goodpoem" src="/slacklog/emojis/goodpoem.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624281164.116500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1624281164.116500">21日 22:12:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624281164116500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                おお、これは面白い
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="woodyZootopia">
+                              <span>😄1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624281247.117100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1624281247.117100">21日 22:14:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624281247117100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                visualstar機能と組み合わせると生きそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624281389.118500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624281389.118500">21日 22:16:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624281389118500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                LSP の document highlight  みたいなやつだと思うんですが、LS 依存してないやつは需要あるかもですね。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="woodyZootopia">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624281479.119000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1624281479.119000">21日 22:17:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624281479119000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                document highlightで思い出したけどnormal modeで動くものはあったりしますね<br><a href='https://github.com/itchyny/vim-cursorword'>https://github.com/itchyny/vim-cursorword</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell, woodyZootopia">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624281479.119000">
+              
+    <div class="d-flex">
+        <div>itchyny/vim-cursorword</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Underlines the word under the cursor</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624283661.123700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624283661.123700">21日 22:54:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624283661123700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ↑、colから1を引いてハイライト領域をとっているので、マルチバイト文字だと失敗しますね。<a href='https://eagletmt.hatenadiary.org/entry/20100623/1277289728'>https://eagletmt.hatenadiary.org/entry/20100623/1277289728</a>　このあたりを参考に修正しないといけなさそう
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624283661.123700">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://eagletmt.hatenadiary.org/icon/touch" alt="EAGLE 雑記" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://eagletmt.hatenadiary.org/entry/20100623/1277289728" target="_blank" rel="noopener noreferrer">カーソル位置の文字を取得 + Vim における文字列について - EAGLE 雑記</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">現在のカーソル行の文字列を取得するには getline(&#39;.&#39;) とすればよく，さらに現在のカーソル列は col(&#39;.&#39;) で取得することができる*1ので echo getline(&#39;.&#39;)[col(&#39;.&#39;)-1] とすればカーソル位置の文字が表示される． というのはシングルバイト文字の場合でしか成立せず，カーソル位置にマルチバイト文字があると違う値が表示される． UTF-8 環境で日本語なら あたりが表示されたりするんじゃないだろうか． というのも，col(&#39;.&#39;) によって得られるのはバイト列と見たときのインデックスであり，文字列 str を str[idx] と参照したときも idx は…</div>
+      </div>
+
+            </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">1 件の返信 最終返信:23:22:33 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1624285353.124300">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">woodyZootopia</span>
+                      <a href="#ts-1624285353.124300">21日 23:22:33</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      修正した
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624284029.124100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1624284029.124100">21日 23:00:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624284029124100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど、たしかにちょっと違う
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624285353.124300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624285353.124300">21日 23:22:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624285353124300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                修正した
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1624283661.123700">↑、colから1を引いてハイライト領域を ...</a>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624286174.127200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1624286174.127200">21日 23:36:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624286174127200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/itchyny/vim-cursorword/pulls'>https://github.com/itchyny/vim-cursorword/pulls</a> 修正どこだろう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624286219.127900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624286219.127900">21日 23:36:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624286219127900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、そこではなく、上にあげた自分のスクリプトをマルチバイト文字対応に修正したということです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624286236.128200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624286236.128200">21日 23:37:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624286236128200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まぎらわしくてすみません藁
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624286238.128300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1624286238.128300">21日 23:37:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624286238128300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、なるほどそちらか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624286452.129700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624286452.129700">21日 23:40:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624286452129700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                個人的にはすごく便利だと思うんですけど、単体でプラグインにするほどのものでもない気がしますね。<br>kuuさんのおっしゃる通りvim-asteriskと親和性高そうだしプルリク出してみようかな？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624286517.130500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1624286517.130500">21日 23:41:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624286517130500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                コンセプト的には cursorword にビジュアルモード対応を入れる手もあるかも? よくわかってないんですけどハイライトって選択している間だけってことですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624286762.133800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-21/2178304788135_82a6d0b10acc9b71cfb1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">woodyZootopia</span>
+              <a href="#ts-1624286762.133800">21日 23:46:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1624286762133800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そっちもありかもですね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

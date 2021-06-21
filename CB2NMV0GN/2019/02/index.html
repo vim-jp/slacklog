@@ -1191,7 +1191,7 @@
         <div class="mt-2">Performance/RedundantMatch: Use <code>=<del></code> in places where the <code>MatchData</code> returned by <code>#match</code> will not be used.<br>これを言われた通りに直したら<br>Performance/RegexpMatch: Use <code>match?</code> instead of <code>=</del></code> when <code>MatchData</code> is not used.<br>こう怒られた…イケてない…</div>
       </div>
       <span class="Label Label--outline">
-        <a href="/slacklog/CB2NMV0GN/2019/02/#ts-1549424874.053000" target="_blank" rel="noopener noreferrer">slacklog</a>
+        <a href="/slacklog/CB2NMV0GN/2019/02/#ts-1549424874.053000">slacklog</a>
       </span>
 
             </div>
@@ -1647,7 +1647,7 @@
         <div class="mt-2"><pre><br>Offenses:<br><br>sample.rb:3:4: C: [Corrected] Performance/RedundantMatch: Use =~ in places where the MatchData returned by #match will not be used.<br>if &#39;foo&#39;.match(/foo/)<br>   ^^^^^^^^^^^^^^^^^^<br>sample.rb:3:4: C: [Corrected] Performance/RegexpMatch: Use match? instead of =~ when MatchData is not used.<br>if &#39;foo&#39; =~ /foo/<br>   ^^^^^^^^^^^^^^<br>sample.rb:3:4: C: [Corrected] Performance/RegexpMatch: Use match? instead of match when MatchData is not used.<br>if &#39;foo&#39;.match(/foo/)<br>   ^^^^^^^^^^^^^^^^^^<br><br>1 file inspected, 3 offenses detected, 3 offenses corrected<br></pre><br><br><code>bundle exec rubocop -a</code>の結果なのですが、なぜか3回修正が走っているところが興味深いです。</div>
       </div>
       <span class="Label Label--outline">
-        <a href="/slacklog/CB2NMV0GN/2019/02/#ts-1549445530.065900" target="_blank" rel="noopener noreferrer">slacklog</a>
+        <a href="/slacklog/CB2NMV0GN/2019/02/#ts-1549445530.065900">slacklog</a>
       </span>
 
             </div>
@@ -1681,7 +1681,7 @@
         <div class="mt-2">Before:<br><br><pre><br>For /Users/okuramasafumi/sandbox/ruby/2.6/rubocop_match: configuration from /Users/okuramasafumi/sandbox/ruby/2.6/.rubocop.yml<br>Default configuration from /Users/okuramasafumi/.gem/ruby/2.6.0/gems/rubocop-0.63.1/config/default.yml<br>Inspecting 1 file<br>Scanning /Users/okuramasafumi/sandbox/ruby/2.6/rubocop_match/sample.rb<br>C<br><br>Offenses:<br><br>sample.rb:3:4: C: Performance/RedundantMatch: Use =~ in places where the MatchData returned by #match will not be used.<br>if &#39;foo&#39;.match(/foo/)<br>   ^^^^^^^^^^^^^^^^^^<br>sample.rb:3:4: C: Performance/RegexpMatch: Use match? instead of =~ when MatchData is not used.<br>if &#39;foo&#39;.match(/foo/)<br>   ^^^^^^^^^^^^^^<br>sample.rb:3:4: C: Performance/RegexpMatch: Use match? instead of match when MatchData is not used.<br>if &#39;foo&#39;.match(/foo/)<br>   ^^^^^^^^^^^^^^^^^^<br><br>1 file inspected, 3 offenses detected<br></pre><br><br>After:<br><br><pre><br>For /Users/okuramasafumi/sandbox/ruby/2.6/rubocop_match: configuration from /Users/okuramasafumi/.gem/ruby/2.6.0/gems/rubocop-0.63.1/config/default.yml<br>Inspecting 1 file<br>Scanning /Users/okuramasafumi/sandbox/ruby/2.6/rubocop_match/sample.rb<br>C<br><br>Offenses:<br><br>sample.rb:3:4: C: Performance/RedundantMatch: Use =~ in places where the MatchData returned by #match will not be used.<br>if &#39;foo&#39;.match(/foo/)<br>   ^^^^^^^^^^^^^^^^^^<br>sample.rb:3:4: C: Performance/RegexpMatch: Use match? instead of match when MatchData is not used.<br>if &#39;foo&#39;.match(/foo/)<br>   ^^^^^^^^^^^^^^^^^^<br><br>1 file inspected, 2 offenses detected<br></pre></div>
       </div>
       <span class="Label Label--outline">
-        <a href="/slacklog/CB2NMV0GN/2019/02/#ts-1549446309.075400" target="_blank" rel="noopener noreferrer">slacklog</a>
+        <a href="/slacklog/CB2NMV0GN/2019/02/#ts-1549446309.075400">slacklog</a>
       </span>
 
             </div>
