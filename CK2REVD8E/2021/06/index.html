@@ -1,0 +1,2115 @@
+<!doctype html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>vim-jp &raquo; vim-jp.slack.com log - &#35;lang-python - 2021年06月</title>
+<link rel="stylesheet" href="/slacklog/assets/css/site.css" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/@primer/css/dist/primer.css" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="//vim-jp.org/rss.xml" />
+<link rel="canonical" href="/slacklog/CK2REVD8E/2021/06/" />
+<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="/slacklog/assets/javascripts/slacklog.js"></script>
+</head>
+<body>
+  <div class="body">
+    <div id="content">
+      <!-- header -->
+      <div class="pagehead ml-3">
+        <h1>
+          <span class="author">
+            <a href="//vim-jp.org" class="url fn" >vim-jp</a>
+          </span>
+          <span class="path-divider">/</span>
+          <a href="/slacklog">slacklog</a>
+        </h1>
+      </div>
+      <!-- /header -->
+      <div>
+        <div class="m-3">
+          <nav aria-label="Breadcrumb">
+            <ol>
+              <li class="breadcrumb-item f4"><a href="/slacklog/CK2REVD8E/">&#35;lang-python</a></li>
+              <li class="breadcrumb-item f4" aria-current="page">2021年06月</li>
+            </ol>
+          </nav>
+          <h4 class="text-gray pb-2 border-bottom"></h4>
+        </div>
+        <div class="clearfix m-3" id="ts-1624445772.056600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624445772.056600">23日 19:56:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624445772056600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                バックエンドのテストってみなさんどうされてますでしょうか。<br>本番はDBにpostgresを使っていて、参照系と更新系のAPIがあります。O/RマッパーにSQLAlchemyを使っています。<br><br>具体的には下のようなことが疑問です。<br><br>- postgresをdocker-composeで立てる。。？<br>- postgresにデータどうやって入れる。。？ (create tableとinsert into)<br>- 更新系のAPI(関数)のテスト終わった後のpostgresに残ったデータはどうやってきれいにする？<br>- postgresをモックするという考え方でDBを立てない。。？<br>- SQLAlchemyが出力するクエリを文字列比較で比較する。。？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446069.062100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446069.062100">23日 20:01:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446069062100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Goだけど僕はとあるプロジェクトで3パターン併用してて、テスト用のpostgresqlをdockerで建てる、ローカルで建てる、SQLite3(メモリ)で代用するって感じ。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446073.062300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-07/2142670108851_3d1b3f13bb9f1bf4cdc6_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">peacock</span>
+              <a href="#ts-1624446073.062300">23日 20:01:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446073062300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                私は自動テストならsqlite+fixtureかなー。ローカルならscirpts/とかにマイグレ用スクリプト置きます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446079.062400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446079.062400">23日 20:01:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446079062400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                1つ目<br>自分は SQLite のメモリーモードでテストしてます。docker-compose で DB 立ててテストしてる人もいます(テストごとに Django のマイグレーション走るのがうざいって人)<br>2 つ目<br>fixture で作ったり、factory_boy で入れたりしてます<br>3 つ目<br>SQLite のメモリーなので毎度綺麗になります(その代わりロードは遅い)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446150.063100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624446150.063100">23日 20:02:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446150063100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                sqliteありですね。<br>ただ、O/Rマッパーを使ってるのですが、postgresに依存してpostgres専用のクエリを叩くようになってるのでsqliteは使えないのです。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446167.063400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446167.063400">23日 20:02:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446167063400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ならdocker一択では
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446178.063900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446178.063900">23日 20:02:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446178063900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                となると docker かな。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446179.064000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446179.064000">23日 20:02:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446179064000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                もちろんローカルpostgresqlでもええんやけども。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446225.064700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446225.064700">23日 20:03:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446225064700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                テスト用の DB 立てるだけですしね。テスト前にクリーンナップするスクリプト流す感じでしょうか。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446241.065200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446241.065200">23日 20:04:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446241065200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ちなみにローカルでPostgreSQL建てる時も、コマンド直叩きとGoのモジュールの2パターン使い分けてるw<br><br><a href='https://github.com/koron-go/pgctl'>https://github.com/koron-go/pgctl</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624446241.065200">
+              
+    <div class="d-flex">
+        <div>koron-go/pgctl</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">pg_ctl command wrapper for golang</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446250.066100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446250.066100">23日 20:04:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446250066100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すごいw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446253.066300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446253.066300">23日 20:04:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446253066300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Goのモジュールのほうは遅いんで、単体には使えない。
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">1 件の返信 最終返信:20:04:30 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1624446270.066800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1624446270.066800">23日 20:04:30</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      正確にはpostgresqlのDBを作るのが遅い。
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446308.067600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446308.067600">23日 20:05:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446308067600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                たぶんこのGoモジュールと同じコンセプトのライブラリはPythonにもあるんじゃないかな?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446327.067700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1624446327.067700">23日 20:05:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446327067700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                テストケース毎にクリーンアップしたいけど遅いからどこかで妥協しないとなあ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446346.068000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624446346.068000">23日 20:05:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446346068000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                dockerでpostgresを立てるとして、<br>&gt; - postgresにデータどうやって入れる。。？ (create tableとinsert into)<br>&gt; - 更新系のAPI(関数)のテスト終わった後のpostgresに残ったデータはどうやってきれいにする？<br>これはどうされてますか？<br>今はcreate tableを全テストで共有していて、テストデータはテストスイートの中で直接insert、テストスイート終了後にdrop schemaしています(各テストでどのテーブルを触ったのか分からない)<br>ただ、これだと1つのテストするのに1秒くらいかかるので遅いなぁ。。と思っています。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446364.068300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446364.068300">23日 20:06:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446364068300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                1秒かかるのは仕方ない。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="gunnyari" title="gunnyari" src="/slacklog/emojis/gunnyari.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446365.068500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446365.068500">23日 20:06:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446365068500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                昔ダンプを流し込んでたw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446392.069500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446392.069500">23日 20:06:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446392069500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あとはテストが同時に走っても良いよう(クリアしないでデータが混ざっても大丈夫なように)に、テスト内容を巧妙に組み立てるってのもある。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="rms" title="rms" src="/slacklog/emojis/rms.jpg"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">2 件の返信 最終返信:20:10:00 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1624446450.070500">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KoRoN</span>
+                      <a href="#ts-1624446450.070500">23日 20:07:30</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ただこれはあまりオススメしない。僕はやってるけど
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1624446600.073800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">heavenshell</span>
+                      <a href="#ts-1624446600.073800">23日 20:10:00</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      自分は諦めましたw
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446393.069600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-07/2142670108851_3d1b3f13bb9f1bf4cdc6_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">peacock</span>
+              <a href="#ts-1624446393.069600">23日 20:06:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446393069600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                dockerで建てるとして、fixture使えばtearup/downはできますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446450.070500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446450.070500">23日 20:07:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446450070500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ただこれはあまりオススメしない。僕はやってるけど
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1624446392.069500">あとはテストが同時に走っても良いよう(ク ...</a>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446461.071000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446461.071000">23日 20:07:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446461071000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/heavenshell/py-sqlalchemy_seed/'>https://github.com/heavenshell/py-sqlalchemy_seed/</a><br>昔こう言うの作った。&gt; fixture
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446494.071900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446494.071900">23日 20:08:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446494071900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                大昔のだから api が古いw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446509.072400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-07/2142670108851_3d1b3f13bb9f1bf4cdc6_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">peacock</span>
+              <a href="#ts-1624446509.072400">23日 20:08:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446509072400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>@pytest.fixture<br>def db():<br>   migrate_db()<br>    yield session<br>    drop_db()</pre><br>こんなの書けばいい感じにやってくれるはず
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446519.072800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446519.072800">23日 20:08:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446519072800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                drop schemaじゃなくて、なんか中身だけ消す方法があった気がするな。ユーザとかスキーマいじる系のテストはできなくなるけども。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446541.073200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446541.073200">23日 20:09:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446541073200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                SA なら探せばなんか出てきそうですw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446582.073400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446582.073400">23日 20:09:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446582073400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://www.postgresql.org/docs/current/sql-truncate.html'>https://www.postgresql.org/docs/current/sql-truncate.html</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624446582.073400">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://www.postgresql.org/favicon.ico" alt="PostgreSQL Documentation" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://www.postgresql.org/docs/current/sql-truncate.html" target="_blank" rel="noopener noreferrer">TRUNCATE</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">TRUNCATE TRUNCATE — empty a table or set of tables Synopsis TRUNCATE [ TABLE ] [ ONLY ] name [ …</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446596.073700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624446596.073700">23日 20:09:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446596073700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                fixtureでできるのは分かるんですが、遅いなぁ。。と()<br>テストで1分越えてくると私の許容範囲外なんですよね。今は2分弱かかってます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446622.074600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446622.074600">23日 20:10:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446622074600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                めっちゃ早いって思っちゃうw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446635.075500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-07/2142670108851_3d1b3f13bb9f1bf4cdc6_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">peacock</span>
+              <a href="#ts-1624446635.075500">23日 20:10:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446635075500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                A. スペックで殴る<img class='slacklog-emoji' title=':bram:' alt=':bram:' src='/slacklog/emojis/bram.jpg'>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita, kkiyama117">
+                              <img class="slacklog-emoji" alt="ultrafastparrot" title="ultrafastparrot" src="/slacklog/emojis/ultrafastparrot.gif"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446637.075600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446637.075600">23日 20:10:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446637075600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                多分毒されてる(いま 10 分越え)
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="peacock, Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="totemoturai" title="totemoturai" src="/slacklog/emojis/totemoturai.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446645.076000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624446645.076000">23日 20:10:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446645076000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                drop schemaじゃなくて全テーブルtruncateですかね。<br>ちょっとそれで明日試してみようかな。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446685.077100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446685.077100">23日 20:11:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446685077100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                truncateによるリセット&amp;再データ投入は、スキーマ作り直すよりは早いはず。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446689.077400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624446689.077400">23日 20:11:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446689077400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                毎コミットローカルで走るので早さは重要なんですよね。<br>CIで回すやつとローカルで回すやつを選別するというのもよさそうですが。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446703.078100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446703.078100">23日 20:11:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446703078100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                CIは10分くらいまでは許すかな。30分はキツイ。<br><br><br>ユニットテストは1パッケージにつき5秒以内くらいで終わってほしい。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell, peacock">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446731.079100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1624446731.079100">23日 20:12:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446731079100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                mysql でパーティションいっぱいあるテーブルの truncate に時間がかかって辛いことがありました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446747.080000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446747.080000">23日 20:12:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446747080000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                テストが完全に負債化してて手をつけたいけど、つけられない <img class='slacklog-emoji' title=':gunnyari:' alt=':gunnyari:' src='/slacklog/emojis/gunnyari.png'>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="KoRoN">
+                              <span>😁1</span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="lambdalisue">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446768.081000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446768.081000">23日 20:12:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446768081000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ちなみにCIでのテストで、データを巧妙に設計してテストケースを同時に確かめたりするのは、パラレルで走らせるために重要だったりします。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446784.081600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1624446784.081600">23日 20:13:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446784081600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                毎コミット、ローカルで unit test 走るのはちょっとオーバーキル気味な気が…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="peacock, kuu">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446785.081700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446785.081700">23日 20:13:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446785081700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                どっちかっていうとシナリオ優先的なテストなんですけども。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446824.082200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1624446824.082200">23日 20:13:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446824082200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                lint が走るのはわかるけど…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446853.083300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446853.083300">23日 20:14:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446853083300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                んー動かないとわかってるcommitもありますからね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446861.083700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624446861.083700">23日 20:14:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446861083700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                逆に絶対に動いてほしいcommitもある。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita, lambdalisue">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446953.085800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624446953.085800">23日 20:15:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446953085800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、毎コミットっていうのはcommit hookじゃなくて手動make testです。<br>意図せず壊れてるのとか見つかって結構助かってます。<br>ただ、全部走るのはたしかにオーバーキル感があるので選別するか。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624446958.086000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624446958.086000">23日 20:15:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624446958086000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そうですねぇ。自分は基本変更した箇所と関係あるやつだけローカルで走らせて全部は CI ですねぇ(先にも書いた通り遅いので)<br>初期データ突っ込む fixture のロードが遅いんすよね
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447097.086300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624447097.086300">23日 20:18:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447097086300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、pytestを使ってるんですが、デバッグ時には --ff オプション使ってるので、詰まってるときは1テストしか走りません。<br>やっぱり全部走らせるのはCIですよねー。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447159.086700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624447159.086700">23日 20:19:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447159086700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                (GitHub Actions入れていいか上司に相談するか...())
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447245.087300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624447245.087300">23日 20:20:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447245087300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://docs.github.com/en/actions/guides/creating-postgresql-service-containers'>https://docs.github.com/en/actions/guides/creating-postgresql-service-containers</a><br>PG は GitHub Action で立てたことないけど、割とサクッと立てられそうなのかな。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447315.088200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1624447315.088200">23日 20:21:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447315088200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                github actions、runner を self-hosted できるので、外部インスタンスで走らせたくない場合も安心
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447435.088500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624447435.088500">23日 20:23:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447435088500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                プライベートレポジトリでself hosted runnerを使うときの課金ってどうなるんでしょうか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447492.088900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624447492.088900">23日 20:24:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447492088900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://docs.github.com/ja/billing/managing-billing-for-github-actions/about-billing-for-github-actions'>https://docs.github.com/ja/billing/managing-billing-for-github-actions/about-billing-for-github-actions</a><br>&gt; GitHub Actions パブリックリポジトリとセルフホストランナーでは、どちらも利用は無料です。<br>無料?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447637.089200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624447637.089200">23日 20:27:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447637089200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>パブリックリポジトリ, GitHub runner: 無料<br>パブリックリポジトリ, セルフホストランナー: 無料<br>プライベートリポジトリ, GitHub runner: 有料<br>プライベートリポジトリ, セルフホストランナー: 無料</pre><br>ということ。。？ ちょっとor条件なのかand条件なのか一瞬分からなかった。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447795.089700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1624447795.089700">23日 20:29:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447795089700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                GitLabも同様ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447979.090700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624447979.090700">23日 20:32:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447979090700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                パブリックおよびself hostedは無料というふうに読めますね<br>つまりor条件
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624447998.091000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624447998.091000">23日 20:33:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624447998091000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                原文で読んだら分かったりするんですかね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624448787.091200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624448787.091200">23日 20:46:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624448787091200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                原文はこれでした。<br>&gt; GitHub Actions usage is free for both public repositories and self-hosted runners.<br>both A and Bってつまりor条件ですかね？ <a href='/slacklog/CS1NKB9B2/'>#english</a> 案件。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624448873.091800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1624448873.091800">23日 20:47:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624448873091800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                実際には public repository であれば GitHub runner であっても無料ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449124.092500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624449124.092500">23日 20:52:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449124092500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                貧弱な英語力だと「publicとself-hostedの両方において無料」と読める
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449502.092800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624449502.092800">23日 20:58:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449502092800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                @raa0121 さん。<br>実際どうなんでしょう？プライベートレポジトリでself hosted runnerを使うと無料ですか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449606.093300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1624449606.093300">23日 21:00:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449606093300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                実は使ったことなくて…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="gunnyari" title="gunnyari" src="/slacklog/emojis/gunnyari.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449646.093900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1624449646.093900">23日 21:00:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449646093900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                セルフは課金対象外な気が
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449665.094600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624449665.094600">23日 21:01:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449665094600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                普通に考えればそうですよね<br>ギッハブのリソース使ってない訳ですし
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449684.095300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1624449684.095300">23日 21:01:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449684095300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                うちは料金抑える為に長時間かかるやつはセルフホストに逃してますね
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita, raa0121">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449718.096100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624449718.096100">23日 21:01:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449718096100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ちょっと会社に提案するまえに個人アカウントで人柱になってみます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449729.096400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1624449729.096400">23日 21:02:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449729096400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ただ利便性を提供するので、おかねかかりますはあってもいいんだろうけど、いまんとこ無料かね?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449750.096800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624449750.096800">23日 21:02:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449750096800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                # GitHubにクレカ登録したらGitHub Supponserするハードルが下がるかもしれない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449763.097600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1624449763.097600">23日 21:02:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449763097600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                self hostedなのに金取られるんだったらローカルでよくないかって気持ちになる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449771.098100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1624449771.098100">23日 21:02:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449771098100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                わからない。もしかするとお金払ってるからセルフを無制限で使えるのかもしれないですしね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449782.098800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624449782.098800">23日 21:03:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449782098800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                今Proアカウントなので仮に事故ってもほぼノーダメだし試してみようかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449787.099000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1624449787.099000">23日 21:03:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449787099000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <del>Jenkinsおじさんになろう</del>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449803.099600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1624449803.099600">23日 21:03:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449803099600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                金の問題さえなければなりたくなかった...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449808.099800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1624449808.099800">23日 21:03:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449808099800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                おじさんいい人だった。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449840.100100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1624449840.100100">23日 21:04:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449840100100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ちなみにGitHubにカードは登録してないが、sponsorは有効にしたw PayPalでいいしね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449845.100300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624449845.100300">23日 21:04:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449845100300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ？？？「お前もJenkinsおじさんにならないか？」
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell, peacock, lambdalisue, kuu, Naoya Yamashita">
+                              <span>😰5</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449901.101900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1624449901.101900">23日 21:05:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449901101900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                セルフホストランナーは結構罠多いので注意ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449930.102500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624449930.102500">23日 21:05:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449930102500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                専用のインスタンスはないとなんとなくしんどそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449932.102700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624449932.102700">23日 21:05:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449932102700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お。そうなんですね。EC2で立てようと思ってましたが、これってもしかして無理ですか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449937.102900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624449937.102900">23日 21:05:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449937102900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                経路がない？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624449967.103600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1624449967.103600">23日 21:06:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624449967103600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Githubに繋がる道があれば多分いけると思います
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624450047.107500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1624450047.107500">23日 21:07:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624450047107500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Githubの提供するランナーと同じのを作るのはオーバーキルだけどランナー入れただけだとsudoも使えないしテスト毎に環境綺麗にならないしビルド時もできないし...とかいろいろ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624450055.107800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1624450055.107800">23日 21:07:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624450055107800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すべての開発のルートはGitHubに通じる(通ってないと死ぬ)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624450057.108000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624450057.108000">23日 21:07:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624450057108000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <del>こういう時に余ってるグローバルIPと好きに使える仮想化基盤があると気軽に試せるので自宅プライベートクラウドを布教したい</del>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624450059.108100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-05-13/1105762495703_ba20bc886c8f30c85e78_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">YABUKI Yukiharu</span>
+              <a href="#ts-1624450059.108100">23日 21:07:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624450059108100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                優勝^h^h有償って、無料枠の時間をプライベートだと越えると動かなくなるからではないのか。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624450083.108300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-07/2142670108851_3d1b3f13bb9f1bf4cdc6_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">peacock</span>
+              <a href="#ts-1624450083.108300">23日 21:08:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1624450083108300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <img class='slacklog-emoji' title=':yuusho:' alt=':yuusho:' src='/slacklog/emojis/69b9bbe795f19442.png'>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="clearfix"></div>
+    <div id="footer">
+      <p>
+        Powered by <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </div>
+    <!-- /footer -->
+  </div>
+</body>
