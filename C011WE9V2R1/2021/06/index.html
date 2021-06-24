@@ -106,6 +106,87 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1624461006.420500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7817559eedcf07a777dbf9dd734cc0b1.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0001-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Ken Takata</span>
+              <a href="#ts-1624461006.420500">24日 00:10:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011WE9V2R1/p1624461006420500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                この件、crtのソースコードをちょっと調べてみた。<br>VC++ 2010までは <code>stat()</code> はそのまま <code>FindFirstFileEx()</code> を呼び出しているが、VC++ 2012 からは Wide 文字列に変換してから <code>FindFirstFileExW()</code> を呼び出している。<br>そして、Wide 文字列に変換する際、UCRT 10.0.16299.0 までは変換元のコードとして <code>CP_ACP</code> を指定しているが、10.0.17134.0 からは現在のコードページが UTF-8 ならば <code>CP_UTF8</code> を指定している。
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1623973665.410600"></a>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624463885.424600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7817559eedcf07a777dbf9dd734cc0b1.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0001-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Ken Takata</span>
+              <a href="#ts-1624463885.424600">24日 00:58:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011WE9V2R1/p1624463885424600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                UTF-8 コードページでは、<code>FindFirstFile</code> は長いファイル名の 260bytes 制限だけでなく短いファイル名の 14bytes 制限に引っかかるファイル名も扱えないというのは盲点だった。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624466875.424800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1624466875.424800">24日 01:47:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011WE9V2R1/p1624466875424800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                当たらずとも遠からずw
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624466875.424800">
+              
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">内部的にDBCS換算で8バイトを超えると内部的に <code>~1</code> みたいなアレで扱われてわけわかんないことになってるとか?w</div>
+      </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C011WE9V2R1/2021/06/#ts-1623979940.414900">slacklog</a>
+      </span>
+
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
