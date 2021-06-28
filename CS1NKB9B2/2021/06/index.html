@@ -952,6 +952,594 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1624860823.142300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624860823.142300">28日 15:13:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624860823142300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/aws/aws-sam-cli/issues/2990'>https://github.com/aws/aws-sam-cli/issues/2990</a> の話。<br><br>deeplに投げて推敲して書いたのですが、ちょっと推敲漏れがあったので。<br><br><code>なぜ-がstdin/outを暗黙に示していると仮定できるのか。権威あるソースは？</code><br><br>をdeeplに入れると<br><br><code>Why can we assume that - implicitly indicates stdin/out? Any authoritative sources?</code><br><br>となりますが、高校文法的には、この文は<code>why</code>と<code>can</code>の2つの助動詞が出てくるので、<code>can</code>を<code>be able to</code>に直そうねーとするところだと思います。<br>口語 (というか最近の英語?) では <code>Why can ~</code> は不自然ではないのでしょうか？<br><br>ref: こういう話も <a href='https://www.youtube.com/watch?v=B6Na06T60Ec'>https://www.youtube.com/watch?v=B6Na06T60Ec</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624860823.142300">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://a.slack-edge.com/80588/img/unfurl_icons/youtube.png" alt="YouTube" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://www.youtube.com/watch?v=B6Na06T60Ec" target="_blank" rel="noopener noreferrer">【able なんて使わない？】 英語ネイティブが不自然だと思う表現｜can と be able to の違い</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">
+          <img src="https://i.ytimg.com/vi/B6Na06T60Ec/hqdefault.jpg" width="80" alt="【able なんて使わない？】 英語ネイティブが不自然だと思う表現｜can と be able to の違い" />
+        </div>
+      </div>
+    <div class="d-flex">
+        <div>&lt;https://github.com/aws/aws-sam-cli/issues/2990|#2990 sam deploy: Support `-` which indicates stdin&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Describe your idea/feature/enhancement*<br><br>Many CLI commands can interpret <code>-</code> as a stdin/out. In <code>aws-cli</code>, <code>s3 cp</code> can use <code>-</code> as a stdin/out.<br><br><pre><br>$ BUCKET=&lt;your sample bucket&gt;<br><br>$ echo helloworld | aws s3 cp - s3://${BUCKET}/tmp<br><br>$ aws s3 cp s3://${BUCKET}/tmp -<br>helloworld<br><br></pre><br><br>If <code>sam deploy</code> use stdin to pass template yaml, user can use any _pre process_ step for his template.<br><br><pre><br>$ # local transform instead of Cloudformation macro<br>$ cat template.yml | your-favorite-transformer | sam deploy --template-file -<br><br><br>$ # mustache pre-process with SAM template<br>$ cat template.yml.mustache | mustache data.json | sam deploy --template-file -<br><br><br>$ # simple `sed` for SAM template (but the user should use *Parameters*.)<br>$ cat template.yml | sed &#39;s/__company/aws/g&#39; | sam deploy --template-file -<br><br></pre><br><br>*Proposal*<br><br>Add details of how to add this to the product.<br><br>1. Add a special action step if the user specifies <code>-</code> for <code>--template-file</code> option.<br>2. The special action is, get template string from stdin instead of reading local file.<br><br>Things to consider:<br><br>1. What happens when a user really wants to deal with a <code>-</code> file?<br>    • Unix command <code>cat</code> address <code>-</code> file as a <code>./-</code>.  <br>        So you can <code>cat ./-</code> if you want to see <code>-</code> file.<br>2. Why can we assume that - implicitly indicates stdin/out? Any authoritative sources?<br>    • See POSIX specification: <a href='https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html#tag_12_02'>https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html#tag_12_02</a>  <br>        &#34;12.2 Utility Syntax Guidelines&#34;, &#34;Guideline 13:&#34;<br>        <br>        &gt; For utilities that use operands to represent files to be opened for either reading or writing, the &#39;-&#39; operand should be used to mean only standard input (or standard output when it is clear from context that an output file is being specified) or a file named -.<br><br>*Additional Details*<br><br>None</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624861706.143600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1624861706.143600">28日 15:28:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624861706143600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそも Why が助動詞というのは…？<br>疑問詞だと思っているんですが
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862042.144200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624862042.144200">28日 15:34:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862042144200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あっすいません。5W1Hは疑問詞ですね。。<br>英弱を晒してしまった。。<br><a href='https://ejje.weblio.jp/parts-of-speech/kenej/%E5%8A%A9%E5%8B%95%E8%A9%9E_1'>https://ejje.weblio.jp/parts-of-speech/kenej/%E5%8A%A9%E5%8B%95%E8%A9%9E_1</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624862042.144200">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://weblio.hs.llnwd.net/e7/img/favicon/ejje/safari/apple-touch-icon.png" alt="ejje.weblio.jp" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://ejje.weblio.jp/parts-of-speech/kenej/%E5%8A%A9%E5%8B%95%E8%A9%9E_1" target="_blank" rel="noopener noreferrer">英語の助動詞一覧 - Weblio英和和英</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">英語の助動詞一覧。中学以上の水準、高校以上の水準、大学以上の水準、大学院以上の水準の英単語があります。</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862052.144600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862052.144600">28日 15:34:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862052144600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Why can I ~とかはよく使いますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862098.145600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1624862098.145600">28日 15:34:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862098145600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                高校英語でも Why can you ~? みたいな表現は Valid です。<br>Will かなにかと混同された感じですかね？
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="kzk" title="kzk" src="/slacklog/emojis/kzk.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862127.146200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862127.146200">28日 15:35:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862127146200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分ができないことをやってのけている人に対して、<br><code>why can you do that?</code>とか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862141.146700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862141.146700">28日 15:35:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862141146700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですかね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862163.147200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862163.147200">28日 15:36:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862163147200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                一応参考までに<br><a href='https://3040english.info/why-auxiliary-verb/'>https://3040english.info/why-auxiliary-verb/</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="kan" title="kan" src="/slacklog/emojis/kan.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1624862163.147200">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://3040english.info/wp-content/uploads/2019/05/cropped-3040-180x180.jpg" alt="30代40代で身につける英会話" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://3040english.info/why-auxiliary-verb/" target="_blank" rel="noopener noreferrer">why と助動詞 (can / could / should / might / would)  – 英会話用例文・英語表現まとめ【音読用】 | 30代40代で身につける英会話</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">たとえば、以下は英語で何と言えばよいのでしょうか？ 「なぜ英語が話せるの？」 「なぜ私はそれを使えないのですか？」 「なぜ彼らはそれが可能だったのか？」 「なぜ私はそれをするべき...</div>
+      </div>
+      <div class="d-flex">
+        <div class="mt-2">
+          <img src="https://3040english.info/wp-content/uploads/2019/04/why.png" width="80" alt="why と助動詞 (can / could / should / might / would)  – 英会話用例文・英語表現まとめ【音読用】 | 30代40代で身につける英会話" />
+        </div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862192.148000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1624862192.148000">28日 15:36:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862192148000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Why don&#39;t you ~ ? みたいなのもよく見ますね。「〜したらどう」という意味。さらに短縮して Why not? とか。<br>この do も助動詞です。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862211.148400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862211.148400">28日 15:36:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862211148400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Why don&#39;t we V~とか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862266.149100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624862266.149100">28日 15:37:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862266149100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                反語みたいな感じがする
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862292.149600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-07-28/696621453314_0edf66561724b8e38e6a_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">monaqa</span>
+              <a href="#ts-1624862292.149600">28日 15:38:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862292149600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                英語ではよく修辞疑問文といいますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862312.150200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1624862312.150200">28日 15:38:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862312150200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、ちゃんとした名前あるんですね<br>文法は知ってたけどそこまでは知らなかった
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862314.150300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862314.150300">28日 15:38:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862314150300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <img class='slacklog-emoji' title=':sorena:' alt=':sorena:' src='/slacklog/emojis/sorena.png'>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862325.150600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862325.150600">28日 15:38:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862325150600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                修辞疑問文はよくつかう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862571.152000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862571.152000">28日 15:42:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862571152000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>isn&#39;t it?</code> とか知ってるだけでネイティブっぽい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862576.152200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/464d1574ef169d2457c907e77794d973.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0005-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">cafenero_777</span>
+              <a href="#ts-1624862576.152200">28日 15:42:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862576152200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                issueの文言、私は特に違和感は感じなかったです、硬さも含めて。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862606.152900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862606.152900">28日 15:43:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862606152900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862611.153100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862611.153100">28日 15:43:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862611153100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分も違和感はない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862677.154600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/464d1574ef169d2457c907e77794d973.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0005-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">cafenero_777</span>
+              <a href="#ts-1624862677.154600">28日 15:44:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862677154600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                今どきならhisの所はtheirかなと思いました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624862763.155200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1624862763.155200">28日 15:46:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624862763155200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                たしかに、自分もtheirのほうがしっくりきますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624863039.155400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624863039.155400">28日 15:50:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624863039155400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー。そこは自分で書いたところですね。たしかにtheirの方がジェンダーニュートラルで良さそう。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1624863195.155600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1624863195.155600">28日 15:53:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CS1NKB9B2/p1624863195155600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                修正 <img class='slacklog-emoji' title=':done:' alt=':done:' src='/slacklog/emojis/sumi.png'>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
