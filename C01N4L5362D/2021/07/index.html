@@ -1,0 +1,503 @@
+<!doctype html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>vim-jp &raquo; vim-jp.slack.com log - &#35;tech-denops - 2021年07月</title>
+<link rel="stylesheet" href="/slacklog/assets/css/site.css" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/@primer/css/dist/primer.css" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="//vim-jp.org/rss.xml" />
+<link rel="canonical" href="/slacklog/C01N4L5362D/2021/07/" />
+<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="/slacklog/assets/javascripts/slacklog.js"></script>
+</head>
+<body>
+  <div class="body">
+    <div id="content">
+      <!-- header -->
+      <div class="pagehead ml-3">
+        <h1>
+          <span class="author">
+            <a href="//vim-jp.org" class="url fn" >vim-jp</a>
+          </span>
+          <span class="path-divider">/</span>
+          <a href="/slacklog">slacklog</a>
+        </h1>
+      </div>
+      <!-- /header -->
+      <div>
+        <div class="m-3">
+          <nav aria-label="Breadcrumb">
+            <ol>
+              <li class="breadcrumb-item f4"><a href="/slacklog/C01N4L5362D/">&#35;tech-denops</a></li>
+              <li class="breadcrumb-item f4" aria-current="page">2021年07月</li>
+            </ol>
+          </nav>
+          <h4 class="text-gray pb-2 border-bottom"></h4>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135371.015200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tennashi</span>
+              <a href="#ts-1625135371.015200">1日 19:29:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135371015200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>class A {<br>  #denops: Denops<br>  constructor(denops: Denops) {<br>    this.#denops = denops;<br>  }<br><br>  hoge() {<br>    this.#denops.dispatcher = {<br>      async hoge(): Promise&lt;void&gt; {<br>        await execute(this.#denops, &#34;echo hoge&#34;);<br>      }<br>    }<br>  }<br>}</pre><br>みたいにしたときに <code>execute()</code> で <code>Property &#39;#denops&#39; does not exist on type &#39;Session&#39;</code> とエラーが出るんですが、これを回避するなんかよい方法ありますかねー<br>多分<code>this</code> の型の問題なのでとりあえず内側の <code>async hoge()</code> を外で定義してやれば回避できるはできるんですが、他の方法ないかなと
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">9 件の返信 最終返信:19:37:24 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1625135439.015800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">lambdalisue</span>
+                      <a href="#ts-1625135439.015800">1日 19:30:39</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      hoge内部でdenopsを変数に束縛ですね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1625135457.016400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">lambdalisue</span>
+                      <a href="#ts-1625135457.016400">1日 19:30:57</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      もしくはthisをbindする為に無名関数にする
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1625135489.017200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">lambdalisue</span>
+                      <a href="#ts-1625135489.017200">1日 19:31:29</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      hoge:　async()　=&gt;　...
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1625135500.017400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1625135500.017400">1日 19:31:40</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あ、そうかなるほど!
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1625135567.017600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1625135567.017600">1日 19:32:47</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      おー通りました!<br>ありがとうございます!
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1625135708.017900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1625135708.017900">1日 19:35:08</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      なるほど<br><pre>hoge() {}</pre><br>を<br><pre>hoge: () =&gt; {}</pre><br>の略記だと勘違いしてました
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1625135737.018100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1625135737.018100">1日 19:35:37</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <pre>function hoge() {}</pre><br>の略記か...
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1625135784.018600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-02-22/558858702327_2437d40cd696c208a5ab_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">tennashi</span>
+                      <a href="#ts-1625135784.018600">1日 19:36:24</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あ、いやいや略記じゃない<br>相当、か
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1625135844.019200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">lambdalisue</span>
+                      <a href="#ts-1625135844.019200">1日 19:37:24</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      その辺は正確に話すとかなりややこしいですねw
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135784.018800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1625135784.018800">1日 19:36:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135784018800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                JSのclassのbind問題みんなハマってそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135874.019800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1625135874.019800">1日 19:37:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135874019800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそもクラスなんてなかったですからねぇ
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <img class="slacklog-emoji" alt="sorena" title="sorena" src="/slacklog/emojis/sorena.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135895.020500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1625135895.020500">1日 19:38:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135895020500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                この辺はPythonの方が自分でself書くからわかりやすい
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, kkiyama117">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135913.020900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1625135913.020900">1日 19:38:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135913020900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                古のJSをちょろっと知っていたので「え、なにこれ」ってなった
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135922.021200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1625135922.021200">1日 19:38:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135922021200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                わかる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135938.021800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1625135938.021800">1日 19:38:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135938021800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                thisの型指定🤪
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135941.022000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1625135941.022000">1日 19:39:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135941022000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Pythonのあれは分かりやすくていいですね、最初は冗長だと思っていたけど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625135965.022700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1625135965.022700">1日 19:39:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625135965022700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですねーもっというとrustのselfはさらにわかりやすくて良いですよね
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kkiyama117, monaqa">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625136010.024200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1625136010.024200">1日 19:40:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625136010024200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                実体か参照か編集可能な参照か...それこそPinまで表現できてて強い
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625136072.024400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1625136072.024400">1日 19:41:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625136072024400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                へぇー<br><a href='https://qnighy.hatenablog.com/entry/2017/03/22/070000'>https://qnighy.hatenablog.com/entry/2017/03/22/070000</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="lambdalisue, Tsuyoshi CHO">
+                              <img class="slacklog-emoji" alt="tiken" title="tiken" src="/slacklog/emojis/tiken.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1625136072.024400">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://qnighy.hatenablog.com/icon/touch" alt="簡潔なQ" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://qnighy.hatenablog.com/entry/2017/03/22/070000" target="_blank" rel="noopener noreferrer">Rustのself引数まとめ - 簡潔なQ</a>
+          </span>
+        </div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625148789.025200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1625148789.025200">1日 23:13:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1625148789025200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/vim-denops/denops.vim/pull/59'>https://github.com/vim-denops/denops.vim/pull/59</a><br>あ、昨晩PR出しときました
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="lambdalisue">
+                              <img class="slacklog-emoji" alt="goodpoem" title="goodpoem" src="/slacklog/emojis/goodpoem.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1625148789.025200">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim-denops/denops.vim/pull/59|#59 Add Windows workflow on deno tests&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">ref #57</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="clearfix"></div>
+    <div id="footer">
+      <p>
+        Powered by <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </div>
+    <!-- /footer -->
+  </div>
+</body>
