@@ -88,6 +88,138 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1625916873.091300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625916873.091300">10日 20:34:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PF3M1PEW/p1625916873091300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://speakerdeck.com/uenitty/terrifying-nonfiction-of-modal'>https://speakerdeck.com/uenitty/terrifying-nonfiction-of-modal</a><br>いいはなし...?
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1625916873.091300">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://d1eu30co0ohy4w.cloudfront.net/assets/favicon-c0fe5475f88a65b817c8cc7c0fedc01b7acc17fe27628fa13ca3f96e56e16977.png" alt="Speaker Deck" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://speakerdeck.com/uenitty/terrifying-nonfiction-of-modal" target="_blank" rel="noopener noreferrer">本当にあったモーダルの怖い話 / Terrifying Nonfiction of Modal</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">ABEMA weber 勉強会 2021/06/30, 07/07 --- @uenitty 本当にあったモーダルの怖い話 ABEMA weber 勉強会 2021/06/30, 07/07 背景と目的 2 • モーダルに驚くほど苦しめられたので、状況を説明して改善方法を提案する • OOUIの特徴のうち「操作性 / 使いやすさ」についての説明はよく見かける ので、今回は「開発効率 / 作りやすさ」の方に重点を置いて説明する • 「モーダルの方が実装が楽なのかと思っていた」というデザイナーの声が あったので、職種関係なく理解してもらえるような説明を試みる 内容 3 • 前提の認識合わせ • 本当にあった話 • 改善に向けて 既存のUI設計 4 前提の認識合わせ 「手続き」を完了させたい 5 • ビジネス要求 • 重要な「手続き」は開始したら迷いなく完了してほしい • 手続きの例 • アカウント登録フロー • コンテンツ購入フロー 手続き開始の文脈を維持させる 6 • ユーザーが購入の意思を示したら 確実に購入してほしい • 「購入」文脈を維持させるために モーダルダイアログを利用 購入する 手続き開始の文脈を維持させる 7 • ユーザーが購入の意思を示したら 確実に購入してほしい • 「購入」文脈を維持させるために モーダルダイアログを利用 購入する キャンセル 認証してください パスワード 手数が最小になるように完了まで誘導する 8 ※ 実際はもっともっと複雑 購入する 登録する キャンセル アカウントを登録してください メールアドレス パスワード 購入する キャンセル 不足コインを購入してください 300 コイン クレジットカード番号 購入する キャンセル 購入する商品を選択してください 通常商品 特典付き商品 プレミアム会員限定商品 通常会員が プレミアム会員限定商品を選択した場合は プレミアム会員登録画面へ コインを消費して購入完了 コイン不足の場合 アカウント 未登録の 場合 コインを購入・消費して商品購入完了 現状のアーキテクチャ 9 前提の認識合わせ React + ローカルStateによる状態管理 10 • Container / Presentational コンポーネントは分離する • 状態管理は各Container コンポーネントの「ローカルState」 • グローバルな状態管理はせず、常に 親 / 祖先Containerコンポーネントの ローカルStateで管理、Props経由で やりとりする ※ 各ローカルStateはFluxの要素を6つに増やしたようなフローをそれぞれ構築して操作する <a href='https://techlog.voyagegroup.com/entry/2017/08/31/102915'>https://techlog.voyagegroup.com/entry/2017/08/31/102915</a> C P C C C C C P P P P P Containerコンポーネント Presentationalコンポーネント React + ローカルStateによる状態管理 11 • Container / Presentational コンポーネントは分離する • 状態管理は各Container コンポーネントの「ローカルState」 • グローバルな状態管理はせず、常に 親 / 祖先Containerコンポーネントの ローカルStateで管理、Props経由で やりとりする ※ 各ローカルStateはFluxの要素を6つに増やしたようなフローをそれぞれ構築して操作する <a href='https://techlog.voyagegroup.com/entry/2017/08/31/102915'>https://techlog.voyagegroup.com/entry/2017/08/31/102915</a> C P S S S S S S C C C C C P P P P P ローカルState React + ローカルStateによる状態管理 12 • Container / Presentational コンポーネントは分離する • 状態管理は各Container コンポーネントの「ローカルState」 • グローバルな状態管理はせず、常に 親 / 祖先Containerコンポーネントの ローカルStateで管理、Props経由で やりとりする ※ 各ローカルStateはFluxの要素を6つに増やしたようなフローをそれぞれ構築して操作する <a href='https://techlog.voyagegroup.com/entry/2017/08/31/102915'>https://techlog.voyagegroup.com/entry/2017/08/31/102915</a> C P S S S S S S C C C C C P P P P P モーダルダイアログを 閉じて！ isOpen = false close() たった1行の仕様書 13 本当にあった話 仕様書「登録ダイアログ内にリンクを追加」 14 • 新規登録フローからアカウント切り替えできるようにしたいとのこと • 瞬殺案件にも見える • 工数はどれくらいでしょう？ 登録する キャンセル アカウントを登録してください メールアドレス パスワード 登録する キャンセル アカウントを登録してください メールアドレス パスワード すでに登録済みの方はこちら リンクに見えているものは実はボタン 15 • ページ遷移とは違い、ダイアログからダイアログへの遷移は状態操作が必要 • Clickイベントを検知する「ボタン」と「状態操作」を実装する • 戻るボタンやキャンセルボタンも同様 切り替える キャンセル アカウント切り替え メールアドレス パスワード パスワードが分からない方はこちら 登録する キャンセル アカウントを登録してください メールアドレス パスワード すでに登録済みの方はこちら isSigninDialogOpen = false isLoginDialogOpen = true openLoginFromSignin() ボタンの実装コストは軽くない 16 • 「状態操作」はダイアログと離れた 親 / 祖先コンポーネントに局所的に 実装するルール • ボタンの数だけ一連の実装が必要 • 手続きの起点≒ページが違えば 親 / 祖先コンポーネントも違うので、 それぞれで一連の実装が必要 ※ たくさんのダイアログを表示し得る親 / 祖先コンポーネントほど巨大なローカルStateとそれぞれの処理方法を保有することになる C P S S S S S S C C C C C P P P P P モーダルダイアログを 閉じて！ isOpen = false close() 関連する手続きが把握しきれない 17 • アカウント登録ダイアログが登場する手続き • アカウント登録フロー（起点は1箇所） • プレミアム会員登録フロー（起点は2箇所） • クーポン適用フロー（起点は2箇所） • コイン購入フロー（起点は5箇所） • ダイアログは手続きを進めないと登場しない ため、直感的に影響範囲を把握できない ※ 頑張って書き出してみたが考慮漏れや間違いがある気がしてならない 登録する キャンセル アカウントを登録してください メールアドレス パスワード すでに登録済みの方はこちら 同じダイアログに至る別ルートが生まれる 18 ※ 元々両方の手続きの起点があったページではこのような現象が起こる。よく見ると戻るボタンの有無が違う 切り替える 登録する アカウント管理 切り替える キャンセル アカウント切り替え メールアドレス パスワード パスワードが分からない方はこちら ニックネーム 登録する キャンセル アカウントを登録してください メールアドレス パスワード 同じダイアログに至る別ルートが生まれる 19 ※ 元々両方の手続きの起点があったページではこのような現象が起こる。よく見ると戻るボタンの有無が違う 切り替える 登録する キャンセル アカウントを登録してください メールアドレス パスワード すでに登録済みの方はこちら 登録する 切り替える キャンセル アカウント切り替え メールアドレス パスワード パスワードが分からない方はこちら アカウント管理 切り替える キャンセル アカウント切り替え メールアドレス パスワード パスワードが分からない方はこちら ニックネーム 見た目は同じでも「状態操作」の実装は別 20 ※ 手続きでは前段の操作によって後段の操作の「意味」が変わるため、どの「状態操作」も共通化はできない。説明や矢印を省いている他のボタンも同様 切り替える 登録する キャンセル アカウントを登録してください メールアドレス パスワード すでに登録済みの方はこちら 登録する 切り替える キャンセル アカウント切り替え メールアドレス パスワード パスワードが分からない方はこちら アカウント管理 切り替える キャンセル アカウント切り替え メールアドレス パスワード パスワードが分からない方はこちら isSigninDialogOpen = true openSignin() isLoginDialogOpen = true openLogin() openLoginFromSignin() ニックネーム isSigninDialogOpen = false isLoginDialogOpen = true 気付いたら工数が膨大になっていた 21 • 最初は工数が小さく見えていた • 作業中に影響範囲の広さが見え始め、考慮漏れが発覚し続けた • いつまでも工数見積もりの修正が続いた テストケースも膨大になった 22 • テストケースは「手続きの起点」と「条件分岐」の組み合わせ（掛け算） • すべてのケースをテストすることなど到底できない • QAチームと相談し、省略できそうな箇所を必死に探した 大幅に遅延してリリース 23 • 当初の予定から大幅に遅延しつつもなんとか実装とテストを完了 • リリース後もみんなで本番環境を確認したが、正しく動いてそう 3ヶ月後、致命的なバグが「偶然」発覚 24 • 今回追加したダイアログを経由するとコイン購入が失敗するバグ • 今回の実装者が全く別の案件でコードを確認中に実装ミスを偶然発見 • 3ヶ月間、他のメンバーは誰も気付かず、ユーザーからの問い合わせもなし • 誰もそのルートを通らなかった…？ • というかテストしていなかった…？ 手続き全体はテストしていなかった 25 • 「アカウントが切り替わるか」をテストしていたので、誰もコイン購入を 完了していなかった • そもそもテストケースを必死に省略していた • バグ修正も再テストも数日かかり、かなり大変だった • コイン購入フローの起点は5箇所ある • 結局17ファイルも変更した 26 • たった1行の仕様書だったのに… 問題の振り返り 27 改善に向けて 1. 影響範囲を直感的に把握できない 28 • 最初は工数が小さく見えていた。仕様書も1行で済むと思っていた • 作業中に影響範囲の広さが見え始め、最後まで考慮漏れが発覚し続けた • 実は必要だったテストケースも気付かず省略してしまった 2. 工数が膨大になる 29 • ボタンの数だけ「状態操作」の実装が必要だった • 手続きの起点≒ページが違えば親 / 祖先コンポーネントも違うので、 それぞれで「状態操作」の実装が必要だった • 手続きでは前段の操作や文脈によって後段の操作の「意味」が変わるため、 どの「状態操作」の実装も共通化できなかった 根本改善の鍵「モード」 30 改善に向けて モードとは 31 • Oxford Learner&#39;s Dictionaries「mode」 • 何かをするための特定の方法。何かの特定の型、様式 • Wikipedia「Mode (user interface)」 • 同じ入力でも他の設定の場合とは異なる結果を生じる設定のこと • モードがある = モーダル • モードがない = モードレス 食事におけるモード 32 • コース料理（モーダル） • 食べる順番も、使うカトラリーも決められている • シェフの構築したモードに従って食べれば、素晴らしい体験ができる • お弁当（モードレス） • 食べる順番は自由 • いつ、どこで食べるかさえ自分で決められる 参考 : <a href='https://note.com/nikonote/n/nc28fd9ac675b'>https://note.com/nikonote/n/nc28fd9ac675b</a> 移動におけるモード 33 • 電車（モーダル） • 最初に選択肢の中から目的地を選べば確実に目的地に到着する • 途中で道を変更することはできない • 自動車（モードレス） • どの道を通っても良く、途中で寄り道や目的地の変更ができる • 自分で運転する必要があり、目的地の位置も把握する必要がある 参考 : <a href='https://note.com/nikonote/n/nc28fd9ac675b'>https://note.com/nikonote/n/nc28fd9ac675b</a> UIにおけるモード 34 • ターミナル、タスク指向UI（モーダル） • 正確にコマンドを入力できれば、手作業では成し得ない成果が得られる • 事前知識が必要で、入力ミスは実行するまでわからない • GUI、オブジェクト指向UI（モードレス） • 事前知識が不要で、見たまま自由に操作できる • 手数だけを見ると比較的多くなることはあるが、操作対象が明確なため 納得感がある モーダルなものの特徴 35 • 誰か / 何かと「協力」するような構図がある • 事前知識をベースに言葉でコミュニケーションを取る必要がある • 少し未来の時間について計画を立てる必要がある • モードエラーがある • コース料理で三角食べはできないし、電車は乗り過ごしても戻ってくれない • 計画を立てている以上、その通りにならない場合はすべてエラー モードレスにすると起こること 36 • 誰か / 何かの制約を受けなくなる • 過去の計画や想定に左右されない • 今すべきこと、今やりたいことをシンプルに実現できる • モードエラーだったものは単なる試行錯誤の一環になる • 計画がないため、どんな行動も常に肯定される • 未来を想定しないため、不確実性に柔軟に対応できる ※ 過去現在未来に言及している通り、モードレスにすると時間の次元を意識する必要がなくなる。次元が減ると物事は一気にシンプルになる 問題の振り返り（モード観点） 37 改善に向けて 1. 影響範囲を直感的に把握できない 38 • 手続きの計画 / 想定が複雑で巨大 • モーダルなままモードエラーを減らそうとして、 大量のユースケースに力技で対応してきた結果 • すぐには可視化できない、しても一瞬で陳腐化する • ユースケースは増えやすく変わりやすい ※ ユースケースの多様性は、動物が持つクリエイティビティ チームでいくつかの手続きを可視化してみた図 速度優先で一部省略するも一週間ほどかかった なおすでに陳腐化済み 2. 工数が膨大になる 39 • アーキテクチャがモーダルなため、 モードエラーが起きている • もし でもダイアログを表示する 予定があると事前に聞いていたら 最初から で「状態操作」を 実装していたのでは？ • ダイアログに限らず、このような アーキテクチャでは変更の度に 過去の想定外に工数を奪われる C P S S S S S S C C C C C P P P P P モーダルダイアログを 閉じて！ isOpen = false close() 具体的な改善方法 40 改善に向けて ユーザーの意思を原動力にしようと考える 41 • ビジネス要求（再掲） • 重要な「手続き」は開始したら迷いなく完了してほしい • そもそも と同時に、ユーザー自身も手続きを完了したいと思っているはず • 文脈を維持させたりして行動を強制（モードで縛ろうと）しなくても、 ユーザーは自分の意思を原動力にやりたいことを完遂できる • 後者に寄せることで、システムのユースケースの複雑性だったものを ユーザーの行動パターンの多様性に変換できる ※ ユーザーは自由になり、システムはスリムになる 手続きはオブジェクト化する 42 • 手続きはオブジェクト化（≒ 名詞化）することでモードレスにできる • オブジェクト：行動を促すような「目当て」、操作の「対象」 • 購入手続きの場合 • 「購入する」という手続き全体で考える • 「購入」オブジェクト≒「カート」オブジェクトを見出す • 「カートに入れる」は1回の操作で即完了するため、ユーザーは即座に モードから開放される。実装もシンプル オブジェクト指向UIにする 43 • オブジェクト指向UI（OOUI） • オブジェクト（操作対象、目当て）を 前面に出したUI • 「オブジェクト選択 アクション選択」 （名詞 動詞）の操作順序 • 操作結果はオブジェクトの変化として 常に（モードレスに）知覚できるよう にする ※ OOUI本 : <a href='https://www.sociomedia.co.jp/10046'>https://www.sociomedia.co.jp/10046</a> <a href='https://nr.apple.com/dm4W2d2R1c'>https://nr.apple.com/dm4W2d2R1c</a> オブジェクトはグラフ構造で捉える 44 • オブジェクトに普遍的な上下関係はない • グラフ構造としてフラットに捉える • コンポーネントの木構造とは切り離す • いつでもどこからでも（モードレスに） オブジェクトにアクセスできるようにする • ReduxやRecoilなど、グローバルかつ シングルトンなデータストアを採用する ※ オブジェクトに上下関係を見出す行為は、オブジェクト指向存在論における「下方解体」や「上方解体」に当たる <a href='https://youtu.be/_ISAA_Jt9kI'>https://youtu.be/_ISAA_Jt9kI</a> t=450 宣言的に実装する 45 • 「宣言する」というアクションは極小時間で完了する（モードレス） • 宣言を繰り返すように実装することで、多様な変化をシンプルに表現できる • CPUはクロックの周期でメモリに対する宣言を繰り返す • ReactはFiberのタイミングでDOMに対する宣言を繰り返す • ReduxはDispatchの度にStoreに対する宣言を繰り返す ※ アナログ デジタルの技術革新は、モーダル モードレスによる表現力の革新といえる まとめ 46 本当にあったモーダルの怖い話 モーダルに驚くほど苦しめられた 47 • PMは1行の仕様書を書いた • デザイナーは既存UIを一部調整した（戻るボタンの追加など） • エンジニアが実装時にとてつもなく苦しみ、QAチームも大変な思いをした 問題の外に出て問題を分析した 48 • 実装時の問題を実装だけの問題として処理せず、ビジネス要求やUI設計を 含めて問題を分析した • 実装の設計手法やアーキテクチャしか考えない視座では問題は解決しない • 問題を問題たらしめている「前提」を問い直すこと 参考 : <a href='https://twitter.com/manabuueno/status/1397572020137644034'>https://twitter.com/manabuueno/status/1397572020137644034</a> 具体的な改善方法を提案した 49 • ユーザーの意思を原動力にしようと考える • 手続きはオブジェクト化する • オブジェクト指向UIにする • オブジェクトはグラフ構造で捉える • 宣言的に実装する 変えていきましょう！ 50 • OOUI…</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625916950.091800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1625916950.091800">10日 20:35:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PF3M1PEW/p1625916950091800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                モーダルをやるのはもうだるいって？
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="tomoya, peacock, monaqa, YABUKI Yukiharu">
+                              <img class="slacklog-emoji" alt="dajare" title="dajare" src="/slacklog/emojis/dajare.png"><span class="ml-1">4</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625918235.093100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625918235.093100">10日 20:57:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PF3M1PEW/p1625918235093100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                人間はシナリオを作りたいし、ソフトは(比較するなら)宣言的にいきたいのアンマッチもあるんだろうなあ<br>(素朴に順序書きできてコーディングできるとラクだしな...)
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <img class="slacklog-emoji" alt="tashikani" title="tashikani" src="/slacklog/emojis/tashikani.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625923111.094900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-24/1769267615079_a3a2d7805a5d0be059df_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tomoya</span>
+              <a href="#ts-1625923111.094900">10日 22:18:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PF3M1PEW/p1625923111094900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なぜかダイアログに色々と夢を詰め込んじゃう人がたまにいるんですよね。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="emtee">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

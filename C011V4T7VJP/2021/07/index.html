@@ -328,6 +328,1275 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1625851107.490300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1625851107.490300">10日 02:18:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625851107490300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                デフォルトでは<code>gh issue</code> とか <code>gh pr</code> とかすると <code>--help</code> が起動するところを <code>gh issue list | fzf ...</code>な感じにしてみました。エイリアス・関数対策で  <code>/bin/grep</code>ってしてるところあるんですけど、安全に呼ぶ方法ってこれでいいんですかね……？
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F027ZUFAC57/%E7%84%A1%E9%A1%8C.sh" target="_blank" rel="noopener noreferrer">
+                  <span class="f5">[[ダウンロード: 無題(Shell)]]</span>
+                  </a>
+                  <pre><code class='language-shell'>function gh-fzf() {
+  subcommand=&#34;$1&#34;
+  shift
+  local GH=&#34;$(command -vp gh)&#34;
+  $GH $subcommand list &#34;$@&#34; \
+    | fzf --preview &#34;echo {} | sed -E &#39;s/\s.*//&#39; | xargs $GH $subcommand view&#34; \
+    | sed -E &#39;s/\s.*//&#39;  \
+    | xargs $GH $subcommand view --web
+}
+
+function gh-wrapper() {
+  if [[ $# == 1 ]]; then
+    gh-fzf &#34;$@&#34;
+  elif [[ &#34;$2&#34; == &#34;--help&#34; ]]; then
+    command gh &#34;$@&#34;
+  elif [[ &#34;$2&#34; =~ ^-.* ]] ; then
+    gh-fzf &#34;$@&#34;
+  else
+    command gh &#34;$@&#34; 
+  fi
+}
+
+function gh() {
+  local listable=&#34;gist\nissue\npr\nrelease\nrepo\nactions\nrun\nworkflow&#34;
+  if echo -e &#34;$listable&#34; | /bin/grep -P &#34;^${1}$&#34;; then
+    gh-wrapper &#34;$@&#34;
+  else
+    command gh &#34;$@&#34;
+  fi
+}
+
+</code></pre>
+                </div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">2 件の返信 最終返信:21:59:36 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1625917839.025400">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">atusy</span>
+                      <a href="#ts-1625917839.025400">10日 20:50:39</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      更に機能強化してzshパッケージ化しました。bashでも利用可能です。<br><pre>ghf repo # repo一覧をfzf --previewして確定したらブラウザで開く<br>ghf repo fzf | ghf repo clone # fzf した結果を元にクローン</pre><br>など。repo以外にも<code>list</code>サブサブコマンドのあるサブコマンドほとんどに対応しているはず。<br>まだ追加したい機能もありますが、とりあえずは動画GIF作ってBlogにせねば。<br><a href='https://github.com/atusy/gh-fzf'>https://github.com/atusy/gh-fzf</a>
+                    </div>
+                      
+    <div class="d-flex">
+        <div>atusy/gh-fzf</div>
+    </div>
+
+                  </div>
+                  <div class="p-2" id="ts-1625921976.027300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Milly</span>
+                      <a href="#ts-1625921976.027300">10日 21:59:36</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <a href='https://github.com/atusy/gh-fzf/blob/master/ghf.bash#L38'>https://github.com/atusy/gh-fzf/blob/master/ghf.bash#L38</a><br>ここだけ <code>[[</code> じゃないですね。
+                    </div>
+                      
+    <div class="d-flex">
+        <div>&lt;https://github.com/atusy/gh-fzf/blob/master/ghf.bash | ghf.bash&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>  if [ -p /dev/stdin ]; then<br></pre></div>
+      </div>
+
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625851610.491700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1625851610.491700">10日 02:26:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625851610491700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                bash, zsh なら <code>command grep</code> ですかね、もちろん <code>/bin/grep</code>  でもいいんですけど。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625851950.493300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1625851950.493300">10日 02:32:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625851950493300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、たしかに。ありがとうございます。こういうのって徹底的にcommand fooってしちゃうのが安全でいいんですかね……？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625851980.493700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1625851980.493700">10日 02:33:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625851980493700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vim で noremap 使うくらいの気分で使っていいんじゃないですかね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625852005.494300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1625852005.494300">10日 02:33:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625852005494300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほどです！ありがとうございます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625852009.494500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1625852009.494500">10日 02:33:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625852009494500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                よくみたらすでに↑のスクリプトでちゃんと使われてますね <code>gh</code> がかぶってるから
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625852032.495100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1625852032.495100">10日 02:33:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625852032495100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですね。なんかどっちつかずになってました(笑)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625852327.496500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1625852327.496500">10日 02:38:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625852327496500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                local $GH は不要じゃないでしょうか。<br>xargs は実コマンドしか呼べないわけですし。<br><pre>command gh &#34;$subcommand&#34; list &#34;$@&#34; \<br>    | fzf --preview &#34;echo {} | sed -E &#39;s/\s.*//&#39; | xargs gh $subcommand view&#34; \<br>    | sed -E &#39;s/\s.*//&#39;  \<br>    | xargs gh $subcommand view --web</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625873472.497400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1625873472.497400">10日 08:31:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625873472497400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                おお、またまたありがとございます。xargsのことよくわかってませんでした
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877114.498400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625877114.498400">10日 09:31:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877114498400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                gitのinsteadOfをOrganizationのみに適応するとかできないですかね?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877225.000300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625877225.000300">10日 09:33:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877225000300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                • デフォルトはHTTPSにしておきたい<br>• HTTPSだとプライベートリポジトリなどはユーザー名を求められるので面倒<br>• プライベート・OrganizationのみSSHでcloneしたい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877233.000600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625877233.000600">10日 09:33:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877233000600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                こんな感じです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877396.001100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625877396.001100">10日 09:36:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877396001100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                デフォルトを HTTPS にしておきたいのはなんででしょう?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877458.001700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877458.001700">10日 09:37:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877458001700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                たとえばプライベートはこれして対応してる<br><pre>[url &#34;git@github.com:tsuyoshicho/&#34;]<br>	pushInsteadOf = &lt;https://github.com/tsuyoshicho/&gt;<br>	pushInsteadOf = &lt;git://github.com/tsuyoshicho/&gt;<br>	pushInsteadOf = &lt;https://tsuyoshicho@github.com/tsuyoshicho/&gt;<br>	pushInsteadOf = &lt;git://tsuyoshicho@github.com/tsuyoshicho/&gt;</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877480.002500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877480.002500">10日 09:38:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877480002500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                globalなinsteadofと組み合せればいいかなと
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877538.004400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877538.004400">10日 09:38:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877538004400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                全体の設定どこだっけ...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877551.004800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625877551.004800">10日 09:39:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877551004800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                PRださない単純にコードを読みたいみたいなリポジトリのときにいちいち認証するのが手間っていうのが理由ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877556.005100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877556.005100">10日 09:39:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877556005100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                HTTPSをgithubが推奨し、性能もいいらしい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877559.005200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625877559.005200">10日 09:39:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877559005200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                たとえば、OSSリポジトリをクローンするとき、HTTPSだと認証なしでいけるので
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877617.005700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625877617.005700">10日 09:40:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877617005700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー鍵にパスフレーズ付けてるのか。なるほど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877751.007600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877751.007600">10日 09:42:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877751007600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                設定なかった、https/sshを取りわけてたw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877798.008700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625877798.008700">10日 09:43:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877798008700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                みなさん鍵にパスフレーズつけてないんですか?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877800.008800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877800.008800">10日 09:43:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877800008800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                orgもやってたな<br>設定をこまかくやることで、うまく対応はできる(面倒)ってところかなあ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877806.009000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877806.009000">10日 09:43:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877806009000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                付けてますね  &gt; 鍵
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877846.010800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877846.010800">10日 09:44:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877846010800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                プライベートとかをhttps cloneだと認証が必要になるし<br>GitHubの素でやるのでいいんじゃないかなーと思った。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877862.011300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625877862.011300">10日 09:44:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877862011300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>pushInsteadOf</code> やっておけば、clone は常に https でも push 時は ssh とかにできるのかな。一括でできる?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877888.012500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877888.012500">10日 09:44:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877888012500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                できます、うまくマッチする文字列きめれば
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877904.013100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625877904.013100">10日 09:45:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877904013100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ああ、private は clone も ssh じゃないとダメか。まあでも初回だけだし直指定してしまえばいい気も?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877928.013700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625877928.013700">10日 09:45:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877928013700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                HTTPSだとアカウント情報を聞かれるので、それよりはSSHのパスフレーズのほうが覚えてるのでラクなんですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877938.014200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877938.014200">10日 09:45:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877938014200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですねえ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877951.014900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625877951.014900">10日 09:45:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877951014900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre># プロトコルリプレース<br># 443直しかできない(sshポートが死んでいる)なら<br># [url &#34;&lt;mailto:git@ssh.github.com|git@ssh.github.com&gt;:&#34;]<br># 	insteadOf = &lt;mailto:git@github.com|git@github.com&gt;:<br># 	insteadOf = &lt;git://github.com/&gt;<br># [url &#34;&lt;mailto:git@altssh.gitlab.com|git@altssh.gitlab.com&gt;:&#34;]<br># 	insteadOf = &lt;mailto:git@gitlab.com|git@gitlab.com&gt;:<br># 	insteadOf = &lt;git://gitlab.com/&gt;<br># [url &#34;&lt;mailto:git@altssh.bitbucket.org|git@altssh.bitbucket.org&gt;:&#34;]<br># 	insteadOf = &lt;mailto:git@bitbucket.org|git@bitbucket.org&gt;:<br># 	insteadOf = &lt;git://bitbucket.org/&gt;</pre><br>とかも準備はしている
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877956.015200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625877956.015200">10日 09:45:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877956015200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まぁ、ghqさほど必要としてないから見送るかなぁ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625877992.015600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625877992.015600">10日 09:46:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625877992015600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                鍵は几帳面な人はパスフレーズ付けてる印象。やってる人はだいたい daemon 使ってる気がする
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878016.016400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625878016.016400">10日 09:46:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878016016400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ssh-agentに覚えさせますが、パスフレーズはあるし時間でexpireしますからまあまあ必要
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878032.016800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625878032.016800">10日 09:47:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878032016800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                (と設定している、というべきか)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878040.017200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625878040.017200">10日 09:47:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878040017200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                私は、private 鍵が人に取られるような状況になった時点で鍵どころじゃなくあらゆる情報が取られるし手遅れでしょ、って考えで割り切って利便性のためにパスフレーズは設定していない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878042.017300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625878042.017300">10日 09:47:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878042017300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ssh-agentしらないやつだ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878097.018200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625878097.018200">10日 09:48:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878097018200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                例えばマシンに侵入されてキーロガーでも仕込まれてたらいくらパスフレーズあっても意味ないし
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878152.019600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625878152.019600">10日 09:49:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878152019600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                鍵のファイルだけ何かしらの理由で流出みたいなシナリオもあるので無意味とは言わないですが、私はそれより利便性を取ったって感じですねぇ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878181.020100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625878181.020100">10日 09:49:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878181020100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                オンメモリにプロセスだけ侵入してる状態だとssh-agentのメモリ上のが取れることがあるので、まあそれ対策ですが...<br>キーロガーとかが仕込めるかは権限によるからちょっとだけ意味あるかなと...まあ自分のアカウント的になった時点でファイル取れちゃうからばればれなのはありますか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878216.020500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625878216.020500">10日 09:50:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878216020500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                chrootしてればファイル取れないはあるけど、古風だなw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878248.021100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625878248.021100">10日 09:50:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878248021100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                私の場合、サーバの監視とかもろくにできていないので単にセキュリティ的にちゃんとしていないだけと言われるとそれはそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878342.021400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625878342.021400">10日 09:52:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878342021400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ssh-agent便利だ!
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878360.021800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625878360.021800">10日 09:52:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878360021800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                パスフレーズ入力する必要なくなるんだ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878374.022100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625878374.022100">10日 09:52:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878374022100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                expire を 10 年くらいにしよう！
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="emtee">
+                              <img class="slacklog-emoji" alt="fuita" title="fuita" src="/slacklog/emojis/fuita.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878408.022400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625878408.022400">10日 09:53:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878408022400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                expire設定してないな多分
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878539.022900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625878539.022900">10日 09:55:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878539022900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分はssh-agentというかgpg-agentだけど時間として30minたったらexpireしてるかな
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="YABUKI Yukiharu">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878580.023300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1625878580.023300">10日 09:56:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878580023300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                その辺り詳しくないから教えていただきたい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625878810.023500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625878810.023500">10日 10:00:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625878810023500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そして <a href='/slacklog/CTHMGMNNS/'>#tech-security</a> へ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625893822.025300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1625893822.025300">10日 14:10:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625893822025300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ghでログインしてるとgit操作もいい感じにその認証情報を使ってくれたような
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625917839.025400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1625917839.025400">10日 20:50:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625917839025400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                更に機能強化してzshパッケージ化しました。bashでも利用可能です。<br><pre>ghf repo # repo一覧をfzf --previewして確定したらブラウザで開く<br>ghf repo fzf | ghf repo clone # fzf した結果を元にクローン</pre><br>など。repo以外にも<code>list</code>サブサブコマンドのあるサブコマンドほとんどに対応しているはず。<br>まだ追加したい機能もありますが、とりあえずは動画GIF作ってBlogにせねば。<br><a href='https://github.com/atusy/gh-fzf'>https://github.com/atusy/gh-fzf</a>
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1625851107.490300">デフォルトでは`gh issue` とか ...</a>
+            </span>
+            <div class="mt-2 border p-2" id="ts-1625917839.025400">
+              
+    <div class="d-flex">
+        <div>atusy/gh-fzf</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625917886.026400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1625917886.026400">10日 20:51:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1625917886026400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                @Milly 助言めっちゃありがたかったです！ありがとうございます。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Milly">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
