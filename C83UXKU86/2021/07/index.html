@@ -1163,6 +1163,148 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1625931927.183200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1625931927.183200">11日 00:45:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1625931927183200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/vim/vim/pull/8299'>https://github.com/vim/vim/pull/8299</a> これ入ると嬉しいけど、テスト結構落ちちゃってますね
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1625931927.183200">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim/vim/pull/8299|#8299 Fix and Proposal: buffer name scheme part adjust RFC3986 like rule&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Problem*<br><br>Currently scheme check is not support symbol char <code>.</code>, <code>+</code> and <code>-</code><br><br>*Solution*<br><br>This PR is fix above problem under RFC 3986 like scheme rule.  <br>ref : <a href='https://datatracker.ietf.org/doc/html/rfc3986#section-3.1'>rfc3986</a><br><br>*Details*<br>old suggest Scheme is defined in RFC 1738 and successor RFC 3986 (supplement RFC 2234)<br><br>RFC 1738 rule:<br><br><pre><br>scheme = 1*[ lowalpha | digit | &#34;+&#34; | &#34;-&#34; | &#34;.&#34; ]<br><br></pre><br><br>RFC 3986 rule:<br><br><pre><br>scheme      = ALPHA *( ALPHA / DIGIT / &#34;+&#34; / &#34;-&#34; / &#34;.&#34; )<br><br></pre><br><br>* * *<br><br>This PR based on RFC 3986.<br><br>new suggest<br><br>Add support <code>-</code> in scheme string (start and end do not support).<br><br>*Test*<br><br>Later<br><br>related issue : <a href='https://github.com/vim-jp/issues/issues/1341'>vim-jp/issues#1341</a></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625957709.184400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625957709.184400">11日 07:55:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1625957709184400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これ、シンプル化しすぎてる気がしてます。<br>結局、「WindowsでしかURL schemeにしたときに変換しない」にならないのは変らないんじゃないんかなと...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625957762.185300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625957762.185300">11日 07:56:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1625957762185300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんか条件の理解共有に齟齬がある気がするんですよね(でも英語力もあってすすめられてない)<br>だれかのコメント援護がちょっとほしい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625957930.185900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625957930.185900">11日 07:58:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1625957930185900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                テスト対象はWindowsだけに一旦しておこ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625958370.186400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625958370.186400">11日 08:06:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1625958370186400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                修正過不足があればその指摘もおねがいします
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1625960393.186700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1625960393.186700">11日 08:39:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1625960393186700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                どっちかというとテストの、でしょうか...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
