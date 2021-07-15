@@ -551,6 +551,147 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1626346905.125100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1626346905.125100">15日 20:01:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626346905125100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すいません、また変な質問なのですが、、<br><pre>data = [<br>    [&#39;item-1&#39;, &#39;prop-1&#39;, 100],<br>    [&#39;item-2&#39;, &#39;prop-2&#39;, 100],<br>    [&#39;item-3&#39;, &#39;prop-3&#39;, 100],<br>    [&#39;item-4&#39;, &#39;prop-4&#39;, 100],<br>    [&#39;item-5&#39;, &#39;prop-5&#39;, 100],<br>]</pre><br>というデータがあって、(アイテム名、属性、全体件数(全ての要素で同じ値))<br><pre>{<br>    &#39;data&#39;: [<br>        {&#39;name&#39;: &#39;item-1&#39;, &#39;prop&#39;: &#39;prop-1&#39;},<br>        {&#39;name&#39;: &#39;item-2&#39;, &#39;prop&#39;: &#39;prop-2&#39;},<br>        {&#39;name&#39;: &#39;item-3&#39;, &#39;prop&#39;: &#39;prop-3&#39;},<br>        {&#39;name&#39;: &#39;item-4&#39;, &#39;prop&#39;: &#39;prop-4&#39;},<br>        {&#39;name&#39;: &#39;item-5&#39;, &#39;prop&#39;: &#39;prop-5&#39;},<br>    ]<br>    &#39;total&#39;: 100<br>}</pre><br>これを作りたいです。<br><br>dataがこの例の様に単に辞書のリストならこう書けるのですが、<br><pre>{<br>    &#39;data&#39;: [{&#39;name&#39;: elm[0], &#39;prop&#39;: elm[1]} for elm in data],<br>    &#39;total&#39;: data[0][2]<br>}</pre><br>実際には <code>data</code> のところはジェネレータで <code>data[0][2]</code> のようなアクセスはできません。<br>できれば内包表記でしゅっと作りたいのですが、やはりforで回してappendするしかないでしょうか。。？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626347349.125700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626347349.125700">15日 20:09:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626347349125700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                つ<br><pre>data = [<br>    [&#39;item-1&#39;, &#39;prop-1&#39;, 100],<br>    [&#39;item-2&#39;, &#39;prop-2&#39;, 100],<br>    [&#39;item-3&#39;, &#39;prop-3&#39;, 100],<br>    [&#39;item-4&#39;, &#39;prop-4&#39;, 100],<br>    [&#39;item-5&#39;, &#39;prop-5&#39;, 100],<br>]<br>data_list = [dict(zip((&#39;name&#39;, &#39;prop&#39;, &#39;total&#39;), d)) for d in data]<br>total = [d.pop(&#39;total&#39;) for d in data_list][0]<br>dict(data=data_list, total=total)</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626347558.126900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1626347558.126900">15日 20:12:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626347558126900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>-dict(data=data, total=total)<br>+dict(data=data_list, total=total)</pre><br>かな？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626347573.127100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626347573.127100">15日 20:12:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626347573127100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626347625.127600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626347625.127600">15日 20:13:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626347625127600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>total</code>をリストから出すのが嫌な場合は行数増えるけど<br><pre>total = data_list[0].pop(&#39;total&#39;)<br>for d in data_list[1:]:<br>    del d[&#39;total&#39;]</pre><br>ですかねえ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626347643.127800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1626347643.127800">15日 20:14:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626347643127800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あーなるほど! 全部の要素で一回dictを作ればいいんですね。それはたしかに。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="atusy">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
