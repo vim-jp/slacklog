@@ -15891,6 +15891,439 @@ for (var i = 0; i &lt; a.length; i++) {
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1626827677.184400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1626827677.184400">21日 09:34:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827677184400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                jest で書かれたテストを ts に移行する作業をしていたらわからんエラーが出て、ググったら ts-jest の issue がヒットしたのだけどページが一切開けない…<br><a href='https://github.com/kulshekhar/ts-jest/issues/2407'>https://github.com/kulshekhar/ts-jest/issues/2407</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1626827677.184400">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/kulshekhar/ts-jest/issues/2407|#2407 Unable to process file. Please make sure that `outDir` in your tsconfig is neither `&#39;&#39;` or `&#39;.&#39;`.&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*🐛 Bug Report*<br><br>I am getting this error when I configure ts-jest to process a ESM module with the .js extension.<br><br><pre><br>    Unable to process &#39;/Users/newuser/forks/aws-mobile-appsync-sdk-js/packages/aws-appsync/node_modules/@apollo/client/utilities/utilities.cjs.js&#39;. Please make sure that `outDir` in your tsconfig is neither `&#39;&#39;` or `&#39;.&#39;`.<br><br>      at compileFn (../../node_modules/ts-jest/dist/compiler/language-service.js:508:15)<br>      at Object.compile (../../node_modules/ts-jest/dist/compiler/instance.js:39:21)<br>      at TsJestTransformer.process (../../node_modules/ts-jest/dist/ts-jest-transformer.js:85:41)<br>      at ScriptTransformer.transformSource (../../node_modules/@jest/transform/build/ScriptTransformer.js:464:35)<br>      at ScriptTransformer._transformAndBuildScript (../../node_modules/@jest/transform/build/ScriptTransformer.js:569:40)<br>      at ScriptTransformer.transform (../../node_modules/@jest/transform/build/ScriptTransformer.js:607:25)<br><br></pre><br><br>*To Reproduce*<br><br>Steps to reproduce the behavior:<br><br>This is my <code>jest.config.js</code> file<br><br><pre><br>const esModules = [&#39;@apollo/.*&#39;].join(&#39;|&#39;);<br><br>module.exports = {<br>  transform: {<br>    &#39;^.+\\.tsx?$&#39;: &#39;ts-jest&#39;,<br>    &#39;^.+\\.jsx?$&#39;: &#39;ts-jest&#39;,<br>  },<br>  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],<br>  testRegex: &#39;(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$&#39;,<br>  collectCoverageFrom: [&#39;src/**/*&#39;, &#39;!src/vendor/**&#39;],<br>  moduleFileExtensions: [&#39;ts&#39;, &#39;tsx&#39;, &#39;js&#39;, &#39;jsx&#39;, &#39;json&#39;, &#39;node&#39;],<br>  testEnvironment: &#39;node&#39;,<br>  preset: &#39;ts-jest/presets/js-with-ts&#39;,<br>  globals: {<br>    &#39;ts-jest&#39;: {<br>      tsconfig: &#39;tsconfig.test.json&#39;,<br>    },<br>  },<br>};<br></pre><br><br>And my <code>tsconfig.test.json</code> file:<br><br><pre><br>{<br>  &#34;compilerOptions&#34;: {<br>    &#34;outDir&#34;: &#34;lib&#34;,<br>    &#34;rootDir&#34;: &#34;src&#34;,<br>    &#34;module&#34;: &#34;commonjs&#34;,<br>    &#34;target&#34;: &#34;es5&#34;,<br>    &#34;moduleResolution&#34;: &#34;node&#34;,<br>    &#34;declaration&#34;: true,<br>    &#34;lib&#34;: [&#34;dom&#34;, &#34;es6&#34;,  &#34;esnext.asynciterable&#34;, &#34;es2017.object&#34;],<br>    &#34;skipLibCheck&#34;: true,<br>   &#34;allowJs&#34;: true<br>  },<br>  &#34;exclude&#34;: [&#34;lib&#34;, &#34;__tests__&#34;],<br>  &#34;compileOnSave&#34;: true<br>}<br><br></pre><br><br>*Expected behavior*<br><br>I expect the file to compile.<br><br>Here is the repo. Use yarn to install the dependencies and run the tests under <code>packages/aws-appsync</code><br><br><a href='https://github.com/volkanunsal/aws-mobile-appsync-sdk-js'>https://github.com/volkanunsal/aws-mobile-appsync-sdk-js</a><br><br>*envinfo*<br><br><pre><br>System:<br>    OS: Mac<br>    Node version: 15.4<br><br>Npm packages:<br>    jest: 26.6.3<br>    ts-jest: 26.5<br>    typescript: 4.2.2<br>    babel(optional): 7.13.1<br><br></pre><br><br>TS_JEST_LOG:<br><br>It gets cut off. So I&#39;m copying the last line, which seems to be the most relevant.<br><br><pre><br>{&#34;context&#34;:{&#34;fileName&#34;:&#34;/Users/newuser/forks/aws-mobile-appsync-sdk-js/packages/aws-appsync/node_modules/@apollo/client/utilities/utilities.cjs.js&#34;,&#34;logLevel&#34;:20,&#34;namespace&#34;:&#34;ts-compiler&#34;,&#34;package&#34;:&#34;ts-jest&#34;,&#34;version&#34;:&#34;26.5.2&#34;},&#34;message&#34;:&#34;compileFn(): computing diagnostics using language service&#34;,&#34;sequence&#34;:2142,&#34;time&#34;:&#34;2021-02-27T20:34:09.856Z&#34;}<br><br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827718.184700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1626827718.184700">21日 09:35:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827718184700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                展開はできるんだ…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827746.184900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1626827746.184900">21日 09:35:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827746184900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ユニコーンがでますね。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827804.185400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1626827804.185400">21日 09:36:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827804185400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ただ他のissueは開けるような。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827818.185700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1626827818.185700">21日 09:36:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827818185700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                curlはできるっぽいですね<br>ブラウザでレンダリングしようとすると重くなる？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827878.186700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1626827878.186700">21日 09:37:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827878186700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://webcache.googleusercontent.com/search?q=cache:I-mHkmDK15oJ:https://github.com/kulshekhar/ts-jest/issues/2407+&amp;cd=1&amp;hl=ja&amp;ct=clnk&amp;gl=jp'>https://webcache.googleusercontent.com/search?q=cache:I-mHkmDK15oJ:https://github.com/kulshekhar/ts-jest/issues/2407+&amp;cd=1&amp;hl=ja&amp;ct=clnk&amp;gl=jp</a><br>Google のキャッシュによると、他 Issue(PR) からの参照が 1000 個近くある。これが更に積み重なっていって今は開けなくなってしまった?
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1626827878.186700">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://webcache.googleusercontent.com/favicon.ico" alt="GitHub" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="Label Label--outline">
+          <a href="https://webcache.googleusercontent.com/search?q=cache:I-mHkmDK15oJ:https://github.com/kulshekhar/ts-jest/issues/2407+&cd=1&hl=ja&ct=clnk&gl=jp" target="_blank" rel="noopener noreferrer">Unable to process file. Please make sure that `outDir` in your tsconfig is neither `&#39;&#39;` or `&#39;.&#39;`. · Issue #2407 · kulshekhar/ts-jest</a>
+        </span>
+      </div>
+    </div>
+    <div class="d-flex pl-2 mb-2">
+      <div class="mt-2">🐛 Bug Report I am getting this error when I configure ts-jest to process a ESM module with the .js extension. Unable to process &amp;#39;/Users/newuser/forks/aws-mobile-appsync-sdk-js/packages/aws-...</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827906.187400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1626827906.187400">21日 09:38:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827906187400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これ内部で参照の関係を全部fetchしてるんだろうか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827909.187500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1626827909.187500">21日 09:38:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827909187500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                (とりあえず内容知るだけならキャッシュでよさそうなのでここを見るか)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827962.188100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1626827962.188100">21日 09:39:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827962188100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                思えば Issues のコメント欄って数が多くてもページネーションとかってしてないよね…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827997.189100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1626827997.189100">21日 09:39:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626827997189100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                JSが走ると落ちる類のアレかな……
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626828006.189300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1626828006.189300">21日 09:40:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626828006189300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ページネーションはしてないですが、<code>skip n comments</code> はされてなかったでしたっけ？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626828096.190500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1626828096.190500">21日 09:41:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626828096190500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ああ、一応それがページネーション代わりなのかな。しかしページがロードできなくなっているということはページネーションが果たすべき役割は果たせていないということになりそう…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="eihigh, kkiyama117">
+                              <img class="slacklog-emoji" alt="totemoturai" title="totemoturai" src="/slacklog/emojis/totemoturai.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626828272.191500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1626828272.191500">21日 09:44:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626828272191500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ブラウザの開発者ツールだと URL 自体が 502 を返しているので、curl だと動くってことは普段から User-Agent 見てサーバ側で処理変えてるってことか?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626828440.192400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1626828440.192400">21日 09:47:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626828440192400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                この Issue を閉じているコミットがこれなのだけど、このコミットはリポジトリのどのブランチからも参照されていないってなっていて、一体何があったのか…<br><a href='https://github.com/kulshekhar/ts-jest/commit/cfba8f423dd59536d8b1e1374ef2b20bff2ed857'>https://github.com/kulshekhar/ts-jest/commit/cfba8f423dd59536d8b1e1374ef2b20bff2ed857</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626828467.193000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1626828467.193000">21日 09:47:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626828467193000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                試したけど単純にUA見てるって訳でもなさそうですね<br>内部データベースが一部壊れてる？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626841775.193200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ゴリラ</span>
+              <a href="#ts-1626841775.193200">21日 13:29:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626841775193200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://twitter.com/benjamincoe/status/1417675413292298243?s=21'>https://twitter.com/benjamincoe/status/1417675413292298243?s=21</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1626841775.193200">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://pbs.twimg.com/profile_images/1088992703554207744/PobqQvVn_normal.jpg" alt="twitter" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="f6 text-gray-light">Benjamin Coe @BenjaminCoe</span>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="mt-2">crypto.randomUUID() is now stable in Chrome 92 \o/<br><br>thank you <a href='https://twitter.com/domenic'>@domenic</a>, <a href='https://twitter.com/ctavan'>@ctavan</a>, <a href='https://twitter.com/broofa'>@broofa</a>, and many others, for helping advocate for this feature.<br><br>hope folks enjoy 🎉 <a href='https://pbs.twimg.com/media/E6yWgJdWYAA5bQW.png'>https://pbs.twimg.com/media/E6yWgJdWYAA5bQW.png</a></div>
+    </div>
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="20" height="20" src="https://a.slack-edge.com/80588/img/services/twitter_pixel_snapped_32.png" />
+      </div>
+      <div class="flex-self-baseline f5 ml-2">
+        Twitter
+      </div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626841777.193500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ゴリラ</span>
+              <a href="#ts-1626841777.193500">21日 13:29:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1626841777193500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ほぉ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

@@ -3094,6 +3094,30 @@
 
               <div>
               </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">0 件の返信 最終返信: <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1626829701.281400">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-10-14/455825325490_23fa0f4a9ee9cb63b291_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">notomo</span>
+                      <a href="#ts-1626829701.281400">21日 10:08:21</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      (低レイヤー詳しい人間じゃないですが)<br>スレッド間で通知できるオブジェクトを共有する感じにもできるみたいです。<br>完了を待つか、スレッドから完了を通知するか、になる気がします。<br><br><pre>local uv = require &#34;luv&#34;<br>local async = uv.new_async(function(sock)<br>  local client = uv.new_pipe(false)<br>  client:connect(sock, function(err)<br>    if err then<br>      error(err)<br>    end<br><br>    client:read_start(function(_, chunk)<br>      print(chunk)<br>    end)<br>    client:write(&#34;aiueo&#34;)<br>  end)<br>end)<br><br>local SOCK = string.format(&#34;/tmp/server-%s.sock&#34;, os.clock())<br>uv.new_thread(function(sock, a)<br>  local uv = require &#34;luv&#34;<br>  local server = uv.new_pipe(false)<br>  server:bind(sock)<br>  server:listen(128, function()<br>    local client = uv.new_pipe(false)<br>    server:accept(client)<br>    client:read_start(function(_, chunk)<br>      client:write(chunk .. chunk)<br>    end)<br>  end)<br>  a:send(sock)<br>  uv.run(&#34;default&#34;)<br>end, SOCK, async)</pre><br>
+                    </div>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         </div>
@@ -3134,6 +3158,150 @@
             <div class="overflow-hidden mb-3">
               <div class="pt-1 pb-1">
                 <pre>vim.wait(100, function()<br>  return uv.fs_stat(SOCK)<br>end)</pre><br>client:connect… の前に上記のコードを入れるとちゃんと待ち合わせられる模様です。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626827427.281300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ゴリラ</span>
+              <a href="#ts-1626827427.281300">21日 09:30:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1626827427281300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                lua全然分からんマンですが、サーバが立ち上がったかどうかって、pingしてみるのは出来ますか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626829701.281400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-10-14/455825325490_23fa0f4a9ee9cb63b291_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">notomo</span>
+              <a href="#ts-1626829701.281400">21日 10:08:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1626829701281400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                (低レイヤー詳しい人間じゃないですが)<br>スレッド間で通知できるオブジェクトを共有する感じにもできるみたいです。<br>完了を待つか、スレッドから完了を通知するか、になる気がします。<br><br><pre>local uv = require &#34;luv&#34;<br>local async = uv.new_async(function(sock)<br>  local client = uv.new_pipe(false)<br>  client:connect(sock, function(err)<br>    if err then<br>      error(err)<br>    end<br><br>    client:read_start(function(_, chunk)<br>      print(chunk)<br>    end)<br>    client:write(&#34;aiueo&#34;)<br>  end)<br>end)<br><br>local SOCK = string.format(&#34;/tmp/server-%s.sock&#34;, os.clock())<br>uv.new_thread(function(sock, a)<br>  local uv = require &#34;luv&#34;<br>  local server = uv.new_pipe(false)<br>  server:bind(sock)<br>  server:listen(128, function()<br>    local client = uv.new_pipe(false)<br>    server:accept(client)<br>    client:read_start(function(_, chunk)<br>      client:write(chunk .. chunk)<br>    end)<br>  end)<br>  a:send(sock)<br>  uv.run(&#34;default&#34;)<br>end, SOCK, async)</pre><br>
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1626782964.278600">```local uv = requir ...</a>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626833273.282400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1626833273.282400">21日 11:07:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1626833273282400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど！async とやらを渡せるんですね。<br>それならいいかもしれません。ちょっと見てみます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626834360.283200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1626834360.283200">21日 11:26:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1626834360283200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                試してみてるけど、思ったよりは便利に使えるシーン思い浮かばないな、って感じのテクノロジーになりそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626834544.284400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1626834544.284400">21日 11:29:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1626834544284400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                require(&#39;mpack&#39;) が使えるらしいので、双方向にシリアライズして RPC できるっちゃできます。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="notomo">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626844377.285200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1626844377.285200">21日 14:12:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1626844377285200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                async もまた vim オブジェクトにアクセスできない世界線なのを忘れていました。
               </div>
 
               <div>

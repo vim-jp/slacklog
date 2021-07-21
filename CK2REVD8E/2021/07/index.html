@@ -2930,6 +2930,329 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1626859351.223600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626859351.223600">21日 18:22:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626859351223600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                デコレータ使って型ヒントのテンプレート化できないかなーと思ったらできたことを報告します。<br>ちゃんと不正な型の引数与えるとmypyが叱ってくれます。<br>尚、デコレータ適用対象に <code># type: ignore</code> のコメントが必要な模様。<br><a href='https://twitter.com/Atsushi776/status/1417776524061679617'>https://twitter.com/Atsushi776/status/1417776524061679617</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kashew_nuts, Kamino">
+                              <img class="slacklog-emoji" alt="goodpoem" title="goodpoem" src="/slacklog/emojis/goodpoem.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="peacock, YABUKI Yukiharu">
+                              <span>👀2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1626859351.223600">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://pbs.twimg.com/profile_images/737129240/P7502_normal.jpg" alt="twitter" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="f6 text-gray-light">atusy @Atsushi776</span>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="mt-2">お、でけた。デコレート対象の関数に type: ignore とコメントが必要なのがカッコわるい。 <a href='https://pbs.twimg.com/media/E6z0H3MVUAg_31U.jpg'>https://pbs.twimg.com/media/E6z0H3MVUAg_31U.jpg</a></div>
+    </div>
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="20" height="20" src="https://a.slack-edge.com/80588/img/services/twitter_pixel_snapped_32.png" />
+      </div>
+      <div class="flex-self-baseline f5 ml-2">
+        Twitter
+      </div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626867463.225300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626867463.225300">21日 20:37:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626867463225300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                引数はチェックできるけど、返り値はだめみたいです。int + strはだめなはずなのにmypy通ってしまう。。。むずかしいですね。<br><pre>from typing import Callable<br><br><br>def decorator(untyped: Callable[[int], int]) -&gt; Callable[[int], int]:<br>    def typed(x: int) -&gt; int:<br>        return untyped(x)<br>    return typed<br><br>@decorator<br>def f(x):  # type: ignore<br>    return x + &#39;a&#39;</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626867738.225900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1626867738.225900">21日 20:42:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626867738225900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>def f(x: int):</code> じゃダメなんでしょうか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626867747.226200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1626867747.226200">21日 20:42:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626867747226200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                推論してほしいですけども。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626867844.227100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626867844.227100">21日 20:44:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626867844227100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                似たような役割持つ関数を沢山定義する時に型ヒントをデコレータで受け持てたらいいなと思ったんですよね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626867864.227600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626867864.227600">21日 20:44:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626867864227600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、<code>f.__anotation__</code> を直接弄ればいいか?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626868014.228000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626868014.228000">21日 20:46:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626868014228000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                だめですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626868018.228100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1626868018.228100">21日 20:46:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626868018228100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ジェネリクスで受ける的な？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626868034.228600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1626868034.228600">21日 20:47:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626868034228600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                勘で言ってますw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626868044.228900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1626868044.228900">21日 20:47:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626868044228900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ジェネリクスまったくわかってないんですが、そうなんです?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626878752.229400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1626878752.229400">21日 23:45:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626878752229400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://stackoverflow.com/a/68290080'>https://stackoverflow.com/a/68290080</a><br>へーーこういう風に書けるようになるんですね(ただし mypy はまだ未対応みたい)
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1626878752.229400">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a" alt="Stack Overflow" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://stackoverflow.com/a/68290080" target="_blank" rel="noopener noreferrer">Python 3 type hinting for decorator</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Considere the following code: from typing import Callable, Any TFunc = Callable[..., Any] def get_authenticated_user(): return &#34;John&#34; def require_auth() -&gt; Callable[TFunc, TFunc]: def</div>
+      </div>
+      <div class="d-flex">
+        <div class="mt-2">
+          <img src="https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded" width="80" alt="Python 3 type hinting for decorator" />
+        </div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1626879409.229700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/57f1ba678bdf29064f7f55c19f32cda5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0001-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kashew_nuts</span>
+              <a href="#ts-1626879409.229700">21日 23:56:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CK2REVD8E/p1626879409229700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Python3.10のリリースまでにmypyが追従してくれるのに期待って感じですかねー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
