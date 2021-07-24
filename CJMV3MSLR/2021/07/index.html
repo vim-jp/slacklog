@@ -20543,6 +20543,118 @@ Normal version without GUI.  Features included (+) or not (-):
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1627074951.261400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-10-25/1444669637702_3879d2ec21d7f1fee9ad_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KosukeMizuno</span>
+              <a href="#ts-1627074951.261400">24日 06:15:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1627074951261400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                context_filetype.vimの設定ってstart/end同じだと動かなかったりしますか？<br>markdown内のmathjax用latexの部分に色を付けたいけど、一回目の<code>$$</code> 以降全体がft=texになってしまう
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">5 件の返信 最終返信:09:58:59 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1627084732.262800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Shougo</span>
+                      <a href="#ts-1627084732.262800">24日 08:58:52</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      検証してません。<br>多分、考慮してない実装になってると思うのでプルリクエストよろしくお願いします
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1627087702.263000">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Tsuyoshi CHO</span>
+                      <a href="#ts-1627087702.263000">24日 09:48:22</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      参考までにmarkdownのfrontmatterのときは<br><a href='https://github.com/Shougo/context_filetype.vim/pull/46/files'>https://github.com/Shougo/context_filetype.vim/pull/46/files</a><br>とこのようにファイル先頭にある、というのを加味してトラブル回避しました<br>(原因を深くは見なかったけど、単純に区切りになる <code>---</code> でうまくいかなくて、開始なのか終了なのか判別できてなさそうに見えて、結果こうしたはず...うろ覚えだけど)
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1627087994.263200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-10-25/1444669637702_3879d2ec21d7f1fee9ad_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KosukeMizuno</span>
+                      <a href="#ts-1627087994.263200">24日 09:53:14</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ちょっとソース見ていたのですが難しい気がしています<br>ファイル先頭から奇数/偶数番目の判定が必要なのでsearch_rangeを考慮した実装と相容れないです<br>latexへの変換前提のmarkdown・理数系のブログ記事を想定していますが、そういうの大抵長いと思うのでパフォーマンス的にも...<br>start/end patternが一致する場合だけ捜査範囲を全体にするという条件分岐で書いても良いかもしれませんが、なんかイケてないですね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1627088104.263400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-10-25/1444669637702_3879d2ec21d7f1fee9ad_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KosukeMizuno</span>
+                      <a href="#ts-1627088104.263400">24日 09:55:04</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      yaml frontmatterは1つしか登場しない、かつ必ず先頭に現れる点で状況が違いますね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1627088339.263600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-10-25/1444669637702_3879d2ec21d7f1fee9ad_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">KosukeMizuno</span>
+                      <a href="#ts-1627088339.263600">24日 09:58:59</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あと、markdownファイル開いて<code>set ft=tex</code> してみたらこれでこのまま使えそうな感じだった（texのコマンドは全て\から始まるので、markdownの文法とコンフリクトしない）
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627083424.262700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1627083424.262700">24日 08:37:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1627083424262700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分も <code>ambiwidth</code> 関連で問題が起きたこと全くないな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
