@@ -17967,6 +17967,848 @@ for (var i = 0; i &lt; a.length; i++) {
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1627176130.251700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627176130.251700">25日 10:22:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627176130251700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>    const str = await res?.read().then(({ done, value }) =&gt; {<br>      const d = new TextDecoder();<br>      return d.decode(value).toString();<br>    });<br>    const j = JSON.parse(JSON.stringify(str));<br>    console.log(j.rsp.stat);</pre><br>上記処理で、返却値  <code>{&#34;rsp&#34;:{&#34;stat&#34;:&#34;ok&#34;,&#34;frob&#34;:&#34;417eca9f6ed82dfcc911493f9ec778e10f23ff79&#34;}}</code> のような 文字列で返ってきたとき、<br>jsonに変換して値にアクセスしようとしたのですが、undefinedになります。<br>値にアクセスするには、配列に変換するなどの処理が必要なのでしょうか。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627176410.252500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1627176410.252500">25日 10:26:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627176410252500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse'>https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse</a><br>で<br><pre>const json = &#39;{&#34;rsp&#34;:{&#34;stat&#34;:&#34;ok&#34;,&#34;frob&#34;:&#34;417eca9f6ed82dfcc911493f9ec778e10f23ff79&#34;}} &#39;;<br>const obj = JSON.parse(json);<br><br>console.log(obj.rsp.stat);</pre><br>したら出るみたいだし、だめってことはない気がするけど....というか str を さらに JSON.stringify してるのなんで?
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1627176410.252500">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://developer.mozilla.org/apple-touch-icon.0ea0fa02.png" alt="developer.mozilla.org" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse" target="_blank" rel="noopener noreferrer">JSON.parse() - JavaScript | MDN</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">JSON.parse() メソッドは文字列を JSON として解析し、文字列によって記述されている JavaScript の値やオブジェクトを構築します。任意の reviver 関数で、生成されたオブジェクトが返される前に変換を実行することができます。</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627176495.253500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1627176495.253500">25日 10:28:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627176495253500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>JSON.stringify</pre><br>はobjectを受けて、それをjson文字列にする関数だから、toString してある(実際になってる)返却値strにさらにやっちゃだめなんじゃないかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627176606.254600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627176606.254600">25日 10:30:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627176606254600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                stringfy()なしだと、添付のような指摘が出てくるため、やむなくやってます。<br>正直、自分も必要ないと思ってます…
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F0299G7BGSG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-07-25%2010.29.27.png" target="_blank" rel="noopener noreferrer">
+                  <img src="/slacklog/files/F0299G7BGSG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-07-25%2010.29.27_1024.png" width="1024" height="103" alt="スクリーンショット 2021-07-25 10.29.27.png" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627176732.256400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1627176732.256400">25日 10:32:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627176732256400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いや、型をどうするかはわかるんだけど、だからって2回かけたらjsonとしてrspとかstatを持たないなにかにしかならないと思うw
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="takets">
+                              <img class="slacklog-emoji" alt="desuyone" title="desuyone" src="/slacklog/emojis/desuyone.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627177142.258300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627177142.258300">25日 10:39:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627177142258300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                JSON.stringfy()をなくしても、スクショのエラーになる…<br><pre>return d.decode(value).toString();</pre><br>でstring型で返却しているはずだから、 JSON.parse(str) できると思うんだけれど。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627177198.258700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627177198.258700">25日 10:39:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627177198258700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                const str: anyにしたら動いたので、型の指定がおかしい？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627177670.260100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-24/1769267615079_a3a2d7805a5d0be059df_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tomoya</span>
+              <a href="#ts-1627177670.260100">25日 10:47:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627177670260100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                res?.read() だから、res がなければ undefined が返っちゃうからとか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627177697.260300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1627177697.260300">25日 10:48:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627177697260300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そんな感じがしますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627177877.262900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627177877.262900">25日 10:51:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627177877262900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ?は自動的に補完されたため、消してみたところ、 <code>Object possible undefined</code> というエラーになりました。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627177886.263400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-24/1769267615079_a3a2d7805a5d0be059df_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tomoya</span>
+              <a href="#ts-1627177886.263400">25日 10:51:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627177886263400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                if (!res) return // res が存在しない時の処理<br>を先頭に入れておけば解決かな。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627177917.265000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1627177917.265000">25日 10:51:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627177917265000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                res? はそのままで jsonとして利用する箇所でtypeofでstringに絞り込むほうがいいかな?
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="takets">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627177948.265500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1627177948.265500">25日 10:52:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627177948265500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ?はundefinedのガードみたいなやつですね<br>存在すればその中を読みにいくし、なければ中まで読まずにundefinedを返す
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178050.268600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627178050.268600">25日 10:54:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178050268600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>    if (!res) return;<br>    let str: string = await res.read().then(({ done, value }) =&gt; {<br>      const d = new TextDecoder();<br>      return d.decode(value).toString();<br>    });<br>    const j = JSON.parse(str);<br>    console.log(j.rsp.frob);</pre><br>これで動きました。<br>PHP5.6＆素Javascriptで生きてきた型ガバガバマンなので、型の制約がむちゃくちゃ厳しい（ ；´。 ｀；）
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178060.268900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1627178060.268900">25日 10:54:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178060268900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                resがundefinedになり得る時点でその先もundefinedな可能性が消えないので、中の処理までそもそも見られてるのかどうか
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="takets">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="tomoya">
+                              <img class="slacklog-emoji" alt="sorena" title="sorena" src="/slacklog/emojis/sorena.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178088.269300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-24/1769267615079_a3a2d7805a5d0be059df_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tomoya</span>
+              <a href="#ts-1627178088.269300">25日 10:54:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178088269300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Optional_chaining'>https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Optional_chaining</a><br><pre>a &amp;&amp; a.hoge &amp;&amp; a.hoge.fuga // no optional chaining<br>a?.hoge?.fuga // use optional chaining</pre><br>というシンタックスシュガーですね。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="takets">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1627178088.269300">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://developer.mozilla.org/apple-touch-icon.0ea0fa02.png" alt="developer.mozilla.org" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Optional_chaining" target="_blank" rel="noopener noreferrer">Optional chaining (?.) - JavaScript | MDN</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">?. 演算子の機能は . チェーン演算子と似ていますが、参照が nullish (null または undefined) の場合にエラーとなるのではなく、式が短絡され undefined が返されるところが異なります。</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178137.270100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627178137.270100">25日 10:55:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178137270100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                変数の存在有無の可能性までチェックされるのか…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178213.271400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f4e9067cdaadf091370dc67792e564b5.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1627178213.271400">25日 10:56:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178213271400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそもundefinedな可能性がある変数が存在するJSっていう前提があるのがなあ<br>そこで型を静的に寄せようとするとどうしてもこういうのはガチガチにしないといけない感
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178325.272000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627178325.272000">25日 10:58:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178325272000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                慣れれば堅牢に書けるので、恩恵は大きそう。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178359.273000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b1dffe3b4b3a420d7537059b762a5ea4.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">takets</span>
+              <a href="#ts-1627178359.273000">25日 10:59:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178359273000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                皆さまありがとうございます！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178380.273500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2017-09-22/244343815792_456914b395e29ae4d4f5_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yoshitia</span>
+              <a href="#ts-1627178380.273500">25日 10:59:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178380273500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                (　´∀｀)＜ぬるぽ が面倒なのわかる・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178537.274000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1627178537.274000">25日 11:02:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178537274000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ぬるぽ? (チェックしてるから、ガッ しないよ)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178906.274700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2017-09-22/244343815792_456914b395e29ae4d4f5_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yoshitia</span>
+              <a href="#ts-1627178906.274700">25日 11:08:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178906274700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ぬるぽとは別の話か、JS力orz
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627178959.275300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1627178959.275300">25日 11:09:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627178959275300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いや、今回のことにからめたボケなのでw、ぬるぽというかundefinedだけどw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627179004.275500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2017-09-22/244343815792_456914b395e29ae4d4f5_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yoshitia</span>
+              <a href="#ts-1627179004.275500">25日 11:10:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627179004275500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                w
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627189078.275900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1627189078.275900">25日 13:57:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627189078275900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://twitter.com/addaleax/status/1418937920505925639'>https://twitter.com/addaleax/status/1418937920505925639</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1627189078.275900">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://pbs.twimg.com/profile_images/1257214686786977793/ahQYRKU8_normal.jpg" alt="twitter" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="f6 text-gray-light">Anna 🏳️‍⚧️ #blm @addaleax</span>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="mt-2">By the way, these might look like they are equivalent, but they are not:<br><br>&gt; &#39;hello cat 😺&#39;.split(&#39;&#39;)<br>[<br>  &#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;,<br>  &#39;o&#39;, &#39; &#39;, &#39;c&#39;, &#39;a&#39;,<br>  &#39;t&#39;, &#39; &#39;, &#39;�&#39;, &#39;�&#39;<br>]<br>&gt; [...&#39;hello cat 😺&#39;]<br>[<br>  &#39;h&#39;, &#39;e&#39;, &#39;l&#39;,  &#39;l&#39;,<br>  &#39;o&#39;, &#39; &#39;, &#39;c&#39;,  &#39;a&#39;,<br>  &#39;t&#39;, &#39; &#39;, &#39;😺&#39;<br>] <a href='https://twitter.com/d4vsanchez/status/1418932876402438148'>https://twitter.com/d4vsanchez/status/1418932876402438148</a></div>
+    </div>
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="20" height="20" src="https://a.slack-edge.com/80588/img/services/twitter_pixel_snapped_32.png" />
+      </div>
+      <div class="flex-self-baseline f5 ml-2">
+        Twitter
+      </div>
+    </div>
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://pbs.twimg.com/profile_images/1417914736449052675/uNXSiWiL_normal.jpg" alt="twitter" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="f6 text-gray-light">David Sánchez @d4vsanchez</span>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="mt-2">TIL that you can split a string into a list of characters using JavaScript’s spread operator. #JavaScript #JStip <a href='https://pbs.twimg.com/media/E7EP5r_XoAMM4Zl.jpg'>https://pbs.twimg.com/media/E7EP5r_XoAMM4Zl.jpg</a></div>
+    </div>
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="20" height="20" src="https://a.slack-edge.com/80588/img/services/twitter_pixel_snapped_32.png" />
+      </div>
+      <div class="flex-self-baseline f5 ml-2">
+        Twitter
+      </div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627189083.276300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1627189083.276300">25日 13:58:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627189083276300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Unicode難しすぎる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627192832.276500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1627192832.276500">25日 15:00:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627192832276500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>irb(main):001:0&gt; &#39;hello cat :smiley_cat:&#39;.split(&#39;&#39;)<br>=&gt; [&#34;h&#34;, &#34;e&#34;, &#34;l&#34;, &#34;l&#34;, &#34;o&#34;, &#34; &#34;, &#34;c&#34;, &#34;a&#34;, &#34;t&#34;, &#34; &#34;, &#34;:smiley_cat:&#34;]</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627192846.276800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1627192846.276800">25日 15:00:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627192846276800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ruby だとちゃんと行けた
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627192851.277100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1627192851.277100">25日 15:00:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627192851277100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                irb(main):001:0&gt; &#39;hello cat 😺&#39;.split(&#39;&#39;)<br>=&gt; [&#34;h&#34;, &#34;e&#34;, &#34;l&#34;, &#34;l&#34;, &#34;o&#34;, &#34; &#34;, &#34;c&#34;, &#34;a&#34;, &#34;t&#34;, &#34; &#34;, &#34;😺&#34;]
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627192853.277200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1627192853.277200">25日 15:00:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627192853277200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                さすが日本発
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1627193625.278400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1627193625.278400">25日 15:13:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1627193625278400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー…これJavaScriptが内部的に文字をUTF-16で扱ってるからサロゲートペアにせざるを得なくて発生するのか、ようやく理解した
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="YABUKI Yukiharu">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kkiyama117, raa0121">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
