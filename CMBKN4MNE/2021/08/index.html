@@ -5618,6 +5618,323 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1628521743.293200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1628521743.293200">10日 00:09:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628521743293200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>pub fn args_spec(<br>    fn_name: &amp;String,<br>    args: &amp;[RispExp],<br>    minargs: Option&lt;i64&gt;,<br>    optionalargs: Option&lt;i64&gt;,<br>    maxargs: Option&lt;i64&gt;,<br>) -&gt; Result&lt;(), RispErr&gt; {<br>    let len = args.len() as i64;<br>    let minargs = minargs.unwrap_or(0);<br>    let maxargs = maxargs.unwrap_or(i64::MAX);<br>    let optionalargs = optionalargs.unwrap_or(maxargs);<br><br>    if minargs &lt;= optionalargs &amp;&amp; optionalargs &lt;= maxargs {<br>        return Err(RispErr::Reason(format!(&#34;invalid args_spec arguments.  {} &lt; {} &lt; {}&#34;, minargs, optionalargs, maxargs)))<br>    }<br><br>    if !(minargs &lt;= len &amp;&amp; optionalargs &lt;= len &amp;&amp; len &lt;= maxargs) {<br>        Err(RispErr::Reason(format!(<br>            &#34;wrong-number-of-arguments {} ({}, {}, {}) {}&#34;,<br>            fn_name,<br>            minargs,<br>            optionalargs,<br>            if maxargs == i64::MAX { &#34;MANY&#34;.to_string() } else { maxargs.to_string() },<br>            len,<br>        )))<br>    } else {<br>        Ok(())<br>    }<br>}</pre><br>こういう関数があったとき、<br><pre>return Err(RispErr::Reason(format!(&#34;invalid args_spec arguments.  {} &lt; {} &lt; {}&#34;, minargs, optionalargs, maxargs)))</pre><br>か<br><pre>Err(RispErr::Reason(format!(&#34;invalid args_spec arguments.  {} &lt; {} &lt; {}&#34;, minargs, optionalargs, maxargs)))?</pre><br>のどちらがいいのか悩んだんですが、みなさんはどちらを採用するのでしょう？<br>(2つのifは早期リターンしたいという気持ちで分けてます。)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628521881.293600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1628521881.293600">10日 00:11:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628521881293600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                この状況では?は使わないかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628521919.294000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1628521919.294000">10日 00:11:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628521919294000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそも用途が違うというか、確定でErr返すような状況だと意味がないので
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628522003.294200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1628522003.294200">10日 00:13:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628522003294200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど、ありがとうございます!
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628522148.294400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1628522148.294400">10日 00:15:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628522148294400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://rust-lang.github.io/rust-clippy/master/#try_err'>https://rust-lang.github.io/rust-clippy/master/#try_err</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628522337.294600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1628522337.294600">10日 00:18:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628522337294600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、Clippyの指摘事項なんですね。自動で実行するようにしてないので気付きませんでした;;
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628522927.295000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1628522927.295000">10日 00:28:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628522927295000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                オプショナル引数を宣言するのに <code>Option&lt;T&gt;</code> を使うと教えてもらったのですが、呼び出し側が <code>Some(1)</code> としないといけないのが面倒に思います。<br>他言語のように普通に 1 を渡すこともできるし、 None を渡すことができるようにもできますか？(そもそもこう考えるのがRusticじゃない？)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628526295.297500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1628526295.297500">10日 01:24:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628526295297500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                コンパイラのお気持ちとして数値のようなプリミティブな型はCPUに高速に扱わせたいというのがあって、1かNoneかを表現するにはタグを付ける必要があるんですが、それを暗黙にやるのが嫌という人がRustを設計したからこうなってるんだと思います
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628526353.297700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1628526353.297700">10日 01:25:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628526353297700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほどー。動的島から来たのでこういうのは新鮮ですね。ありがとうございます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628526378.297900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1628526378.297900">10日 01:26:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628526378297900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                コンパイラのお気持ち分かるようになりたい。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628532588.307300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/29cf965ea58c70dba203a10ec39fe4cd.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0026-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">qryxip</span>
+              <a href="#ts-1628532588.307300">10日 03:09:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628532588307300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                「<code>1</code>でも<code>None</code>でも受け取れる引数」は<code>impl Into&lt;Option&lt;u64&gt;&gt;</code>とすればよいです。(ただあまり見ません。この手の多相化は複数重ねると型注釈が必要になってきたりしますし、そもそもある程度の多さのオプションについてはbuilder patternでやったりするので)<br><pre>f(1);<br>f(None);<br><br>fn f(_: impl Into&lt;Option&lt;u64&gt;&gt;) {}<br></pre><br>(型システムによる利点の一つとして高速化というのは確かにありますが、ガードレールになったりドキュメントになったり抽象化の骨組になったりとプログラマを直接助ける役割も大きいと思います。別に私は型システムの専門家ではないのですが)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628552790.307900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1628552790.307900">10日 08:46:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628552790307900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                おーなるほどできるんですね。それが分かっただけでもありがたいです。<br>ただやはりそのままOption&lt;u64&gt;にするのがRustぽさのようなので、Optionのままで実装しますー!
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628552867.308500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1628552867.308500">10日 08:47:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628552867308500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>impl Into&lt;Option&lt;u64&gt;</code> を付けると渡したときに自動で <code>.into()</code> を付けてくれる。。？？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628558281.310300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1628558281.310300">10日 10:18:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1628558281310300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>impl RispExp {<br>    fn symbol(symbol: impl Into&lt;String&gt;) -&gt; Self {<br>        Self::Symbol(symbol.into())<br>    }<br>}</pre><br>と同じでそんな暗黙的な変換されたら困っちゃいます
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
