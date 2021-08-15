@@ -243,6 +243,415 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1628954622.007000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1628954622.007000">15日 00:23:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628954622007000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://vim-jp.slack.com/archives/CLKR04BEF/p1628938736363900'>https://vim-jp.slack.com/archives/CLKR04BEF/p1628938736363900</a><br><a href='https://vim-jp.slack.com/archives/CLKR04BEF/p1628954122379900'>https://vim-jp.slack.com/archives/CLKR04BEF/p1628954122379900</a><br>一応流れていくので転記しておきます
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1628954622.007000">
+              
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">mattn/vim-goaddtags がうまく動かないことがあるので調べてたら、<br><pre>:echom line2byte(line(&#39;.&#39;))</pre><br>の結果が特定の行から拡張子によって変わっているのを見つけた。<br>なんかプラグイン干渉してるのかな。。途中の行までは結果一緒なんだけどなんだこれ🤔<br>最小構成作ってみるか。。</div>
+      </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/08/#ts-1628938736.363900">slacklog</a>
+      </span>
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">ちなみにvim-lsp使ってる人だれか再現しますかね？<br>400行目くらいからおかしくなるんですが。。<br>いまのところ条件はvim-lspによってテキストプロパティが設定されていることですね。<br><a href='https://gist.github.com/biosugar0/55b4d3e7a1d3f8436821c516c339732a'>https://gist.github.com/biosugar0/55b4d3e7a1d3f8436821c516c339732a</a></div>
+      </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/08/#ts-1628954122.379900">slacklog</a>
+      </span>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628962306.007700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-01-24/922945432742_a87307dba854c940256e_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">biosugar0</span>
+              <a href="#ts-1628962306.007700">15日 02:31:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628962306007700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                再現手順<br><a href='https://vim-jp.slack.com/archives/CLKR04BEF/p1628957780390000'>https://vim-jp.slack.com/archives/CLKR04BEF/p1628957780390000</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1628962306.007700">
+              
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">あ、vim-lsp使ってないvimrcと.vimディレクトリ削除した環境でも<br><pre>:echom line2byte(&#39;.&#39;)<br>:call prop_type_add(&#39;vim-test&#39;,{&#39;bufnr&#39;:1})<br>:call prop_add(2,1,{&#39;bufnr&#39;: 1, &#39;id&#39;: 2, &#39;type&#39;: &#39;vim-test&#39;})<br>:echom line2byte(&#39;.&#39;)</pre><br>すると値変わりましたね。lsp関係ないか？</div>
+      </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/08/#ts-1628957780.390000">slacklog</a>
+      </span>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628962530.009200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1628962530.009200">15日 02:35:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628962530009200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                一応、Issue 化する場合は Vim を起動するところからの手順が必要ですね(今は一旦メモと言う感じで)。バッファの内容は 400 行以上あればどうでもよさそうなので <code>:call setline(1, range(500))</code> とかで作っちゃうとよさそう
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="biosugar0">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628963644.012300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-01-24/922945432742_a87307dba854c940256e_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">biosugar0</span>
+              <a href="#ts-1628963644.012300">15日 02:54:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628963644012300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                sample.vim<br><pre>:call setline(1,range(500))<br>:echom &#34;before&#34; line2byte(401)<br>:call prop_type_add(&#39;vim-test&#39;,{&#39;bufnr&#39;:1})<br>:call prop_add(2,1,{&#39;bufnr&#39;: 1, &#39;id&#39;: 2, &#39;type&#39;: &#39;vim-test&#39;})<br>:echom &#34;after&#34; line2byte(401)</pre><br><pre>$vim -u NONE<br>:source sample.vim</pre><br>こんな感じですかね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628963843.013000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1628963843.013000">15日 02:57:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628963843013000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                よさそう。あ、あと <code>&#39;bufnr&#39;: 1</code> と <code>&#39;id&#39;: 2</code> はなくても再現しました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628963934.013600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1628963934.013600">15日 02:58:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628963934013600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                1200 行目から今度はサイズが縮むと言う珍現象を観測…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="biosugar0">
+                              <span>😅1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628965094.014500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-01-24/922945432742_a87307dba854c940256e_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">biosugar0</span>
+              <a href="#ts-1628965094.014500">15日 03:18:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628965094014500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                issueこんな感じでいいですかね？<br><br>## line2byte() returns an incorrect value.<br>**Describe the bug**<br>If the text property is set to before line 400, the result of line2byte() after line 400 will be an incorrect value.<br><br>**To Reproduce**<br><br>sample.vim<br><pre>vim<br>:call setline(1,range(500))<br>:echom “before” line2byte(401)<br>:call prop_type_add(‘vim-test’,{‘bufnr’:1})<br>:call prop_add(2,1,{‘type’: ‘vim-test’})<br>:echom “after” line2byte(401)<br></pre><br><br>1. <code>vim  -u NONE</code><br>2. <code>:source sample.vim</code><br><br>the script result<br><pre><br>before 1491<br>after 1511<br></pre><br>**Expected behavior**<br><br><code>:echom “before” line2byte(401)</code> and <code>:echom “after” line2byte(401)</code> show same value.<br><br>**Environment (please complete the following information):**<br> - Vim version [8.2.3325]<br> - OS: macOS 10.15.7<br> - Terminal: Alacritty
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628993454.015100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1628993454.015100">15日 11:10:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628993454015100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>prop_type_add()</code> の bufnr も消しちゃって大丈夫です。空 <code>{}</code> で。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="biosugar0">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628994362.015600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-01-24/922945432742_a87307dba854c940256e_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">biosugar0</span>
+              <a href="#ts-1628994362.015600">15日 11:26:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628994362015600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ありがとうございます！<br><pre>:call prop_type_add(&#39;vim-test&#39;,{})</pre><br>にしてissue立てます。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="thinca, kuu">
+                              <span>👍2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628994680.016000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-01-24/922945432742_a87307dba854c940256e_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">biosugar0</span>
+              <a href="#ts-1628994680.016000">15日 11:31:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628994680016000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <img class='slacklog-emoji' title=':done:' alt=':done:' src='/slacklog/emojis/sumi.png'> <a href='https://github.com/vim/vim/issues/8759'>https://github.com/vim/vim/issues/8759</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="thinca, Milly, kuu">
+                              <img class="slacklog-emoji" alt="goodjob" title="goodjob" src="/slacklog/emojis/goodjob.png"><span class="ml-1">3</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1628994680.016000">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim/vim/issues/8759|#8759 line2byte() returns an incorrect value.&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Describe the bug*  <br>If the text property is set to before line 400, the result of line2byte() after line 400 will be an incorrect value.<br><br>*To Reproduce*<br><br>sample.vim<br><br><pre><br>:call setline(1,range(500))<br>:echom “before” line2byte(401)<br>:call prop_type_add(&#39;vim-test&#39;,{})<br>:call prop_add(2,1,{‘type’: ‘vim-test’})<br>:echom “after” line2byte(401)<br></pre><br><br>1. <code>vim -u NONE</code><br>2. <code>:source sample.vim</code><br><br>the script result<br><br><pre><br>before 1491<br>after 1511<br><br></pre><br><br>*Expected behavior*<br><br><code>:echom “before” line2byte(401)</code> and <code>:echom “after” line2byte(401)</code> show same line2byte value.<br><br>*Environment (please complete the following information):*<br><br>• Vim version [8.2.3325]<br>• OS: macOS 10.15.7<br>• Terminal: Alacritty</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628994793.016600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1628994793.016600">15日 11:33:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628994793016600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、クォートの文字が全角になっちゃってますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1628995018.017300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-01-24/922945432742_a87307dba854c940256e_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">biosugar0</span>
+              <a href="#ts-1628995018.017300">15日 11:36:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1628995018017300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                修正しました🙏<br>slackさんに全角にされてた
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629032036.017700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1629032036.017700">15日 21:53:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1629032036017700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お、修正されましたね 🎉<br><a href='https://github.com/vim/vim/commit/14c7530c4fca786d3594508e28943f10125827c3'>https://github.com/vim/vim/commit/14c7530c4fca786d3594508e28943f10125827c3</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, mityu, ଳ (kato), Tsuyoshi CHO, obcat, Shougo, biosugar0">
+                              <span>🎉7</span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Milly">
+                              <img class="slacklog-emoji" alt="sokudo" title="sokudo" src="/slacklog/emojis/sokudo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629036073.018700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-01-24/922945432742_a87307dba854c940256e_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">biosugar0</span>
+              <a href="#ts-1629036073.018700">15日 23:01:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1629036073018700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                はやい！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
