@@ -235,6 +235,356 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1629238433.008000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629238433.008000">18日 07:13:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629238433008000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                @yaegassy cocで単一の補完リソース作るのって難しいか分かるでしょうか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243525.008200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1629243525.008200">18日 08:38:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243525008200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                @ycino 僕、補完専用の拡張はちゃんと作ってないので難しいかどうかはなんとも言えないですー。すいません。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243530.008400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1629243530.008400">18日 08:38:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243530008400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                概念としてですが coc での補完ソースは2種類の作り方がありまして、<br>1. deoplete や nvim-compe 等のようなソースを実装する方法 (sources.createSourceで)と<br>2. VSCode (LSPライク) な CompletionItemProvider を実装して languages.registerCompletionItemProvider で動くようにする方法<br>があると思います。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243540.008600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1629243540.008600">18日 08:39:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243540008600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                1 は例えば coc-sources (dictionary補完とかtag補完とか昔ながらの基本的なもの等) が参考になると思います <a href='https://github.com/neoclide/coc-sources/blob/master/packages/dictionary/index.js#L80-L100'>https://github.com/neoclide/coc-sources/blob/master/packages/dictionary/index.js#L80-L100</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1629243540.008600">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/neoclide/coc-sources/blob/master/packages/dictionary/index.js | index.js&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>  let source = {<br>    name: &#39;dictionary&#39;,<br>    triggerCharacters: [],<br>    doComplete: async function (opt) {<br>      let dictOption = await nvim.eval(&#39;&amp;dictionary&#39;)<br>      if (!dictOption || opt.input.length == 0) return null<br>      let files = dictOption.split(&#39;,&#39;)<br>      let words = await getWords(files)<br>      words = filterWords(words, opt)<br>      return {<br>        items: words.map(word =&gt; {<br>          return {<br>            word,<br>            menu: &lt;http://this.menu|this.menu&gt;<br>          }<br>        })<br>      }<br>    }<br>  }<br><br>  context.subscriptions.push(sources.createSource(source))<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243548.008900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1629243548.008900">18日 08:39:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243548008900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                2 は例えば coc-dash-complete, coc-dot-complete, coc-calc や 「VSCodeの補完系の拡張」が参考になると思います <a href='https://github.com/voldikss/coc-dash-complete/blob/master/src/index.ts#L17-L51'>https://github.com/voldikss/coc-dash-complete/blob/master/src/index.ts#L17-L51</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1629243548.008900">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/voldikss/coc-dash-complete/blob/master/src/index.ts | index.ts&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>  subscriptions.push(<br>    languages.registerCompletionItemProvider(<br>      &#39;coc-dash-complete&#39;,<br>      config.get&lt;string&gt;(&#39;shortcut&#39;),<br>      null,<br>      new DashCompleteProvider(),<br>      [&#34;-&#34;],<br>      config.get&lt;number&gt;(&#39;priority&#39;),<br>      [],<br>    )<br>  )<br>}<br><br>export class DashCompleteProvider implements CompletionItemProvider {<br>  constructor() {}<br><br>  provideCompletionItems(document: TextDocument, position: Position): ProviderResult&lt;CompletionItem[]&gt; {<br>    const doc = workspace.getDocument(document.uri)<br>    if (!doc) return []<br><br>    const wordRange = doc.getWordRangeAtPosition(Position.create(position.line, position.character - 2))<br>    if (!wordRange) return []<br><br>    const preWord = document.getText(wordRange)<br><br>    return this.gatherWords()<br>      .filter(word =&gt;<br>        word.indexOf(preWord) &lt; 0 &amp;&amp;<br>        preWord.indexOf(word) &lt; 0)<br>      .map&lt;CompletionItem&gt;(word =&gt; ({<br>        &#34;label&#34;: `${word}`,<br>        &#34;kind&#34;: CompletionItemKind.Text,<br>        &#34;insertText&#34;: `${word}`<br>      }))<br>  }<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243729.009200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629243729.009200">18日 08:42:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243729009200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お、ありがとうございます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243759.009800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629243759.009800">18日 08:42:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243759009800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                やりたいこととしては、特定のパッケージに対してyarn infoを叩いてpackage.jsonでパッケージのバージョンの補完をしたいんですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243771.010200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629243771.010200">18日 08:42:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243771010200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なので前者になりそうです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243783.010400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1629243783.010400">18日 08:43:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243783010400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                便利そうですね！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243842.011300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629243842.011300">18日 08:44:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243842011300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>&#34;foo&#34;: &#34;1.2.3&#34;</pre><br>みたいなのがあったときに、1.2.3のところにカーソルがある場合にfooを取得、みたいなのって簡易な実装で可能かとかわかります？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243903.012000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629243903.012000">18日 08:45:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243903012000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                TSだしJSONをparseして対応するkeyを取得くらいは簡単にできそうだけど、カーソル位置のNodeって簡単に取れるのかなぁ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629243996.012600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1629243996.012600">18日 08:46:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629243996012600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そうですね。jsonパースすれば勿論できるでしょうね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629244038.013400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629244038.013400">18日 08:47:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629244038013400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                カーソル位置に対して適切な補完候補を出すのがちょっと面倒そうな予感がします、JSONレベルじゃなくて行単位で見て終わりとかに妥協したら一瞬で終わりそう・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629244083.013900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629244083.013900">18日 08:48:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629244083013900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これdenopsでやったほうがいいのかなって思ったけど補完連携を考えるとcocでやりたいなぁ・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629244149.014700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629244149.014700">18日 08:49:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ88WB7B3/p1629244149014700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まぁ、カーソルが合ってるバージョンに対するパッケージ名の取得さえ簡単にできればなんかすぐできそうな気がしますよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
