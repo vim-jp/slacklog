@@ -14396,6 +14396,620 @@ const getCompletionItems = async (): Promise&lt;CompleteResult&gt; =&gt; {
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1629372366.491300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372366.491300">19日 20:26:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372366491300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>&lt;Plug&gt;(foo)</code> を関数の中で実行することってできるでしょうか<br><pre>function! s:foo() abort<br>  let b:foo = &#39;foo&#39;<br>  normal! &lt;Plug&gt;(foo)<br>  unlet b:foo<br>endfunction</pre><br>みたいなことがしたいんですが
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372421.492500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372421.492500">19日 20:27:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372421492500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                今はコマンドじゃないことは分かった上で適当にnormal!って書いてる感じです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372424.492700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629372424.492700">19日 20:27:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372424492700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ノーマルモードコマンドなら <code>execute &#34;normal&#34; &#34;\&lt;Plug&gt;(foo)&#34;</code>みたいにすると発動しそうな気がする、もっといい方法あるだろうけど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372434.493200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629372434.493200">19日 20:27:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372434493200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :h maparg()
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372435.493400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1629372435.493400">19日 20:27:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372435493400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>maparg({name} [, {mode} [, {abbr} [, {dict}]]])                 *maparg()*<br>                {dict}が省略されたかゼロのとき: モード{mode}におけるキーマップ<br>                {name}のrhsを返す。結果の文字列内の特殊文字は、&#34;:map&#34; コマンド<br>                でリスト表示した時のように変換される。<br> <br>                {name} というキーマップが存在しない場合、空文字列が返される。<br>                {name} というキーマップが空の場合、&#34;&lt;Nop&gt;&#34; が返される。<br> <br>                {name}には &#34;:map&#34; コマンドで使用可能な、特殊なキー名が指定でき<br>                る。<br> <br>                {mode}には次の文字が使用可能:<br>                        &#34;n&#34;     ノーマル<br>                        &#34;v&#34;     ビジュアル (選択含む)<br>                        &#34;o&#34;     オペレータ待機 (Operator-pending)<br>                        &#34;i&#34;     挿入<br>                        &#34;c&#34;     コマンドライン<br>                        &#34;s&#34;     選択<br>                        &#34;x&#34;     ビジュアル<br>                        &#34;l&#34;     langmap |language-mapping|<br>                        &#34;t&#34;     端末ジョブ<br>                        &#34;&#34;      ノーマル、ビジュアル、及びオペレータ待機<br>                {mode}が省略された場合、&#34;&#34; が使用される。<br> <br>                {abbr}が指定され、|TRUE|の場合はマッピングでなく短縮入力を対象<br>                とする。<br> <br>                {dict} に|TRUE|が指定されたときはマッピングのすべての情報を含<br>                んだ辞書が返る:<br>                  &#34;lhs&#34;         マッピングの {lhs} (入力されたまま)<br>                  &#34;lhsraw&#34;      マッピングの {lhs} (生のバイト値)<br>                  &#34;lhsrawalt&#34;   マッピングの {lhs} (生のバイト値の代替形式、<br>                                &#34;lhsraw&#34; と違う場合のみ存在)<br>                  &#34;rhs&#34;         マッピングの {rhs} (入力されたまま)<br>                  &#34;silent&#34;      |:map-silent| マッピングなら 1。そうでなければ<br>                                0。<br>                  &#34;noremap&#34;     マッピングの {rhs} が再マップ可能でないなら 1。<br>                  &#34;script&#34;      マッピングが &lt;script&gt; でなされていたら 1。<br>                  &#34;expr&#34;        式マッピング (|:map-&lt;expr&gt;|) なら 1。<br>                  &#34;buffer&#34;      バッファローカルマッピング (|:map-local|) なら<br>                                1。<br>                  &#34;mode&#34;        マッピングが定義されているモード。上述のモードに<br>                                加え、次の文字が使用される:<br>                                &#34; &#34;     ノーマル、ビジュアル、オペレータ待機<br>                                &#34;!&#34;     挿入、コマンドラインモード<br>                                        (|mapmode-ic|)<br>                  &#34;sid&#34;         &lt;sid&gt; マッピングで使用されるスクリプトローカル<br>                                ID (|&lt;SID&gt;|)。<br>                  &#34;lnum&#34;        &#34;sid&#34; 内の行番号。不明の場合はゼロ。<br>                  &#34;nowait&#34;      他の長いマッピングを待たない。<br>                                (|:map-&lt;nowait&gt;|)。<br> <br>                この辞書は |mapset()| でマッピングを復元するのに使える。<br> <br>                まずカレントバッファにローカルなマッピングを探し、次のグローバ<br>                ルマッピングを探す。<br>                この関数を使うと、あるキーに対して既にマップがされているとき、<br>                その動作を行いつつ、再マップすることができる。概要:  <br>                        exe &#39;nnoremap &lt;Tab&gt; ==&#39; . maparg(&#39;&lt;Tab&gt;&#39;, &#39;n&#39;)<br> <br>                |method| としても使用できる:  <br>                        GetKey()-&gt;maparg(&#39;n&#39;)<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372441.493700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372441.493700">19日 20:27:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372441493700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あとvisualでも実行したいんですよねこれ・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372445.494100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629372445.494100">19日 20:27:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372445494100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                真面目にやるならこれで取得するのがいいかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372470.494500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1629372470.494500">19日 20:27:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372470494500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>&lt;Plug&gt;(foo)</code> に割り当てられてる関数を持ってくるとか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372528.494800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372528.494800">19日 20:28:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372528494800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ぱっと見だと多分この辺なんですよね、厳しい<br><a href='https://github.com/tyru/caw.vim/blob/26b91ddfcebaee954a3cd2aec1769a5b16779bdd/autoload/caw.vim#L96-L101'>https://github.com/tyru/caw.vim/blob/26b91ddfcebaee954a3cd2aec1769a5b16779bdd/autoload/caw.vim#L96-L101</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1629372528.494800">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/tyru/caw.vim/blob/26b91ddfcebaee954a3cd2aec1769a5b16779bdd/autoload/caw.vim | caw.vim&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>      execute &#39;nnoremap &lt;Plug&gt;(caw:__op_select__)&#39;<br>      \       (lines &gt; 0 ? &#39;V&#39; . lines . &#39;j&#39; : &#39;&lt;Nop&gt;&#39;)<br>      let lastmap = printf(<br>      \   &#34;\&lt;Plug&gt;(caw:__op_select__)\&lt;Plug&gt;(caw:%s:%s)&#34;,<br>      \   a:action, a:method<br>      \)<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372532.495100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372532.495100">19日 20:28:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372532495100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                動的にやってるはず
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372554.495400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1629372554.495400">19日 20:29:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372554495400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                feedkeys
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372598.495800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1629372598.495800">19日 20:29:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372598495800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                んーネスト
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372631.496600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1629372631.496600">19日 20:30:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372631496600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                feedkeysってこの手の仮想マップもできるんですかね<br>まあできるか……
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372662.497000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372662.497000">19日 20:31:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372662497000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                できそうに思ったけどfeedkeysでなんか動かないからもうちょい試そう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372726.497500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372726.497500">19日 20:32:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372726497500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>  nmap &lt;silent&gt; &lt;Leader&gt;cw :&lt;C-u&gt;call &lt;SID&gt;my_caw_wrap_toggle()&lt;CR&gt;<br>  xmap &lt;silent&gt; &lt;Leader&gt;cw :&lt;C-u&gt;call &lt;SID&gt;my_caw_wrap_toggle()&lt;CR&gt;<br><br>  function! s:my_caw_wrap_toggle() abort<br>    let b:caw_wrap_oneline_comment = [&#34;/*&#34;, &#34;*/&#34;]<br>    call feedkeys(&#34;\&lt;Plug&gt;(caw:wrap:toggle)&#34;)<br>    unlet b:caw_wrap_oneline_comment<br>  endfunction</pre><br>具体的にはこれがやりたい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372774.497900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629372774.497900">19日 20:32:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372774497900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                mapargで中身とっても実行するみたいな例がないな...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372801.498200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629372801.498200">19日 20:33:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372801498200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                caw:wrap:toggleってprefixなんでしたっけ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372829.499000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1629372829.499000">19日 20:33:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372829499000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                xmap なのに <code>&lt;C-u&gt;</code>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372833.499100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629372833.499100">19日 20:33:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372833499100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                完了してない形のマッピングならユーザーがタイプしたように送る必要があって、feedkeysの第二引数に<code>&#34;t&#34;</code>を指定しないといけないみたいなのがあるけど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372845.499300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1629372845.499300">19日 20:34:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372845499300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>feedkeys</code> の第二引数
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372850.499500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1629372850.499500">19日 20:34:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372850499500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                株
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372857.499700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629372857.499700">19日 20:34:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372857499700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <img class='slacklog-emoji' title=':kakko-kabu-tojikakko:' alt=':kakko-kabu-tojikakko:' src='/slacklog/emojis/kakko-kabu-tojikakko.png'>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372875.000000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372875.000000">19日 20:34:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372875000000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、C-uはミスだ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629372960.000200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629372960.000200">19日 20:36:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629372960000200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                prefixではないはず
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629373343.000900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629373343.000900">19日 20:42:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629373343000900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/tyru/caw.vim/blob/26b91ddfcebaee954a3cd2aec1769a5b16779bdd/plugin/caw.vim#L137-L165'>https://github.com/tyru/caw.vim/blob/26b91ddfcebaee954a3cd2aec1769a5b16779bdd/plugin/caw.vim#L137-L165</a><br>見てたんですけど<br><pre>  function! s:my_caw_wrap_toggle(mode) abort<br>    let b:caw_wrap_oneline_comment = [&#34;/*&#34;, &#34;*/&#34;]<br>    call caw#keymapping_stub(a:mode, &#39;wrap&#39;, &#39;toggle&#39;)<br>    unlet b:caw_wrap_oneline_comment<br>  endfunction</pre><br>でいけたっぽいです
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1629373343.000900">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/tyru/caw.vim/blob/26b91ddfcebaee954a3cd2aec1769a5b16779bdd/plugin/caw.vim | caw.vim&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>function! s:plug.map_plug(action, method, modes) abort<br>  let lhs = printf(&#39;&lt;Plug&gt;(caw:%s:%s)&#39;, a:action, a:method)<br>  for mode in split(a:modes, &#39;\zs&#39;)<br>    execute<br>    \   mode . &#39;noremap&#39;<br>    \   &#39;&lt;silent&gt;&#39;<br>    \   lhs<br>    \   printf(<br>    \       mode ==# &#39;x&#39; ?<br>    \         &#39;&lt;Esc&gt;:&lt;C-u&gt;call caw#keymapping_stub(%s, %s, %s)&lt;CR&gt;&#39; :<br>    \         &#39;:&lt;C-u&gt;call caw#keymapping_stub(%s, %s, %s)&lt;CR&gt;&#39;,<br>    \       string(mode),<br>    \       string(a:action),<br>    \       string(a:method))<br>    for deprecated_action in get(s:plug.deprecated, a:action, [])<br>      execute<br>      \   mode . &#39;noremap&#39;<br>      \   &#39;&lt;silent&gt;&#39;<br>      \   printf(&#39;&lt;Plug&gt;(caw:%s:%s)&#39;, deprecated_action, a:method)<br>      \   printf(<br>      \       &#39;:&lt;C-u&gt;call caw#keymapping_stub_deprecated&#39;<br>      \                       . &#39;(%s, %s, %s, %s)&lt;CR&gt;&#39;,<br>      \       string(mode),<br>      \       string(a:action),<br>      \       string(a:method),<br>      \       string(deprecated_action))<br>    endfor<br>  endfor<br>endfunction<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629373381.001300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629373381.001300">19日 20:43:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629373381001300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                内部関数だ(自分が使う分にはよさそう)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629373863.001600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1629373863.001600">19日 20:51:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1629373863001600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>let g:caw_integrated_plugin = &#39;ts_context_commentstring&#39;<br><br>nmap &lt;silent&gt; &lt;Leader&gt;cc :&lt;C-u&gt;call &lt;SID&gt;caw_hatpos_toggle(&#39;n&#39;)&lt;CR&gt;<br>xmap &lt;silent&gt; &lt;Leader&gt;cc &lt;Esc&gt;:call &lt;SID&gt;caw_hatpos_toggle(&#39;x&#39;)&lt;CR&gt;<br>nmap &lt;silent&gt; &lt;Leader&gt;cw :&lt;C-u&gt;call &lt;SID&gt;caw_wrap_toggle(&#39;n&#39;)&lt;CR&gt;<br>xmap &lt;silent&gt; &lt;Leader&gt;cw &lt;Esc&gt;:call &lt;SID&gt;caw_wrap_toggle(&#39;x&#39;)&lt;CR&gt;<br><br>function! s:caw_hatpos_toggle(mode) abort<br>  lua require(&#39;ts_context_commentstring.internal&#39;).update_commentstring()<br>  call caw#keymapping_stub(a:mode, &#39;hatpos&#39;, &#39;toggle&#39;)<br>endfunction<br><br>function! s:caw_wrap_toggle(mode) abort<br>  lua require(&#39;ts_context_commentstring.internal&#39;).update_commentstring()<br>  let b:caw_wrap_oneline_comment = [&#34;/*&#34;, &#34;*/&#34;]<br>  call caw#keymapping_stub(a:mode, &#39;wrap&#39;, &#39;toggle&#39;)<br>  unlet b:caw_wrap_oneline_comment<br>endfunction</pre><br>めっちゃ便利になった
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
