@@ -9857,6 +9857,38 @@ func BenchmarkTwo(b *testing.B) {
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1629387977.247700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1629387977.247700">20日 00:46:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1629387977247700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                👀 <a href='https://github.com/golang/go/issues/47806'>https://github.com/golang/go/issues/47806</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1629387977.247700">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/golang/go/issues/47806|#47806 context: cancelCtx should avoid to use map to store child cancelers&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*What version of Go are you using (<code>go version</code>)?*<br><br>$ go version<br>go version go1.17 windows/amd64<br><br>*Does this issue reproduce with the latest release?*<br><br>Yes.<br><br>*What operating system and processor architecture are you using (<code>go env</code>)?*<br><code>go env</code> Output  <br><br>$ go env<br>set GO111MODULE=on<br>set GOARCH=amd64<br>set GOBIN=<br>set GOCACHE=C:\Users\tdakkota\AppData\Local\go-build<br>set GOENV=C:\Users\tdakkota\AppData\Roaming\go\env<br>set GOEXE=.exe<br>set GOEXPERIMENT=<br>set GOFLAGS=<br>set GOHOSTARCH=amd64<br>set GOHOSTOS=windows<br>set GOINSECURE=<br>set GOMODCACHE=C:\Users\tdakkota\go\pkg\mod<br>set GOOS=windows<br>set GOPATH=C:\Users\tdakkota\go<br>set GOPROXY=<a href='https://proxy.golang.org'>https://proxy.golang.org</a>,direct<br>set GOROOT=C:\Go<br>set GOSUMDB=<a href='http://sum.golang.org'>sum.golang.org</a><br>set GOTMPDIR=<br>set GOTOOLDIR=C:\Go\pkg\tool\windows_amd64<br>set GOVCS=<br>set GOVERSION=go1.17<br>set GCCGO=gccgo<br>set AR=ar<br>set CC=gcc<br>set CXX=g++<br>set CGO_ENABLED=1<br>set CGO_CFLAGS=-g -O2<br>set CGO_CPPFLAGS=<br>set CGO_CXXFLAGS=-g -O2<br>set CGO_FFLAGS=-g -O2<br>set CGO_LDFLAGS=-g -O2<br>set PKG_CONFIG=pkg-config<br>set GOGCCFLAGS=-m64 -mthreads -fmessage-length=0 -fdebug-prefix-map=C:\Users\tdakkota\AppData\Local\Temp\go-build1627783593=/tmp/go-build -gno-record-gcc-switches <br>*What did you do?*<br><br>Currently, <code>cancelCtx</code> uses map to store all child contexts  <br><a href='https://github.com/golang/go/blob/c85695a117f1ec3b800ba14570876cfcd2075c1f/src/context/context.go#L265-L275'>https://github.com/golang/go/blob/c85695a117f1ec3b800ba14570876cfcd2075c1f/src/context/context.go#L265-L275</a><br><br>But it causes map allocation and may be ineffective if there is only one child context. This case is quite common, at least in my projects.<br><br>I made a simple patch which stores first child in separate field (<a href='https://github.com/tdakkota/go/commit/1c4f3b2e64aeda0439217b50ffcd996e324f6e1f'>tdakkota/go@1c4f3b2</a>) and see an improvement.  <br>Benchmark result:<br><br><pre><br>goos: windows<br>goarch: amd64<br>pkg: context<br>cpu: Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz<br><br>name                                          old time/op  new time/op  delta<br>CommonParentCancel-12                          627ns ± 2%   586ns ± 2%   -6.58%  (p=0.008 n=5+5)<br>WithTimeout/concurrency=40-12                 1.08µs ±16%  1.10µs ± 4%     ~     (p=0.222 n=5+5)<br>WithTimeout/concurrency=4000-12                947ns ± 6%   993ns ± 4%     ~     (p=0.056 n=5+5)<br>WithTimeout/concurrency=400000-12              877ns ±15%   868ns ± 1%     ~     (p=0.151 n=5+5)<br>CancelTree/depth=1/Root=Background-12         61.9ns ± 0%  68.9ns ± 0%  +11.37%  (p=0.008 n=5+5)<br>CancelTree/depth=1/Root=OpenCanceler-12        439ns ± 1%   297ns ± 0%  -32.30%  (p=0.008 n=5+5)<br>CancelTree/depth=1/Root=ClosedCanceler-12      219ns ± 0%   229ns ± 0%   +4.74%  (p=0.008 n=5+5)<br>CancelTree/depth=10/Root=Background-12        2.45µs ± 2%  1.45µs ± 0%  -40.91%  (p=0.008 n=5+5)<br>CancelTree/depth=10/Root=OpenCanceler-12      3.43µs ± 2%  1.98µs ± 0%  -42.34%  (p=0.008 n=5+5)<br>CancelTree/depth=10/Root=ClosedCanceler-12    1.23µs ± 0%  1.32µs ± 0%   +6.86%  (p=0.008 n=5+5)<br>CancelTree/depth=100/Root=Background-12       26.0µs ± 1%  15.1µs ± 1%  -41.91%  (p=0.008 n=5+5)<br>CancelTree/depth=100/Root=OpenCanceler-12     33.0µs ± 1%  18.7µs ± 0%  -43.25%  (p=0.016 n=5+4)<br>CancelTree/depth=100/Root=ClosedCanceler-12   11.3µs ± 1%  12.1µs ± 1%   +6.32%  (p=0.008 n=5+5)<br>CancelTree/depth=1000/Root=Background-12       262µs ± 1%   152µs ± 0%  -41.93%  (p=0.008 n=5+5)<br>CancelTree/depth=1000/Root=OpenCanceler-12     331µs ± 0%   188µs ± 0%  -43.11%  (p=0.008 n=5+5)<br>CancelTree/depth=1000/Root=ClosedCanceler-12   112µs ± 1%   119µs ± 0%   +6.12%  (p=0.008 n=5+5)<br>CheckCanceled/Err-12                          11.7ns ± 1%  11.7ns ± 1%     ~     (p=0.738 n=5+5)<br>CheckCanceled/Done-12                         5.61ns ± 0%  5.60ns ± 1%     ~     (p=0.905 n=4+5)<br>ContextCancelDone-12                          0.91ns ± 6%  0.91ns ± 6%     ~     (p=0.841 n=5+5)<br>[Geo mean]                                    1.32µs       1.11µs       -16.21%<br><br></pre><br><br>Any thoughts?</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
