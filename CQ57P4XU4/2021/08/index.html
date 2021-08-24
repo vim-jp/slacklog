@@ -1061,6 +1061,608 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1629812224.034700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629812224.034700">24日 22:37:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629812224034700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ActionLIntを入れて検知した、動作不備っぽいものをissueにした<br><a href='https://github.com/mattn/efm-langserver/issues/159'>https://github.com/mattn/efm-langserver/issues/159</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1629812224.034700">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/mattn/efm-langserver/issues/159|#159 Prefix do not work pattern?&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Summary*<br><br>When work yamllint and actionlint under efm-langerver.  <br>yamllint message inlucde prefix.  <br>actionlint message do not include prefix.<br><br>*test setting*<br>*efm-langserver setting*<br><br><pre><br>version: 2<br>tools:<br>  yamllint-lint: &amp;yamllint-lint<br>    prefix: yamllint<br>    lint-command: &#39;yamllint --strict --format parsable ${INPUT}&#39;<br>    lint-stdin: false<br>    lint-formats:<br>      - &#39;%f:%l:%c: [%t%*[a-z]] %m&#39;<br>    env:<br>      - &#39;PYTHONIOENCODING=UTF-8&#39;<br><br>  actionlint-lint: &amp;actionlint-lint<br>    prefix: actionlint<br>    lint-command: &#34;bash -c \&#34;[[ &#39;${INPUT}&#39; =~ \\\\.github/workflows/ ]]\&#34; &amp;&amp; actionlint -oneline -no-color -&#34;<br>    lint-stdin: true<br>    lint-formats:<br>      - &#39;%f:%l:%c: %m&#39;<br>    root-markers:<br>      - .github<br>languages:<br> yaml:<br>    - &lt;&lt;: *yamllint-lint<br>    - &lt;&lt;: *actionlint-lint<br></pre><br><br>see also <a href='https://github.com/tsuyoshicho/vim-efm-langserver-settings'>tsuyoshicho/vim-efm-langserver-settings latest</a><br><br>*target file (OK)*<br><br><pre><br>on: push<br>jobs:<br>  test:<br>    runs-on: ubuntu-latest<br>    steps:<br>      - name: test<br>        run:<br>          echo &#34;test&#34;<br><br>          # Actionlint : no error<br></pre><br><br>*target file (NG)*<br><br><pre><br>on: pop<br>jobs:<br>  test:<br>    runs-on: ubuntu-latest<br>    steps:<br>      - name: test<br>        run:<br>          echo &#34;test&#34;<br><br>          # Actionlint : error occur<br>          # .github\workflows\actionlint_ok.yml|1 col 5 error| Error:1:Value is not accepted. Valid values:...<br></pre><br><br>or use test file repo  <br><a href='https://github.com/tsuyoshicho/action-test-repo/tree/test/efm-actionlint'>https://github.com/tsuyoshicho/action-test-repo/tree/test/efm-actionlint</a><br><br>*Expect result*<br><br>prefix work fine  <br>(for .github/workflows/actionlint_ok.yml)<br><br>vim quickfix result<br><br><pre><br>.github\workflows\actionlint_ok.yml|1 col 1 warning| Warning:[yamllint] missing document start &#34;---&#34; (document-start)<br>.github\workflows\actionlint_ok.yml|1 col 1 warning| Warning:[yamllint] truthy value should be one of [false, true] (truthy)<br>.github\workflows\actionlint_ok.yml|1 col 9 error| Error:[yamllint] wrong new line character: expected \n (new-lines)<br><br></pre><br><br>*Actual result*<br><br>• yamllint with prefix message<br>• actionlint without prefix message  <br>    (for .github/workflows/actionlint_ng.yml)<br><br>vim quickfix result<br><br><pre><br>.github\workflows\actionlint_ng.yml|1 col 5 error| Error:1:Value is not accepted. Valid values: &#34;check_run&#34;, &#34;check_suite&#34;, &#34;create&#34;, &#34;delete&#34;, &#34;deployment&#34;, &#34;deployment_status&#34;, &#34;discussion&#34;, &#34;discussion_comment&#34;, &#34;fork&#34;, &#34;gollum&#34;, &#34;issue_comment&#34;, &#34;issues&#34;, &#34;label&#34;, &#34;member&#34;, &#34;milestone&#34;, &#34;page_build&#34;, &#34;project&#34;, &#34;project_card&#34;, &#34;project_column&#34;, &#34;public&#34;, &#34;pull_request&#34;, &#34;pull_request_review&#34;, &#34;pull_request_review_comment&#34;, &#34;pull_request_target&#34;, &#34;push&#34;, &#34;registry_package&#34;, &#34;release&#34;, &#34;status&#34;, &#34;watch&#34;, &#34;workflow_dispatch&#34;, &#34;workflow_run&#34;, &#34;repository_dispatch&#34;.<br>.github\workflows\actionlint_ng.yml|1 col 1 warning| Warning:[yamllint] missing document start &#34;---&#34; (document-start)<br>.github\workflows\actionlint_ng.yml|1 col 1 warning| Warning:[yamllint] truthy value should be one of [false, true] (truthy)<br>.github\workflows\actionlint_ng.yml|1 col 8 error| Error:[yamllint] wrong new line character: expected \n (new-lines)<br>.github\workflows\actionlint_ng.yml|11 col 81 error| Error:[yamllint] line too long (110 &gt; 80 characters) (line-length)<br><br></pre><br><br>First line actionlint error message, do not contain <code>[actionlint]</code> .</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629812947.035300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1629812947.035300">24日 22:49:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629812947035300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あんま良く分かってないんですが、これ npm では yaml-language-server はインストール不可ということ？<br><a href='https://github.com/mattn/vim-lsp-settings/issues/446'>https://github.com/mattn/vim-lsp-settings/issues/446</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1629812947.035300">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/mattn/vim-lsp-settings/issues/446|#446 npm install no longer supported for yaml-language-server&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Looks like maybe <a href='https://github.com/redhat-developer/yaml-language-server/pull/458'>redhat-developer/yaml-language-server#458</a> was the upstream change that led to this?<br><br>Edit: I originally thought this was preventing the language server from running, but it does not.<br><br><pre><br>Wrote to /home/me/.local/share/vim-lsp-settings/servers/yaml-language-server/package.json:<br><br>{<br>  &#34;name&#34;: &#34;yaml-language-server&#34;,<br>  &#34;version&#34;: &#34;1.0.0&#34;,<br>  &#34;description&#34;: &#34;&#34;,<br>  &#34;main&#34;: &#34;index.js&#34;,<br>  &#34;scripts&#34;: {<br>    &#34;test&#34;: &#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;<br>  },<br>  &#34;keywords&#34;: [],<br>  &#34;author&#34;: &#34;&#34;,<br>  &#34;license&#34;: &#34;ISC&#34;<br>}<br><br><br>npm WARN EBADENGINE Unsupported engine {<br>npm WARN EBADENGINE   package: &#39;yaml-language-server@0.22.0&#39;,<br>npm WARN EBADENGINE   required: {<br>npm WARN EBADENGINE     node: &#39;*&#39;,<br>npm WARN EBADENGINE     npm: &#39;\n\nERROR: Please use yarn, npm is not supported in this repository!!!\n\n&#39;,<br>npm WARN EBADENGINE     yarn: &#39;^1.22.5&#39;<br>npm WARN EBADENGINE   },<br>npm WARN EBADENGINE   current: { node: &#39;v16.5.0&#39;, npm: &#39;7.19.1&#39; }<br>npm WARN EBADENGINE }<br><br>added 24 packages, and audited 25 packages in 650ms<br><br>found 0 vulnerabilities<br><br>[Process exited 0]<br><br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813046.035700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629813046.035700">24日 22:50:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813046035700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <del>こういうのがあるからNode面倒臭いんだよなぁ</del>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813085.036400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1629813085.036400">24日 22:51:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813085036400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                npmサポートする気が起きないのでyarn使ってくれってことですね多分
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813087.036500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629813087.036500">24日 22:51:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813087036500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                うえ...? 過去入れっぱだったので初めて知った。どうなんだろう。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813105.037100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629813105.037100">24日 22:51:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813105037100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                気分転換に直すか。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813110.037400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629813110.037400">24日 22:51:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813110037400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なお、あくまでyamllintは比較のためなので、必須ではないと思います。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813135.038300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1629813135.038300">24日 22:52:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813135038300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                @Tsuyoshi CHO efm-langserver の方ですが、 <code>efm-langserver -d</code> で期待通り出力されてる感じでしょうか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813137.038400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629813137.038400">24日 22:52:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813137038400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                って言ってもデバッグとかはしてなくて報告のみなのですが
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813146.038600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629813146.038600">24日 22:52:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813146038600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                えーっと見てみます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813263.039600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629813263.039600">24日 22:54:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813263039600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>+ yaml-language-server@0.22.0                          <br>added 24 packages from 16 contributors and audited 24 packages in 4.229s     <br>found 0 vulnerabilities</pre><br>あれ、<code>:LspInstallServer yaml-language-server</code> できたけども… 🤔
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813320.039900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629813320.039900">24日 22:55:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813320039900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/mattn/vim-lsp-settings/pull/450'>https://github.com/mattn/vim-lsp-settings/pull/450</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1629813320.039900">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/mattn/vim-lsp-settings/pull/450|#450 fix to use yarn for yaml-language-server&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><a href='https://github.com/mattn/vim-lsp-settings/issues/446'>#446</a><br><br>• add <code>yarn_install</code> script<br>• fix to use yarn for yaml-language-server installation</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813325.040200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629813325.040200">24日 22:55:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813325040200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すでに PR が上がってたw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813462.040800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1629813462.040800">24日 22:57:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813462040800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、はい。すいません！npm では対処できないという事？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813824.042300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629813824.042300">24日 23:03:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813824042300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                うえーっと <code>efm-langserver -d</code>  をvim-lsp 下でやってみたけど、なんか上手く動きませんでした...<br>debug_log吐かせるほうにはなにも出なかったので、エラーはないのかな...?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629813935.042900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629813935.042900">24日 23:05:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629813935042900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                yaml-language-server の機能って何があるんだろう。動作確認したいけど何が正しいのかがわからない。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814000.043600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629814000.043600">24日 23:06:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814000043600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                actionlintは補完も出たな...あれ、なんで出たんだ...w?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814072.044300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629814072.044300">24日 23:07:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814072044300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー、yaml-language-serverは json schemeにそって補完してくれますね<br>そっちで出たんだろうな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814088.044700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629814088.044700">24日 23:08:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814088044700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、github action の yaml で確認すればいいのか。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814103.045300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629814103.045300">24日 23:08:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814103045300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いろいろlspが動いていて、どれがどの動作したのか確認しずらいw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814122.045900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629814122.045900">24日 23:08:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814122045900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                動きますね。<br>おそらく↑のは npm v7 で警告出て、警告出たのが気持ち悪いから yarn 使わないの？ってことですかね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814188.046400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629814188.046400">24日 23:09:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814188046400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                最小の変更はerrorを抑えちゃうことで、長期的にはyarnで動かすこと?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814316.047300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629814316.047300">24日 23:11:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814316047300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そうですねぇ。エラーじゃなくて警告なのでビミョいですかねー。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814355.048000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629814355.048000">24日 23:12:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814355048000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                根本解決は PR の通り yarn で提供している node なサーバーは yarn を使うですかね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814423.049100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1629814423.049100">24日 23:13:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814423049100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                yarn で提供してるのに npm で入れて(逆も然り)、依存関係がぶっ壊れる可能性はゼロではないので…。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1629814632.049900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1629814632.049900">24日 23:17:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1629814632049900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                というか、よほどのプロジェクトじゃないかぎり、*package-lock.jsonとyarn.lock が同等じゃないでしょうしね...*
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
