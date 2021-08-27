@@ -24259,6 +24259,2103 @@ index d6fb03ee4..c984d5f49 100644
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1630023791.006000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630023791.006000">27日 09:23:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630023791006000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ファイルを開くときに描画前Hookしてsyntax offとTSBufDisableを噛ませたいんですが、やってる感じどのautocmdのイベントを使えばいいか分かってないです<br>イメージこんな感じなんですが、何を使うべきでしょうか<br><pre>autocmd FileType typescript,typescriptreact,javascript call &lt;SID&gt;disable_syntax()<br><br>function! s:disable_syntax() abort<br>  let size = getfsize(&#39;&lt;afile&gt;&#39;)<br>  &#34; ...<br>endfunction</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024264.006400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1630024264.006400">27日 09:31:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024264006400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                開くときとなるとBufReadかなぁ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024280.006900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1630024280.006900">27日 09:31:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024280006900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                FileTypeはBufReadの後でセットされますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024305.007500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024305.007500">27日 09:31:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024305007500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                BufRead、なんか発火してない気がしたんですよね、勘違いなのかな・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024385.008100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024385.008100">27日 09:33:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024385008100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd BufRead * call &lt;SID&gt;disable_syntax()<br><br>function! s:disable_syntax() abort<br>  echom &#39;foo&#39;<br>endfunction</pre><br>これでファイル開いたときにfooが出力されないのって普通です？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024470.008500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024470.008500">27日 09:34:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024470008500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                echomは出ないけど実行はされているかも？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024472.008600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1630024472.008600">27日 09:34:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024472008600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :help autocmd-events
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024473.008700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1630024473.008700">27日 09:34:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024473008700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>5. イベント                                     *autocmd-events* *E215* *E216*<br> <br>複数のイベントをコンマ (,) で区切ったリストにして指定することもできる。そのリ<br>ストにはスペースを含めてはいけない。そのコマンドは指定したリストにある全てのイ<br>ベントに適用される。<br> <br>「ファイル読み込み」には次の4種類のイベントが発生しうる。<br>        BufNewFile                      存在しないファイルの編集を開始する。<br>        BufReadPre      BufReadPost     既存のファイルの編集を開始する。<br>        FilterReadPre   FilterReadPost  フィルタの出力による一時ファイルを読み<br>                                        込む。<br>        FileReadPre     FileReadPost    その他のファイルを読み込む。<br>Vimはファイルを読み込むときにこの4種類のうちどれか1つを利用する。&#34;Pre&#34;と&#34;Post&#34;<br>のイベントは、ファイル読み込みの前後で両方とも起動される。<br> <br>Note イベント *ReadPre や、全てのイベント Filter に関する自動コマンドは、カレ<br>ントバッファを変更してはならないことに注意 (これが起きると、エラーメッセージが<br>表示される)。これは、間違ったバッファにファイルを読み込むのを防ぐためである。<br> <br>Note オプション &#39;modified&#39; は、BufReadPost と BufNewFile の自動コマンドを実行<br>した「後に」オフに設定されることに注意。しかし &#39;modified&#39; が自動コマンドから<br>オンに設定されたときはそうならない。<br> <br>&#39;eventignore&#39; は、いくつかあるいは全てのイベントを無視するために使える。<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024484.009000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1630024484.009000">27日 09:34:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024484009000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                既存ファイルなら発火するはずだけど...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024556.009500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024556.009500">27日 09:35:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024556009500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd BufReadPre * call &lt;SID&gt;disable_syntax()<br><br>function! s:disable_syntax() abort<br>  syntax clear<br>  TSBufDisable highlight<br>endfunction</pre><br>にしてみて実行されてる空気は感じるけど色が消えない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024622.010200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1630024622.010200">27日 09:37:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024622010200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                readした後でFileTypeが決定して、filetype プラグインで syntaxが設定されて表示されちゃうから?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024676.010800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024676.010800">27日 09:37:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024676010800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd FileType * call &lt;SID&gt;disable_syntax()<br><br>function! s:disable_syntax() abort<br>  syntax clear<br>endfunction</pre><br>これでもダメですねー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024703.011100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024703.011100">27日 09:38:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024703011100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、syntax offだと通る
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024766.012000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1630024766.012000">27日 09:39:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024766012000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ReadとFileTypeとかのイベントの順序の情報、どこにあったっけ...と今悩んでいる(vimrcにメモっておきたい)<br>あれどこだっけな...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024769.012200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024769.012200">27日 09:39:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024769012200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんかエラー出力も抑制されてる気がする
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024882.012500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024882.012500">27日 09:41:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024882012500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                TSBufDisableがタイミング的に通ってない感じしますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630024893.012800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630024893.012800">27日 09:41:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630024893012800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                FileTypeが設定されたあとじゃないと適用されてないからかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630025091.013300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630025091.013300">27日 09:44:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630025091013300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                treesitterがautocmd filetypeでなんかやってるっぽい<br><a href='https://github.com/nvim-treesitter/nvim-treesitter/search?q=autocmd'>https://github.com/nvim-treesitter/nvim-treesitter/search?q=autocmd</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630025161.013600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630025161.013600">27日 09:46:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630025161013600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これっぽい！<br><a href='https://github.com/nvim-treesitter/nvim-treesitter/issues/1708'>https://github.com/nvim-treesitter/nvim-treesitter/issues/1708</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1630025161.013600">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/nvim-treesitter/nvim-treesitter/issues/1708|#1708 disable treesitter on bigfile&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Is your feature request related to a problem? Please describe.*  <br>I want to create an autocmd to disable tree-sitter on a very big file.  <br>if I open nvim on a big file then my neovim is stuck on that file.  <br>I am very sure it is a problem with a tree-sitter. if I remove tree-sitter plugin I can open it easily.  <br>I know that command vim <code>TSBufDisable highlight</code> but it doesn&#39;t work on bufenter or bufread event.  <br>maybe it runs after treesitter highlight  <br>my auto command already run <code>set syntax off</code> treesitter still enable it again and highlight<br><br>Is treesitter <code>highlight</code> work with <code>synmaxcol</code> ?<br><br>*Describe the solution you&#39;d like*  <br>I want a solution to open the big file without tree-sitter  <br>or make command <code>TSBufDisable highlight</code> can run on autocmd and after that tree-sitter stop highlight.<br><br>*Additional context*  <br>step to reproduce  <br>enable treesitter, download that file and open it.  <br><a href='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'>https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js</a><br><br>thank you</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630025299.014100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1630025299.014100">27日 09:48:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630025299014100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー、その後じゃないといけないんだな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630025317.014400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630025317.014400">27日 09:48:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630025317014400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                むしろ基本offにしておいてファイルサイズを見て有効化する方がいい？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630025370.014700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630025370.014700">27日 09:49:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630025370014700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                BufReadPreでファイルサイズの取得ってできるんですかね？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630025417.014900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630025417.014900">27日 09:50:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630025417014900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ファイルサイズの取得っていうかファイルパスか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630026174.015500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630026174.015500">27日 10:02:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630026174015500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd FileType typescript,typescriptreact,javascript call &lt;SID&gt;enable_syntax()<br>autocmd VimEnter * call &lt;SID&gt;disable_treesitter()<br><br>function! s:enable_syntax() abort<br>  if getfsize(@%) &lt; 1000000<br>    setlocal syntax=on<br>    TSBufEnable highlight<br>    TSBufEnable context_commentstring<br>    TSBufEnable rainbow<br>  endif<br>endfunction<br><br>function! s:disable_treesitter() abort<br>  TSDisableAll highlight<br>  TSDisableAll context_commentstring<br>  TSDisableAll rainbow<br>endfunction</pre><br>うーん、DisableAllがBufEnableより優先度高いみたい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630026365.016100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630026365.016100">27日 10:06:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630026365016100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd BufReadPre * call &lt;SID&gt;enable_syntax()<br><br>function! s:enable_syntax() abort<br>  if getfsize(@%) &lt; 1000000<br>    setlocal syntax=on<br>    TSBufEnable highlight<br>    TSBufEnable context_commentstring<br>    TSBufEnable rainbow<br>  else<br>    TSDisableAll highlight<br>    TSDisableAll context_commentstring<br>    TSDisableAll rainbow<br>  endif<br>endfunction</pre><br>これでもなんか動いてくれない・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630026608.016400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630026608.016400">27日 10:10:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630026608016400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                せめてasyncでファイル読んでくれたら固まらなくていいんだけどなー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630026676.016900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630026676.016900">27日 10:11:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630026676016900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd FileType * call &lt;SID&gt;disable_syntax()<br>function! s:disable_syntax() abort<br>  setlocal syntax=off<br>endfunction</pre><br>これですら効かない・・・？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630029625.017300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630029625.017300">27日 11:00:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630029625017300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                絶対何か違うと思うけどこれで（大体）目的は果たしました<br><pre>autocmd BufReadPre,BufEnter * call &lt;SID&gt;set_syntax()<br><br>function! s:set_syntax() abort<br>  syntax off<br>  TSDisableAll highlight<br>  TSDisableAll context_commentstring<br>  TSDisableAll rainbow<br><br>  let fsize = getfsize(@%)<br>  if &amp;ft ==# &#34;&#34; || fsize &lt;= 0<br>    return<br>  endif<br><br>  if fsize &lt; 500000<br>    syntax on<br>    TSEnableAll highlight<br>    TSEnableAll context_commentstring<br>    TSEnableAll rainbow<br>  endif<br>endfunction</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630029712.018300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630029712.018300">27日 11:01:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630029712018300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                問題は間違えてクソでかファイルを開いた瞬間はこれで回避できるけど、そのあと間違えて別ウィンドウに飛んだときとかにBufEnterが発火してクソでかファイルにhighlightが適用されてしまう・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030078.018600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030078.018600">27日 11:07:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030078018600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                バッファローカル変数でも仕込んで回避したらよさそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030101.018900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030101.018900">27日 11:08:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030101018900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、そうじゃなくてBufEnterでtreesitterが起動するってことか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030170.019800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030170.019800">27日 11:09:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030170019800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                BufReadPreとかでも多分EnableAllだとtreesitterが読みにいってる気がするんですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030182.020100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030182.020100">27日 11:09:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030182020100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                BufEnterの場合はもちろん
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030241.021100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030241.021100">27日 11:10:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030241021100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                syntaxの方は <code>setlocal syntax=off</code> を試したんですけど、syntax onになった瞬間にsyntax=offが外れるみたいな挙動になってしまって
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030350.022100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030350.022100">27日 11:12:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030350022100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                BufEnterで毎回globalな設定を書き換えてるのあまりにも気持ち悪い
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030528.023100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030528.023100">27日 11:15:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030528023100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>syntax off | setlocal syntax=off | syntax on</code><br>でsyntax有効になっちゃいません？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030562.023500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030562.023500">27日 11:16:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030562023500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これ、ファイルサイズが大きすぎる場合に <code>TSBufDisable ...</code> するとかじゃだめなのかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030572.023900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030572.023900">27日 11:16:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030572023900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                syntax onで有効にはなっちゃうな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030619.025100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030619.025100">27日 11:16:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030619025100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                最初それ試したんですけど、EnableAllな状態だと多分先にparseされちゃった気がしたんですよね<br>もう1回試すか・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030629.025300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030629.025300">27日 11:17:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030629025300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まじか…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030641.025600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030641.025600">27日 11:17:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030641025600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それが上のIssue関連だと思いました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030670.025900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1630030670.025900">27日 11:17:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030670025900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                tree-sitter って非同期じゃないんだ?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030671.026100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030671.026100">27日 11:17:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030671026100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                難易度
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030687.026300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030687.026300">27日 11:18:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030687026300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                多分非同期動作はしてないはず
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030697.026600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030697.026600">27日 11:18:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030697026600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                有効化してるとバッファ開くのが遅くなる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030771.027400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030771.027400">27日 11:19:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030771027400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー確かに<code>TSBufDisable</code>してもparseされちゃってますね(速度が変わらない)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030780.027600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030780.027600">27日 11:19:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030780027600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd BufReadPre * call &lt;SID&gt;test()<br>function! s:test() abort<br>  let fsize = getfsize(@%)<br>  if fsize &gt; 500000<br>    TSBufDisable highlight<br>    TSBufDisable context_commentstring<br>    TSBufDisable rainbow<br>  endif<br>endfunction</pre><br>これで死んだ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030815.027900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030815.027900">27日 11:20:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030815027900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ので毎回global書き換えるしかないのではという最悪な感じになってます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030861.028600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030861.028600">27日 11:21:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030861028600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まぁこのサイズのファイル開くのってほぼ100%誤爆なので、すぐバッファごと消すから運用上はおそらく問題ない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030873.028900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630030873.028900">27日 11:21:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030873028900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんかautocmd刺さってないしこれどうやって動作してるんだ
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">1 件の返信 最終返信:11:24:55 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1630031095.031700">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">kuu</span>
+                      <a href="#ts-1630031095.031700">27日 11:24:55</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      気のせいだった、FileTypeで動いてるわ
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030896.029300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030896.029300">27日 11:21:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030896029300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                treesitterの中のコードで自動でautocmd生成してる気がしたので、その辺かも
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030912.029700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030912.029700">27日 11:21:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030912029700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                大分最悪な気持ちになるコードでは・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030924.029900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1630030924.029900">27日 11:22:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030924029900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                もう BufReadPre で bwipeout してしまおう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030934.030100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030934.030100">27日 11:22:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030934030100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030945.030400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030945.030400">27日 11:22:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030945030400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そこで警告出しつつinputで吹き飛ばすとかありかも
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630030977.030900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630030977.030900">27日 11:22:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630030977030900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まぁでも万が一開きたい場合も考えてsyntax offにするのはやっておいていい気はしますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630031004.031600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630031004.031600">27日 11:23:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630031004031600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                このコードに追加でinputのbwipeout仕込むのはありかも
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630031095.031700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630031095.031700">27日 11:24:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630031095031700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                気のせいだった、FileTypeで動いてるわ
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1630030873.028900">なんかautocmd刺さってないしこれど ...</a>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032066.032300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630032066.032300">27日 11:41:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032066032300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd BufReadPre * call &lt;SID&gt;disable_syntax()<br>autocmd BufEnter * call &lt;SID&gt;set_syntax()<br><br>function! s:enable_syntax() abort<br>  syntax on<br>  TSEnableAll highlight<br>  TSEnableAll context_commentstring<br>  TSEnableAll rainbow<br>endfunction<br><br>function! s:disable_syntax() abort<br>  syntax off<br>  TSDisableAll highlight<br>  TSDisableAll context_commentstring<br>  TSDisableAll rainbow<br>endfunction<br><br>function! s:set_syntax() abort<br>  let max_file_size = 500000<br><br>  call &lt;SID&gt;disable_syntax()<br><br>  let fsize = getfsize(@%)<br>  let line_num = line(&#39;$&#39;)<br>  if fsize &gt; max_file_size &amp;&amp; input(printf(&#39;&#34;%s&#34; is too large file.(%s lines, %s byte) Continue? [y/N]&#39;, @%, line_num, fsize)) !~? &#39;^y\%[es]$&#39;<br>    bwipeout<br>    call &lt;SID&gt;enable_syntax()<br>  endif<br><br>  if &amp;ft ==# &#34;&#34; || fsize &lt; max_file_size<br>    call &lt;SID&gt;enable_syntax()<br>  endif<br>endfunction</pre><br>こうなりました
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Shougo">
+                              <span>🎉1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">2 件の返信 最終返信:12:40:36 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1630035613.043900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Shougo</span>
+                      <a href="#ts-1630035613.043900">27日 12:40:13</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      inputのかわりにconfirm使っても良いのではと思った
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1630035636.044200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ycino</span>
+                      <a href="#ts-1630035636.044200">27日 12:40:36</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      お、使ったことないので試してみます
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032395.032900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630032395.032900">27日 11:46:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032395032900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                間違えてでかいファイル開いても爆速になった・・・<br>嬉しい・・・
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, takets, YABUKI Yukiharu, monaqa, emtee, Shougo, dohq">
+                              <img class="slacklog-emoji" alt="goodpoem" title="goodpoem" src="/slacklog/emojis/goodpoem.png"><span class="ml-1">7</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032480.033400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630032480.033400">27日 11:48:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032480033400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                inputで問い合わせるようにもしたし最高
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032587.033900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630032587.033900">27日 11:49:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032587033900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ファイルの行数ってどう取るんでしたっけ、ついでにinputに出したい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032623.034400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630032623.034400">27日 11:50:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032623034400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                バッファが存在する前提です？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032651.035100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630032651.035100">27日 11:50:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032651035100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー、BufEnterだから多分ある
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032674.035700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1630032674.035700">27日 11:51:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032674035700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>line(&#39;$&#39;)</code> これで行けるはず
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032791.035900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630032791.035900">27日 11:53:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032791035900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                最高
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <span>🎉1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02CX8U568H/CleanShot%202021-08-27%20at%2011.53.02.png" target="_blank" rel="noopener noreferrer">
+                  <img src="/slacklog/files/F02CX8U568H/CleanShot%202021-08-27%20at%2011.53.02_1024.png" width="1024" height="640" alt="CleanShot 2021-08-27 at 11.53.02.png" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630032891.036500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630032891.036500">27日 11:54:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630032891036500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これ、min.jsの誤爆とか含め汎用設定として便利なのでは
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630033027.037300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630033027.037300">27日 11:57:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630033027037300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                （globalの設定書き換えまくって気持ち悪いから一般的にはダメな気がしてきた）
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630033890.038100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1630033890.038100">27日 12:11:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630033890038100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                min.js は大抵1行だから1行の行数がめっちゃ長い場合で判定かけれそうですね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630033908.038600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1630033908.038600">27日 12:11:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630033908038600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                とか思ったけど、ライセンスがヘッダーとかにあったらわからんか。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630034046.039700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1630034046.039700">27日 12:14:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630034046039700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ところで <code>:ownsyntax</code> だとウインドウローカルだと思うけど、それでいけないのかな。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630035368.040100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630035368.040100">27日 12:36:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630035368040100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :h ownsyntax
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630035369.040200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1630035369.040200">27日 12:36:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630035369040200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>17. ウィンドウローカル構文                      *:ownsyntax*<br> <br>通常は同じバッファを表示するすべてのウィンドウは同じ構文設定を共有する。しかし<br>ながら、特定のウィンドウだけ別の構文設定を使用することも可能である。例えば一つ<br>のウィンドウで LaTeX のソースを普通に表示して、別のウィンドウで異なる表示をす<br>る (文字を隠したり太字や斜字体で表示したりする) ことが可能である。その場合は<br>&#39;scrollbind&#39; オプションを使うと便利である。<br> <br>同じバッファを表示しているウィンドウが複数あって、現在のウィンドウの構文だけを<br>&#34;foo&#34; に設定するには次のようにする:  <br>   :ownsyntax foo<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630035411.040800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1630035411.040800">27日 12:36:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630035411040800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                私も設定してみようかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630035467.041800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630035467.041800">27日 12:37:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630035467041800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ちょっと別のところでハマっていて<br><pre>syntax on<br>TSEnableAll highlight</pre><br>だとtreesitterが有効になるんですけど<br><pre>syntax on | TSEnableAll highlight</pre><br>でtreesitterが有効になってくれないんですよね・・・<br><br>1つの関数で呼び出すとtreesitterが有効になってくれなくて困っており・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630035508.042500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1630035508.042500">27日 12:38:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630035508042500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これはコマンドが barを解釈するものとそうでないものがあるからでは
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630035529.042900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630035529.042900">27日 12:38:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630035529042900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いや<br><pre>function! s:enable_syntax() abort<br>  syntax on<br>  TSEnableAll highlight<br>  TSEnableAll context_commentstring<br>  TSEnableAll rainbow<br>endfunction</pre><br>で多分有効になってくれてないんですよ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630035577.043400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1630035577.043400">27日 12:39:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630035577043400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                nvim-treesitter の実装次第なのでなんもわからん
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630035608.043800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630035608.043800">27日 12:40:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630035608043800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですよね、色々試し中
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630036748.044700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630036748.044700">27日 12:59:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630036748044700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                理由は分からないけど<br><pre>function! s:enable_syntax() abort<br>  syntax on<br>  TSEnableAll highlight<br>  TSEnableAll context_commentstring<br>  TSEnableAll rainbow<br>  TSBufEnable highlight<br>  TSBufEnable context_commentstring<br>  TSBufEnable rainbow<br>endfunction</pre><br>にしたら動いた
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630036759.044900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630036759.044900">27日 12:59:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630036759044900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                BufEnableを追加
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630037223.045000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630037223.045000">27日 13:07:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630037223045000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                最終形
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02CR0JJ4S0/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
+                  </a>
+                  <pre><code class='language-none'>autocmd BufReadPre * call &lt;SID&gt;disable_syntax()
+autocmd BufEnter * call &lt;SID&gt;set_syntax()
+
+function! s:enable_syntax() abort
+  syntax on
+  TSEnableAll highlight
+  TSEnableAll context_commentstring
+  TSEnableAll rainbow
+  TSBufEnable highlight
+  TSBufEnable context_commentstring
+  TSBufEnable rainbow
+endfunction
+
+function! s:disable_syntax() abort
+  syntax off
+  TSDisableAll highlight
+  TSDisableAll context_commentstring
+  TSDisableAll rainbow
+endfunction
+
+function! s:set_syntax() abort
+  call s:disable_syntax()
+
+  let max_file_size = 500000
+  let fsize = getfsize(@%)
+  let line_num = line(&#39;$&#39;)
+
+  if fsize &gt; max_file_size &amp;&amp; input(printf(&#39;&#34;%s&#34; is too large file.(%s lines, %s byte) Continue? [y/N]&#39;, @%, line_num, fsize)) !~? &#39;^y\%[es]$&#39;
+    bwipeout
+    call &lt;SID&gt;enable_syntax()
+  endif
+
+  if &amp;ft ==# &#34;&#34; || fsize &lt; max_file_size
+    call &lt;SID&gt;enable_syntax()
+  endif
+endfunction
+</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630037310.045500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1630037310.045500">27日 13:08:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630037310045500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                helpとかに引っかかるようになったからひとまずJS系だけに発火させよう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630038303.045700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1630038303.045700">27日 13:25:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630038303045700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                私も試します
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630038360.046300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1630038360.046300">27日 13:26:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630038360046300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vim-treesitterプラグインも使えると良さそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630072719.046400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-15/2378676320485_d1d849403ce50f0f0b8f_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">funcrab</span>
+              <a href="#ts-1630072719.046400">27日 22:58:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630072719046400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Vim だけで Ctrl キーの単独タップを ESC にマッピングする方法ってありますかね？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630072837.047100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1630072837.047100">27日 23:00:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630072837047100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                コンソールも含めちゃうとかなり無理だと思うけど....そこらは詳しくないな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630075936.047300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1630075936.047300">27日 23:52:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJMV3MSLR/p1630075936047300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ない
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="eihigh">
+                              <img class="slacklog-emoji" alt="hai-small" title="hai-small" src="/slacklog/emojis/hai-small.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="funcrab">
+                              <span>😢1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

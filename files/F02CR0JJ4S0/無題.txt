@@ -1,0 +1,36 @@
+autocmd BufReadPre * call <SID>disable_syntax()
+autocmd BufEnter * call <SID>set_syntax()
+
+function! s:enable_syntax() abort
+  syntax on
+  TSEnableAll highlight
+  TSEnableAll context_commentstring
+  TSEnableAll rainbow
+  TSBufEnable highlight
+  TSBufEnable context_commentstring
+  TSBufEnable rainbow
+endfunction
+
+function! s:disable_syntax() abort
+  syntax off
+  TSDisableAll highlight
+  TSDisableAll context_commentstring
+  TSDisableAll rainbow
+endfunction
+
+function! s:set_syntax() abort
+  call s:disable_syntax()
+
+  let max_file_size = 500000
+  let fsize = getfsize(@%)
+  let line_num = line('$')
+
+  if fsize > max_file_size && input(printf('"%s" is too large file.(%s lines, %s byte) Continue? [y/N]', @%, line_num, fsize)) !~? '^y\%[es]$'
+    bwipeout
+    call <SID>enable_syntax()
+  endif
+
+  if &ft ==# "" || fsize < max_file_size
+    call <SID>enable_syntax()
+  endif
+endfunction
