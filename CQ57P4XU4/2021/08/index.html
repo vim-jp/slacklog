@@ -6275,6 +6275,223 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1630164963.117500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1630164963.117500">29日 00:36:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630164963117500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>.exrc</code> ってカレントディレクトリの読みましたっけ？<br><a href='https://github.com/mattn/efm-langserver/issues/163#issuecomment-907625800'>https://github.com/mattn/efm-langserver/issues/163#issuecomment-907625800</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1630164963.117500">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/mattn/efm-langserver/issues/163#issuecomment-907625800|Comment on #163 Project-local config file&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">That situation would be the same with vim&#39;s <code>.exrc</code> or many other configuration files for IDEs. I can also include arbitrary commands from a maven <code>pom.xml</code> or a <code>tox</code> configuration in Python and so on. So you should probably never trust a foreign project configuration before reviewing it.<br><br>Maybe adding some configuration parameter (set via LSP capabilities or in the global config file) defaulting to <code>false</code> that adds support for local project configs could be an option that prevents unknowing users from such a situation.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630164992.118200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1630164992.118200">29日 00:36:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630164992118200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>.efm-config.yaml</code> を読んでって言われてるけど、危ない yaml の可能性あるよね？って話。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630165282.118600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1630165282.118600">29日 00:41:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630165282118600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :h &#39;exrc&#39;
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630165282.118700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1630165282.118700">29日 00:41:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630165282118700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>                                        *&#39;exrc&#39;* *&#39;ex&#39;* *&#39;noexrc&#39;* *&#39;noex&#39;*<br>&#39;exrc&#39; &#39;ex&#39;             切替    (既定ではオフ)<br>                        グローバル<br>        カレントディレクトリ内のファイル .vimrc, .exrc や .gvimrc 等の読み込み<br>        を有効にする。<br> <br>        このオプションを設定することは潜在的な機密漏洩を意味する。例えば、<br>        パッケージを解凍することや github からファイルを取得することを考える<br>        と、その中に含まれる .vimrc はトロイの木馬になりえる。<br>        このオプションは設定しないほうが良い! {訳注:太字で強調}<br>        その代わりに自分の .vimrc で、ディレクトリ毎のオプションを設定する<br>        autocommand を定義するべきである。<br> <br>        このオプションをオンにするなら、オプション &#39;secure&#39; もオンにするよう検<br>        討すること (|initialization| を参照)。<br>        |.vimrc| と |gui-init| も参照。<br>        安全上の理由から、このオプションをモードライン |modeline| やサンド<br>        ボックス |sandbox| の中で設定することはできない。<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630165382.119200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1630165382.119200">29日 00:43:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630165382119200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vim-lsp-settings はこれをオプトインにしてるからなぁ。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630165596.119500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1630165596.119500">29日 00:46:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630165596119500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そうだ、落ちる件を観ないと。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630165646.120100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1630165646.120100">29日 00:47:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630165646120100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                hrsh7th さん、後日でいいんで落ちる件の条件教えて下さい。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630168656.121100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1630168656.121100">29日 01:37:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630168656121100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー、落ちるの neovim nightly 限定なのですよね…。明日まとめます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630172811.121700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1630172811.121700">29日 02:46:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630172811121700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、neovim か。ではすいません。大丈夫です。(宗教上の理由で neovim のソースが読めない)
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ryicoh">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
