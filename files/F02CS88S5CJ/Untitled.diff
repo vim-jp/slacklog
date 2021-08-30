@@ -1,0 +1,16 @@
+diff --git a/settings/deno.vim b/settings/deno.vim
+index 0e92279..576a248 100644
+--- a/settings/deno.vim
++++ b/settings/deno.vim
+@@ -14,10 +14,10 @@ augroup vim_lsp_settings_deno
+       \     'references': v:true,
+       \     'referencesAllFunctions': v:true,
+       \   },
++      \   'config': empty(lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json')) ? v:null : lsp#utils#find_nearest_parent_file(lsp#utils#get_buffer_path(), 'tsconfig.json'),
+       \ }),
+       \ 'allowlist': lsp_settings#get('deno', 'allowlist', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact']),
+       \ 'blocklist': lsp_settings#get('deno', 'blocklist', {c->empty(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'node_modules/')) ? [] : lsp_settings#utils#warning('server "deno" is disabled since "node_modules" is found', ['typescript', 'javascript', 'typescriptreact', 'javascriptreact'])}),
+-      \ 'config': lsp_settings#get('deno', 'config', lsp_settings#server_config('deno')),
+       \ 'workspace_config': lsp_settings#get('deno', 'workspace_config', {}),
+       \ 'semantic_highlight': lsp_settings#get('deno', 'semantic_highlight', {}),
+       \ }
