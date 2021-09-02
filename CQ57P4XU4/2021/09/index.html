@@ -2159,6 +2159,88 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1630510607.273200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/fe8d72e59b9b160ef2c5bd0e6f44f293.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0006-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tsukkee</span>
+              <a href="#ts-1630510607.273200">2日 00:36:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630510607273200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なぜか自分のvimrcに<code>g:lsp_settings_filetype_vue = [&#39;vls&#39;]</code>とか書いてあったせいで検証に時間が掛かりましたが、一応vim-lsp-settingsに乗せれたつもり…(すぐに検証できる環境がなくてWindows用のInstallerが作れてませんが)<br><a href='https://github.com/tsukkee/vim-lsp-settings/tree/add-vue-volar'>https://github.com/tsukkee/vim-lsp-settings/tree/add-vue-volar</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630589306.273500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1630589306.273500">2日 22:28:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630589306273500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                この件も直す追加PRを出しました。<br><a href='https://github.com/mattn/vim-lsp-settings/pull/456'>https://github.com/mattn/vim-lsp-settings/pull/456</a><br>これでいいはず...
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1630334352.190800">```2021/08/30 23:34: ...</a>
+            </span>
+            <div class="mt-2 border p-2" id="ts-1630589306.273500">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/mattn/vim-lsp-settings/pull/456|#456 feat: local settings deny filter more brush up&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Problem*<br><br>related <a href='https://github.com/mattn/vim-lsp-settings/pull/452'>#452</a><br><br>Previous PR fix <code>cmd</code> and other removal target process fine.<br><br>But that PR implicit premise <code>json converted settings are all vim dict</code>.  <br>This implicit is false.<br><br>*For example*<br><br><pre><br>{<br>  &#34;deno&#34;: {<br>    &#34;disabled&#34;: true<br>  }<br>}<br></pre><br><br>(top level key:value, value as non dict)<br><br>* * *<br><br>*Solusion*<br><br>This PR fix below:<br><br>• langserver settings(ex &#34;deno&#34;: *target* ) check dict<br>• setting value(ex &#34;workspace_config&#34;: *terget* ) check dict<br><br>and process brush up(memory saving, speed up?)<br><br>• this function need only values, replace <code>items()</code> to <code>values()</code><br><br>Regerd.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1630590549.273900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1630590549.273900">2日 22:49:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1630590549273900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お、試してみます
+              </div>
+
+              <div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1630334352.190800">```2021/08/30 23:34: ...</a>
+            </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

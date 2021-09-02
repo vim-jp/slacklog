@@ -9290,6 +9290,54 @@ index 0e92279..576a248 100644
 
               <div>
               </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">0 件の返信 最終返信: <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1630589306.273500">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Tsuyoshi CHO</span>
+                      <a href="#ts-1630589306.273500">2日 22:28:26</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      この件も直す追加PRを出しました。<br><a href='https://github.com/mattn/vim-lsp-settings/pull/456'>https://github.com/mattn/vim-lsp-settings/pull/456</a><br>これでいいはず...
+                    </div>
+                      
+    <div class="d-flex">
+        <div>&lt;https://github.com/mattn/vim-lsp-settings/pull/456|#456 feat: local settings deny filter more brush up&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Problem*<br><br>related <a href='https://github.com/mattn/vim-lsp-settings/pull/452'>#452</a><br><br>Previous PR fix <code>cmd</code> and other removal target process fine.<br><br>But that PR implicit premise <code>json converted settings are all vim dict</code>.  <br>This implicit is false.<br><br>*For example*<br><br><pre><br>{<br>  &#34;deno&#34;: {<br>    &#34;disabled&#34;: true<br>  }<br>}<br></pre><br><br>(top level key:value, value as non dict)<br><br>* * *<br><br>*Solusion*<br><br>This PR fix below:<br><br>• langserver settings(ex &#34;deno&#34;: *target* ) check dict<br>• setting value(ex &#34;workspace_config&#34;: *terget* ) check dict<br><br>and process brush up(memory saving, speed up?)<br><br>• this function need only values, replace <code>items()</code> to <code>values()</code><br><br>Regerd.</div>
+      </div>
+
+                  </div>
+                  <div class="p-2" id="ts-1630590549.273900">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">raa0121</span>
+                      <a href="#ts-1630590549.273900">2日 22:49:09</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      お、試してみます
+                    </div>
+                  </div>
+                </div>
+              </details>
             </div>
           </div>
         </div>
