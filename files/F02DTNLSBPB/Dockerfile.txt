@@ -1,0 +1,24 @@
+FROM ubuntu:latest
+RUN apt-get update && \
+apt-get install -y git \
+ neovim\
+ curl\
+ python3-dev\
+ python3-pip\
+ zsh
+
+RUN pip3 install --user pynvim
+
+
+COPY work /root/work
+#copy neovim setting
+# COPY nvim /root/.config/nvim
+
+RUN mkdir  -p /root/.config/nvim/
+
+#vimrc
+RUN echo "set rtp+=/root/work/denops-skkeleton.vim \n imap <C-j> <Plug>(skkeleton-enable) \n" >> /root/.config/nvim/init.vim
+
+# run zsh
+CMD ["/bin/zsh"]
+
