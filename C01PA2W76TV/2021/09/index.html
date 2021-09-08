@@ -473,6 +473,344 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631066302.021000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631066302.021000">8日 10:58:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631066302021000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://vim-jp.slack.com/archives/CLKR04BEF/p1631030165286200'>https://vim-jp.slack.com/archives/CLKR04BEF/p1631030165286200</a><br><a href='https://vim-jp.slack.com/archives/CLKR04BEF/p1631065714314700?thread_ts=1631030165.286200&amp;cid=CLKR04BEF'>https://vim-jp.slack.com/archives/CLKR04BEF/p1631065714314700?thread_ts=1631030165.286200&amp;cid=CLKR04BEF</a><br>@kuu この件ですが、ddskkのバグはここでした。 <a href='https://github.com/skk-dev/ddskk/blob/6ed518435be2d8c6fe3cfb421f046c0f084dde9e/skk-sticky.el#L112'>https://github.com/skk-dev/ddskk/blob/6ed518435be2d8c6fe3cfb421f046c0f084dde9e/skk-sticky.el#L112</a><br><br>この設定はddskkに新しいアルファベット-&gt;かな変換を与えるもので、この設定の意味は「「skk-sticky-keyを押したとき」に、「未消費文字をnilにして」「skk-sticky-set-henkan-pointを実行」する」という設定です。<br>これを修正するには「現在の未変換文字」を変数か関数で取れるようにしてnilのところに設定しないといけないのですが、そもそもここに変数とか関数を入れれるのかよく分からんなーということまで調べて投げた問題です。
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631066302.021000">
+              
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">そしてddskkのバグは修正難易度高め。Skkeletonで実装できてるのすごい。</div>
+      </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/09/#ts-1631030165.286200">slacklog</a>
+      </span>
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">気になってたんですが、これどんな問題です？</div>
+      </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/CLKR04BEF/2021/09/#ts-1631065714.314700">slacklog</a>
+      </span>
+    <div class="d-flex">
+        <div>&lt;https://github.com/skk-dev/ddskk/blob/6ed518435be2d8c6fe3cfb421f046c0f084dde9e/skk-sticky.el | skk-sticky.el&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>               (cons `(,skk-sticky-key nil skk-sticky-set-henkan-point)<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631066382.022100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631066382.022100">8日 10:59:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631066382022100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                腕に覚えのある方はぜひ。。🙇‍♂️<br><a href='https://github.com/skk-dev/ddskk/issues/197'>https://github.com/skk-dev/ddskk/issues/197</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631066382.022100">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/skk-dev/ddskk/issues/197|#197 sticky-key使用時、まだ消費されていない文字が消える&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">「発する(はっする)」を入力したいと思います。  <br>skkにおいてこれを入力するには「HasSuru」と入力する必要があります。  <br>以下のように遷移します。<br><br><pre><br>input: HasSu<br><br>▽h					; H<br>▽は					; a<br>▽はs					; s<br>▽はっ*s					; S<br>▼発す					; u<br><br></pre><br><br>しかし、sticky-keyを使用して入力する場合、消費されていない「s」がなぜか消えてしまうため入力することができません。<br><br><pre><br>input: ;has;su<br><br>▽					; ;<br>▽h					; h<br>▽は					; a<br>▽はs					; s<br>▽は*					; ;<br>▽は*s					; s<br>▼馳す					; u<br><br></pre><br><br>*init.el*<br><br><pre><br>(setq skk-sticky-key &#34;;&#34;)<br>(require &#39;skk)<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631066408.022500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1631066408.022500">8日 11:00:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631066408022500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                emacsにもdeno処理系の機運
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita, Shougo, kuu">
+                              <img class="slacklog-emoji" alt="ultrafastparrot" title="ultrafastparrot" src="/slacklog/emojis/ultrafastparrot.gif"><span class="ml-1">3</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631066549.022900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-24/1769267615079_a3a2d7805a5d0be059df_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tomoya</span>
+              <a href="#ts-1631066549.022900">8日 11:02:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631066549022900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                emacs-ng か <a href='https://github.com/emacs-ng/emacs-ng'>https://github.com/emacs-ng/emacs-ng</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631066549.022900">
+              
+    <div class="d-flex">
+        <div>emacs-ng/emacs-ng</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender. </div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631066594.023900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631066594.023900">8日 11:03:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631066594023900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/skk-dev/ddskk/blob/master/skk.el#L266-L267'>https://github.com/skk-dev/ddskk/blob/master/skk.el#L266-L267</a><br>ddskk、実装的にモダンとは程遠い実装なのでちゃんと直したいが、この実装に依存してる人がいそうで直すに直せない。
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631066594.023900">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/skk-dev/ddskk/blob/master/skk.el | skk.el&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>  (when skk-sticky-key<br>    (require &#39;skk-sticky))<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631066657.024800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631066657.024800">8日 11:04:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631066657024800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まぁコアに入れなくてもdenopsと喋れるパッケージを作ればいいだけ（難易度）とは思いますけどねー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631066754.025800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631066754.025800">8日 11:05:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631066754025800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あとVimの関数呼ぶとかdenopsプラグインがしてるので、Vimの関数とElispの関数のマッピングをしないといけないかもしれない。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631068482.026800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631068482.026800">8日 11:34:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631068482026800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ああ、これかー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631068513.027200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631068513.027200">8日 11:35:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631068513027200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                実はeskkもちゃんと動く
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631068930.028100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631068930.028100">8日 11:42:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631068930028100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほどー。そうなるとやはり本家で動かないのはカッコ悪いのでちゃんと時間取って直しますかー。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, Shougo">
+                              <img class="slacklog-emoji" alt="subara" title="subara" src="/slacklog/emojis/subara.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631069150.028900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631069150.028900">8日 11:45:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631069150028900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                eskkが変わっているという気がしなくもないけど、まあできると便利ですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631069160.029200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631069160.029200">8日 11:46:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01PA2W76TV/p1631069160029200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                実装もシンプルにできる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

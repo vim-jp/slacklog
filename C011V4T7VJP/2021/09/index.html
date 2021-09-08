@@ -1866,6 +1866,452 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631074772.059700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-06/1944976563953_a3ccb33672bb0c98b4c3_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">一瀬喜弘</span>
+              <a href="#ts-1631074772.059700">8日 13:19:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631074772059700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ありがとうございます<br>これだって決定打はなさそうですね<br>運用で頑張るかー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631080260.060000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1631080260.060000">8日 14:51:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631080260060000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まだプロトタイプですけど、とりあえず全部lnするやつはできてますよ。<br>引数は <code>git worktree add</code> と同じですが、名前付きのオプションを使う場合は先に指定してやる必要があります。
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02DM958QF7/worktree-add.bash.sh" target="_blank" rel="noopener noreferrer">
+                  <span class="f5">[[ダウンロード: worktree-add.bash(Shell)]]</span>
+                  </a>
+                  <pre><code class='language-shell'>set -e
+
+WORKTREE=&#34;${@: -2:1}&#34;
+
+function worktree_list() {
+  local PATTERN=&#34;^worktree\s+&#34;
+  command git worktree list --porcelain |
+    command grep -E &#34;$PATTERN&#34; |
+    sed -E -e &#34;s/$PATTERN//g&#34;
+}
+
+TARGETS=&#34;$(
+  PATTERN=&#34;^[\?|\!]\s+&#34;
+  command git status --ignored --porcelain=2 \
+    | command grep -E &#34;$PATTERN&#34; \
+    | sed -E -e &#34;s/$PATTERN//g&#34; \
+    | sed -E -e &#34;s/^\.\//..\/$( basename &#34;$( pwd )&#34; )\//g&#34;
+)&#34;
+
+git worktree add &#34;$@&#34;
+
+for TARGET in $TARGETS
+do
+  LINK=&#34;${WORKTREE}/$(
+    echo &#34;$TARGET&#34; \
+      | sed -E -e &#34;s/^(\.\.\/)+//g&#34; \
+      | sed -E -e &#39;s/\/$//g&#39;
+  )&#34;
+  mkdir -p &#34;$( dirname $LINK )&#34;
+  ln -s &#34;$TARGET&#34; &#34;$LINK&#34;
+done
+
+</code></pre>
+                </div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">5 件の返信 最終返信:22:28:06 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1631101610.062800">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-06/1944976563953_a3ccb33672bb0c98b4c3_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">一瀬喜弘</span>
+                      <a href="#ts-1631101610.062800">8日 20:46:50</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      続報を期待します
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1631107489.063100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-06/1944976563953_a3ccb33672bb0c98b4c3_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">一瀬喜弘</span>
+                      <a href="#ts-1631107489.063100">8日 22:24:49</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <code>command git</code>しててちゃんとしてんなーって思いました
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1631107547.063300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">atusy</span>
+                      <a href="#ts-1631107547.063300">8日 22:25:47</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      いや、ちゃんとしようと思ってたのに <code>sed</code> のままだったりぐちゃぐちゃです（笑）
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1631107595.063500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-06/1944976563953_a3ccb33672bb0c98b4c3_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">一瀬喜弘</span>
+                      <a href="#ts-1631107595.063500">8日 22:26:35</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      それは誤差かなってw
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1631107686.063700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-06/1944976563953_a3ccb33672bb0c98b4c3_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">一瀬喜弘</span>
+                      <a href="#ts-1631107686.063700">8日 22:28:06</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      sedをsdにエイリアスしてる人はいそうだけど自分はsd使ってないんで問題ナッシングでした
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631100291.062100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1631100291.062100">8日 20:24:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631100291062100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ↑、全部シンボリックリンクにしてますけど、untrackedの場合はハードリンクの方がgit addしやすくていいとかありそうですね。 ignoredのシンボリックリンクを<code>git add -f</code> することはまずないだろうと想定したい。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631100372.062700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1631100372.062700">8日 20:26:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631100372062700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あと、せっかくなので手習いにGoで実装してみようかな。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631107987.065500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-06/1944976563953_a3ccb33672bb0c98b4c3_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">一瀬喜弘</span>
+              <a href="#ts-1631107987.065500">8日 22:33:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631107987065500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                コンフリクトを直すときに自分は使い勝手がいいのでvscodeしてるんですが<br>ターミナルの中で解消するときに使ってるツールなりプラグインってありますかー?<br>(高い確率でalisue-ware<img class='slacklog-emoji' title=':lambdalisue:' alt=':lambdalisue:' src='/slacklog/emojis/lambdalisue.jpg'> が出てきそうなのでvim plugin以外でも何かあれば教えてください
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631108182.066100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1631108182.066100">8日 22:36:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631108182066100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                場合によりだけど git mergetool で WinMerge 使ったりはする
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631108226.066600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1631108226.066600">8日 22:37:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631108226066600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/rhysd/conflict-marker.vim'>https://github.com/rhysd/conflict-marker.vim</a><br>で手動でちまちま対応することも多い
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631108226.066600">
+              
+    <div class="d-flex">
+        <div>rhysd/conflict-marker.vim</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Weapon to fight against conflicts in Vim.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631108673.067600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631108673.067600">8日 22:44:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631108673067600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そういえばgina chaperon以外を知らんな(別にこれで困ってないというのがある)
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="YABUKI Yukiharu">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631110259.070800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-01-24/922945432742_a87307dba854c940256e_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">biosugar0</span>
+              <a href="#ts-1631110259.070800">8日 23:10:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631110259070800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                gina chaperon、使ってみようと思いつつたまにしかコンフリクトしないから使い方を習得できていない。結局git mergetoolでvimdiffしてる<br><a href='https://yu8mada.com/2018/08/20/i-tried-resolving-a-merge-conflict-with-vim-by-specifying-vimdiff-at-git-s-mergetool/'>https://yu8mada.com/2018/08/20/i-tried-resolving-a-merge-conflict-with-vim-by-specifying-vimdiff-at-git-s-mergetool/</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631110259.070800">
+              
+    <div class="d-flex">
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://yu8mada.com/2018/08/20/i-tried-resolving-a-merge-conflict-with-vim-by-specifying-vimdiff-at-git-s-mergetool/" target="_blank" rel="noopener noreferrer">@Git の mergetool で vimdiff を指定して Vim でマージコンフリクトを解決してみた</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">マージコンフリクトを意図的に作る まず git mergetool を使うためには, マージコンフリクトが発生している必要がありますので, 次のようなマージコンフリクトを意図的に作ってみました.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631110516.071100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631110516.071100">8日 23:15:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631110516071100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/cirosantilli/test-git-conflict'>https://github.com/cirosantilli/test-git-conflict</a><br>やっていきましょう
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="biosugar0">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631110516.071100">
+              
+    <div class="d-flex">
+        <div>cirosantilli/test-git-conflict</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Generate various kinds of Git conflicts, including conflicts suitable to interactively test a merge resolution tool. More fun stuff at: <a href='https://github.com/cirosantilli/test-git-web-interface'>https://github.com/cirosantilli/test-git-web-interface</a></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631110555.071700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631110555.071700">8日 23:15:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631110555071700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                gina patchを頻繁に使っているのでそれと同じ感覚で直せるchaperonがさいつよなんだよな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631110575.072000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631110575.072000">8日 23:16:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631110575072000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                mergetoolのvimdiffも同じ雰囲気なんだろうか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631110624.072900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631110624.072900">8日 23:17:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1631110624072900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                GUIだとhunkの判定とかが結構緩いイメージあります（距離が5-10行以内のdiffなら同一のhunkに入るとか）
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

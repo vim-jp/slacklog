@@ -3225,6 +3225,267 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631059737.228400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1631059737.228400">8日 09:08:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631059737228400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                • pathを使ってシーンを階層で管理する<br>• 各シーンのUpdateが呼び出された回数を保持する<br>• 各シーンにEnter, Exit コールバックを設定できる<br>というシーン管理の仕組みを作ったら結構具合いいのでこれがシーン管理の正解かもしれないと俺の中で話題に<br><a href='https://github.com/eihigh/zu/blob/master/hsm/example_test.go'>https://github.com/eihigh/zu/blob/master/hsm/example_test.go</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631059737.228400">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/eihigh/zu/blob/master/hsm/example_test.go | example_test.go&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>package hsm<br><br>import (<br>	&#34;fmt&#34;<br>)<br><br>func Example_callback() {<br>	enter := func(h *HSM) { fmt.Println(&#34;enter &#34; + h.Current()) }<br>	exit := func(h *HSM) { fmt.Println(&#34;exit &#34; + h.Current()) }<br><br>	scenes := []*State{<br>		{Name: &#34;/&#34;, Enter: enter, Exit: exit},<br>		{Name: &#34;/title&#34;, Enter: enter, Exit: exit},<br>		{Name: &#34;/game&#34;, Enter: enter, Exit: exit},<br>		{Name: &#34;/game/start&#34;, Enter: enter, Exit: exit},<br>		{Name: &#34;/game/main&#34;, Enter: enter, Exit: exit},<br>	}<br><br>	fmt.Println(&#34;---&#34;)<br>	scene := NewHSM(scenes, &#34;/title&#34;, 1)<br>	fmt.Println(&#34;---&#34;)<br>	scene.Change(&#34;/game/start&#34;)<br>	fmt.Println(&#34;---&#34;)<br>	scene.Change(&#34;/game/main&#34;)<br>	fmt.Println(&#34;---&#34;)<br>	scene.Change(&#34;/title&#34;)<br><br>	// Output:<br>	// ---<br>	// enter /<br>	// enter /title<br>	// ---<br>	// exit /title<br>	// enter /game<br>	// enter /game/start<br>	// ---<br>	// exit /game/start<br>	// enter /game/main<br>	// ---<br>	// exit /game/main<br>	// exit /game<br>	// enter /title<br>}<br><br>func Example_update() {<br>	update := func(h *HSM) {<br>		fmt.Printf(&#34;%d: update %s %d\n&#34;, h.TickOf(&#34;/&#34;).Elapsed(), h.Current(), h.Tick().Elapsed())<br>	}<br>	draw := func(h *HSM) {<br>		fmt.Printf(&#34;%d: draw %s %d\n&#34;, h.TickOf(&#34;/&#34;).Elapsed(), h.Current(), h.Tick().Elapsed())<br>	}<br><br>	scenes := []*State{<br>		{Name: &#34;/title&#34;, Update: update, Draw: draw},<br>		{Name: &#34;/game&#34;, Update: update, Draw: draw},<br>		{Name: &#34;/game/start&#34;, Update: update, Draw: draw},<br>		{Name: &#34;/game/main&#34;, Update: update, Draw: draw},<br>	}<br><br>	fmt.Println(&#34;---&#34;)<br>	scene := NewHSM(scenes, &#34;/title&#34;, 1)<br>	scene.Draw()<br>	scene.Update()<br>	scene.Draw()<br>	scene.Update()<br><br>	fmt.Println(&#34;---&#34;)<br>	scene.Change(&#34;/game/start&#34;)<br>	scene.Draw()<br>	scene.Update()<br>	scene.Draw()<br>	scene.Update()<br><br>	fmt.Println(&#34;---&#34;)<br>	scene.Change(&#34;/game/main&#34;)<br>	scene.Draw()<br>	scene.Update()<br>	scene.Draw()<br>	scene.Update()<br><br>	fmt.Println(&#34;---&#34;)<br>	scene.Change(&#34;/title&#34;)<br>	scene.Draw()<br>	scene.Update()<br>	scene.Draw()<br>	scene.Update()<br><br>	// Output:<br>	// ---<br>	// 0: draw /title 0<br>	// 1: update /title 1<br>	// 1: draw /title 1<br>	// 2: update /title 2<br>	// ---<br>	// 2: draw /game/start 0<br>	// 3: update /game/start 1<br>	// 3: draw /game/start 1<br>	// 4: update /game/start 2<br>	// ---<br>	// 4: draw /game/main 0<br>	// 5: update /game/main 1<br>	// 5: draw /game/main 1<br>	// 6: update /game/main 2<br>	// ---<br>	// 6: draw /title 0<br>	// 7: update /title 1<br>	// 7: draw /title 1<br>	// 8: update /title 2<br>}<br><br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631059821.229100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1631059821.229100">8日 09:10:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631059821229100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                コンストラクタ・デストラクタを諦める代わりに、シーンclass / 型 / interface とかの概念から解放されて気分がいい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631094715.230700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-05-05/1110311508180_13e40943d5b1117795c2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">toyboot4e</span>
+              <a href="#ts-1631094715.230700">8日 18:51:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631094715230700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                文字列で階層を表すの面白いですね。<br>ただ、 combat/sleep と travel/sleep のように、任意の状態の上に push したい状態 (sleep) もあるので、このまま輸入するのは難しそうです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631095028.231000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1631095028.231000">8日 18:57:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631095028231000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そのへんはまあ運用でカバーですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631095064.231700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1631095064.231700">8日 18:57:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631095064231700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                updateCombatSleep()とupdateTravelSleep()という関数は別々に必要だけど、その中で同じupdateSleep()関数を呼んで共通化する<br>とか
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="toyboot4e">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631096328.232400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1631096328.232400">8日 19:18:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631096328232400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                みんなが夢見る汎用シーン管理だ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631098026.233700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1631098026.233700">8日 19:47:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631098026233700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                スケールするかは分からないけど小規模ならわりとしっくり来るし中規模になっても行ける気がする、、
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631098274.234800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1631098274.234800">8日 19:51:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631098274234800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                シーン管理調べてたらやねうらお氏のブログが出てきて、もう十数年前の記事なんだけど同じ悩みを抱えてた
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631098524.235100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1631098524.235100">8日 19:55:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631098524235100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                タスクシステム
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631098561.235800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1631098561.235800">8日 19:56:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631098561235800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Go でやるなら「Update と Draw を関数にもつ interface をリストでなんかする」くらいの意味ですかね…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631098586.236300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1631098586.236300">8日 19:56:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C0175T1HP70/p1631098586236300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                やねうらお氏の本売っちゃったな (プロフェッショナル Windows ゲームプログラミング)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
