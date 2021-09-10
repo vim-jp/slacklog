@@ -7018,6 +7018,1102 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631199961.401800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631199961.401800">10日 00:06:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631199961401800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                どこまで参考になるかは分かりませんが、Vim本体の補完周りのテストを参照してみるのはどうでしょうか<br><a href='https://github.com/vim/vim/blob/master/src/testdir/test_ins_complete.vim'>https://github.com/vim/vim/blob/master/src/testdir/test_ins_complete.vim</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631199961.401800">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim/vim/blob/master/src/testdir/test_ins_complete.vim | test_ins_complete.vim&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>&#34; Test for insert completion<br><br>source screendump.vim<br>source check.vim<br><br>&#34; Test for insert expansion<br>func Test_ins_complete()<br>  edit test_ins_complete.vim<br>  &#34; The files in the current directory interferes with the files<br>  &#34; used by this test. So use a separate directory for the test.<br>  call mkdir(&#39;Xdir&#39;)<br>  cd Xdir<br><br>  set ff=unix<br>  call writefile([&#34;test11\t36Gepeto\t/Tag/&#34;,<br>	      \ &#34;asd\ttest11file\t36G&#34;,<br>	      \ &#34;Makefile\tto\trun&#34;], &#39;Xtestfile&#39;)<br>  call writefile([&#39;&#39;, &#39;start of testfile&#39;,<br>	      \ &#39;ru&#39;,<br>	      \ &#39;run1&#39;,<br>	      \ &#39;run2&#39;,<br>	      \ &#39;STARTTEST&#39;,<br>	      \ &#39;ENDTEST&#39;,<br>	      \ &#39;end of testfile&#39;], &#39;Xtestdata&#39;)<br>  set ff&amp;<br><br>  enew!<br>  edit Xtestdata<br>  new<br>  call append(0, [&#39;#include &#34;Xtestfile&#34;&#39;, &#39;&#39;])<br>  call cursor(2, 1)<br><br>  set cot=<br>  set cpt=.,w<br>  &#34; add-expands (word from next line) from other window<br>  exe &#34;normal iru\&lt;C-N&gt;\&lt;C-N&gt;\&lt;C-X&gt;\&lt;C-N&gt;\&lt;Esc&gt;\&lt;C-A&gt;&#34;<br>  call assert_equal(&#39;run1 run3&#39;, getline(&#39;.&#39;))<br>  &#34; add-expands (current buffer first)<br>  exe &#34;normal o\&lt;C-P&gt;\&lt;C-X&gt;\&lt;C-N&gt;&#34;<br>  call assert_equal(&#39;run3 run3&#39;, getline(&#39;.&#39;))<br>  &#34; Local expansion, ends in an empty line (unless it becomes a global<br>  &#34; expansion)<br>  exe &#34;normal o\&lt;C-X&gt;\&lt;C-P&gt;\&lt;C-P&gt;\&lt;C-P&gt;\&lt;C-P&gt;\&lt;C-P&gt;&#34;<br>  call assert_equal(&#39;&#39;, getline(&#39;.&#39;))<br>  &#34; starts Local and switches to global add-expansion<br>  exe &#34;normal o\&lt;C-X&gt;\&lt;C-P&gt;\&lt;C-P&gt;\&lt;C-X&gt;\&lt;C-X&gt;\&lt;C-N&gt;\&lt;C-X&gt;\&lt;C-N&gt;\&lt;C-N&gt;&#34;<br>  call assert_equal(&#39;run1 run2&#39;, getline(&#39;.&#39;))<br><br>  set cpt=.,w,i<br>  &#34; i-add-expands and switches to local<br>  exe &#34;normal OM\&lt;C-N&gt;\&lt;C-X&gt;\&lt;C-N&gt;\&lt;C-X&gt;\&lt;C-N&gt;\&lt;C-X&gt;\&lt;C-X&gt;\&lt;C-X&gt;\&lt;C-P&gt;&#34;<br>  call assert_equal(&#34;Makefile\tto\trun3&#34;, getline(&#39;.&#39;))<br>  &#34; add-expands lines (it would end in an empty line if it didn&#39;t ignored<br>  &#34; itself)<br>  exe &#34;normal o\&lt;C-X&gt;\&lt;C-L&gt;\&lt;C-X&gt;\&lt;C-L&gt;\&lt;C-P&gt;\&lt;C-P&gt;&#34;<br>  call assert_equal(&#34;Makefile\tto\trun3&#34;, getline(&#39;.&#39;))<br>  call assert_equal(&#34;Makefile\tto\trun3&#34;, getline(line(&#39;.&#39;) - 1))<br><br>  set cpt=kXtestfile<br>  &#34; checks k-expansion, and file expansion (use Xtest11 instead of test11,<br>  &#34; because TEST11.OUT may match first on DOS)<br>  write Xtest11.one<br>  write Xtest11.two<br>  exe &#34;normal o\&lt;C-N&gt;\&lt;Esc&gt;IX\&lt;Esc&gt;A\&lt;C-X&gt;\&lt;C-F&gt;\&lt;C-N&gt;&#34;<br>  call assert_equal(&#39;Xtest11.two&#39;, getline(&#39;.&#39;))<br><br>  &#34; use CTRL-X CTRL-F to complete Xtest11.one, remove it and then use CTRL-X<br>  &#34; CTRL-F again to verify this doesn&#39;t cause trouble.<br>  exe &#34;normal oXt\&lt;C-X&gt;\&lt;C-F&gt;\&lt;BS&gt;\&lt;BS&gt;\&lt;BS&gt;\&lt;BS&gt;\&lt;BS&gt;\&lt;BS&gt;\&lt;BS&gt;\&lt;BS&gt;\&lt;C-X&gt;\&lt;C-F&gt;&#34;<br>  call assert_equal(&#39;Xtest11.one&#39;, getline(&#39;.&#39;))<br>  normal ddk<br><br>  set cpt=w<br>  &#34; checks make_cyclic in other window<br>  exe &#34;normal oST\&lt;C-N&gt;\&lt;C-P&gt;\&lt;C-P&gt;\&lt;C-P&gt;\&lt;C-P&gt;&#34;<br>  call assert_equal(&#39;STARTTEST&#39;, getline(&#39;.&#39;))<br><br>  set cpt=u nohid<br>  &#34; checks unloaded buffer expansion<br>  only<br>  exe &#34;normal oEN\&lt;C-N&gt;&#34;<br>  call assert_equal(&#39;ENDTEST&#39;, getline(&#39;.&#39;))<br>  &#34; checks adding mode abortion<br>  exe &#34;normal ounl\&lt;C-N&gt;\&lt;C-X&gt;\&lt;C-X&gt;\&lt;C-P&gt;&#34;<br>  call assert_equal(&#39;unless&#39;, getline(&#39;.&#39;))<br><br>  set cpt=t,d def=^\\k* tags=Xtestfile notagbsearch<br>  &#34; tag expansion, define add-expansion interrupted<br>  exe &#34;normal o\&lt;C-X&gt;\&lt;C-]&gt;\&lt;C-X&gt;\&lt;C-D&gt;\&lt;C-X&gt;\&lt;C-D&gt;\&lt;C-X&gt;\&lt;C-X&gt;\&lt;C-D&gt;\&lt;C-X&gt;\&lt;C-D&gt;\&lt;C-X&gt;\&lt;C-D&gt;\&lt;C-X&gt;\&lt;C-D&gt;&#34;<br>  call assert_equal(&#39;test11file	36Gepeto	/Tag/ asd&#39;, getline(&#39;.&#39;))<br>  &#34; t-expansion<br>  exe &#34;normal oa\&lt;C-N&gt;\&lt;Esc&gt;&#34;<br>  call assert_equal(&#39;asd&#39;, getline(&#39;.&#39;))<br><br>  %bw!<br>  call delete(&#39;Xtestfile&#39;)<br>  call delete(&#39;Xtest11.one&#39;)<br>  call delete(&#39;Xtest11.two&#39;)<br>  call delete(&#39;Xtestdata&#39;)<br>  set cpt&amp; cot&amp; def&amp; tags&amp; tagbsearch&amp; hidden&amp;<br>  cd ..<br>  call delete(&#39;Xdir&#39;, &#39;rf&#39;)<br>endfunc<br><br>func Test_omni_dash()<br>  func Omni(findstart, base)<br>    if a:findstart<br>        return 5<br>    else<br>        echom a:base<br>	return [&#39;-help&#39;, &#39;-v&#39;]<br>    endif<br>  endfunc<br>  set omnifunc=Omni<br>  new<br>  exe &#34;normal Gofind -\&lt;C-x&gt;\&lt;C-o&gt;&#34;<br>  call assert_equal(&#34;find -help&#34;, getline(&#39;$&#39;))<br><br>  bwipe!<br>  delfunc Omni<br>  set omnifunc=<br>endfunc<br><br>func Test_omni_autoload()<br>  let save_rtp = &amp;rtp<br>  set rtp=Xruntime/some<br>  let dir = &#39;Xruntime/some/autoload&#39;<br>  call mkdir(dir, &#39;p&#39;)<br><br>  let lines =&lt;&lt; trim END<br>      vim9script<br>      def omni#func(findstart: bool, base: string): any<br>          if findstart<br>              return 1<br>          else<br>              return [&#39;match&#39;]<br>          endif<br>      enddef<br>      {<br>          eval 1 + 2<br>      }<br>  END<br>  call writefile(lines, dir .. &#39;/omni.vim&#39;)<br><br>  new<br>  setlocal omnifunc=omni#func<br>  call feedkeys(&#34;i\&lt;C-X&gt;\&lt;C-O&gt;\&lt;Esc&gt;&#34;, &#39;xt&#39;)<br><br>  bwipe!<br>  call delete(&#39;Xruntime&#39;, &#39;rf&#39;)<br>  set omnifunc=<br>  let &amp;rtp = save_rtp<br>endfunc<br><br>func Test_completefunc_args()<br>  let s:args = []<br>  func! CompleteFunc(findstart, base)<br>    let s:args += [[a:findstart, empty(a:base)]]<br>  endfunc<br>  new<br><br>  set completefunc=CompleteFunc<br>  call feedkeys(&#34;i\&lt;C-X&gt;\&lt;C-U&gt;\&lt;Esc&gt;&#34;, &#39;x&#39;)<br>  call assert_equal([1, 1], s:args[0])<br>  call assert_equal(0, s:args[1][0])<br>  set completefunc=<br><br>  let s:args = []<br>  set omnifunc=CompleteFunc<br>  call feedkeys(&#34;i\&lt;C-X&gt;\&lt;C-O&gt;\&lt;Esc&gt;&#34;, &#39;x&#39;)<br>  call assert_equal([1, 1], s:args[0])<br>  call assert_equal(0, s:args[1][0])<br>  set omnifunc=<br><br>  bwipe!<br>  unlet s:args<br>  delfunc CompleteFunc<br>endfunc<br><br>func s:CompleteDone_CompleteFuncNone( findstart, base )<br>  if a:findstart<br>    return 0<br>  endif<br><br>  return v:none<br>endfunc<br><br>func s:CompleteDone_CompleteFuncDict( findstart, base )<br>  if a:findstart<br>    return 0<br>  endif<br><br>  return {<br>	  \ &#39;words&#39;: [<br>	    \ {<br>	      \ &#39;word&#39;: &#39;aword&#39;,<br>	      \ &#39;abbr&#39;: &#39;wrd&#39;,<br>	      \ &#39;menu&#39;: &#39;extra text&#39;,<br>	      \ &#39;info&#39;: &#39;words are cool&#39;,<br>	      \ &#39;kind&#39;: &#39;W&#39;,<br>	      \ &#39;user_data&#39;: &#39;test&#39;<br>	    \ }<br>	  \ ]<br>	\ }<br>endfunc<br><br>func s:CompleteDone_CheckCompletedItemNone()<br>  let s:called_completedone = 1<br>endfunc<br><br>func s:CompleteDone_CheckCompletedItemDict(pre)<br>  call assert_equal( &#39;aword&#39;,          v:completed_item[ &#39;word&#39; ] )<br>  call assert_equal( &#39;wrd&#39;,            v:completed_item[ &#39;abbr&#39; ] )<br>  call assert_equal( &#39;extra text&#39;,     v:completed_item[ &#39;menu&#39; ] )<br>  call assert_equal( &#39;words are cool&#39;, v:completed_item[ &#39;info&#39; ] )<br>  call assert_equal( &#39;W&#39;,              v:completed_item[ &#39;kind&#39; ] )<br>  call assert_equal( &#39;test&#39;,           v:completed_item[ &#39;user_data&#39; ] )<br><br>  if a:pre<br>    call assert_equal(&#39;function&#39;, complete_info().mode)<br>  endif<br><br>  let s:called_completedone = 1<br>endfunc<br><br>func Test_CompleteDoneNone()<br>  au CompleteDone * :call &lt;SID&gt;CompleteDone_CheckCompletedItemNone()<br>  let oldline = join(map(range(&amp;columns), &#39;nr2char(screenchar(&amp;lines-1, v:val+1))&#39;), &#39;&#39;)<br><br>  set completefunc=&lt;SID&gt;CompleteDone_CompleteFuncNone<br>  execute &#34;normal a\&lt;C-X&gt;\&lt;C-U&gt;\&lt;C-Y&gt;&#34;<br>  set completefunc&amp;<br>  let newline = join(map(range(&amp;columns), &#39;nr2char(screenchar(&amp;lines-1, v:val+1))&#39;), &#39;&#39;)<br><br>  call assert_true(s:called_completedone)<br>  call assert_equal(oldline, newline)<br><br>  let s:called_completedone = 0<br>  au! CompleteDone<br>endfunc<br><br>func Test_CompleteDoneDict()<br>  au CompleteDonePre * :call &lt;SID&gt;CompleteDone_CheckCompletedItemDict(1)<br>  au CompleteDone * :call &lt;SID&gt;CompleteDone_CheckCompletedItemDict(0)<br><br>  set completefunc=&lt;SID&gt;CompleteDone_CompleteFuncDict<br>  execute &#34;normal a\&lt;C-X&gt;\&lt;C-U&gt;\&lt;C-Y&gt;&#34;<br>  set completefunc&amp;<br><br>  call assert_equal(&#39;test&#39;, v:completed_item[ &#39;user_data&#39; ])<br>  call assert_true(s:called_completedone)<br><br>  let s:called_completedone = 0<br>  au! CompleteDone<br>endfunc<br><br>func s:CompleteDone_CompleteFuncDictNoUserData(findstart, base)<br>  if a:findstart<br>    return 0<br>  endif<br><br>  return {<br>	  \ &#39;words&#39;: [<br>	    \ {<br>	      \ &#39;word&#39;: &#39;aword&#39;,<br>	      \ &#39;abbr&#39;: &#39;wrd&#39;,<br>	      \ &#39;menu&#39;: &#39;extra text&#39;,<br>	      \ &#39;info&#39;: &#39;words are cool&#39;,<br>	      \ &#39;kind&#39;: &#39;W&#39;,<br>	      \ &#39;user_data&#39;: [&#39;one&#39;, &#39;two&#39;],<br>	    \ …</pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631200000.402200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631200000.402200">10日 00:06:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631200000402200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ありがとうございます、見てみます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631202183.403600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-06/2361293146548_e12fbd84370fb250e3e4_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tennashi</span>
+              <a href="#ts-1631202183.403600">10日 00:43:03</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631202183403600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/tennashi/gitsign.vim'>https://github.com/tennashi/gitsign.vim</a><br>git diff の色付け plugin の unified diff の parse 周りを denops に書き換えてみた
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, lambdalisue, kkiyama117">
+                              <span>👀3</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631202183.403600">
+              
+    <div class="d-flex">
+        <div>tennashi/gitsign.vim</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631202225.404300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-06/2361293146548_e12fbd84370fb250e3e4_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tennashi</span>
+              <a href="#ts-1631202225.404300">10日 00:43:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631202225404300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://deno.land/x/diff_parser@v0.1.0'>https://deno.land/x/diff_parser@v0.1.0</a><br>ついでに diff の parse 処理だけ module に切り出した
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631202965.404800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631202965.404800">10日 00:56:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631202965404800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                具体的にやりたいこと次第ですかね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631203008.405400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631203008.405400">10日 00:56:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631203008405400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                skkeleton だったら denops 起動さえしてしまえば :normal とかでもなんとかなりません?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631203048.405800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631203048.405800">10日 00:57:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631203048405800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                バッチモードにいると有効化すらできなかった気がするけどどうだろう、うろ覚えなのであれだな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631203059.406000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631203059.406000">10日 00:57:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631203059406000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                挿入モードに一切入れない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631203089.406300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631203089.406300">10日 00:58:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631203089406300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そんなことはないはずです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631203104.406800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631203104.406800">10日 00:58:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631203104406800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ふむ、後日やり直してみるか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631203107.407000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631203107.407000">10日 00:58:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631203107407000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                とは言え実際にやってみないとわからん部分もあるので言い切れない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631203744.409400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1631203744.409400">10日 01:09:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631203744409400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                挿入モードに入っている状態。のテストをするには、feedkeys などで <code>&lt;C-r&gt;=s:assert()&lt;CR&gt;</code> などを送出して、この s:assert の中でテストをするしかない。と自分は考えています。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631203796.410800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1631203796.410800">10日 01:09:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631203796410800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                normal! や feedkeys(..., &#39;x&#39;) などを利用しても、その関数呼び出しが終わったあとはノーマルモードに戻ってしまうので
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631204303.412300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631204303.412300">10日 01:18:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631204303412300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                feedkeysの強制的にノーマルに戻るの厳しい気持ちになる(thincaさんに<code>&lt;Ignore&gt;</code>教えてもらったのでそれ使えないかなと考えている)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631204503.413600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1631204503.413600">10日 01:21:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631204503413600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                feedkeys の ! フラグがそれっぽい気もしてるんですがいまいちわかってないんですよね
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631204538.414400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631204538.414400">10日 01:22:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631204538414400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                skkeleton って一連のキー入力(ノーマルから挿入モードに入って一通り入力してノーマルモードに戻る)を行ってからバッファが所定の状態になっていればよい、みたいなテストでいいのかなって思ったんですけど、それだけだと足りない感じですかねぇ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631204586.414800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631204586.414800">10日 01:23:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631204586414800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それくらいで十分な気がする
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631204602.415100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631204602.415100">10日 01:23:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631204602415100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんか深く考えすぎている気がしてきたな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631208038.415200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631208038.415200">10日 02:20:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631208038415200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そういえば、coc-gitあるんだしdenops版あってもいいよねみたいに思っていたのを思い出したけど、てんなしさんのそれがまさにって感じあるな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268229.417000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631268229.417000">10日 19:03:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268229417000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ここでもTwitterでもない所でdenops.callでkeepjumpsとか使いたいという話が出ていたんですが、cmd使ってくれみたいな感じでいいんでしょうか。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ଳ (kato)">
+                              <span>🙏🏻1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268253.417600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631268253.417600">10日 19:04:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268253417600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                未実装なのか対応予定無しなのかが気になった感じです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268308.418700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1631268308.418700">10日 19:05:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268308418700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                cmdですねー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268317.419300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631268317.419300">10日 19:05:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268317419300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268327.419700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1631268327.419700">10日 19:05:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268327419700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                RPCの仕様上callでは厳しいです
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, ଳ (kato)">
+                              <img class="slacklog-emoji" alt="rikai" title="rikai" src="/slacklog/emojis/rikai.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268382.421400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631268382.421400">10日 19:06:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268382421400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                作者に気になること即聞けるの便利すぎる…ありがてえ…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="lambdalisue">
+                              <span>💪1</span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kkiyama117, monaqa">
+                              <img class="slacklog-emoji" alt="69b9bbe795f19442" title="69b9bbe795f19442" src="/slacklog/emojis/69b9bbe795f19442.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268389.421500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-29/1690404421634_ab9da4ce3e37565521a8_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ଳ (kato)</span>
+              <a href="#ts-1631268389.421500">10日 19:06:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268389421500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すいません…ちゃんとここで聞けばよかったですね<br>関数に配列を渡す必要があったので、<br><code>denops.cmd(</code>keepjumps call hoge(${hairetu})<code>)</code> ←のようではダメだよなーと考えた次第です…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268414.422200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1631268414.422200">10日 19:06:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268414422200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                cmdは第二引数にコンテキストを取れるので
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ଳ (kato)">
+                              <span>‼️1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268420.422500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1631268420.422500">10日 19:07:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268420422500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それで渡すと良さそうです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631268474.422900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-29/1690404421634_ab9da4ce3e37565521a8_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ଳ (kato)</span>
+              <a href="#ts-1631268474.422900">10日 19:07:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631268474422900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど！ありがとうございます
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="lambdalisue">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631277710.424100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-29/1690404421634_ab9da4ce3e37565521a8_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ଳ (kato)</span>
+              <a href="#ts-1631277710.424100">10日 21:41:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631277710424100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                習作です。molder.vimのクローンです。<br><a href='https://github.com/kat0h/dps-file.vim'>https://github.com/kat0h/dps-file.vim</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, ひがし, raa0121, Shougo">
+                              <span>👍4</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631277710.424100">
+              
+    <div class="d-flex">
+        <div>kat0h/dps-file.vim</div>
+    </div>
+
+            </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">4 件の返信 最終返信:23:16:33 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1631278773.427400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Shougo</span>
+                      <a href="#ts-1631278773.427400">10日 21:59:33</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      docはあった方がよいのではと思いました
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1631278798.427600">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Shougo</span>
+                      <a href="#ts-1631278798.427600">10日 21:59:58</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      何も書いてないのでこれを使ってみようとするのは難易度が高いかなと
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1631280002.427900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-29/1690404421634_ab9da4ce3e37565521a8_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ଳ (kato)</span>
+                      <a href="#ts-1631280002.427900">10日 22:20:02</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      あ、確かに必要ですね<br>設置します<img class='slacklog-emoji' title=':cat-dogeza-mike:' alt=':cat-dogeza-mike:' src='/slacklog/emojis/cat-dogeza-mike.png'>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1631283393.432900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-29/1690404421634_ab9da4ce3e37565521a8_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">ଳ (kato)</span>
+                      <a href="#ts-1631283393.432900">10日 23:16:33</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      今日は眠いので明日にでも…
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631277815.425200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-29/1690404421634_ab9da4ce3e37565521a8_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ଳ (kato)</span>
+              <a href="#ts-1631277815.425200">10日 21:43:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631277815425200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                既知の問題：<br><code>-</code>でディレクトリを遡ると<code>/</code> がうまく表示できない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631278655.426700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1631278655.426700">10日 21:57:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631278655426700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                udd で deps 最新にしたら、怒られる…<br><pre>[denops] Warning Implicitly using latest version (v1.9.1) for &lt;https://deno.land/x/denops_std/test/mod.ts&gt;<br>[denops] Warning Implicitly using latest version (v1.1.0) for &lt;https://deno.land/x/unknownutil/mod.ts&gt;<br>[denops] Warning Implicitly using latest version (v1.9.1) for &lt;https://deno.land/x/denops_std/helper/mod.ts&gt;<br>[denops] Warning Implicitly using latest version (v1.9.1) for &lt;https://deno.land/x/denops_std/anonymous/mod.ts&gt;<br>[denops] Warning Implicitly using latest version (0.106.0) for &lt;https://deno.land/std/testing/asserts.ts&gt;<br>[denops] Warning Implicitly using latest version (v1.9.0) for &lt;https://deno.land/x/denops_core/mod.ts&gt;</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631278772.427300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1631278772.427300">10日 21:59:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631278772427300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー denops_popup がバージョン指定してないからか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631282020.430400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-29/1690404421634_ab9da4ce3e37565521a8_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ଳ (kato)</span>
+              <a href="#ts-1631282020.430400">10日 22:53:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631282020430400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                上のようなtsファイルを用意して、denopsで実行したのですが<code>:Test1</code> の時だけautocmdが発火しません。Vimから<code>:e /</code> を叩くと、autocmdは発火します。<br>これは何が違うのですか?
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02ER8F81JL/main.ts" target="_blank" rel="noopener noreferrer">
+                  <span class="f5">[[ダウンロード: main.ts(C++)]]</span>
+                  </a>
+                  <pre><code class='language-cpp'>import { Denops } from &#34;https://deno.land/x/denops_std@v1.9.0/mod.ts&#34;;
+
+export async function main(d: Denops): Promise&lt;void&gt; {
+  d.dispatcher = {
+    async test1(): Promise&lt;void&gt; {
+      await d.cmd(`edit /`)
+    },
+    async test2(): Promise&lt;void&gt; {
+      await d.cmd(`edit .`)
+    }
+  }
+  await d.cmd(&#39;autocmd BufEnter * echomsg &#34;test&#34;&#39;)
+  await d.cmd(&#39;command! Test1 call denops#request(&#34;denops-test&#34;, &#34;test1&#34;, [])&#39;)
+  await d.cmd(&#39;command! Test2 call denops#request(&#34;denops-test&#34;, &#34;test2&#34;, [])&#39;)
+}
+</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631282568.431300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631282568.431300">10日 23:02:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631282568431300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                以前もautocmd周りの変な挙動を観測したな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631282586.431900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631282586.431900">10日 23:03:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631282586431900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Vimのバグである可能性が割とあるので見てみよう
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ଳ (kato)">
+                              <img class="slacklog-emoji" alt="god" title="god" src="/slacklog/emojis/god.gif"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631283031.432500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631283031.432500">10日 23:10:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631283031432500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>autocmd BufEnter * echomsg &#39;test&#39;<br><br>call timer_start(0, {id-&gt;execute(&#39;edit /&#39;)})</pre><br><del>これだけでバグったので不穏な感じある</del>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ଳ (kato)">
+                              <span>😱1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631283094.432800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631283094.432800">10日 23:11:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631283094432800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いや、こっちはexecuteに吸われてるだけか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631283470.433400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631283470.433400">10日 23:17:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631283470433400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、すみませんそれは私の勘違いです
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="raa0121, ଳ (kato)">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631285193.434200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631285193.434200">10日 23:46:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1631285193434200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                とりあえず問題のケースがここでカットされているということは分かった<br><a href='https://github.com/vim/vim/blob/07802044b90b2cbcc64b2dfe235f019d7c37589c/src/buffer.c#L355'>https://github.com/vim/vim/blob/07802044b90b2cbcc64b2dfe235f019d7c37589c/src/buffer.c#L355</a><br><a href='https://github.com/vim/vim/blob/07802044b90b2cbcc64b2dfe235f019d7c37589c/src/autocmd.c#L1689'>https://github.com/vim/vim/blob/07802044b90b2cbcc64b2dfe235f019d7c37589c/src/autocmd.c#L1689</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
