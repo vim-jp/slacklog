@@ -5693,6 +5693,187 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631374468.205700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1631374468.205700">12日 00:34:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1631374468205700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                (ちょっとシェルスクリプトに慣れてきて、なんでもワンライナーにしてみたくなるお年頃です)<br><pre>editor_or_fg() [[ $# -eq 0 ]] &amp;&amp; fg ${EDITOR_PROG:=${EDITOR:-nvim}} 2&gt; /dev/null || command ${EDITOR_PROG} &#34;$@&#34;</pre>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="KosukeMizuno, dohq">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631374689.206800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-22/2117290589632_62893d816ac701f1f848_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">atusy</span>
+              <a href="#ts-1631374689.206800">12日 00:38:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1631374689206800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、↑って <code>${EDITOR_PROG:=${EDITOR:-nvim}}</code>が評価されるか文脈依存になってるから、後の <code>${EDITOR_PROG}</code>が未定義の可能性あるのか。しもた。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631374941.207400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-10-25/1444669637702_3879d2ec21d7f1fee9ad_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KosukeMizuno</span>
+              <a href="#ts-1631374941.207400">12日 00:42:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1631374941207400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                後ろも<code>${EDITOR:-nvim}</code> でいいんじゃないですかね
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="atusy">
+                              <img class="slacklog-emoji" alt="desune" title="desune" src="/slacklog/emojis/desune.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631442215.208800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/ff5fbaf09cb6d70cefb999871591b3de.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0003-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ernix</span>
+              <a href="#ts-1631442215.208800">12日 19:23:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1631442215208800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>fg ${EDITOR_PROG:=${EDITOR:-nvim}} 2&gt; /dev/null</code> が失敗したときに <code>command ${EDITOR_PROG} &#34;$@&#34;</code> が走るから厳密にはif-then-elseとは違いますね。この場合大きな問題にはならないかもしれないですけど。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="atusy">
+                              <img class="slacklog-emoji" alt="desune" title="desune" src="/slacklog/emojis/desune.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631442230.209000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/ff5fbaf09cb6d70cefb999871591b3de.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0003-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ernix</span>
+              <a href="#ts-1631442230.209000">12日 19:23:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1631442230209000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/koalaman/shellcheck/wiki/SC2015'>https://github.com/koalaman/shellcheck/wiki/SC2015</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631442441.209800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631442441.209800">12日 19:27:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1631442441209800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                fzf、preview使い始めると強制ワンライナーになっていくので疲れます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631442506.210600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631442506.210600">12日 19:28:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1631442506210600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そろそろfzfのコマンドジェネレータが必要なのでは🤔
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

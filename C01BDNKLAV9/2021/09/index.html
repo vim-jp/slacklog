@@ -344,6 +344,82 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631426291.009100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631426291.009100">12日 14:58:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01BDNKLAV9/p1631426291009100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='http://www.fos.kuis.kyoto-u.ac.jp/<del>igarashi/CoPL/'>http://www.fos.kuis.kyoto-u.ac.jp/</del>igarashi/CoPL/</a><br>このページどうやらGaucheらしく、癖が強いｗ<br><a href='https://github.com/aigarashi/copl-tools/blob/3c4da117083a0870334c8eef270206b11060514e/cgi/index.cgi'>https://github.com/aigarashi/copl-tools/blob/3c4da117083a0870334c8eef270206b11060514e/cgi/index.cgi</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631426291.009100">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/aigarashi/copl-tools/blob/3c4da117083a0870334c8eef270206b11060514e/cgi/index.cgi | index.cgi&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>#! /usr/bin/gosh<br>;-*-Scheme-*-<br><br>(use www.cgi)<br>(use text.html-lite)<br>(use rfc.cookie)<br>(use util.list)<br>(use file.util)<br>(use srfi-1)<br>(use srfi-13)<br>(use srfi-19)<br>(use util.match)<br><br>(load &#34;./site-local.scm&#34;)<br>(load &#34;./global.scm&#34;)<br>(load &#34;./userdb.scm&#34;)<br>(load &#34;./questions.scm&#34;)<br>(load &#34;./process.scm&#34;)<br>(load &#34;./statistics.scm&#34;)<br><br>(define-constant lastcommit (substring &#34;$Date::                           $&#34; 8 33))<br><br>(define-constant thisurl &#34;index.cgi&#34;)<br><br>(define-constant twenty-four-hours 86400)  ;; in seconds<br><br>(define-constant header <br>  (html:head <br>   (html:title &#34;プログラミング言語の基礎概念(ライブラリ情報学コア・テキスト24)&#34;)<br>   (html:meta <br>    :http-equiv &#34;content-type&#34; <br>    :content &#34;text/html; charset=utf-8&#34;)<br>   (html:link :href &#34;./global.css&#34; :rel &#34;stylesheet&#34; :type &#34;text/css&#34;)))<br><br>(define-constant bookinfo<br>  (html:div <br>   :id &#34;bookinfo&#34;<br>   (html:div :id &#34;box&#34;<br>   (html:h2 &#34;書籍情報&#34;)<br>   (html:p &#34;(&#34;<br>	   (html:a :href &#34;&lt;http://www.saiensu.co.jp/?page=book_details&amp;ISBN=ISBN978-4-7819-1285-1&gt;&#34; &#34;サイエンス社&#34;)<br>	   &#34;,&#34;<br>	   (html:a :href &#34;&lt;http://www.amazon.co.jp/dp/4781912850/&gt;&#34; &#34;&lt;http://amazon.co.jp|amazon.co.jp&gt;&#34;)<br>	   &#34;,&#34;<br>	   (html:a :href &#34;&lt;http://books.rakuten.co.jp/rb/item/11285225/&gt;&#34; &#34;楽天books&#34;)<br>	   &#34;)&#34;)<br>   (html:table<br>    (html:tr<br>     (html:td :rowspan &#34;6&#34; (html:img :src &#34;../image/CoPL-thumb.jpg&#34; <br>				     :align &#34;left&#34; :width &#34;100px&#34; <br>				     :alt &#34;cover picture&#34;))<br>     (html:td &#34;単行本（ソフトカバー）: 192ページ&#34;))<br>    (html:tr<br>     (html:td &#34;出版社: サイエンス社&#34;))<br>    (html:tr<br>     (html:td &#34;発売: 2011年7月&#34;))<br>    (html:tr<br>     (html:td &#34;定価: 1850円+税&#34;))<br>    (html:tr<br>     (html:td &#34;ISBN: 978-4-7819-1285-1&#34;))<br>#;    (html:tr<br>     (html:td <br>      (html:a :href &#34;&lt;http://www.saiensu.co.jp/?page=book_details&amp;ISBN=ISBN978-4-7819-1285-1&amp;YEAR=2011&gt;&#34; &#34;サイエンス社のこの本に関するページ&#34;)))<br>    <br>    )<br>   (html:ul<br>    (html:li &#34;2012年1月14日のジュンク堂書店池袋本店トークセッション&#34;<br>     (html:a<br>      :href &#34;&lt;http://www.junkudo.co.jp/tenpo/evtalk.html#20120114juikebukuro&gt;&#34; <br>      &#34;「新春座談会 このコンピュータ書がすごい！ 2012年版〜2011年に出たコンピュータ書ならこれを読め！〜」&#34;)<br>     &#34;にて本書が紹介された&#34;<br>     (html:a<br>      :href &#34;&lt;http://www.ustream.tv/recorded/19755352/highlight/232691#utm_campaign=t.co&amp;utm_source=232691&amp;utm_medium=social&gt;&#34;<br>      &#34;模様&#34;)<br>     &#34;です．(2012/1/14記)&#34;)<br>    )<br>   (html:h2 &#34;補助資料&#34;)<br>   (html:ul <br>    (html:li (html:a :href &#34;errata.html&#34; &#34;正誤表&#34;))<br>    (html:li (html:a :href &#34;guide.pdf&#34; &#34;演習システムガイド&#34;))<br>    (html:li (html:a :href &#34;chap11.pdf&#34; &#34;継続(EvalContML1)&#34;))<br>    (html:li (html:a :href &#34;chap12.pdf&#34; &#34;第一級継続(EvalContML4)&#34;))<br>    (html:li (html:a :href &#34;chap13.pdf&#34; &#34;参照(EvalRefML3)&#34;))<br>    )<br>   (html:h2 &#34;本演習システムを使っている講義&#34;)<br>   (html:ul<br>    (html:li (html:a :href &#34;/~igarashi/class/sem/&#34; &#34;京都大学 大学院情報学研究科 通信情報システム専攻 専門科目「プログラム意味論」(2013年度〜)&#34;))<br>    (html:li (html:a :href &#34;/~igarashi/class/sf12w/&#34; &#34;京都大学 大学院情報学研究科 知能情報学専攻 専門科目「ソフトウェア基礎論」(2008年度〜2012年度)&#34;))<br>    (html:li &#34;お茶の水女子大学 大学院人間文化創成科学研究科 理学専攻 情報科学コース「言語意味論」(2012年度)&#34;)<br>    (html:li &#34;お茶の水女子大学 理学部 情報科学科「計算モデル論」(2012年度)&#34;)<br>    )<br><br>   (html:hr)<br>   (html:p &#34;Updated on &#34; lastcommit)<br>   (html:p &#34;Copyright 2011 Atsushi Igarashi&#34;))<br>))<br><br>(define (command-url com . options)<br>  (string-concatenate<br>   (list <br>    thisurl<br>    &#34;?command=&#34;<br>    com<br>    (string-join<br>     (map (lambda (p) string-join &#34;=&#34;) options)<br>     &#34;&amp;&#34; &#39;prefix))))<br><br>(define (display-login-page . options)<br>  (let-keywords <br>   options ((msg #f) (msg2 #f) (uname &#34;&#34;))<br>   (html:div<br>    (html:h1 &#34;プログラミング言語の基礎概念&#34;)<br>    (html:h3 &#34;(ライブラリ情報学コア・テキスト24)&#34;)<br>    (display-news #t)<br>    bookinfo<br>    (html:div <br>     :id &#34;login&#34;<br>     (html:h2 &#34;演習システムへのログイン&#34;)<br>     (html:form <br>      :action thisurl :method &#34;post&#34;<br>      (html:fieldset<br>       ;(html:legend &#34;ログインしてください&#34;)<br>       (html:label :for &#34;username&#34; :class &#34;label&#34; &#34;ユーザ名&#34;)<br>       (html:input :type &#34;text&#34; :name &#34;name&#34; :id &#34;username&#34; :value uname :class &#34;input&#34;)<br>       (html:label :for &#34;passwd&#34;  :class &#34;label&#34; &#34;パスワード&#34;)<br>       (html:input :type &#34;password&#34; :name &#34;passwd&#34; :id &#34;passwd&#34; :class &#34;input&#34;)<br>       (html:input :type &#34;hidden&#34; :name &#34;command&#34; :value &#34;login&#34;)<br>       (html:input :type &#34;submit&#34; :value &#34;ログイン&#34; :class &#34;button&#34;)))<br>     (if msg<br>	 (html:p (html:span :class &#34;warn&#34; msg))<br>	 &#39;())<br>     (html:form <br>      :action thisurl :method &#34;post&#34;<br>      (html:fieldset<br>       (html:legend &#34;パスワードの(再)発行と送付&#34;)<br>       (html:label :for &#34;username&#34; :class &#34;label&#34; &#34;ユーザ名&#34;)<br>       (html:input :type &#34;text&#34; :name &#34;name&#34; :id &#34;username&#34; :class &#34;input&#34;)<br>       (html:input :type &#34;hidden&#34; :name &#34;command&#34; :value &#34;renew&#34;)<br>       (html:input :type &#34;submit&#34; :value &#34;新パスワードの送付&#34; :class &#34;button&#34;)))<br>     (if msg2<br>	 (html:p (html:span :class &#34;warn&#34; msg2))<br>	 &#39;())<br>     (html:p<br>      (html:a :href &#34;registration.cgi&#34;<br>      &#34;新規ユーザ登録&#34;))<br>      )<br>    #;(html:div<br>     :id &#34;footer&#34; <br>     (html:hr)<br>     &#34;Copyright 2011 Atsushi Igarashi&#34;))))<br><br>(define (expired? date)  ;; date must be &#39;never or &#34;YYYY/MM/DD&#34;<br>  (and (string? date)<br>       (let ((expiration-date<br>	      (date-&gt;time-utc (string-&gt;date date &#34;~Y/~m/~d&#34;)))<br>	     (today (current-time)))<br>	 (time&gt;? today expiration-date))))<br><br>(define (format-news newslist public? passed-sections)<br>  (match newslist<br>	 [() ()]<br>	 [((date title p? expire prerequisites content) . rest)<br>	  (if (or p?  ;; the news itself should be publicized<br>		  (and (not public?)  ;; displaying private news<br>		       (prerequisite-satisfied?<br>			prerequisites passed-sections)))<br>	      (let ((id (string-concatenate (list &#34;news&#34; date))))<br>		(cons<br>		 (let* ((dt (html:dt (html:div :onclick #`&#34;Toggle(&#39;,|id|&#39;)&#34;<br>					       (list &#34;(&#34; date &#34;) &#34; title))))<br>			(dd (html:div :id id :style &#34;display:none;&#34;<br>				      (html:dd content))))<br>		   (if (expired? expire)<br>		       (html:div :class &#34;oldnews&#34; :style &#34;display:none;&#34; dt dd)<br>		       (list dt dd)))<br>		 (format-news rest public? passed-sections)))<br>	      (format-news rest public? passed-sections))]))<br><br>(define-constant JStoggle<br>  (html:script <br>   :type &#34;text/javascript&#34;<br>   &#34;&lt;!--<br>function Toggle(id) {<br>　var div = document.getElementById(id);<br>　switch (div.style.display) {<br>　　case \&#34;none\&#34;:<br>　　　div.style.display=\&#34;block\&#34;;<br>　　　break;<br>　　case \&#34;block\&#34;:<br>　　　div.style.display=\&#34;none\&#34;;<br>　　　break;<br>　}<br>}<br>function ToggleOldnews() {<br>  var children = document.getElementById(\&#34;newslist\&#34;).firstChild.childNodes;<br>  var n = children.length;<br>  for(i = 0; i &lt; n; i++)<br>    if (children[i].getAttribute(\&#34;class\&#34;) == \&#34;oldnews\&#34;)<br>    　switch (children[i].style.display) {<br>    　　case \&#34;none\&#34;:<br>    　　　children[i].style.display=\&#34;block\&#34;;<br>    　　　break;<br>  　　case \&#34;block\&#34;:<br>        children[i].style.display=\&#34;none\&#34;;<br>        break;<br>     }<br>}<br>//--&gt;&#34;))<br><br>(define (display-news public? . name)<br>  (let* ((newslist (call-with-input-file *news*<br>			 (lambda (in) (if (port? in) (read in) #f))<br>			 :if-does-not-exist #f))<br>	 (solved (if (null? name) &#39;()<br>		     (cdr (lookupdb (car name) &#39;solved))))<br>	 (passed-sections<br>	  (call-with-input-file *question-db*<br>	    (lambda (in)<br>	      (let ((sections (read in)))<br>		(sections-passed sections solved)))))<br>	 (formatted-news (if newslist<br>			     (format-news newslist public? passed-sections)<br>			     &#39;())))<br>    (if (null? formatted-news)<br>	&#39;()<br>	(list<br>	 (html:div <br>	  :class &#34;newsbox&#34;<br>	  (html:h1 &#34;おしらせ&#34;)<br>	  (html:p &#34;(内容の表示・非表示を切り替えるには日付・タイトル行をクリックしてください．)&#34;)<br>	  (html:p :class &#34;nofloat&#34;)<br>	  (if (not public?)<br>	      (html:input :type &#34;button&#34; :onclick &#34;ToggleOldnews()&#34;<br>			  :value &#34;古いおしらせの表示・非表示の切替&#34;)<br>	      &#39;())<br>	  JStoggle<br>	  (html:div<br>	   :class &#34;news&#34; :id &#34;newslist&#34; <br>	   (html:dl formatted-news)))))))<br><br>(define (display-sidebar name)<br>  (let* ((solved (cdr (lookupdb name &#39;solved))))<br>    ;; solved should be non #f<br>    (html:div<br>     :id &#34;side&#34;<br>     (html:h2 name &#34;さんの成績&#34;)<br>     (html:p how-many-q &#34; 問中 &#34; (length solved) &#34; 問正解 &#34;)<br>     (html:p &#34;下の表をクリックして問題を選択してください&#34;)<br>     (display-qlist solved)<br>     (html:h2 &#34;その他&#34;)<br>     (html:p :id &#34;commandlist&#34;<br>	     (html:a :href &#34;index.cgi&#34; &#34;おすなば&#34;)<br>	     &#34; | &#34;<br>	     (html:a :href (command-url &#34;news&#34;) &#34;おしらせ&#34;)<br>	     &#34; | &#34;<br>	     (html:a :href &#34;guide.pdf&#34; &#34;演習システムガイド(pdf)&#34;)<br>	     &#34; | &#34;<br>	     (html:a :href &#34;rulebook.pdf&#34; &#34;推論規則集(pdf)&#34;)<br>	     &#34; | &#34;<br>	     (html:a :href (command-url &#34;stats&#34;) &#34;統計&#34;)<br>	     &#34; | &#34;<br>	     (html:a :href (command-url &#34;logou…</pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631426352.010000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631426352.010000">12日 14:59:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01BDNKLAV9/p1631426352010000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                copl-toolsにschemeがあるから、何のファイルなんだろうと思ったらcgiだったw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631439682.010100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631439682.010100">12日 18:41:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01BDNKLAV9/p1631439682010100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                SXMLだ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
