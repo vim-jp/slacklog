@@ -237,6 +237,335 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631467508.004200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631467508.004200">13日 02:25:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467508004200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                OCaml、パーサー書きやすそうだなぁ。。OCamlはやっぱり避けて通れないか。。<br><a href='https://github.com/aigarashi/copl-tools/blob/master/checker/Nat/parser-local.mly'>https://github.com/aigarashi/copl-tools/blob/master/checker/Nat/parser-local.mly</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631467508.004200">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/aigarashi/copl-tools/blob/master/checker/Nat/parser-local.mly | parser-local.mly&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>%{<br>open Core<br>open Derivation<br><br>let errBtw i j s =<br>  MySupport.Error.errBtw <br>    (Parsing.rhs_start_pos i) (Parsing.rhs_end_pos j) s<br><br>let errAt i s =<br>  MySupport.Error.errBtw (Parsing.rhs_start_pos i) (Parsing.rhs_end_pos i) s<br>%}<br><br>%token EOF<br><br>%token BY<br>%token LBRACE RBRACE LPAREN RPAREN LBRACKET RBRACKET<br>%token SEMI<br>%token &lt;Derivation.rulename&gt; ID<br>%token &lt;string&gt; LCID  /* not used in this game */<br>%token &lt;string&gt; UCID  /* not used in this game */<br>%token &lt;int&gt; INTL  /* not used in this game */<br><br>%token PLUS MULT IS<br>%token S Z<br><br>%token DEF EQ<br><br>/******** experimental feature for macro defitinions *********/<br>%token DEF EQ<br>%start toplevel partialj judgment<br>%type &lt;Core.judgment Derivation.t&gt; toplevel<br>%type &lt;Core.judgment&gt; judgment<br><br>%token QM /* stands for question mark to specify holes in a judgment */<br>%type &lt;Core.in_judgment&gt; partialj<br><br>%%<br><br>Judgment: <br>  | Nat PLUS Nat IS Nat { PlusIs($1, $3, $5) }<br>  | Nat MULT Nat IS Nat { MultIs($1, $3, $5) }<br><br>  | Nat error { errAt 2 &#34;Syntax error: &#39;plus&#39; or &#39;times&#39; expected&#34; }<br>  | Nat PLUS error { errAt 3 &#34;Syntax error: natural number expected&#34; }<br>  | Nat PLUS Nat error { errAt 4 &#34;Syntax error: &#39;is&#39; expected&#34; }<br>  | Nat PLUS Nat IS error { errAt 5 &#34;Syntax error: natural number expected&#34; }<br>  | Nat MULT error { errAt 3 &#34;Syntax error: natural number expected&#34; }<br>  | Nat MULT Nat error { errAt 4 &#34;Syntax error: &#39;is&#39; expected&#34; }<br>  | Nat MULT Nat IS error { errAt 5 &#34;Syntax error: natural number expected&#34; }<br><br>partialj:<br>  | Nat PLUS Nat IS QM { In_PlusIs($1, $3) }<br>  | Nat MULT Nat IS QM { In_MultIs($1, $3) }<br><br>  | Nat error { errAt 2 &#34;Syntax error: &#39;plus&#39; or &#39;times&#39; expected&#34; }<br>  | Nat PLUS error { errAt 3 &#34;Syntax error: natural number expected&#34; }<br>  | Nat PLUS Nat error { errAt 4 &#34;Syntax error: &#39;is&#39; expected&#34; }<br>  | Nat PLUS Nat IS error { errAt 5 &#34;Syntax error: &#39;?&#39; expected&#34; }<br>  | Nat MULT error { errAt 3 &#34;Syntax error: natural number expected&#34; }<br>  | Nat MULT Nat error { errAt 4 &#34;Syntax error: &#39;is&#39; expected&#34; }<br>  | Nat MULT Nat IS error { errAt 5 &#34;Syntax error: &#39;?&#39; expected&#34; }<br><br>Nat:<br>    Z { Z }<br>  | S LPAREN Nat RPAREN { S $3 }<br>  | S LPAREN Nat error { errBtw 2 4 &#34;Syntax error: unmatched parenthesis&#34; }<br>  | S LPAREN error { errAt 3 &#34;Syntax error: natural number expected after S(&#34; }<br>  | S error { errAt 2 &#34;Syntax error: opening parenthesis expected after S&#34; }<br>  | LCID { errAt 1 &#34;Syntax error&#34; }<br>  | INTL { errAt 1 &#34;Syntax error&#34; }<br><br><br><br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631467541.004600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631467541.004600">13日 02:25:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467541004600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                OCamlというとこれ <a href='https://github.com/esumii/min-caml'>https://github.com/esumii/min-caml</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631467541.004600">
+              
+    <div class="d-flex">
+        <div>esumii/min-caml</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">moved from <a href='https://sourceforge.net/p/min-caml/code/'>https://sourceforge.net/p/min-caml/code/</a></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631467642.004900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631467642.004900">13日 02:27:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467642004900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これはOCamlでOCamlサブセット処理系を書く話？？<br>OCamlサブセット処理系を書くことでOCaml入門するのハードル高そう。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631467699.005300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631467699.005300">13日 02:28:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467699005300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ですね、リポジトリにあるURLが詳しいと思います<br><a href='http://esumii.github.io/min-caml/'>http://esumii.github.io/min-caml/</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631467720.005800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631467720.005800">13日 02:28:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467720005800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                出さないといけない気がしたので貼りましたが結構難しいのでOCaml入門に使うのは厳しい気がします
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita">
+                              <img class="slacklog-emoji" alt="mmu" title="mmu" src="/slacklog/emojis/mmu.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631467811.006100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631467811.006100">13日 02:30:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467811006100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Rustで先の逆推論器実装してるんですが、無駄にパースに時間かかってるので、簡単に書ける処理系があるならそっちの方がいいのかなーとか。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631467879.006300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631467879.006300">13日 02:31:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467879006300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Rustよりは簡単な気がするw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631467896.006800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631467896.006800">13日 02:31:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467896006800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                (MLほとんど書けないので実際の所は分からない)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631467957.007000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631467957.007000">13日 02:32:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631467957007000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ML、分からなすぎるので入門したい。<br>とりあえずこれを読めばいいらしいので、これを明日読むことにします。<br><a href='http://esumii.github.io/min-caml/index2.html'>http://esumii.github.io/min-caml/index2.html</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631468240.007300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631468240.007300">13日 02:37:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631468240007300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ちょっと古いですがこれとか<br><a href='http://ocaml.jp/?%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB'>http://ocaml.jp/?%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB</a><br>こちらもいいかもしれないです<br><a href='http://www.nct9.ne.jp/m_hiroi/func/ocaml.html'>http://www.nct9.ne.jp/m_hiroi/func/ocaml.html</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631468240.007300">
+              
+    <div class="d-flex">
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="http://www.nct9.ne.jp/m_hiroi/func/ocaml.html" target="_blank" rel="noopener noreferrer">M.Hiroi&#39;s Home Page / お気楽 OCaml プログラミング入門</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">OCaml,OCaml入門</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631468274.007800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631468274.007800">13日 02:37:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631468274007800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                感謝。明日読みますー!
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631469885.008500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631469885.008500">13日 03:04:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631469885008500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://rui314.github.io/course2020.html'>https://rui314.github.io/course2020.html</a><br>2020年の記事だけど、今でもこのSlackに参加できたので興味ある方はぜひ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631469988.008700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1631469988.008700">13日 03:06:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01UV29VC77/p1631469988008700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                新しい発言はないですね。でもログは全部見える。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
