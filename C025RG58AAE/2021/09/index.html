@@ -3977,6 +3977,78 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631619535.268600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631619535.268600">14日 20:38:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C025RG58AAE/p1631619535268600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ddcのsourceでエラーを投げると死ぬ問題に対してdeno_jaで聞いてきたらやはりバグらしいのでIssue立てておきました<br><a href='https://github.com/denoland/deno/issues/12068'>https://github.com/denoland/deno/issues/12068</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Naoya Yamashita, Shougo, raa0121, lambdalisue, heavenshell, ଳ (kato), peacock, kawarimidoll, micchy, rapan931, Gamou Tatsumi">
+                              <img class="slacklog-emoji" alt="goodjob" title="goodjob" src="/slacklog/emojis/goodjob.png"><span class="ml-1">11</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631619535.268600">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/denoland/deno/issues/12068|#12068 Panic when unhandled error in worker in worker&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Repro step*<br><br>1. Place following files<br><br>a.js:<br><br><pre><br>new Worker(new URL(&#34;./b.js&#34;, import.meta.url).href, {type: &#34;module&#34;});<br><br></pre><br><br>b.js:<br><br><pre><br>new Worker(new URL(&#34;./c.js&#34;, import.meta.url).href, {type: &#34;module&#34;});<br><br></pre><br><br>c.js:<br><br><pre><br>throw Error();<br><br></pre><br><br>2. Run <code>deno run --allow-read a.js</code><br><br>*Problem*<br><br>Panic with this error.<br><br><pre><br>error: Uncaught (in worker &#34;&#34;) Error<br>throw Error();<br>      ^<br>    at file:///home/arch/c.js:1:7<br>thread &#39;worker-0&#39; panicked at &#39;coding error: either js is polling or the worker is terminated&#39;, runtime/web_worker.rs:531:9<br>note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace<br>error: Uncaught (in promise) Error: Unhandled error event reached main worker.<br>    at Worker.#pollControl (deno:runtime/js/11_workers.js:261:23)<br><br></pre><br><br>*Expected*<br><br>I want to occurs JS Error similar to case of only one worker.<br><br><pre><br>error: Uncaught (in worker &#34;&#34;) Error<br>throw Error();<br>      ^<br>    at file:///home/arch/b.js:1:7<br>error: Uncaught (in promise) Error: Unhandled error event reached main worker.<br>    at Worker.#pollControl (deno:runtime/js/11_workers.js:261:23)<br><br></pre><br><br>*Environment*<br><br><pre><br>deno 1.13.2 (release, x86_64-unknown-linux-gnu)<br>v8 9.3.345.11<br>typescript 4.3.5<br><br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631619822.269500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1631619822.269500">14日 20:43:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C025RG58AAE/p1631619822269500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                denops由来で色々OSS活動できていていい感じ
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kawarimidoll, Gamou Tatsumi">
+                              <img class="slacklog-emoji" alt="contribute-chance" title="contribute-chance" src="/slacklog/emojis/contribute-chance.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

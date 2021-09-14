@@ -1,0 +1,18 @@
+  " toml
+  function! s:dein_toml_setting() abort
+    let Filepath = g:V.import('System.Filepath')
+    let fname = Filepath.realpath(expand("%:p"))
+    " dein toml
+    for toml in keys(g:dein.file.toml)
+      let toml_fname = Filepath.realpath(Filepath.abspath(toml))
+      if fname ==? toml_fname
+        call dein#toml#syntax()
+        return
+      endif
+    endfor
+  endfunction
+
+  augroup vimrc_init_dein
+    autocmd!
+    autocmd FileType toml call s:dein_toml_setting()
+  augroup END
