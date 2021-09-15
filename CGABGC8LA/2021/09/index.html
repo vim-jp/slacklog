@@ -4708,6 +4708,192 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631691440.151300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1631691440.151300">15日 16:37:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631691440151300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/tailscale/go/pull/19'>https://github.com/tailscale/go/pull/19</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631691440.151300">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/tailscale/go/pull/19|#19 all: add immutability instrumentation [WIP]&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Quick hack using the runtime.<br><br>To use, given a value x that you want to be immutable,  <br>call <code>reflect.Freeze(&amp;x)</code>.<br><br>Then run your program with <code>-race -gcflags=all=-racenoreads</code>.<br><br>Writes to <code>x</code> will cause a race detector panic.  <br>Reads from <code>x</code> can proceed as normal.<br><br>Sample program:<br><br><pre><br>package main<br><br>import (<br>	&#34;fmt&#34;<br>	&#34;reflect&#34;<br>)<br><br>func main() {<br>	var x [2][2]string<br>	reflect.Freeze(&amp;x)<br>	fmt.Println(x)<br>	x[0][0] = &#34;a&#34;<br>}<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631691472.152200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1631691472.152200">15日 16:37:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631691472152200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                race detector を使って freeze をやる試み。若干ジョーク臭い？w
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631691502.152900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1631691502.152900">15日 16:38:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631691502152900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>runtime.Freeze</code> の実装が、内部で実際に触ってみる(race で引っかかる様に)って実装になってて面白い。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631691772.153100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1631691772.153100">15日 16:42:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631691772153100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                静的検査ではないのか…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631691824.153700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1631691824.153700">15日 16:43:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631691824153700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                C++ な const 欲しい人もいるんでしょうね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631691908.154000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1631691908.154000">15日 16:45:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631691908154000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                C++ な const は静的検査ですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631716631.154400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1631716631.154400">15日 23:37:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631716631154400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Windows の syscall で DLL 関数呼ぶやり方だと
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631716645.154700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1631716645.154700">15日 23:37:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631716645154700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                64bit な戻り値は 32bit Windows だとうまく取り扱えないですよね?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
