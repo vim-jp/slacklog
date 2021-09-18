@@ -5902,6 +5902,631 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631895407.116200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631895407.116200">18日 01:16:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631895407116200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                themis のテストでなぜか例外がキャッチされない形があるのだけど、最小構成が作成できないでいる…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631898759.116400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631898759.116400">18日 02:12:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631898759116400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                再現条件が全くわからない…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631901538.118500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631901538.118500">18日 02:58:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631901538118500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                themis.vim をお持ちの方は<br><pre>let s:suite = themis#suite(&#39;suite&#39;)<br><br>function s:suite.test() abort<br>  try<br>    call themis#log(&#39;try!!!!&#39;)<br>    try<br>      throw &#39;err1&#39;<br>    catch<br>      call s:throw() | endtry<br>  catch<br>    call themis#log(&#39;catch!!!!&#39;)<br>  endtry<br>endfunction<br><br>function s:throw() abort<br>  throw &#39;err2&#39;<br>endfunction</pre><br>このテストで再現できる。内側の catch 内で投げられた例外が、外側の catch で受け取れない。<br><code>| endtry</code> をちゃんと改行したり、<code>call s:throw()</code> を直接 <code>throw &#39;err2&#39;</code> に変えたりすると再現しない。<br>v8.2.3416 から発生。v8.2.3415 では発生せず。<br><br>これを themis.vim 抜きで再現させたい…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631901558.118900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631901558.118900">18日 02:59:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631901558118900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                全然わからん…今日はもう寝よう… 💤
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631903578.121200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631903578.121200">18日 03:32:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631903578121200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                手元の Vim (v8.2.3442) on macOS BigSur では以下のようにしたら最小構成っぽいものができました。<br><br><code>~/bug.vim</code>:<br><pre>function s:test() abort<br>  try<br>    echomsg &#39;try!!&#39;<br>    try<br>      throw &#39;err1&#39;<br>    catch<br>      call s:throw() | endtry<br>  catch<br>    echomsg &#39;catch!!&#39;<br>  endtry<br>endfunction<br><br>function s:throw() abort<br>  throw &#39;err2&#39;<br>endfunction<br><br>call s:test()</pre><br>コマンド：<br><code>$ vim -u NONE -c &#34;source ~/bug.vim&#34;</code><br><br>出力：<br><pre>try!!<br>Error detected while processing command line..script /Users/mityu/bug.vim[17]..function &lt;SNR&gt;1_test[9]..command line..script /Users/mityu/bug.vim[17]..function &lt;SNR&gt;1_test[6]..&lt;SNR&gt;1_throw:<br>line    1:<br>E605: Exception not caught: err2</pre><br>&gt;  <code>| endtry</code> をちゃんと改行したり、<code>call s:throw()</code> を直接 <code>throw &#39;err2&#39;</code> に変えたりすると再現しない。<br>この条件も同様に再現してます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631929501.122100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631929501.122100">18日 10:45:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631929501122100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お、あれ、これで再現するのか。このくらいのは試したつもりだったけど…やってみよう 🙏
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631929943.122300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631929943.122300">18日 10:52:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631929943122300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                再現できたっぽい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631933903.122500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631933903.122500">18日 11:58:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631933903122500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/vim/vim/issues/8889'>https://github.com/vim/vim/issues/8889</a> ひとまず報告
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, Shougo, peacock, mityu, kkiyama117">
+                              <img class="slacklog-emoji" alt="goodjob" title="goodjob" src="/slacklog/emojis/goodjob.png"><span class="ml-1">5</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631933903.122500">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim/vim/issues/8889|#8889 An `endtry` after bar(`|`) is ignored&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Describe the bug*<br><br>In some situation, an <code>endtry</code> after bar(<code>|</code>) is ignored.<br><br>*To Reproduce*<br><br>Consider the following <code>bug.vim</code>:<br><br><pre><br>function s:throw(msg) abort<br>  throw a:msg<br>endfunction<br><br>function s:main() abort<br>  try<br>    try<br>      throw &#39;err1&#39;<br>    catch<br>      call s:throw(&#39;err2&#39;) | endtry<br>  catch<br>    echo &#39;catch&#39;<br>  endtry<br>endfunction<br><br>call s:main()<br></pre><br><br>Detailed steps to reproduce the behavior:<br><br>1. Run <code>vim --clean -S bug.vim</code><br>2. <code>E605: Exception not caught: err2</code> is shown.<br><br>*Expected behavior*  <br><code>catch</code> is shown.<br><br>*Environment (please complete the following information):*<br><br>• Vim version 8.2.3446 (This occurs in v8.2.3416 and after.)<br>• OS: Arch Linux<br>• Terminal: mintty<br><br>*Additional context*<br><br><pre><br>      call s:throw(&#39;err2&#39;) | endtry<br></pre><br><br>This does not occur if changes the above line to:<br><br><pre><br>      call s:throw(&#39;err2&#39;)<br>    endtry<br></pre><br><br><pre><br>      let _ = s:throw(&#39;err2&#39;) | endtry<br></pre><br><br><pre><br>      throw &#39;err2&#39; | endtry<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631934884.123100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631934884.123100">18日 12:14:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631934884123100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                themis.vim はひどい workaround を入れて一旦回避 <a href='https://github.com/thinca/vim-themis/commit/e43a508eafae6c46f4922bcd98a0b94a2311dff8'>https://github.com/thinca/vim-themis/commit/e43a508eafae6c46f4922bcd98a0b94a2311dff8</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631951630.124000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631951630.124000">18日 16:53:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631951630124000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                編集している箇所が VimScript なのか vim9script なのかを判定するスクリプト書きました<br><a href='https://github.com/mityu/vim-vim9context'>https://github.com/mityu/vim-vim9context</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Tsuyoshi CHO, Shougo, rbtnn, obcat">
+                              <span>👀4</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631951630.124000">
+              
+    <div class="d-flex">
+        <div>mityu/vim-vim9context</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631951829.126200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631951829.126200">18日 16:57:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631951829126200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                （リポジトリにして置いたのは、テストとかまとめて置いておきたかったというだけです。色々使うならVitalとかにしたほうが便利かなあと思ったりはしているので、これは多分将来的にはアーカイブしたりするかと思います）
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631955079.128300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631955079.128300">18日 17:51:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631955079128300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                うーん、caw.vim との連携難しいな…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631967589.128900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-07-24/2306990157218_d267ce81beec9dc41dd1_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">obcat</span>
+              <a href="#ts-1631967589.128900">18日 21:19:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631967589128900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すごい！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631967679.129100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631967679.129100">18日 21:21:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631967679129100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                おっ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631967753.130500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631967753.130500">18日 21:22:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631967753130500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                @mityu それ多分PRに出てるcontext-commentstringへの対応と似た感じでいけると思います<br>丁度自分もTS内のjsxの判定でコメント切り替えるやつをtyruさんと相談して進めてました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631967871.131100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631967871.131100">18日 21:24:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631967871131100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vim-jpのDiscord入ってたらですけど、こういう方針で対応していきそうです<br><a href='https://canary.discord.com/channels/832606769137975347/877930884173549568/878614388024692837'>https://canary.discord.com/channels/832606769137975347/877930884173549568/878614388024692837</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="mityu">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968136.132300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631968136.132300">18日 21:28:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968136132300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                将来的には現在のコンテキストを読んでactionにhookしてcommentstringを動的に切り替えるみたいなのが入るはず・・・？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968168.133300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631968168.133300">18日 21:29:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968168133300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                今だとcontext-commentstring用に対応して貰ってたんですが、多分このhookが汎用的になればなんでもいけるはず
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968339.135400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631968339.135400">18日 21:32:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968339135400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                actionにhookというのは、commentstringを切り替える関数側で、どのactionのマッピングから実行されたかを知る手段ができるようになる、という話ではないですよね？（まだ完全にDiscordを追えてないので何となくで書いてます）
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968398.136300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631968398.136300">18日 21:33:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968398136300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                commentstringを変更する関数をactionに対して発火させられるようになって、そのcommentstringベースで適切なコメントアウトが実行されるようになる、って認識です
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968814.140800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631968814.140800">18日 21:40:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968814140800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分が無理矢理に手動で関数をhookさせてるんですけど、こんなのがいい感じにできるようになるんじゃないかな<br><pre>nmap &lt;silent&gt; &lt;expr&gt; &lt;Leader&gt;cc &lt;SID&gt;caw_hatpos_toggle()<br>xmap &lt;silent&gt; &lt;expr&gt; &lt;Leader&gt;cc &lt;SID&gt;caw_hatpos_toggle()<br>nmap &lt;silent&gt; &lt;expr&gt; &lt;Leader&gt;cw &lt;SID&gt;caw_wrap_toggle()<br>xmap &lt;silent&gt; &lt;expr&gt; &lt;Leader&gt;cw &lt;SID&gt;caw_wrap_toggle()<br><br>function! s:caw_hatpos_toggle() abort<br>  if dein#tap(&#39;nvim-ts-context-commentstring&#39;)<br>    lua require(&#39;ts_context_commentstring.internal&#39;).update_commentstring()<br>    call caw#update_comments_from_commentstring(&amp;commentstring)<br>  endif<br><br>  return &#34;\&lt;Plug&gt;(caw:hatpos:toggle)&#34;<br>endfunction<br><br>function! s:caw_wrap_toggle() abort<br>  if dein#tap(&#39;nvim-ts-context-commentstring&#39;)<br>    lua require(&#39;ts_context_commentstring.internal&#39;).update_commentstring()<br>    call caw#update_comments_from_commentstring(&amp;commentstring)<br>  endif<br><br>  let b:caw_wrap_oneline_comment = [&#34;/*&#34;, &#34;*/&#34;]<br><br>  return &#34;\&lt;Plug&gt;(caw:wrap:toggle)&#34;<br>endfunction</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968849.141400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631968849.141400">18日 21:40:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968849141400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど、これは良いですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968869.142000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631968869.142000">18日 21:41:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968869142000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                こういうのができるようになったらうまいこと連携させられそうです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968879.142200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1631968879.142200">18日 21:41:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968879142200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                多分これの対応待つのが正着な気がします、tyruさんに期待
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631968895.142600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-05-29/2123845245700_1c0339d1767d95f4b94a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mityu</span>
+              <a href="#ts-1631968895.142600">18日 21:41:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631968895142600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                期待
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631976824.142900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1631976824.142900">18日 23:53:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1631976824142900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                報告したやつ直してもらえた。ありがたい…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="mityu, rbtnn, kuu">
+                              <img class="slacklog-emoji" alt="goodpoem" title="goodpoem" src="/slacklog/emojis/goodpoem.png"><span class="ml-1">3</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
