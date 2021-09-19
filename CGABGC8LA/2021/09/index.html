@@ -12451,6 +12451,223 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1631978315.369500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1631978315.369500">19日 00:18:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631978315369500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                バグ見つけてしまった。 <a href='https://github.com/golang/go/issues/48459'>https://github.com/golang/go/issues/48459</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1631978315.369500">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/golang/go/issues/48459|#48459 panic with unreachable recover()&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*What version of Go are you using (<code>go version</code>)?*<br><br>$ go version<br>go version devel go1.18-c894b442d1 Sat Sep 18 06:04:41 2021 +0000 windows/amd64<br><br>*Does this issue reproduce with the latest release?*<br><br>Yes<br><br>*What operating system and processor architecture are you using (<code>go env</code>)?*<br><code>go env</code> Output  <br><br>$ go env<br>set GO111MODULE=on<br>set GOARCH=amd64<br>set GOBIN=<br>set GOCACHE=C:\Users\mattn\AppData\Local\go-build<br>set GOENV=C:\Users\mattn\AppData\Roaming\go\env<br>set GOEXE=.exe<br>set GOEXPERIMENT=<br>set GOFLAGS=<br>set GOHOSTARCH=amd64<br>set GOHOSTOS=windows<br>set GOINSECURE=<br>set GOMODCACHE=C:\Users\mattn\go\pkg\mod<br>set GONOPROXY=<br>set GONOSUMDB=<br>set GOOS=windows<br>set GOPATH=C:\Users\mattn\go<br>set GOPRIVATE=<br>set GOPROXY=<a href='https://proxy.golang.org'>https://proxy.golang.org</a>,direct<br>set GOROOT=C:\dev\go<br>set GOSUMDB=<a href='http://sum.golang.org'>sum.golang.org</a><br>set GOTMPDIR=<br>set GOTOOLDIR=C:\dev\go\pkg\tool\windows_amd64<br>set GOVCS=<br>set GOVERSION=devel go1.18-c894b442d1 Sat Sep 18 06:04:41 2021 +0000<br>set GCCGO=gccgo<br>set GOAMD64=v1<br>set AR=ar<br>set CC=gcc<br>set CXX=g++<br>set CGO_ENABLED=1<br>set GOMOD=C:\Users\mattn\go\src\<a href='http://github.com'>github.com</a>\mattn\iii\go.mod<br>set CGO_CFLAGS=-g -O2<br>set CGO_CPPFLAGS=<br>set CGO_CXXFLAGS=-g -O2<br>set CGO_FFLAGS=-g -O2<br>set CGO_LDFLAGS=-g -O2<br>set PKG_CONFIG=pkg-config<br>set GOGCCFLAGS=-m64 -mthreads -fmessage-length=0 -fdebug-prefix-map=C:\Users\mattn\AppData\Local\Temp\go-build405125501=/tmp/go-build -gno-record-gcc-switches <br>*What did you do?*<br><br><pre><br>package main<br><br>func main() {<br>	if true {<br>		return<br>	}<br><br>	defer func() {<br>		recover()<br>	}()<br>}<br></pre><br><br>This is not reproduced on Go playground.<br><br><a href='https://play.golang.org/p/gru0RzZcLGh'>https://play.golang.org/p/gru0RzZcLGh</a><br><br>*What did you expect to see?*<br><br>Compilation successfully.<br><br>*What did you see instead?*<br><br><pre><br># command-line-arguments<br>.\main.go:9:10: internal compiler error: order.stmt recover<br><br>goroutine 1 [running]:<br>runtime/debug.Stack()<br>	C:/dev/go/src/runtime/debug/stack.go:24 +0x65<br>cmd/compile/internal/base.FatalfAt({0xbf2078, 0x0}, {0xa8194d, 0xd}, {0xc00058d998, 0x1, 0x1})<br>	C:/dev/go/src/cmd/compile/internal/base/print.go:227 +0x154<br>cmd/compile/internal/base.Fatalf(...)<br>	C:/dev/go/src/cmd/compile/internal/base/print.go:196<br>cmd/compile/internal/walk.(*orderState).stmt(0xc000686040, {0xbf2078, 0xc000402090})<br>	C:/dev/go/src/cmd/compile/internal/walk/order.go:602 +0x281e<br>cmd/compile/internal/walk.(*orderState).stmtList(0xa4f5a0, {0xc00005e1b0, 0x1, 0x1})<br>	C:/dev/go/src/cmd/compile/internal/walk/order.go:397 +0x85<br>cmd/compile/internal/walk.orderBlock(0xc000074430, 0xc000696060)<br>	C:/dev/go/src/cmd/compile/internal/walk/order.go:460 +0x85<br>cmd/compile/internal/walk.order(0xc000074420)<br>	C:/dev/go/src/cmd/compile/internal/walk/order.go:66 +0x9b<br>cmd/compile/internal/walk.Walk(0xc000074420)<br>	C:/dev/go/src/cmd/compile/internal/walk/walk.go:27 +0x4d<br>cmd/compile/internal/gc.prepareFunc(0xc000074420)<br>	C:/dev/go/src/cmd/compile/internal/gc/compile.go:92 +0x6d<br>cmd/compile/internal/gc.enqueueFunc(0xc000074420)<br>	C:/dev/go/src/cmd/compile/internal/gc/compile.go:66 +0x2fd<br>cmd/compile/internal/gc.Main(0xaad238)<br>	C:/dev/go/src/cmd/compile/internal/gc/main.go:303 +0xe94<br>main.main()<br>	C:/dev/go/src/cmd/compile/main.go:55 +0xdd<br><br><br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1631983787.370200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1631983787.370200">19日 01:49:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1631983787370200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                mkwinsyscall って、systemDLL であることを前提にしてるんですね…
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="KoRoN">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632006200.371900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1632006200.371900">19日 08:03:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1632006200371900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんか1ヶ月くらい前に似たようなバグ見た気がする &gt; deadcode closure
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632047276.372500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1632047276.372500">19日 19:27:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1632047276372500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                python で書かれてるコードを go で書き直してるんですが、リストに None 入れてて辛い…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632053204.372700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1632053204.372700">19日 21:06:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1632053204372700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ありがち
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632053423.373100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1632053423.373100">19日 21:10:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1632053423373100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                言語のコアコンセプトにかかるところは差異が大きいですからね...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632053467.373700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1632053467.373700">19日 21:11:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1632053467373700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                nil/None/Nullとか言語の方向性で扱いの差がはげしい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632061571.374400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ゴリラ（コンパイラ入門中）</span>
+              <a href="#ts-1632061571.374400">19日 23:26:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1632061571374400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://zenn.dev/hsaki/articles/go-serverinternal-making'>https://zenn.dev/hsaki/articles/go-serverinternal-making</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632061573.374600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-06/1621211956228_09947ad089d6e790ca09_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ゴリラ（コンパイラ入門中）</span>
+              <a href="#ts-1632061573.374600">19日 23:26:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1632061573374600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すごい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
