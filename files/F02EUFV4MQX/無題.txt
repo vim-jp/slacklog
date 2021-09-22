@@ -1,0 +1,43 @@
+let g:textobj_functioncall_generics_patterns = [
+\ {
+\   'header' : '\<\h\k*',
+\   'bra'    : '<',
+\   'ket'    : '>',
+\   'footer' : '',
+\ },
+\ ]
+
+onoremap <silent> <Plug>(textobj-functioncall-generics-i) :<C-u>call textobj#functioncall#ip('o', g:textobj_functioncall_generics_patterns)<CR>
+xnoremap <silent> <Plug>(textobj-functioncall-generics-i) :<C-u>call textobj#functioncall#ip('x', g:textobj_functioncall_generics_patterns)<CR>
+onoremap <silent> <Plug>(textobj-functioncall-generics-a) :<C-u>call textobj#functioncall#i('o', g:textobj_functioncall_generics_patterns)<CR>
+xnoremap <silent> <Plug>(textobj-functioncall-generics-a) :<C-u>call textobj#functioncall#i('x', g:textobj_functioncall_generics_patterns)<CR>
+
+omap <silent> ig <Plug>(textobj-functioncall-generics-i)
+xmap <silent> ig <Plug>(textobj-functioncall-generics-i)
+omap <silent> ag <Plug>(textobj-functioncall-generics-a)
+xmap <silent> ag <Plug>(textobj-functioncall-generics-a)
+
+let g:sandwich#recipes += [
+\ {
+\   'buns': ['InputGenerics()', '">"'],
+\   'expr': 1,
+\   'cursor': 'inner_tail',
+\   'kind': ['add', 'replace'],
+\   'action': ['add'],
+\   'input': ['g']
+\ },
+\ {
+\   'external': ['i<', "\<Plug>(textobj-functioncall-generics-a)"],
+\   'noremap': 0,
+\   'kind': ['delete', 'replace', 'query'],
+\   'input': ['g']
+\ },
+\ ]
+
+function! InputGenerics() abort
+  let genericsname = input('Generics Name: ', '')
+  if genericsname ==# ''
+    throw 'OperatorSandwichCancel'
+  endif
+  return genericsname . '<'
+endfunction
