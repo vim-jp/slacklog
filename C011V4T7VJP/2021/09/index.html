@@ -2752,6 +2752,112 @@ done
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1632438434.093900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-09-25/1387013984515_764ebc65576be33ac497_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Hasu</span>
+              <a href="#ts-1632438434.093900">24日 08:07:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1632438434093900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                gitの一連コマンド入力が面倒なので半自動化した
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="atusy">
+                              <img class="slacklog-emoji" alt="goodpoem" title="goodpoem" src="/slacklog/emojis/goodpoem.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02FDSFS2UV/git-init.sh" target="_blank" rel="noopener noreferrer">
+                  <span class="f5">[[ダウンロード: git-init.sh(Shell)]]</span>
+                  </a>
+                  <pre><code class='language-shell'>set -e
+
+if ! command -v git &amp;&gt; /dev/null
+then
+    echo &#34;git could be not found&#34;
+    exit 1
+fi
+
+git init
+
+read -p &#34;Are you sure to commit process? (y/n)&#34; COMMIT_PERMISSION
+if [[ &#34;${COMMIT_PERMISSION}&#34; = &#34;y&#34; ]]; then
+    git add .
+    read -p &#34;Type commit message : &#34; COMMIT_MESSAGE
+    git commit -m &#34;${COMMIT_MESSAGE}&#34;
+    read -p &#34;Type origin url : &#34; ORIGIN_URL
+    git remote add origin ${ORIGIN_URL}
+    git push origin $(git rev-parse --abbrev-ref @)
+else
+    exit 1
+fi
+
+
+</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632445837.094700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1632445837.094700">24日 10:10:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1632445837094700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                zenoでコマンド展開するのもめっちゃいいですよ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632445877.095000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1632445877.095000">24日 10:11:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C011V4T7VJP/p1632445877095000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>- name: git commit message<br>  keyword: gcim<br>  snippet: git commit -m &#39;&#123;&#123;commit_message}}&#39;</pre><br>している
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
