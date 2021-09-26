@@ -1,0 +1,251 @@
+diff --git a/bin/zeno b/bin/zeno
+index d02d5a4..8e9ecb1 100755
+--- a/bin/zeno
++++ b/bin/zeno
+@@ -2,6 +2,6 @@
+ 
+ import { exec } from "../src/app.ts";
+ 
+-exec();
++exec({ zenoMode: "cli" });
+ 
+ // vim:set filetype=javascript:
+diff --git a/bin/zeno-server b/bin/zeno-server
+index 077b639..4e0f1ad 100755
+--- a/bin/zeno-server
++++ b/bin/zeno-server
+@@ -11,24 +11,24 @@ if (socketPath == null) {
+ }
+ 
+ Deno.signal("SIGINT").then(() => {
+-  Deno.removeSync(socketPath)
+-  Deno.exit()
+-})
++  Deno.removeSync(socketPath);
++  Deno.exit();
++});
+ 
+ Deno.signal("SIGTERM").then(() => {
+-  Deno.removeSync(socketPath)
+-  Deno.exit()
+-})
++  Deno.removeSync(socketPath);
++  Deno.exit();
++});
+ 
+ Deno.signal("SIGHUP").then(() => {
+-  Deno.removeSync(socketPath)
+-  Deno.exit()
+-})
++  Deno.removeSync(socketPath);
++  Deno.exit();
++});
+ 
+ if (existsSync(socketPath)) {
+   Deno.exit();
+ }
+ 
+-exec(true);
++exec({ zenoMode: "server" });
+ 
+ // vim:set filetype=javascript:
+diff --git a/shell/snippet/widget/zeno-auto-snippet b/shell/snippet/widget/zeno-auto-snippet
+index 4fbc344..6b359bd 100644
+--- a/shell/snippet/widget/zeno-auto-snippet
++++ b/shell/snippet/widget/zeno-auto-snippet
+@@ -3,16 +3,7 @@
+ () {
+   emulate -L zsh
+ 
+-  if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
+-    if [[ -S ${ZENO_SOCK} ]]; then
+-      local out=$(zeno-client "--mode=auto-snippet $LBUFFER\n$RBUFFER")
+-    else
+-      start-zeno-server
+-      local out=$(echo "$LBUFFER\n$RBUFFER" | zeno --mode=auto-snippet)
+-    fi
+-  else
+-    local out=$(echo "$LBUFFER\n$RBUFFER" | zeno --mode=auto-snippet)
+-  fi
++  local out=$(call-deno-client-and-fallback "auto-snippet" "${LBUFFER}\n${RBUFFER}")
+ 
+   if [[ $(echo "$out" | head -1) != "success" ]]; then
+     LBUFFER+=" "
+diff --git a/shell/snippet/widget/zeno-auto-snippet-and-accept-line b/shell/snippet/widget/zeno-auto-snippet-and-accept-line
+index 4f395f7..4ceb9da 100644
+--- a/shell/snippet/widget/zeno-auto-snippet-and-accept-line
++++ b/shell/snippet/widget/zeno-auto-snippet-and-accept-line
+@@ -10,16 +10,8 @@
+     return
+   fi
+ 
+-  if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
+-    if [[ -S ${ZENO_SOCK} ]]; then
+-      local out=$(zeno-client "--mode=auto-snippet $LBUFFER\n$RBUFFER")
+-    else
+-      start-zeno-server
+-      local out=$(echo "$LBUFFER\n$RBUFFER" | zeno --mode=auto-snippet)
+-    fi
+-  else
+-    local out=$(echo "$LBUFFER\n$RBUFFER" | zeno --mode=auto-snippet)
+-  fi
++  local out=$(call-deno-client-and-fallback "auto-snippet" "${LBUFFER}\n${RBUFFER}")
++  set-zeno-pid
+ 
+   if [[ $(echo "$out" | head -1) != "success" ]]; then
+     zle accept-line
+diff --git a/shell/snippet/widget/zeno-completion b/shell/snippet/widget/zeno-completion
+index 64a15b6..b1b54f3 100644
+--- a/shell/snippet/widget/zeno-completion
++++ b/shell/snippet/widget/zeno-completion
+@@ -3,16 +3,8 @@
+ () {
+   emulate -L zsh
+ 
+-  if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
+-    if [[ ! -S $ZENO_SOCK ]]; then
+-      local completion=$(zeno-client "--mode=completion $LBUFFER")
+-    else
+-      start-zeno-server
+-      local completion=$(echo "$LBUFFER" | zeno --mode=completion)
+-    fi
+-  else
+-    local completion=$(echo "$LBUFFER" | zeno --mode=completion)
+-  fi
++  local completion=$(call-deno-client-and-fallback "completion" "${LBUFFER}")
++  set-zeno-pid
+ 
+   if [[ $(echo "$completion" | head -1) != "success" ]]; then
+     if whence fzf-completion > /dev/null; then
+diff --git a/shell/snippet/widget/zeno-insert-snippet b/shell/snippet/widget/zeno-insert-snippet
+index e451790..228a014 100644
+--- a/shell/snippet/widget/zeno-insert-snippet
++++ b/shell/snippet/widget/zeno-insert-snippet
+@@ -3,16 +3,8 @@
+ () {
+   emulate -L zsh
+ 
+-  if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
+-    if [[ -S $ZENO_SOCK ]]; then
+-      local out=$(zeno-client "--mode=snippet-list")
+-    else
+-      start-zeno-server
+-      local out=$(zeno --mode=snippet-list)
+-    fi
+-  else
+-    local out=$(zeno --mode=snippet-list)
+-  fi
++  local out=$(call-deno-client-and-fallback "snippet-list")
++  set-zeno-pid
+ 
+   local options=$(echo "$out" | head -1)
+   if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
+diff --git a/shell/snippet/widget/zeno-snippet-next-placeholder b/shell/snippet/widget/zeno-snippet-next-placeholder
+index 6d97c07..41248f0 100644
+--- a/shell/snippet/widget/zeno-snippet-next-placeholder
++++ b/shell/snippet/widget/zeno-snippet-next-placeholder
+@@ -3,16 +3,7 @@
+ () {
+   emulate -L zsh
+ 
+-  if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
+-    if [[ -S $ZENO_SOCK ]]; then
+-      local out=$(zeno-client "--mode=next-placeholder $BUFFER")
+-    else
+-      start-zeno-server
+-      local out=$(echo "$BUFFER" | zeno --mode=next-placeholder)
+-    fi
+-  else
+-    local out=$(echo "$BUFFER" | zeno --mode=next-placeholder)
+-  fi
++  local out=$(call-deno-client-and-fallback "next-placeholder" "${BUFFER}")
+ 
+   if [[ $(echo "$out" | head -1) != "success" ]]; then
+     return
+diff --git a/src/app.ts b/src/app.ts
+index a6edc67..75cfae7 100644
+--- a/src/app.ts
++++ b/src/app.ts
+@@ -127,6 +127,16 @@ const execCommand = async (
+       break;
+     }
+ 
++    case "pid": {
++      await write({ format: "%s\n", text: Deno.pid.toString() });
++      break;
++    }
++
++    case "chdir": {
++      Deno.chdir(input);
++      break;
++    }
++
+     default: {
+       await write({ format: "%s\n", text: "failure" });
+       await write({ format: "%s mode is not exist\n", text: mode });
+@@ -134,8 +144,8 @@ const execCommand = async (
+   }
+ };
+ 
+-export const exec = async (useSock?: boolean) => {
+-  if (useSock == true && ZENO_SOCK != null) {
++export const exec = async ({ zenoMode }: { zenoMode: "cli" | "server" }) => {
++  if (zenoMode === "server" && ZENO_SOCK != null) {
+     const listener = Deno.listen({
+       transport: "unix",
+       path: ZENO_SOCK,
+diff --git a/zeno.zsh b/zeno.zsh
+index 0737f56..02ac01c 100644
+--- a/zeno.zsh
++++ b/zeno.zsh
+@@ -47,11 +47,11 @@ if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
+ 
+   function start-zeno-server() {
+     nohup ${ZENO_SERVER_BIN} > /dev/null 2>&1 &!
+-    export ZENO_PID=$!
+   }
+ 
+   function restart-zeno-server() {
+     kill ${ZENO_PID}
++    export ZENO_PID=
+     start-zeno-server
+   }
+ 
+@@ -60,11 +60,36 @@ if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
+   }
+ 
+   function zeno-onchpwd() {
+-    kill ${ZENO_PID}
++    zeno-client "--mode=chdir $(pwd)"
++  }
++
++  function set-zeno-pid() {
++    if [[ -S $ZENO_SOCK ]] && [[ -z $ZENO_PID ]]; then
++      export ZENO_PID=$(zeno-client "--mode=pid")
++    fi
+   }
+ 
++  add-zsh-hook precmd set-zeno-pid
+   add-zsh-hook chpwd zeno-onchpwd
+   add-zsh-hook zshexit zeno-onexit
+ fi
+ 
++function call-deno-client-and-fallback() {
++  mode=$1
++  input=$2
++
++  if [[ ! -z $ZENO_ENABLE_SOCK ]]; then
++    if [[ -S $ZENO_SOCK ]]; then
++      local out=$(zeno-client "--mode=${mode} ${input}")
++    else
++      start-zeno-server
++      local out=$(echo "${input}" | zeno --mode=${mode})
++    fi
++  else
++    local out=$(echo "${input}" | zeno --mode=${mode})
++  fi
++
++  echo $out
++}
++
+ export ZENO_LOADED=1
