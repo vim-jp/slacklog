@@ -3392,6 +3392,105 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1632914473.152000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1632914473.152000">29日 20:21:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1632914473152000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/neovim/neovim/issues/15836'>https://github.com/neovim/neovim/issues/15836</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1632914473.152000">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/neovim/neovim/issues/15836|#15836 Neovim 0.51 LSP non start autocompletion omnifunc&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Neovim version (nvim -v)*<br><br>0.51<br><br>*Vim (not Nvim) behaves the same?*<br><br>not try<br><br>*Operating system/version*<br><br>Windows 10<br><br>*Terminal name/version*<br><br>Neovim-qt<br><br>*$TERM environment variable*<br><br>xterm<br><br>*Installation*<br><br>Download installer from github<br><br>*How to reproduce the issue*<br><br>In Neovim 0.50 my autocompletion for the Ruby file with LSP and solargraph work fine, i use plugin nvim-compe<br><br>pY9hVsKTGo.mp4<br><br>This is my LSP config<br><br><pre><br>vim.lsp.set_log_level(&#34;debug&#34;)<br><br>local nvim_lsp = require(&#39;lspconfig&#39;)<br><br>-- Use an on_attach function to only map the following keys<br>-- after the language server attaches to the current buffer<br>local on_attach = function(client, bufnr)<br>  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end<br>  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end<br><br>  -- Enable completion triggered by &lt;c-x&gt;&lt;c-o&gt;<br>  buf_set_option(&#39;omnifunc&#39;, &#39;v:lua.vim.lsp.omnifunc&#39;)<br><br>  -- Mappings.<br>  local opts = { noremap=true, silent=true }<br><br>  -- See `:help vim.lsp.*` for documentation on any of the below functions<br>  buf_set_keymap(&#39;n&#39;, &#39;gD&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.declaration()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;gd&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.definition()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;K&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.hover()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;gi&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.implementation()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;C-k&gt;&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.signature_help()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;wa&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.add_workspace_folder()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;wr&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.remove_workspace_folder()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;wl&#39;, &#39;&lt;cmd&gt;lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;D&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.type_definition()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;rn&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.rename()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;ca&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.code_action()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;gr&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.references()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;e&#39;, &#39;&lt;cmd&gt;lua vim.lsp.diagnostic.show_line_diagnostics()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;[d&#39;, &#39;&lt;cmd&gt;lua vim.lsp.diagnostic.goto_prev()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;]d&#39;, &#39;&lt;cmd&gt;lua vim.lsp.diagnostic.goto_next()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;q&#39;, &#39;&lt;cmd&gt;lua vim.lsp.diagnostic.set_loclist()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;&lt;space&gt;f&#39;, &#39;&lt;cmd&gt;lua vim.lsp.buf.formatting()&lt;CR&gt;&#39;, opts)<br><br>end<br><br>-- Use a loop to conveniently call &#39;setup&#39; on multiple servers and<br>-- map buffer local keybindings when the language server attaches<br>local servers = { &#39;solargraph&#39; }<br>for _, lsp in ipairs(servers) do<br>  nvim_lsp[lsp].setup {<br>    on_attach = on_attach,<br>    flags = {<br>      debounce_text_changes = 150,<br>    }<br>  }<br>end<br></pre>lua<br><br>When i try to install Neovim 0.51 omnifunc not start automatically, but i need to use &lt;ctrl-x&gt;&lt;ctrl-o&gt;<br><br><a href='https://user-images.githubusercontent.com/5004160/135254987-3b767485-0bb6-47aa-bf03-0ea892fec713.mp4'>https://user-images.githubusercontent.com/5004160/135254987-3b767485-0bb6-47aa-bf03-0ea892fec713.mp4</a><br><br><br><br><br><br>### Expected behavior<br><br>When insert . start omnifunc completion for ruby file<br><br>### Actual behavior<br><br>omnifunc not start automatically but only when presst &lt;ctrl-x&gt;&lt;ctrl-o&gt;<br><pre></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632914486.152600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1632914486.152600">29日 20:21:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1632914486152600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これなにが変わったんだろうね、他にも報告してる人がいた
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632914558.152800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1632914558.152800">29日 20:22:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CJ3BV8EMA/p1632914558152800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://twitter.com/riq0h/status/1443009363937927169?s=19'>https://twitter.com/riq0h/status/1443009363937927169</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1632914558.152800">
+              
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="32" height="32" src="https://pbs.twimg.com/profile_images/1306503041219047425/QkVG7JIm_normal.jpg" alt="twitter" />
+      </div>
+      <div class="flex-self-baseline f4 ml-2">
+        <span class="f6 text-gray-light">Rikuoh Tsujitani @riq0h</span>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div class="mt-2">nvim 0.5.1になってからnvim-lspとddc.vimの連携が機能しなくなった。当初は例の破壊的変更が原因かと思ったが、アップデート前のラップトップで検証したところ明らかにnvimの更新を境に動かなくなっている。</div>
+    </div>
+    <div class="d-flex">
+      <div>
+        <img class="avatar avatar-small" width="20" height="20" src="https://a.slack-edge.com/80588/img/services/twitter_pixel_snapped_32.png" />
+      </div>
+      <div class="flex-self-baseline f5 ml-2">
+        Twitter
+      </div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

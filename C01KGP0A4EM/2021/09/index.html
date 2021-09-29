@@ -353,6 +353,248 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1632849674.015400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1632849674.015400">29日 02:21:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632849674015400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Vim プラグインのテストで、<code>system()</code> で実行されるコマンドの引数についてテストがしたく、そのために <code>system()</code> に渡すコマンドの最初の部分(実行するコマンド部分)は入れ替えられるようにして、このコマンドをゴニョゴニョして渡される引数のテストができないか考えています。<br>シェルが Bash の場合、<br><pre>let tempfile = tempname()<br>let cmd = printf(&#39;dummy() { printf &#34;%%s\n&#34; &#34;$@&#34; &gt; %s; }; dummy&#39;, tempfile)</pre><br>みたいな感じにして後で tempfile の中身を見たらいけたんですけど、Windows (cmd.exe) でどうしようか…と言うところで悩み中。いい案ある人いたら知恵を借りたいです。最悪 Windows でのテストはスキップかな…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632853789.016300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1632853789.016300">29日 03:29:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632853789016300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Windows というか <code>executable(&#39;bash&#39;)</code> チェックしてなければスキップみたいにすればいいのでは
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632853806.016600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1632853806.016600">29日 03:30:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632853806016600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Windows でも bash 入ってればテストできるみたいな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632854049.017200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1632854049.017200">29日 03:34:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632854049017200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あとはバッチファイルを生成するとか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632854768.017500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1632854768.017500">29日 03:46:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632854768017500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>let tempfile = tempname()<br>let cmd = tempname() . &#39;.cmd&#39;<br>call writefile([&#39;@echo %*&gt; &#34;&#39; . tempfile . &#39;&#34;&#39;], cmd)<br>call system(printf(&#39;&#34;%s&#34; foo bar&#39;, cmd))<br>echom &#39;args: &#39; . string(readfile(tempfile))</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632876317.019300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1632876317.019300">29日 09:45:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632876317019300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                バッチファイルでも引数を分割するのがほぼほぼ不可能っぽいので、やはり Bash 限定かな…<br>なお <code>executable(&#39;bash&#39;)</code> だけではダメで、<code>&#39;shell&#39;</code> やその周辺オプションが適切に設定されている必要があるのでかなり面倒
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632917037.020500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1632917037.020500">29日 21:03:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632917037020500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                引数を分割する がよくわからないです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632917152.020900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1632917152.020900">29日 21:05:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632917152020900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                引数は複数あるので、分割する必要があります
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632926442.021300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1632926442.021300">29日 23:40:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632926442021300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                改行して出力されればいいわけでしょうか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632926488.021500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1632926488.021500">29日 23:41:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632926488021500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そうですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1632926650.022100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1632926650.022100">29日 23:44:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01KGP0A4EM/p1632926650022100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Vim 自体を使ってゴニョゴニョできないかと試行錯誤してみている…かなり難易度が高い
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
