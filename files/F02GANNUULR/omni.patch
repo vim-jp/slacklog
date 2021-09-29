@@ -1,0 +1,29 @@
+diff --git a/autoload/lsp/omni.vim b/autoload/lsp/omni.vim
+index 668873e..e5682b2 100644
+--- a/autoload/lsp/omni.vim
++++ b/autoload/lsp/omni.vim
+@@ -178,6 +178,12 @@ function! s:handle_omnicompletion(server_name, complete_counter, info, data) abo
+ 
+     let l:result = s:get_completion_result(a:server_name, a:data)
+     let l:matches = l:result['matches']
++    let l:curline = getline('.')
++    for l:completion_item in l:result['completion_items']
++        if type(get(l:completion_item, 'textEdit', v:null)) == type({})
++            let s:completion['startcol'] = min([s:completion['startcol'], 1 + strchars(strcharpart(l:curline, 0, l:completion_item['textEdit']['range']['start']['character'] - 1))])
++        endif
++    endfor
+     let s:completion['matches'] = l:matches
+     let s:completion['status'] = s:completion_status_success
+ 
+@@ -259,9 +265,10 @@ function! s:get_completion_result(server_name, data) abort
+         \ 'response': a:data['response'],
+         \ }
+ 
++    let l:completion_items = type(l:result) == type([]) ? l:result : get(l:result, 'items', [])
+     let l:completion_result = lsp#omni#get_vim_completion_items(l:options)
+ 
+-    return {'matches': l:completion_result['items'], 'incomplete': l:completion_result['incomplete'] }
++    return {'matches': l:completion_result['items'], 'incomplete': l:completion_result['incomplete'], 'completion_items': l:completion_items }
+ endfunction
+ 
+ function! s:sort_by_sorttext(i1, i2) abort
