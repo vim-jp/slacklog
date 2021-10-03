@@ -1,0 +1,23 @@
+let g:lexima_map_escape = '<Plug>(lexima-escape)'
+let g:lexima_no_default_rules = v:true
+
+function! PumInit() abort
+  noremap! <Plug>(pum-next) <Cmd>call pum#map#select_relative(+1)<CR>
+  noremap! <Plug>(pum-prev) <Cmd>call pum#map#select_relative(-1)<CR>
+  noremap! <Plug>(pum-confirm) <Cmd>call pum#map#confirm()<CR>
+  noremap! <Plug>(pum-cancel) <Cmd>call pum#map#cancel()<CR>
+
+  imap <silent><expr> <TAB> pum#visible() ? "<Plug>(pum-next)" : '<TAB>'
+  imap <silent><expr> <S-TAB> pum#visible() ? '<Plug>(pum-prev)' : '<C-h>'
+  "imap <silent><expr> <CR> pum#visible() ? '<Plug>(pum-confirm)' : lexima#expand('<CR>', 'i')
+  inoremap <silent><expr> <CR> pum#visible() ? '<Cmd>call pum#map#confirm()<CR>' : lexima#expand('<LT>CR>', 'i')
+  imap <silent><expr> <Esc> pum#visible() ? '<Plug>(pum-cancel)' : '<Plug>(lexima-escape)'
+
+  cmap <silent><expr> <TAB> pum#visible() ? '<Plug>(pum-next)' : '<TAB>'
+  cmap <silent><expr> <S-TAB> pum#visible() ? '<Plug>(pum-prev)' : '<C-h>'
+  cmap <silent><expr> <CR> pum#visible() ? '<Plug>(pum-confirm)' : '<CR>'
+  cmap <silent><expr> <Esc> pum#visible() ? '<Plug>(pum-cancel)' : '<C-c>'
+endfunction
+
+call lexima#set_default_rules()
+call PumInit()
