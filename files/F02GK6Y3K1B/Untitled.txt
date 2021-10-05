@@ -1,0 +1,34 @@
+$ python3.10
+Python 3.10.0 (default, Oct  5 2021, 11:45:50) [Clang 13.0.0 (clang-1300.0.29.3)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> from dataclasses import dataclass
+>>>
+>>> @dataclass
+... class Point:
+...     x: int
+...     y: int
+...
+>>> def where_is(points: list[Point]):
+...     match points:
+...         case []:
+...             print("No points")
+...         case [Point(0, 0)]:
+...             print("The origin")
+...         case [Point(x, y)]:
+...             print(f"Single point {x}, {y}")
+...         case [Point(0, y1), Point(0, y2)]:
+...             print(f"Two on the Y axis at {y1}, {y2}")
+...         case _:
+...             print("Something else")
+...
+>>> where_is([])
+No points
+>>> where_is([Point(0, 0)])
+The origin
+>>> where_is([Point(1, 1)])
+Single point 1, 1
+>>> where_is([Point(0, 1), Point(0, 2)])
+Two on the Y axis at 1, 2
+>>> where_is(1)
+Something else
