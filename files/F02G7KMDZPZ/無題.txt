@@ -1,0 +1,42 @@
+call wilder#set_option('pipeline', [
+\   wilder#branch(
+\     wilder#python_file_finder_pipeline({
+\       'file_command': {_, arg -> stridx(arg, '.') != -1 ? ['fd', '-tf', '-H'] : ['fd', '-tf']},
+\       'dir_command': ['fd', '-td'],
+\     }),
+\     wilder#cmdline_pipeline({'fuzzy': 1}),
+\     wilder#vim_search_pipeline()
+\   ),
+\ ])
+
+let wilder_cmd_line_renderer = wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+\ 'winblend': 20,
+\ 'highlighter': wilder#basic_highlighter(),
+\ 'highlights': {
+\   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#e27878', 'bold': v:true, 'underline': v:true}]),
+\   'selected_accent': wilder#make_hl('WilderSelectedAccent', 'PmenuSel', [{}, {}, {'foreground': '#e27878', 'bold': v:true, 'underline': v:true}]),
+\ },
+\ 'left': [wilder#popupmenu_devicons({'get_hl': wilder#devicons_get_hl_from_glyph_palette_vim()}), wilder#popupmenu_buffer_flags({'flags': ' '})],
+\ }))
+
+let wilder_search_renderer = wilder#wildmenu_renderer({
+\ 'highlighter': wilder#basic_highlighter(),
+\ 'separator': '  ',
+\ 'left': [' '],
+\ 'right': [' ', wilder#wildmenu_index()],
+\ 'border': 'rounded',
+\ })
+
+call wilder#setup({
+\ 'modes': [':', '/', '?'],
+\ 'accept_key': '<C-e>',
+\ })
+
+call wilder#set_option(
+\ 'renderer',
+\  wilder#renderer_mux({
+\ ':': wilder_cmd_line_renderer,
+\ '/': wilder_search_renderer,
+\ '?': wilder_search_renderer,
+\ })
+\ )
