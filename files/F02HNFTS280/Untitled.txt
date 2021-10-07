@@ -1,0 +1,11 @@
+func convertIDToString(s string, acceptablePrefix string) (string, error) {
+	prefix, s, ok := strings.Cut(s, ":")
+	if ok && prefix != acceptablePrefix {
+		return "", fmt.Errorf("unexpected type: expect=%s actual=%s", acceptablePrefix, prefix)
+	}
+	n, err := strconv.ParseInt(s, 10, 64)
+	if err != nil {
+		return 0, err
+	}
+	return n, nil
+}

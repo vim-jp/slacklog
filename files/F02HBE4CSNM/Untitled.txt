@@ -1,0 +1,14 @@
+func convertIDToInt64(s string, acceptablePrefix string) (int64, error) {
+	if n := strings.IndexRune(s, ':'); n > 0 {
+		prefix := s[:n]
+		if prefix != acceptablePrefix {
+			return 0, fmt.Errorf("unexpected type: expect=%s actual=%s", acceptablePrefix, prefix)
+		}
+		s = s[n+1:]
+	}
+	n, err := strconv.ParseInt(s, 10, 64)
+	if err != nil {
+		return 0, err
+	}
+	return n, nil
+}
