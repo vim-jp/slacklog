@@ -4228,6 +4228,439 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1633576458.113100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633576458.113100">7日 12:14:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633576458113100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ddc-vim-lsp についてはひとまず自分でチェックします。<br>ddc-nvim-lsp は修正を push しました。そのうち準備しようかと思いますがとりあえず確認お願いします。<br>細かいレビュー対応は全体的に固まったらしようと思います。<br>timeout は、過去の onCallback に CancelError を投げて中断させる方針を考えています。(timeout をなくす)<br>上記の場合でも <code>this.c++</code> テクは引き続き役立ちます。（ログ出してみたんですが入れ替わりはまず観測不可ではありますが…）<br>ddc-vim-lsp の2つの問題、feedkeysちらつく問題と、高速に &lt;c-n&gt; すると勝手に done 問題は、ddc-coc-patched では発現しておらず、ddc-nvim-lsp にも見られなければ、ddc-vim-lsp 側の課題として残して、ddc.vim への onCallback の review 対応作業に入ろうと思います
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633578430.113400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1633578430.113400">7日 12:47:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633578430113400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                こちらでも確認します
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633586509.115900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633586509.115900">7日 15:01:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633586509115900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                CancelError 版に更新しました。ddc-vim-lsp は user_data を消すと問題が発生しなくなるので、vim-lsp が pum changed とかのイベントを拾ったあとになにか不整合が起きているな、という考えです。もちろん解決したい気持ちはありますが、ddc.vim 側ではないなといったん判断。ddc-nvim-lsp の使用感も問題なければ ddc.vim 側は良いと判断できそう。
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">15 件の返信 最終返信:21:43:08 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1633597224.120900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Shougo</span>
+                      <a href="#ts-1633597224.120900">7日 18:00:24</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ddc-vim-lspはuser_dataの扱いがかなり厄介という認識
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633597245.121100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">Shougo</span>
+                      <a href="#ts-1633597245.121100">7日 18:00:45</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ddc-vim-lspがpum.vimに対応すればよいのではなかろうか
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633607114.121300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">luma</span>
+                      <a href="#ts-1633607114.121300">7日 20:45:14</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      これらの問題については両方とも, omni 補完でも発生したので私の個人的なプラグインがどれか競合しているだけの可能性もありそう。<br>@skudo_xx さんらへんがどうだったかも気になります
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633607719.123200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-19/1764441738566_55ce9fcfcc8972f02d06_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">skudo_xx</span>
+                      <a href="#ts-1633607719.123200">7日 20:55:19</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      これって自分は原因がよくわかってないけど completeopt=noinsert でissue closeした件ですよね。。。？<br>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633607926.123400">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">luma</span>
+                      <a href="#ts-1633607926.123400">7日 20:58:46</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <a href='https://github.com/shun/ddc-vim-lsp/issues/8'>https://github.com/shun/ddc-vim-lsp/issues/8</a><br>これか。ちなみに動いてます？
+                    </div>
+                      
+    <div class="d-flex">
+        <div>&lt;https://github.com/shun/ddc-vim-lsp/issues/8|#8 user_data is not completed&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Summary*<br><br>This plugin does not complete the import statement or expand the snippet in vim-vsnip as it does in <a href='https://github.com/lighttiger2505/deoplete-vim-lsp'>deoplete-vim-lsp</a>.  <br>However, it may work only once right after the activation of Vim/neovim, as shown in the following video.<br><br>*Environment*<br><br>OS : macOS Big Sur 11.6  <br>neovim version : v0.5.0  <br>denoos.vim version : <a href='https://github.com/vim-denops/denops.vim/commit/a8f984a2ef589c376ca3c30f98203a15c8fb57a7'>vim-denops/denops.vim@a8f984a</a>  <br>ddc.vim : <a href='https://github.com/Shougo/ddc.vim/commit/de4c2a9f7a0895fc0a7b33be72e6fa329b25d34a'>Shougo/ddc.vim@de4c2a9</a>  <br>ddc-vim-lsp version: <a href='https://github.com/shun/ddc-vim-lsp/commit/c47c98e778e9b2ad018a5f55dcacbd695adde2b1'>c47c98e</a><br><br>*minimal vimrc*<br><br><pre><br>set encoding=utf-8<br>scriptencoding utf-8<br>set nocp<br><br>let g:loaded_getscript = 1<br>let g:loaded_getscriptPlugin = 1<br>let g:loaded_logiPat = 1<br>let g:loaded_spellfile_plugin = 1<br>let g:loaded_rrhelper = 1<br>let g:loaded_vimball = 1<br>let g:loaded_vimballPlugin = 1<br><br>if has(&#39;vim_starting&#39;)<br>    set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim<br>endif<br><br>if dein#load_state(&#39;~/.cache/dein/&#39;)<br>    call dein#begin(&#39;~/.cache/dein/&#39;)<br>    call dein#add(&#39;prabirshrestha/vim-lsp&#39;)<br>    call dein#add(&#39;mattn/vim-lsp-settings&#39;)<br>    call dein#add(&#39;vim-denops/denops.vim&#39;)<br>    call dein#add(&#39;Shougo/ddc.vim&#39;)<br>    call dein#add(&#39;shun/ddc-vim-lsp&#39;)<br>    call dein#add(&#39;matsui54/ddc-matcher_fuzzy&#39;)<br>    call dein#add(&#39;hrsh7th/vim-vsnip-integ&#39;)<br>    call dein#add(&#39;hrsh7th/vim-vsnip&#39;)<br>    call dein#end()<br>    call dein#save_state()<br>endif<br><br>if dein#check_install()<br>    call dein#install()<br>endif<br>&#34;Reqired<br>filetype plugin indent on<br>syntax enable<br><br>set completeopt-=preview<br>set pumheight=10<br>set backspace=indent,eol,start<br><br>inoremap &lt;silent&gt;&lt;expr&gt; &lt;CR&gt; pumvisible() ? &#34;\&lt;C-y&gt;&#34; : &lt;CR&gt;<br><br>&#34;ddc.vim settings<br>call ddc#custom#patch_global(&#39;sourceOptions&#39;, {<br>    \ &#39;_&#39;: {<br>    \   &#39;ignoreCase&#39;: v:true,<br>    \   &#39;matchers&#39;: [&#39;matcher_fuzzy&#39;],<br>    \ },<br>    \ &#39;vim-lsp&#39;: {<br>    \   &#39;mark&#39;: &#39;lsp&#39;,<br>    \   &#39;forceCompletionPattern&#39;: &#39;\.\w*|:\w*|-&gt;\w*&#39;,<br>    \   &#39;minAutoCompleteLength&#39;: 1<br>    \ },<br>    \ &#39;vsnip&#39;: {<br>    \   &#39;mark&#39;: &#39;snip&#39;<br>    \ },<br>    \ })<br><br>call ddc#custom#patch_filetype(<br>    \ [&#39;c&#39;, &#39;cpp&#39;, &#39;go&#39;], &#39;sources&#39;,<br>    \ [&#39;vsnip&#39;, &#39;vim-lsp&#39;]<br>    \ )<br><br>inoremap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt;<br>    \ pumvisible() ? &#34;\&lt;C-n&gt;&#34; :<br>    \ (col(&#39;.&#39;) &lt;= 1 &lt;Bar&gt;&lt;Bar&gt; getline(&#39;.&#39;)[col(&#39;.&#39;) - 2] =~# &#39;\s&#39;) ?<br>    \ &#34;\&lt;TAB&gt;&#34; : ddc#manual_complete()<br><br>call ddc#enable()<br><br>let g:lsp_settings = {<br>            \ &#39;gopls&#39;: {<br>            \   &#39;initialization_options&#39;: {&#39;usePlaceholders&#39;: v:true},<br>            \ },<br>            \}<br></pre><br><br>*Video*<br><br>*import statements is not completed*<br><br>cant_import.mov<br><br>*the snippet from language server is not expanded (using vim-vsnip)*<br><br>cant_vsnip_expand.mov</div>
+      </div>
+
+                  </div>
+                  <div class="p-2" id="ts-1633608873.125500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-19/1764441738566_55ce9fcfcc8972f02d06_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">skudo_xx</span>
+                      <a href="#ts-1633608873.125500">7日 21:14:33</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      completeopt をnoinsert にすると意図通り動いてるかどうかと言うことですか？<br>今のところ自分は意図通り動いてると思ってます
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633608893.125700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">luma</span>
+                      <a href="#ts-1633608893.125700">7日 21:14:53</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      お、それはいいはなし
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633608919.126300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">luma</span>
+                      <a href="#ts-1633608919.126300">7日 21:15:19</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      oncallback ブランチですよね。たすかる
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633608969.127500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-19/1764441738566_55ce9fcfcc8972f02d06_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">skudo_xx</span>
+                      <a href="#ts-1633608969.127500">7日 21:16:09</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      はい、luma さんのoncallback のブランチでやってみました。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633609067.130000">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-19/1764441738566_55ce9fcfcc8972f02d06_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">skudo_xx</span>
+                      <a href="#ts-1633609067.130000">7日 21:17:47</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      でも、今日はほとんどコードを業務中で書いてないので、luma さんが気になるところとかに単純に気がついてないと言うのもあるかもしれません
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633609262.130200">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">luma</span>
+                      <a href="#ts-1633609262.130200">7日 21:21:02</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      いえ、速攻出てきます、completeopt=noinsert ですね、やってみます
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633610369.130900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-19/1764441738566_55ce9fcfcc8972f02d06_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">skudo_xx</span>
+                      <a href="#ts-1633610369.130900">7日 21:39:29</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      :h completeopt 
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633610370.131100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">vim-jp-bot</span>
+                      <a href="#ts-1633610370.131100">7日 21:39:30</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <pre><br>                                                *&#39;completeopt&#39;* *&#39;cot&#39;*<br>&#39;completeopt&#39; &#39;cot&#39;     文字列  (既定では &#34;menu,preview&#34;)<br>                        グローバル<br>        入力モードでの補完|ins-completion|についてのオプションのコンマ区切りの<br>        リスト。サポートされている値は次の通り:<br> <br>           menu     ポップアップメニューで補完候補を表示する。ポップアップメ<br>                    ニューは、候補が2個以上あり、十分な数の色が使用できるとき<br>                    だけ表示される。|ins-completion-menu|を参照。<br> <br>           menuone  候補が1つしかないときもポップアップメニューを使う。候補に<br>                    ついて付加的な情報があるときに便利である。例えば、それがど<br>                    のファイルに含まれているかなど。<br> <br>           longest  候補の文字列の最長の共通部分だけを挿入する。メニューが表示<br>                    されているならばCTRL-Lでさらに文字を挿入することができる。<br>                    大文字・小文字が同一視されるかどうかは補完の種類による。<br>                    バッファのテキストについてはオプション &#39;ignorecase&#39; が適用<br>                    される。<br> <br>           preview  現在選択されている候補についての付加的な情報をプレビュー<br>                    ウィンドウに表示する。&#34;menu&#34; または &#34;menuone&#34; と組み合わせ<br>                    たときのみ有効。<br> <br>           popup    現在選択されている補完に関する追加情報をポップアップウィン<br>                    ドウに表示する。&#34;menu&#34; または &#34;menuone&#34; との組み合わせでの<br>                    み機能する。&#34;preview&#34; を無視する。<br>                    指定するプロパティについては |&#39;completepopup&#39;| を参照。<br>                    {|+textprop| 機能付きでコンパイルされたときのみ有効}<br> <br>           popuphidden<br>                    &#34;popup&#34; と同様だが、最初はポップアップを非表示にする。<br>                    |CompleteChanged| 自動コマンドを使用して情報を取得し、ポッ<br>                    プアップがいっぱいになれば |popup_show()| を呼び出す。<br>                    |complete-popuphidden| の例を参照。<br>                    {|+textprop| 機能付きでコンパイルされたときのみ有効}<br> <br>           noinsert いかなるマッチしたテキストも、ユーザーがメニューから選択し<br>                    ない限り挿入しない。&#34;menu&#34; か &#34;menuone&#34; と組み合わせたとき<br>                    にだけ機能する。&#34;longest&#34; が指定された場合には、なんの影響<br>                    も発生しない。<br> <br>           noselect メニューからマッチを {訳注:自動では} 選択せず、ユーザーに<br>                    自分で選ぶことを強制する。&#34;menu&#34; か &#34;menuone&#34; と組み合わせ<br>                    たときにだけ機能する。<br></pre>
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633610532.134000">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-19/1764441738566_55ce9fcfcc8972f02d06_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">skudo_xx</span>
+                      <a href="#ts-1633610532.134000">7日 21:42:12</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      ヘルプ見てなかったけど、見てみるとmenu かmenuone と組み合わせた時だけ機能するって書いてある。<br>ということは、completeopt=noinsert は全く機能してないと言うことでないだろうか？
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1633610588.135300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-19/1764441738566_55ce9fcfcc8972f02d06_48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">skudo_xx</span>
+                      <a href="#ts-1633610588.135300">7日 21:43:08</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      単純にcompleteopt=preview が悪さ(？)してたってことか？
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633586964.117400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633586964.117400">7日 15:09:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633586964117400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                lang-javascript でも書きましたが、 is...Error を使っているわけは、こういう事が起こりえるためです。<br><br><pre>import { TimeoutError as TimeoutError1 } from &#34;&lt;https://deno.land/x/msgpack_rpc@v3.1.0/response_waiter.ts#&gt;^&#34;;<br>import { TimeoutError as TimeoutError2 } from &#34;&lt;https://deno.land/x/msgpack_rpc@v3.1.1/response_waiter.ts#&gt;^&#34;;<br>console.log(TimeoutError1 === TimeoutError2); // false<br>console.log(new TimeoutError1() instanceof TimeoutError2); // false<br>console.log(new TimeoutError2() instanceof TimeoutError1); // false</pre><br>むろん、その投げられうる TimeoutError が <code>v3.1.1</code> 由来だとわかっていれば問題ないですが、そうでないなら、この部分はもしかしたら同様に直したほうが良いかも
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633587014.117800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633587014.117800">7日 15:10:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633587014117800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                というか <code>#^</code> がついている時点で別インスタンスかも
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633591148.118600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1633591148.118600">7日 16:19:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633591148118600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>#^</code>はuddに与える指令というだけでDeno自体は完全に無視していたはず
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633591478.119500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633591478.119500">7日 16:24:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633591478119500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そうですが、別ファイル(module)扱いになります。<br><br><pre>import { TimeoutError as TimeoutError1 } from &#34;&lt;https://deno.land/x/msgpack_rpc@v3.1.1/response_waiter.ts#~&gt;&#34;;<br>import { TimeoutError as TimeoutError2 } from &#34;&lt;https://deno.land/x/msgpack_rpc@v3.1.1/response_waiter.ts#&gt;^&#34;;<br>import { TimeoutError as TimeoutError3 } from &#34;&lt;https://deno.land/x/msgpack_rpc@v3.1.1/response_waiter.ts&gt;&#34;;<br><br>console.log(TimeoutError1 === TimeoutError2); // false<br>console.log(TimeoutError2 === TimeoutError3); // false<br>console.log(TimeoutError3 === TimeoutError1); // false</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633591509.119900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1633591509.119900">7日 16:25:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633591509119900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それは知らなかったです。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633591555.120700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1633591555.120700">7日 16:25:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633591555120700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                忘れた頃に困りそうな仕様だな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633617229.137400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/12aca04f9f83107cd460ab28fd37f9ff.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0005-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">tani</span>
+              <a href="#ts-1633617229.137400">7日 23:33:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01N4L5362D/p1633617229137400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ddc-fuzzy ついにfuzzy mactcherを自前で実装しはじめました．ソートを良い感じにしつつ，さらにconverter_fuzzyも実装して，どこらへんがfuzzy matcherでマッチしたのかを分かるように目印をつけてみました．
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <img class="slacklog-emoji" alt="ultrafastparrot" title="ultrafastparrot" src="/slacklog/emojis/ultrafastparrot.gif"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02GL4V29U7/ddc-fuzzy.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="/slacklog/files/F02GL4V29U7/ddc-fuzzy.mp4" poster="/slacklog/files/F02GL4V29U7/ddc-fuzzy_video.jpeg" controls alt="ddc-fuzzy.mp4">
+                  </video>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

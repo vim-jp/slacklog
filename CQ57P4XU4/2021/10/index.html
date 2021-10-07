@@ -4151,6 +4151,851 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1633566247.452500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1633566247.452500">7日 09:24:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633566247452500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/Shougo/ddc-nvim-lsp/issues/20'>https://github.com/Shougo/ddc-nvim-lsp/issues/20</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1633566247.452500">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/Shougo/ddc-nvim-lsp/issues/20|#20 lsp completions not appearing&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">I&#39;m trying to migrate from deoplete to ddc but can&#39;t get lsp completions to work. As minimal example, create this file<br><br><pre><br>struct Foo {<br>  int aaaa;<br>  double bbbb;<br>};<br><br>int main(int, char **) {<br>  Foo f;<br>  f.aaaa = 1;<br>  return 0;<br>}<br></pre><br><br>If I start adding <code>f.bb</code> I get the around source completion but not lsp (a better example is to move <code>Foo</code> to a separate file and there are no completions). I can confirm that lsp is working by simply adding a syntax error to the file and seeing the lsp error messages appear.<br><br>Here is my init.vim<br><br><pre><br>if &amp;compatible<br>  set nocompatible               &#34; Be iMproved<br>endif<br><br>set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim<br><br>if dein#load_state(&#39;~/.cache/dein&#39;)<br>  call dein#begin(&#39;~/.cache/dein&#39;)<br><br>  &#34; Let dein manage dein<br>  call dein#add(&#39;~/.cache/dein/repos/github.com/Shougo/dein.vim&#39;)<br><br>  &#34; Add or remove your plugins here:<br>  call dein#add(&#39;Shougo/ddc.vim&#39;)<br>  call dein#add(&#39;Shougo/ddc-around&#39;)<br>  call dein#add(&#39;Shougo/ddc-matcher_head&#39;)<br>  call dein#add(&#39;Shougo/ddc-sorter_rank&#39;)<br>  call dein#add(&#39;neovim/nvim-lspconfig&#39;)<br>  call dein#add(&#39;vim-denops/denops.vim&#39;)<br><br>  &#34; Required:<br>  call dein#end()<br>  call dein#save_state()<br>endif<br><br>&#34; If you want to install not installed plugins on startup.<br>if dein#check_install()<br>  call dein#install()<br>endif<br>let g:dein#auto_recache=1<br><br>syntax on<br>syntax enable<br><br>call ddc#custom#patch_global(&#39;sources&#39;, [&#39;around&#39;, &#39;nvim-lsp&#39;])<br>call ddc#custom#patch_global(&#39;sourceOptions&#39;, {<br>      \ &#39;_&#39;: {<br>        \   &#39;matchers&#39;: [&#39;matcher_head&#39;],<br>        \   &#39;sorters&#39;: [&#39;sorter_rank&#39;]<br>        \},<br>      \ &#39;around&#39;: {&#39;mark&#39;: &#39;A&#39;},<br>      \ &#39;nvim-lsp&#39;: {<br>        \   &#39;mark&#39;: &#39;lsp&#39;,<br>	\   &#39;forceCompletionPattern&#39;: &#39;\.\w*|:\w*|-&gt;\w*&#39;<br>        \}<br>      \})<br>call ddc#custom#patch_global(&#39;sourceParams&#39;, {<br>      \ &#39;nvim-lsp&#39;: { &#39;kindLabels&#39;: { &#39;Class&#39;: &#39;c&#39; } },<br>      \ })<br><br>call ddc#enable()<br><br>lua require &#39;init&#39;<br></pre><br><br>and the referenced <code>init.lua</code><br><br><pre><br>local nvim_lsp = require(&#39;lspconfig&#39;)<br><br>local on_attach = function(client, bufnr)<br>  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end<br>  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end<br><br>  buf_set_option(&#39;omnifunc&#39;, &#39;v:lua.vim.lsp.omnifunc&#39;)<br><br>  local opts = { noremap=true, silent=true }<br><br>  buf_set_keymap(&#39;n&#39;, &#39;gc&#39;, &#39;&lt;Cmd&gt;lua vim.lsp.buf.declaration()&lt;CR&gt;&#39;, opts)<br>  buf_set_keymap(&#39;n&#39;, &#39;gd&#39;, &#39;&lt;Cmd&gt;lua vim.lsp.buf.definition()&lt;CR&gt;&#39;, opts)<br>end<br><br>nvim_lsp.clangd.setup{<br>  cmd={<br>    &#39;clangd&#39;,<br>    &#39;-cross-file-rename&#39;,<br>    &#39;-j=2&#39;,<br>    &#39;--header-insertion=never&#39;,<br>    &#39;--background-index&#39;,<br>    &#39;--pch-storage=disk&#39;<br>  };<br>  on_attach = on_attach;<br>  flags = {debounce_text_changes=150};<br>}<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633566269.453300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1633566269.453300">7日 09:24:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633566269453300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                うーん、neovim 0.5.1のみ動かないのがわからん
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633566537.453600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1633566537.453600">7日 09:28:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633566537453600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                手元で確認する
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633567685.454600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1633567685.454600">7日 09:48:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633567685454600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                手元でも再現した。原因はneovim 0.5.1にLSP breaking changesが入ってたため
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="iwata">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633567806.456000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1633567806.456000">7日 09:50:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633567806456000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                バックポーとされた理由はわかる、多分追従して古いneovimのサポートを切ったプラグインが0.5で動かなくなったんだろう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633567824.456600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1633567824.456600">7日 09:50:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633567824456600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                結果的に0.5と0.5.1で互換性が切れた
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633567844.457200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1633567844.457200">7日 09:50:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633567844457200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                真面目にバージョンチェックしてたが故にバグることになった
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Tsuyoshi CHO">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633568973.457500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1633568973.457500">7日 10:09:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633568973457500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                coc.nvim も Neovim の Linux の nightly build のバイナリで動かないとか、なんかポロポロ色々あるみたいでなんかよくわからない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633605614.460500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633605614.460500">7日 20:20:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633605614460500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vim-lsp の omni 補完でこんな現象が出た。<code>&lt;C-x&gt;&lt;C-o&gt;</code> で補完候補を表示して、<code>&lt;C-k&gt;</code> or <code>&lt;C-g&gt;</code> or <code>C-v&gt;</code> で <code>=&lt;SNR&gt;37_on_complete_done_after()</code> というのが挿入されちゃう。<br>原因探ろうと omni.vim 見てるけどさっぱりわからない。難しすぎる…。<br>補完候補出してる時に普段 &lt;C-g&gt; とか &lt;C-k&gt; とか &lt;C-v&gt; 押さないので実質的な害はないんですけども。
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02GZUUKR7D/Kapture%202021-10-07%20at%2020.11.54.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="/slacklog/files/F02GZUUKR7D/Kapture%202021-10-07%20at%2020.11.54.mp4" poster="/slacklog/files/F02GZUUKR7D/Kapture%202021-10-07%20at%2020.11.54_video.jpeg" controls alt="Kapture 2021-10-07 at 20.11.54.mp4">
+                  </video>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633605632.461200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633605632.461200">7日 20:20:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633605632461200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                vim-lsp で omni 補完を使ってる人は少なそう。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633605725.461700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633605725.461700">7日 20:22:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633605725461700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お前の環境の問題かと思って最小環境でやっても出る。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633605925.462600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633605925.462600">7日 20:25:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633605925462600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>call feedkeys(printf(&#34;\&lt;C-r&gt;=&lt;SNR&gt;%d_on_complete_done_after()\&lt;CR&gt;&#34;, s:SID()), &#39;n&#39;)</code><br>で <code>&lt;c-v&gt;</code> が <code>&lt;c-r&gt;</code> とか食っちゃうせいですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633605955.463600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1633605955.463600">7日 20:25:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633605955463600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                設定してるので、使わないわけでもないけど...w
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633605983.464200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633605983.464200">7日 20:26:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633605983464200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>\&lt;esc&gt;</code> 入れたら <code>&lt;c-g&gt;</code> は対処できた。あれー、なんかこれ一般的な対処ありましたっけ…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606022.464500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1633606022.464500">7日 20:27:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606022464500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                &lt;C-r&gt;= の前に <code>&lt;Ignore&gt;</code> 入れたらなんとかなったりするのかな。。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606033.464700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633606033.464700">7日 20:27:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606033464700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お。やってみます！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606157.465300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633606157.465300">7日 20:29:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606157465300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>Ignore</code> はダメっぽいです。luma さんの書かれてる <code>&lt;esc&gt;</code> 試してみよう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606212.466000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633606212.466000">7日 20:30:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606212466000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お。&lt;esc&gt; なら自分の環境なら<br>&lt;C-k&gt; &lt;C-g&gt; &lt;C-v&gt; どれも出なくなりました！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606300.466400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633606300.466400">7日 20:31:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606300466400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まじか。 <code>^]</code> と出てしまう。これは nvim かなあ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606315.466600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633606315.466600">7日 20:31:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606315466600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                nvim_feedkeys試してみるか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606389.467100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1633606389.467100">7日 20:33:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606389467100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>getchar()</code> で typeahead があるかどうか確認して…?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606567.467900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633606567.467900">7日 20:36:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606567467900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>^]</code> って&lt;C-v&gt; 打った後にポップアップが消えてそれが入るってことでしょうか？
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02GX0ZKR3P/Kapture%202021-10-07%20at%2020.35.10.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="/slacklog/files/F02GX0ZKR3P/Kapture%202021-10-07%20at%2020.35.10.mp4" poster="/slacklog/files/F02GX0ZKR3P/Kapture%202021-10-07%20at%2020.35.10_video.jpeg" controls alt="Kapture 2021-10-07 at 20.35.10.mp4">
+                  </video>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606584.468400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633606584.468400">7日 20:36:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606584468400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>diff --git a/autoload/lsp/ui/vim/completion.vim b/autoload/lsp/ui/vim/completion.vim<br>index 8d3a8f7..93e0003 100644<br>--- a/autoload/lsp/ui/vim/completion.vim<br>+++ b/autoload/lsp/ui/vim/completion.vim<br>@@ -54,7 +54,7 @@ function! s:on_complete_done() abort<br>   let s:context[&#39;complete_position&#39;] = l:managed_user_data[&#39;complete_position&#39;]<br>   let s:context[&#39;server_name&#39;] = l:managed_user_data[&#39;server_name&#39;]<br>   let s:context[&#39;completion_item&#39;] = l:managed_user_data[&#39;completion_item&#39;]<br>-  call feedkeys(printf(&#34;\&lt;C-r&gt;=&lt;SNR&gt;%d_on_complete_done_after()\&lt;CR&gt;&#34;, s:SID()), &#39;n&#39;)<br>+  call feedkeys(printf(&#34;\&lt;esc&gt;\&lt;C-r&gt;=&lt;SNR&gt;%d_on_complete_done_after()\&lt;CR&gt;&#34;, s:SID()), &#39;n&#39;)<br> endfunction<br> <br> &#34;<br>@@ -63,6 +63,7 @@ endfunction<br> function! s:on_complete_done_after() abort</pre><br>一応 diff
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606591.468500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633606591.468500">7日 20:36:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606591468500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                nvim 対応しようと思うとそうなるのかな。とりあえず esc と ignore ではできなかった
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606596.468700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633606596.468700">7日 20:36:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606596468700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そうです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606645.469000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633606645.469000">7日 20:37:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606645469000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>package src^[</code> Vim8 の場合はこう入りました。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606718.469300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633606718.469300">7日 20:38:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606718469300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、いっしょだ。というかこれ正解がなさそう。もとのままでよさそう。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606753.469500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633606753.469500">7日 20:39:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606753469500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ん～
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606763.469800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633606763.469800">7日 20:39:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606763469800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いや、getchar があればまったくなにもしれなければいいのかなｍ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633606956.471200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633606956.471200">7日 20:42:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633606956471200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                うーん。ddc-vim-lsp での問題と関連してそうだと思ったが違いそうだな。<br>しかし omni 補完でも、問題の一つは同様に起きてしまうということがわかった。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633608742.471800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633608742.471800">7日 21:12:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633608742471800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これどうしましょう？ luma さんの方で PR 作られますか？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633608784.472200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633608784.472200">7日 21:13:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633608784472200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                え、私は結局どこにもたどり着けていないのでおまかせします
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633608809.473100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633608809.473100">7日 21:13:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633608809473100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                &gt; いや、getchar があればまったくなにもしれなければいいのかなｍ<br>これしようとしたけどgetcharのヘルプがなに行ってるかわからずそっ閉じした
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633608832.473500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1633608832.473500">7日 21:13:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633608832473500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                承知しましたー。とりあえず &lt;esc&gt; で最低限困ることはなさそうなのでこうします！
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633608853.473900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633608853.473900">7日 21:14:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633608853473900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                getchar 、 27 しか返さないのであきらめた
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1633608858.474100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/da34283a48f2b5323a65e4bf548a3b25.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0011-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">luma</span>
+              <a href="#ts-1633608858.474100">7日 21:14:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CQ57P4XU4/p1633608858474100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                27=&lt;esc&gt;
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
