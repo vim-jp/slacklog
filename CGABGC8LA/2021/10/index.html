@@ -3949,6 +3949,356 @@ Additionally, if Notify is called, and Windows sends CTRL_CLOSE_EVENT, CTRL_LOGO
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1634021892.299600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/f588267d3e7e23475cad3933226c1e96.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shintaro Abe</span>
+              <a href="#ts-1634021892.299600">12日 15:58:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634021892299600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                何にも分かっていないんですが、macOS 12 Beta + go 1.17.2 で自社プロダクトのテストを実行したら落ちるようになったのですが、 runtime/traceback.goL136 にも問題があるようでエラー箇所がうまく辿れないです <br><a href='https://github.com/golang/go/blob/go1.17.2/src/runtime/traceback.go#L133-L144'>https://github.com/golang/go/blob/go1.17.2/src/runtime/traceback.go#L133-L144</a><br><br><pre>objc[10455]: Attempt to use unknown class 0x7ff848700320.<br>SIGABRT: abort<br>PC=0x7ff806eccdfe m=5 sigcode=0<br><br>goroutine 0 [idle]:<br>runtime: unknown pc 0x7ff806eccdfe<br>stack: frame={sp:0x700009960e68, fp:0x0} stack=[0x7000098e2350,0x700009961f50)<br>0000700009960d68:  0000000000000002  0000000000000002<br>0000700009960d78:  00000000034ea000  00000000034ea400<br>...</pre><br>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634021892.299600">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/golang/go/blob/go1.17.2/src/runtime/traceback.go | traceback.go&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>	f := findfunc(frame.pc)<br>	if !f.valid() {<br>		if callback != nil || printing {<br>			print(&#34;runtime: unknown pc &#34;, hex(frame.pc), &#34;\n&#34;)<br>			tracebackHexdump(gp.stack, &amp;frame, 0)<br>		}<br>		if callback != nil {<br>			throw(&#34;unknown pc&#34;)<br>		}<br>		return 0<br>	}<br>	frame.fn = f<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041010.300300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634041010.300300">12日 21:16:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041010300300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー、最近弄ってるところのコードですね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041060.301400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634041060.301400">12日 21:17:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041060301400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ロミットログのここ数日内で弄ってたと思います。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041089.302100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634041089.302100">12日 21:18:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041089302100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                環境は1.17.2だけどその影響ある?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041108.302700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634041108.302700">12日 21:18:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041108302700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                おかしいのを直したのかな？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041172.303100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634041172.303100">12日 21:19:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041172303100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これは落ちたPCから関数を特定できなかったよ、ってことか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041214.303700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634041214.303700">12日 21:20:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041214303700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                スタックポインタに積まれた値とPCの間の乖離が大きい気がするねぇ。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041297.304900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634041297.304900">12日 21:21:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041297304900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそもこのエラーメッセージが結構謎じゃない? 同じ行に <code>objc</code> とも入ってるし。<br><br>&gt; Attempt to use unknown class<br>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041298.305000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634041298.305000">12日 21:21:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041298305000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                とおもったけど issue ばんこうも何も付いてないな。無関係か？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041432.305800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634041432.305800">12日 21:23:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041432305800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんかCGOでNSObject触ってるモジュールいたりしないだろうか? で、そいつがとちってる。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041531.306500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634041531.306500">12日 21:25:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041531306500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                再現コード気になる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041858.307300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634041858.307300">12日 21:30:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041858307300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                robpike先生<br><a href='https://github.com/golang/go/issues/48918'>https://github.com/golang/go/issues/48918</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634041858.307300">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/golang/go/issues/48918|#48918 go: don&#39;t change the libraries in 1.18&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">The 1.18 release of the Go language is likely to include by far the biggest change to the language since its creation: parametric polymorphism, colloquially called generics. There has been much discussion about how the core libraries will adapt, and how to make that adaptation. See #45955 and #48594 for example, and there are others already and sure to be more soon.<br><br>How to use these ideas in the standard library requires great thought and planning. Putting them in the library now also adds a significant burden to rolling out the release.<br><br>I propose that we do *not* update the libraries in 1.18.<br><br>The reason is simple and compelling: It&#39;s too much to do all at once, and we might get it wrong. The language changes have been worked on in some form for over a decade, but the library changes are very new, and we have no experience with the use of the new types in Go on which to base a strong case for their design. Yes, we can reason about them at length and much has been done. Experience with other languages helps, but one thing Go has taught us is that it grows its own ways of doing things.<br><br>For generics, we don&#39;t know what those new ways are yet. Also, the compatibility promise makes the cost of getting any detail wrong quite high. We should wait, watch, and learn.<br><br>Instead, I propose we still design, build, test, and use new libraries for slices, maps, channels, and so on, but start by putting them in the golang/x/exp repository. That way, these new libraries - which are truly experimental at this stage - can be tested in production, but can be changed, adapted, and grown for a cycle or two, letting the whole community try them out, if they are interested and willing to accept a little instability, without requiring every detail of every component to be ready from day one. Once they have soaked a bit, and updated through experience, we move them into the main repo as we have done with other externally-grown packages, but with the confidence that they work well in practice and are deserving of our compatibility promise.<br><br>I realize everyone wants to get their hands on the fun of the new language feature, and is looking forward to fixing some of the issues in the core libraries that will be less clumsy once it arrives, but I strongly believe it is best to take it slow for now. Use, learn, study, and move cautiously.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634041972.309100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634041972.309100">12日 21:32:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634041972309100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                標準ライブラリのtypeparams対応は一旦x/expとかでやって時間をかけようという提案
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634042117.309800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1634042117.309800">12日 21:35:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634042117309800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                1.18はちょっと忙しすぎですよね…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634042194.310600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1634042194.310600">12日 21:36:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634042194310600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                普通に1.19に一部伸びるかなと思ったけど、x/expの手があったか。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
