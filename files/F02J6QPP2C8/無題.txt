@@ -1,0 +1,41 @@
+function! s:setline(line) abort
+  if strwidth(a:line) > 78
+    throw "78文字以下にしてください"
+  endif
+  call setline(line('.'), a:line)
+endfunction
+
+function! s:help_intro() abort
+  let description = input('description: ')
+  let line = printf('*%s.txt* %s', expand('%:t:r'), description)
+  call s:setline(line)
+endfunction
+
+function! help#set_tagline(title, tag) abort
+  let lhs = a:title
+  let rhs = printf('*%s*', a:tag)
+  let space = repeat(' ', 78 - len(lhs) - len(rhs))
+  let line = lhs .. space .. rhs
+  call s:setline(line)
+endfunction
+
+command! HelpTagLine call help#set_tagline(input('title: '), input('tag: '))
+
+command! HelpIntro call s:help_intro()
+
+function! s:help_title() abort
+  let title = input('title: ')
+  let lower = tolower(title)
+  let upper = toupper(title)
+  let tag = printf('*%s-%s*', expand('%:t:r'), lower)
+  let space = repeat(' ', 78 - len(upper) - len(tag))
+  let line = upper .. space .. tag
+  call s:setline(line)
+endfunction
+
+command! HelpTitle call s:help_title()
+
+command! HelpDitto eval {title->help#set_tagline(title, title)}(input('title: '))
+
+command! HelpSkkeletonConfig eval {title->help#set_tagline(title, printf('skkeleton-config-%s', title))}(input('title: '))
+command! HelpSkkeletonFunction eval {title->help#set_tagline(title, printf('skkeleton-function-%s', title))}(input('title: '))
