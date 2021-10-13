@@ -551,6 +551,195 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1634086902.156000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1634086902.156000">13日 10:01:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CB2NMV0GN/p1634086902156000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                一応 coc.nvim の typeprof の拡張の成果物、あげておきます。もし coc.nvim を使ってて。もし必要な方は参考にしてご自分で作ってメンテしてください <a href='https://github.com/yaegassy/coc-typeprof'>https://github.com/yaegassy/coc-typeprof</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634086902.156000">
+              
+    <div class="d-flex">
+        <div>yaegassy/coc-typeprof</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Ruby TypeProf extension for coc.nvim</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634109369.157200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1634109369.157200">13日 16:16:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CB2NMV0GN/p1634109369157200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Rails の numericality validator は、<code>50.</code> を数値ではないと判断するらしい
+              </div>
+
+              <div>
+              </div>
+              <details class="details-reset mt-3">
+                <summary class="btn-link">
+                  <span class="f5">8 件の返信 最終返信:18:35:42 <span class="dropdown-caret"></span>
+                  </span>
+                </summary>
+                <div class="border mt-2">
+                  <div class="p-2" id="ts-1634112610.157500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/110cd4dcaed019b3bd9809e541afdeb6.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">okuramasafumi</span>
+                      <a href="#ts-1634112610.157500">13日 17:10:10</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      実際、<code>Float</code>メソッドや<code>Integer</code>メソッドに<code>&#34;50.&#34;</code> を渡しても例外になるのでまあしょうがないのでは。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1634112702.157700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">thinca</span>
+                      <a href="#ts-1634112702.157700">13日 17:11:42</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      しかし <code>&#39;50.&#39;.to_f</code> は通るのであった
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1634112747.157900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">thinca</span>
+                      <a href="#ts-1634112747.157900">13日 17:12:27</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      to_f はそもそも末尾は無視しているのか
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1634112831.158100">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/110cd4dcaed019b3bd9809e541afdeb6.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">okuramasafumi</span>
+                      <a href="#ts-1634112831.158100">13日 17:13:51</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <code>&#39;50.&#39;.to_i</code>とかも通りますね。to_系メソッドは割と思い切りがよい印象。<code>&#39;10 + hoge&#39;.to_f</code> みたいなやつでも<code>10.0</code>が返ってくるので、
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1634112864.158300">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">thinca</span>
+                      <a href="#ts-1634112864.158300">13日 17:14:24</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      先頭一致部分しか見てないみたいですね
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1634113331.158500">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">thinca</span>
+                      <a href="#ts-1634113331.158500">13日 17:22:11</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      そもそもの話は、フロントエンド側でのバリデーションがライブラリの内部で JS の <code>parseFloat()</code> を使っているらしく、<code>50.</code> みたいなやつも通っちゃってたんですけど、バックエンド側の Rails では弾かれてしまって、ロジックが統一されていなくてつらい、と言う感じでした…
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1634117698.158700">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/110cd4dcaed019b3bd9809e541afdeb6.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">okuramasafumi</span>
+                      <a href="#ts-1634117698.158700">13日 18:34:58</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      なるほど…<br>カスタムバリデーターを作るのが一つの作戦な気はしてきました。一旦文字列で末尾のドットを削除してから数値検証をするような。
+                    </div>
+                  </div>
+                  <div class="p-2" id="ts-1634117742.158900">
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">thinca</span>
+                      <a href="#ts-1634117742.158900">13日 18:35:42</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      どうしてもやるならそうなりますよね。めんどいーw
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634112159.157400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/a36a7ed02d64ce6f40a20ebfe0a9f59d.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0025-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">yaegassy</span>
+              <a href="#ts-1634112159.157400">13日 17:02:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CB2NMV0GN/p1634112159157400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                typeprof の language server ですが Gemfile や Rakefile も VSCode や Vim では ruby のファイルタイプになるので、それらを開いたときに反応してしまってエラー吐いてサーバーストップしてる症状があるかもしれません
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ujihisa">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

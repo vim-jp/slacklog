@@ -5986,6 +5986,402 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1634051185.296800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634051185.296800">13日 00:06:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634051185296800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                compinitのキャッシュってどうやってます？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634052205.297100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1634052205.297100">13日 00:23:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634052205297100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>() {<br>  autoload -Uz compinit<br>  : ${ZSH_COMPDUMP:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump-$HOSTNAME-$ZSH_VERSION}<br>  local dump=$ZSH_COMPDUMP<br>  local dumpc=${dump}.zwc<br>  # re-check dump file that are older than 24 hours<br>  if [[ -n $dump(#&lt;http://qN.mh|qN.mh&gt;+24) ]]; then<br>    compinit -i -d &#34;$dump&#34;<br>    { rm -rf &#34;$dumpc&#34; &amp;&amp; zcompile &#34;$dump&#34; } &amp;!<br>  else<br>    compinit -C -d &#34;$dump&#34;<br>    { [[ ! -s $dumpc || $dump -nt $dumpc ]] &amp;&amp; rm -rf &#34;$dumpc&#34; &amp;&amp; zcompile &#34;$dump&#34; } &amp;!<br>  fi<br>}</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634052519.298400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634052519.298400">13日 00:28:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634052519298400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                読めなすぎてすごい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634052668.300500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1634052668.300500">13日 00:31:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634052668300500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                • dump ファイルの更新時間が24時間以内の場合は security check をスキップ (<code>-C</code>)<br>• compiled dump file (*.zwc) が無い or 古かったらコンパイル (<code>zcompile</code>)<br>• コンパイルはバックグラウンドで行う
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634053017.301200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1634053017.301200">13日 00:36:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634053017301200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                zcompile の行は if block に入れなくてもよかったかも。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634064015.301700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1634064015.301700">13日 03:40:15</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634064015301700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>-rw-r--r-- 1 conao conao  392044 Oct 13 03:30 SKK-JISYO.assoc<br>-rw-r--r-- 1 conao conao  392044 Oct 13 03:36 SKK-JISYO.assoc.new<br>-rw-r--r-- 1 conao conao   10606 Oct 13 03:14 SKK-JISYO.china_taiwan<br>-rw-r--r-- 1 conao conao    9641 Oct 13 03:36 SKK-JISYO.china_taiwan.new</pre><br>こういう <code>*</code> に対して <code>*.new</code> というファイルを作って、改めて元のファイルに上書きするのってどうやったらスマートにできるんでしょう？<br><pre>mv SKK-JISYO.assoc.new SKK-JISYO.assoc<br>mv SKK-JISYO.china_taiwan.new SKK-JISYO.china_taiwan</pre><br>とかいうのを.newが付いてるファイルについて連続実行したい。。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634075977.303700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-10-25/1451801392659_93eb739eb9a5163b2e10_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">addokoda</span>
+              <a href="#ts-1634075977.303700">13日 06:59:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634075977303700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                new/ 以下に .new なしで作っておけば mv new/* . するだけ。zsh だったら zmv -f &#39;(*).new&#39; &#39;${1}&#39;。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634083384.304200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1634083384.304200">13日 09:03:04</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634083384304200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                フォルダ分けるの正解そう。なるほど。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634083450.305000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/1a9a49807415fb97544a7383a9288b84.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Naoya Yamashita</span>
+              <a href="#ts-1634083450.305000">13日 09:04:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634083450305000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                昨日の夜はEmacsでコマンドを矩形編集で直接編集してそれを直接流しましたw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634083964.306100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634083964.306100">13日 09:12:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634083964306100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>mv *.{new,}</code>で行けないかな？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634084234.306500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634084234.306500">13日 09:17:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634084234306500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                無理だった
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634084346.306800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634084346.306800">13日 09:19:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634084346306800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>for new in *.new; do PREFIX=$(echo $new | sed -e &#39;s/\.new//&#39;); echo mv $new $PREFIX; done</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634084348.307000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634084348.307000">13日 09:19:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634084348307000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>for f in *.new; do mv $f ${f%.new}; done</code>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634084348.307100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634084348.307100">13日 09:19:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634084348307100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                んー
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634084363.307400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634084363.307400">13日 09:19:23</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634084363307400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あー 変数置換
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634084482.308100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634084482.308100">13日 09:21:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634084482308100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                renameとかzmvとかでもいい (けど一生覚えられない…)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634085471.308600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634085471.308600">13日 09:37:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634085471308600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                parallel？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634114662.308800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1634114662.308800">13日 17:44:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CNX3F8RFC/p1634114662308800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                rename は簡単だと思いますが
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

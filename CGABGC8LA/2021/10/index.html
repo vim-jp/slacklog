@@ -4299,6 +4299,617 @@ Additionally, if Notify is called, and Windows sends CTRL_CLOSE_EVENT, CTRL_LOGO
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1634054441.311200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634054441.311200">13日 01:00:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634054441311200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/golang/go/issues/47487'>https://github.com/golang/go/issues/47487</a> 関数 → interface の型変換が likely accepted
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634054441.311200">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/golang/go/issues/47487|#47487 proposal: spec: allow explicit conversion from function to 1-method interface&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">This is forked from #21670. I&#39;d be fine having this closed as a duplicate, but some people suggested that it was different enough to warrant its own tracking issue. As the title suggests, I would like to be able to convert function values to single-method interfaces, if their respective signatures match.<br><br>*Motivation*<br><br>My motivation is the same as that proposal. I don&#39;t want to have to repeatedly create a type of the form<br><br><pre><br>type FooerFunc func(A, B) (C, D)<br><br>func (f FooerFunc) Foo(a A, b B) (C, D) {<br>    return f(a, b)<br>}<br></pre><br><br>to use a closure to implement an interface. #21670 mentions <code>http.HandlerFunc</code>, but for me the cases that comes up most often are <code>io.Reader</code> and <code>io.Writer</code>, which I want to wrap with some trivial behavior. For example, if I want an <code>io.Writer</code>, which counts the numbers of bytes written, I can write<br><br><pre><br>type countingWriter struct {<br>    w io.Writer<br>    n int64<br>}<br><br>func (w *countingWriter) Write(p []byte) (n int, err error) {<br>    n, err = w.w.Write(p)<br>    w.n += int64(n)<br>    return n, err<br>}<br><br>func main() {<br>    cw := &amp;countingWriter{w: os.Stdout}<br>    // write things to cw<br>    fmt.Println(cw.n, &#34;bytes written&#34;)<br>}<br></pre><br><br>However, this makes the code look more heavyweight than it is, by adding a separate type, when really, the only really relevant line is <code>w.n += int64(n)</code>. It also _looks_ like it breaks encapsulation. <code>(*countingWriter).n</code> is used both by methods of the type and to communicate the end-result.<br><br>Compare this to<br><br><pre><br>func main() {<br>    var N int64<br>    cw := io.Writer(func(p []byte) (n int, err error) {<br>        n, err = os.Stdout.Write(p)<br>        N += int64(n)<br>        return n, err<br>    })<br>    // write things to cw<br>    fmt.Println(N, &#34;bytes written&#34;)<br>}<br></pre><br><br>Here, the usage of a closure removes the whole consideration of encapsulation. It&#39;s not just less code - it&#39;s also code that is more localized and makes the interactions clearer.<br><br>We can get part of that currently, by implementing a type like <code>http.HandlerFunc</code>. But especially if it&#39;s only used once, that smells of over-abstraction and still has the same boiler-plate.<br><br>*Proposal*<br><br>I propose to add a bullet to the <a href='https://golang.org/ref/spec#Conversions'>list of allowed conversions of a non-constant value to a type</a>, saying (roughly):<br><br>&gt; <code>T</code> is an interface type containing exactly one method and <code>x</code>&#39;s type is identical to the type of the <a href='https://golang.org/ref/spec#Method_values'>method value</a> of <code>T</code>s single method. The resulting <code>T</code> will call <code>x</code> to implement its method.<br><br>One way to implement this, would be for the compiler to automatically generate a (virtual) defined type, with an arbitrary unexported name in the runtime package.<br><br>*Discussion*<br><br>• The main difference to #21670 is that they propose _assignability_, while I propose _convertibility_. This is specifically to address a common concern about that proposal: <code>io.Reader</code> and <code>io.Writer</code> (for example) use the same signature for their method and it seems unsafe to have a function implement both, implicitly. This proposal addresses that concern, by requiring an explicit type-conversion - the programmer has to _explicitly_ say if the function is intended to be an <code>io.Reader</code> or an <code>io.Writer</code>.<br>• The proposal suggests to generate a virtual defined type, so that no changes to tooling, <code>reflect</code> (except to allow the conversion itself) or the use of type-assertions is needed.<br>    • This handles the same as if, say, the <code>io</code> package defined an unexported <code>type readerFunc func(p []byte) (int, error)</code> implementing <code>io.Reader</code> and a <code>func ReaderFunc(f func(p []byte) (int, error)) Reader { return readerFunc(f) }</code>.<br>    • We don&#39;t have the mismatch of having methods on non-defined types: It&#39;s not <code>func([]byte) (int, error)</code> that carries the method, but <code>runtime.io_reader</code>.<br>    • type-assertion/switches to unpack the <code>func</code> are not possible, as the type is unexported. That is a plus, because again, the <code>func</code> type can&#39;t carry methods so it would be strange to use it in a type-assertion.<br>    • However, it is already possible to transform from <code>var r io.Reader</code> to a <code>func([]byte) (int, error)</code>, by simply evaluating <code>r.Read</code>.<br>• The proposal suggest to put the generated type in the <code>runtime</code> package, because it seems like if two different packages do a <code>func</code>-&gt;<code>interface</code> conversion for the same interface, they should use the same type. I don&#39;t think the difference is observable though (the types are not comparable) so we could also put the type in the current package, similar to how closures turn up as <code>pkgpath.func1</code> in stack-traces.<br>• In <code>var f func(); g := Fooer(f).Foo</code>, <code>g</code> should not be <code>nil</code>, even though <code>f</code> is. Method expressions are never <code>nil</code>, currently, and we should maintain this invariant. This requires that the compiler generates wrapper-methods.<br><br>* * *<br><br>Further, more general discussion can be found in #21670 - some arguments applying to that proposal, also apply here. As I said, I&#39;m fine with this being closed as a duplicate, if it&#39;s deemed to similar - but I wanted to explicitly file this to increase the chance of moving forward.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634056318.311600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634056318.311600">13日 01:31:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634056318311600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                うぉぉまじか。読みづらい！w
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634057188.312300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634057188.312300">13日 01:46:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634057188312300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ちょっと妙だなと思うのは
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634057213.313000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634057213.313000">13日 01:46:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634057213313000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                いままで interface への明示的な型変換が必要なものなんてなかったのに
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634057221.313400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634057221.313400">13日 01:47:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634057221313400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これは必要になるのは、どういう理屈になるんだろう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634057268.314100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634057268.314100">13日 01:47:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634057268314100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                互換性の観点から必要になるだけってことなんだろうか (ちゃんと議論を読んでません)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634058870.315600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634058870.315600">13日 02:14:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634058870315600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なかったら、どのInterfaceとして扱うべきなのか、コンテキストから推測することになるので…関数の引数でしか使えないのでは。<br><br>結果 <code>foo :=</code> みたいなコンテキストでは使えない。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634058951.316400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634058951.316400">13日 02:15:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634058951316400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                型パラメータ以前に、使われてるコンテキストから型が決まるってあったっけか?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634059868.317000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634059868.317000">13日 02:31:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634059868317000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>foo := io.Foo(func() {})</code> はできるんじゃないんですか?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634060385.317700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634060385.317700">13日 02:39:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634060385317700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                「interface への明示的な型変換」がなかったら、という話し。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634060745.318400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634060745.318400">13日 02:45:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634060745318400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <code>var foo io.Foo = func() {}</code> 
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634060749.318600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634060749.318600">13日 02:45:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634060749318600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ができるようになるべきか否か。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634060794.319200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634060794.319200">13日 02:46:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634060794319200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まあでも <code>foo := func() {}; foo.Foo()</code> ができない以上、できるとおかしいですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634060816.319500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634060816.319500">13日 02:46:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634060816319500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                インターフェイス型変換に新たな意味が付与されることになるのかな…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634061547.319800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634061547.319800">13日 02:59:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634061547319800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/golang/go/issues/47487#issuecomment-917682896'>https://github.com/golang/go/issues/47487#issuecomment-917682896</a> なるほど
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634061547.319800">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/golang/go/issues/47487#issuecomment-917682896|Comment on #47487 proposal: spec: allow explicit conversion from function to 1-method interface&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Another thing (IMO) not to like about making the underlying type <code>func([]byte) (int, error)</code>:<br><br><pre><br>r := io.Reader(func([]byte) (int, error) { return 0, nil })<br>v := interface{}(r)<br>v.(io.Reader) // panics<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634062533.320800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634062533.320800">13日 03:15:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634062533320800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                関数にインターフェイス型変換構文を適用すると暗黙の型が作られるようになるべき (でないとおかしなことが起きる)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634088629.322800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634088629.322800">13日 10:30:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634088629322800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                きた無名型
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634088635.323000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634088635.323000">13日 10:30:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634088635323000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                %T とかどうなるんやろかw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634091113.323300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634091113.323300">13日 11:11:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634091113323300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これあんま好きじゃないなぁ。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634091222.323600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634091222.323600">13日 11:13:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634091222323600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                僕はこれであるべきだと思うんですよね。<br><a href='https://github.com/golang/go/issues/47487#issuecomment-937872681'>https://github.com/golang/go/issues/47487#issuecomment-937872681</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634091222.323600">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/golang/go/issues/47487#issuecomment-937872681|Comment on #47487 proposal: spec: allow explicit conversion from function to 1-method interface&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><a href='https://github.com/carlmjohnson'>@carlmjohnson</a>, note that you could use this proposal in conjunction with embedding to implement multi-method interfaces fairly concisely.<br><br><pre><br>func MakeReadCloser(read func([]byte) (int, error), close func() error) io.ReadCloser {<br>	return struct {<br>		io.Reader<br>		io.Closer<br>	} {<br>		io.Reader(read),<br>		io.Closer(close),<br>	}<br>}<br></pre><br><br>That&#39;s not as concise as it would be with #25860, but in my eye not terrible either.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634091236.323900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634091236.323900">13日 11:13:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634091236323900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                generics も入る事だし。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634091398.324600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634091398.324600">13日 11:16:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634091398324600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                関数→1つしかメソッドを持たないinterface型への直接変換が入ってるのは同じでは?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634091457.325500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/4b5a6f711a4e22e617b74058239ade53.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">KoRoN</span>
+              <a href="#ts-1634091457.325500">13日 11:17:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634091457325500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それは二つ以上のメソッドを持つinterfaceを、同じ仕組みを使って簡単にやるには的な。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634091819.326000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634091819.326000">13日 11:23:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634091819326000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                はい。それがキモいなぁと。もうそのインタフェース、メソッドが増やせなくなる。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634091911.326700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/31d1a776c4f467d26bded3719cba2652.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0013-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">星一</span>
+              <a href="#ts-1634091911.326700">13日 11:25:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634091911326700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                インターフェイスにメソッド増やすと互換性壊れるのは元からそういうもんじゃありません?
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="KoRoN">
+                              <img class="slacklog-emoji" alt="sorena" title="sorena" src="/slacklog/emojis/sorena.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634093760.327500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634093760.327500">13日 11:56:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGABGC8LA/p1634093760327500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                bcmills の例は僕の期待するやつじゃなかった。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
