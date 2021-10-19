@@ -14569,7 +14569,7 @@ export class UserResolver {
               </div>
               <details class="details-reset mt-3">
                 <summary class="btn-link">
-                  <span class="f5">2 件の返信 最終返信:23:57:11 <span class="dropdown-caret"></span>
+                  <span class="f5">3 件の返信 最終返信:19日 00:00:35 <span class="dropdown-caret"></span>
                   </span>
                 </summary>
                 <div class="border mt-2">
@@ -14600,6 +14600,30 @@ export class UserResolver {
                     <div class="overflow-hidden">
                       <a href='https://gist.github.com/raa0121/67819e808122e1789cbcbf89187e7eeb'>https://gist.github.com/raa0121/67819e808122e1789cbcbf89187e7eeb</a><br>json ファイル置いておきますね
                     </div>
+                  </div>
+                  <div class="p-2" id="ts-1634569235.446900">
+                    <div class="d-flex flex-wrap">
+                      <div class="f6 ml-3 text-gray-light">#←</div>
+                      <div class="f6 ml-2 text-gray-light">チャンネルにも投稿済</div>
+                    </div>
+                    <div class="float-left mr-2">
+                      <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+                    </div>
+                    <div>
+                      <span class="text-bold mr-1">raa0121</span>
+                      <a href="#ts-1634569235.446900">19日 00:00:35</a>
+                    </div>
+                    <div class="overflow-hidden">
+                      <a href='https://github.com/OpenAPITools/openapi-generator/issues/6140'>https://github.com/OpenAPITools/openapi-generator/issues/6140</a><br>issue ありました
+                    </div>
+                      
+    <div class="d-flex">
+        <div>&lt;https://github.com/OpenAPITools/openapi-generator/issues/6140|#6140 [BUG] [typescript-fetch] Circular import generated&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Bug Report Checklist*<br><br>☑︎ Have you provided a full/*minimal* spec to reproduce the issue?<br>☑︎ Have you validated the input using an OpenAPI validator (<a href='https://apidevtools.org/swagger-parser/online/'>example</a>)?<br>☑︎ What&#39;s the version of OpenAPI Generator used?<br>☑︎ Have you search for related issues/PRs?<br>☑︎ What&#39;s the actual output vs expected output?<br><br>*Description*<br><br>The typescript-fetch generator is generating a circular import. In my provided reproducible example, it&#39;s<br><br>models/index.ts -&gt; models/HTTPValidationError.ts -&gt; models/index.ts<br><br>The actual code is:<br><br><pre><br>// models/HTTPValidationError.ts<br>import {<br>    ValidationError,<br>    ValidationErrorFromJSON,<br>    ValidationErrorFromJSONTyped,<br>    ValidationErrorToJSON,<br>} from &#39;./&#39;;<br><br></pre><br><br>This produces some annoying warning messages but doesn&#39;t seem to actually break the code.<br><br>*openapi-generator version*<br><br>4.3.0<br><br>*OpenAPI declaration file content or url*<br>Click to expand<br><br><pre><br>{<br>  &#34;openapi&#34;: &#34;3.0.2&#34;,<br>  &#34;info&#34;: {<br>    &#34;title&#34;: &#34;Some API&#34;,<br>    &#34;version&#34;: &#34;0.1.0&#34;<br>  },<br>  &#34;paths&#34;: {<br>  },<br>  &#34;components&#34;: {<br>    &#34;schemas&#34;: {<br>      &#34;HTTPValidationError&#34;: {<br>        &#34;title&#34;: &#34;HTTPValidationError&#34;,<br>        &#34;type&#34;: &#34;object&#34;,<br>        &#34;properties&#34;: {<br>          &#34;detail&#34;: {<br>            &#34;title&#34;: &#34;Detail&#34;,<br>            &#34;type&#34;: &#34;array&#34;,<br>            &#34;items&#34;: {<br>              &#34;$ref&#34;: &#34;#/components/schemas/ValidationError&#34;<br>            }<br>          }<br>        }<br>      },<br>      &#34;ValidationError&#34;: {<br>        &#34;title&#34;: &#34;ValidationError&#34;,<br>        &#34;required&#34;: [&#34;loc&#34;, &#34;msg&#34;, &#34;type&#34;],<br>        &#34;type&#34;: &#34;object&#34;,<br>        &#34;properties&#34;: {<br>          &#34;loc&#34;: {<br>            &#34;title&#34;: &#34;Location&#34;,<br>            &#34;type&#34;: &#34;array&#34;,<br>            &#34;items&#34;: {<br>              &#34;type&#34;: &#34;string&#34;<br>            }<br>          },<br>          &#34;msg&#34;: {<br>            &#34;title&#34;: &#34;Message&#34;,<br>            &#34;type&#34;: &#34;string&#34;<br>          },<br>          &#34;type&#34;: {<br>            &#34;title&#34;: &#34;Error Type&#34;,<br>            &#34;type&#34;: &#34;string&#34;<br>          }<br>        }<br>      }<br>    }<br>  }<br>}<br></pre><br><br>*Command line used for generation*<br><br><code>openapi-generator generate -g typescript-fetch -i test-input.json -o api-client</code><br><br>*Steps to reproduce*<br><br>Run command line with provided input.<br><br>*Related issues/PRs*<br><br>Nope<br><br>*Suggest a fix*<br><br>I&#39;m pretty sure this can be fixed by re-working the import statements in <code>modelGeneric.mustache</code> and <code>modelOneOf.mustache</code>. Instead of importing from <code>./</code>, it should be possible to import directly from the thing you&#39;re importing. For example, in the code above, it could import from <code>./ValidationError</code> instead of <code>./</code>.<br><br>A diff might look like (forgive me, I&#39;m not entirely familiar with mustache syntax):<br><br><pre><br>diff --git a/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache b/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>index bd593da1..263f80ac 100644<br>--- a/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>+++ b/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>@@ -1,13 +1,13 @@<br> import { exists, mapValues } from &#39;../runtime&#39;;<br> &#123;&#123;#hasImports}}<br>+&#123;&#123;#imports}}<br> import {<br>-    &#123;&#123;#imports}}<br>     &#123;&#123;{.}}},<br>     &#123;&#123;.}}FromJSON,<br>     &#123;&#123;.}}FromJSONTyped,<br>     &#123;&#123;.}}ToJSON,<br>-    &#123;&#123;/imports}}<br>-} from &#39;./&#39;;<br>+} from &#39;./&#123;&#123;.}}&#39;;<br>+&#123;&#123;/imports}}<br> <br> &#123;&#123;/hasImports}}<br> &#123;&#123;#discriminator}}<br></pre></div>
+      </div>
+
                   </div>
                 </div>
               </details>
@@ -14964,6 +14988,1160 @@ export class UserResolver {
     </div>
       <div class="d-flex">
         <div class="mt-2">Naman Goel, software engineer at Facebook, recently presented Stylex at React Finland 2021. Stylex is Facebook’s custom CSS-in-JS solution used for the new <a href='http://facebook.com'>facebook.com</a> website. StyleX alleviates key pain points of CSS-in-JS for large React applications (unused styles, large CSS files, CSS-in-JS library size). Goel anticipates that Stylex will be open-sourced by the end of 2021.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634569235.446900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634569235.446900">19日 00:00:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634569235446900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/OpenAPITools/openapi-generator/issues/6140'>https://github.com/OpenAPITools/openapi-generator/issues/6140</a><br>issue ありました
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <span class="f6 text-gray-light">
+              このスレッドに返信しました : <a href="#ts-1634568491.432200">自動生成でこれなのどうにかならないかなぁ ...</a>
+            </span>
+            <div class="mt-2 border p-2" id="ts-1634569235.446900">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/OpenAPITools/openapi-generator/issues/6140|#6140 [BUG] [typescript-fetch] Circular import generated&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Bug Report Checklist*<br><br>☑︎ Have you provided a full/*minimal* spec to reproduce the issue?<br>☑︎ Have you validated the input using an OpenAPI validator (<a href='https://apidevtools.org/swagger-parser/online/'>example</a>)?<br>☑︎ What&#39;s the version of OpenAPI Generator used?<br>☑︎ Have you search for related issues/PRs?<br>☑︎ What&#39;s the actual output vs expected output?<br><br>*Description*<br><br>The typescript-fetch generator is generating a circular import. In my provided reproducible example, it&#39;s<br><br>models/index.ts -&gt; models/HTTPValidationError.ts -&gt; models/index.ts<br><br>The actual code is:<br><br><pre><br>// models/HTTPValidationError.ts<br>import {<br>    ValidationError,<br>    ValidationErrorFromJSON,<br>    ValidationErrorFromJSONTyped,<br>    ValidationErrorToJSON,<br>} from &#39;./&#39;;<br><br></pre><br><br>This produces some annoying warning messages but doesn&#39;t seem to actually break the code.<br><br>*openapi-generator version*<br><br>4.3.0<br><br>*OpenAPI declaration file content or url*<br>Click to expand<br><br><pre><br>{<br>  &#34;openapi&#34;: &#34;3.0.2&#34;,<br>  &#34;info&#34;: {<br>    &#34;title&#34;: &#34;Some API&#34;,<br>    &#34;version&#34;: &#34;0.1.0&#34;<br>  },<br>  &#34;paths&#34;: {<br>  },<br>  &#34;components&#34;: {<br>    &#34;schemas&#34;: {<br>      &#34;HTTPValidationError&#34;: {<br>        &#34;title&#34;: &#34;HTTPValidationError&#34;,<br>        &#34;type&#34;: &#34;object&#34;,<br>        &#34;properties&#34;: {<br>          &#34;detail&#34;: {<br>            &#34;title&#34;: &#34;Detail&#34;,<br>            &#34;type&#34;: &#34;array&#34;,<br>            &#34;items&#34;: {<br>              &#34;$ref&#34;: &#34;#/components/schemas/ValidationError&#34;<br>            }<br>          }<br>        }<br>      },<br>      &#34;ValidationError&#34;: {<br>        &#34;title&#34;: &#34;ValidationError&#34;,<br>        &#34;required&#34;: [&#34;loc&#34;, &#34;msg&#34;, &#34;type&#34;],<br>        &#34;type&#34;: &#34;object&#34;,<br>        &#34;properties&#34;: {<br>          &#34;loc&#34;: {<br>            &#34;title&#34;: &#34;Location&#34;,<br>            &#34;type&#34;: &#34;array&#34;,<br>            &#34;items&#34;: {<br>              &#34;type&#34;: &#34;string&#34;<br>            }<br>          },<br>          &#34;msg&#34;: {<br>            &#34;title&#34;: &#34;Message&#34;,<br>            &#34;type&#34;: &#34;string&#34;<br>          },<br>          &#34;type&#34;: {<br>            &#34;title&#34;: &#34;Error Type&#34;,<br>            &#34;type&#34;: &#34;string&#34;<br>          }<br>        }<br>      }<br>    }<br>  }<br>}<br></pre><br><br>*Command line used for generation*<br><br><code>openapi-generator generate -g typescript-fetch -i test-input.json -o api-client</code><br><br>*Steps to reproduce*<br><br>Run command line with provided input.<br><br>*Related issues/PRs*<br><br>Nope<br><br>*Suggest a fix*<br><br>I&#39;m pretty sure this can be fixed by re-working the import statements in <code>modelGeneric.mustache</code> and <code>modelOneOf.mustache</code>. Instead of importing from <code>./</code>, it should be possible to import directly from the thing you&#39;re importing. For example, in the code above, it could import from <code>./ValidationError</code> instead of <code>./</code>.<br><br>A diff might look like (forgive me, I&#39;m not entirely familiar with mustache syntax):<br><br><pre><br>diff --git a/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache b/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>index bd593da1..263f80ac 100644<br>--- a/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>+++ b/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>@@ -1,13 +1,13 @@<br> import { exists, mapValues } from &#39;../runtime&#39;;<br> &#123;&#123;#hasImports}}<br>+&#123;&#123;#imports}}<br> import {<br>-    &#123;&#123;#imports}}<br>     &#123;&#123;{.}}},<br>     &#123;&#123;.}}FromJSON,<br>     &#123;&#123;.}}FromJSONTyped,<br>     &#123;&#123;.}}ToJSON,<br>-    &#123;&#123;/imports}}<br>-} from &#39;./&#39;;<br>+} from &#39;./&#123;&#123;.}}&#39;;<br>+&#123;&#123;/imports}}<br> <br> &#123;&#123;/hasImports}}<br> &#123;&#123;#discriminator}}<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634569240.447400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634569240.447400">19日 00:00:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634569240447400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                気になってる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634569249.447700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-08-09/721207338820_626bbc95c10c7b6c7738_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">eihigh</span>
+              <a href="#ts-1634569249.447700">19日 00:00:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634569249447700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                今までのCSS in JSはsyntaxが気持ちいい代わりにパフォーマンスの代償がありましたからね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634569355.449600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634569355.449600">19日 00:02:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634569355449600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自動生成だと最近GraphQLが体験いいです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634573212.451100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634573212.451100">19日 01:06:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634573212451100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                やっとまともにReactNative入門できそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634603731.451900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634603731.451900">19日 09:35:31</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634603731451900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>  useEffect(() =&gt; {<br>    VoicevoxService.getVersion().then(value =&gt; {<br>      setVersion(value);<br>    }),<br>    VoicevoxService.getSpeakers().then(value =&gt; {<br>      setSpeakers(value);<br>      content = value.map((speaker: Speaker) =&gt; <br>        &lt;Picker.Item label={speaker.name} value={speaker.speakerUuid} /&gt;<br>      )<br>      console.log(content);<br>    })<br>  }, []);</pre><br><code>useEffect</code> で <code>Picker.Item</code> の配列作ったけど、仮想DOM側でどう表示させよう…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634603994.453100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634603994.453100">19日 09:39:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634603994453100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                React わからん
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604002.453300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604002.453300">19日 09:40:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604002453300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                useEffectの使い方がよくないからちょっとコード書きます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604027.453700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634604027.453700">19日 09:40:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604027453700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                やっぱり良くないですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604060.454100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604060.454100">19日 09:41:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604060454100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まずcontentの取り回しがよくない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604324.454500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604324.454500">19日 09:45:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604324454500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>const Component: FC = () =&gt; {<br>  const [version, setVersion] = useState&lt;number | undefined&gt;(undefined);<br>  const [speakers, setSpeakers] = useState&lt;Array&lt;Speaker&gt; | undefined&gt;(<br>    undefined,<br>  );<br><br>  useEffect(() =&gt; {<br>    VoicevoxService.getVersion().then((value) =&gt; {<br>      setVersion(value);<br>    });<br>  }, []);<br><br>  useEffect(() =&gt; {<br>    VoicevoxService.getSpeakers().then((value) =&gt; {<br>      setSpeakers(value);<br>    });<br>  }, []);<br><br>  if (version == null || speakers == null) {<br>    return &lt;Loading /&gt;;<br>  }<br><br>  return (<br>    &lt;&gt;<br>      &lt;div&gt;{version}&lt;/div&gt;<br>      &lt;div&gt;<br>        {speakers.map((speaker) =&gt; {<br>          return (<br>            &lt;Picker.Item label={speaker.name} value={speaker.speakerUuid} /&gt;<br>          );<br>        })}<br>      &lt;/div&gt;<br>    &lt;/&gt;<br>  );<br>};</pre><br>大雑把にこんな感じと思います
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604404.455700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604404.455700">19日 09:46:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604404455700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre>const [content, setContent] = useState&lt;ReactNode | undefined&gt;(undefined)</pre><br>みたいにしてもいいけど、型がよくない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604488.456600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604488.456600">19日 09:48:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604488456600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                空文字列や空配列じゃなくてundefinedにしてるのはfetchしたあとに空なのかfetch中に空なのか判定したいとかその辺です
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604551.457600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604551.457600">19日 09:49:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604551457600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あとはちゃんと書くならfetchするuseEffectを直で書きたくないからそこをcustom hookに切り出すとかやりますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604759.459000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604759.459000">19日 09:52:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604759459000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Propsや保持してる変数が書き換わったタイミングでComponent全体のコードが再実行されて再レンダリングが走るみたいなのが慣れるまで直感的じゃない気がする
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604763.459100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634604763.459100">19日 09:52:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604763459100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど ありがとうございます。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604786.459500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1634604786.459500">19日 09:53:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604786459500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                useEffect 分けていいんですね…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604853.460700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604853.460700">19日 09:54:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604853460700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Reactは<br>• マウント時にuseEffectでfetchが走る<br>• fetch完了のタイミングでuseStateで取り回してる値が書き換わる<br>• （hooksを除く）Componentのコードが再評価されて再レンダリングされる<br>の流れです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634604919.461800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634604919.461800">19日 09:55:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634604919461800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                useEffectは分けれるんですけど、この場合だとuseVersionとuseSpeakersってcustom hookを作ってその中にuseStateとuseEffectのペアを閉じ込めるのがbetterですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605052.463100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605052.463100">19日 09:57:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605052463100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                useEffectをベタ書きしてると5個とかになった時点でどのuseEffectがどの変数を管理してどういう処理を走らせたいのか読めなくなって爆発するので
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605099.464100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634605099.464100">19日 09:58:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605099464100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                useEffectを連鎖させるみたいなのは破滅への扉
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ycino">
+                              <img class="slacklog-emoji" alt="sorena" title="sorena" src="/slacklog/emojis/sorena.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605185.464600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605185.464600">19日 09:59:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605185464600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                このコンポーネントの規模ならまぁまだ許容できるけど基本的には複数書きたくない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605260.465300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605260.465300">19日 10:01:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605260465300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                React、ちゃんと書くのに慣れとテクニックがかなり必要な感じはあります
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605312.466700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634605312.466700">19日 10:01:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605312466700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                基本hooks側ではjsxは触らないのが良い<br>render hooksパターンてのもあるけど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605338.467300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605338.467300">19日 10:02:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605338467300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                render hooksやったことないかも、ReactNodeを返す関数を返す？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605366.467700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634605366.467700">19日 10:02:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605366467700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://engineering.linecorp.com/ja/blog/line-securities-frontend-3/'>https://engineering.linecorp.com/ja/blog/line-securities-frontend-3/</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634605366.467700">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://engineering.linecorp.com/wp-content/uploads/2019/04/cropped-linev_favicon_1x1_transparent-180x180.png" alt="LINE ENGINEERING" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://engineering.linecorp.com/ja/blog/line-securities-frontend-3/" target="_blank" rel="noopener noreferrer">【LINE証券 FrontEnd】コンポーネントをカスタムフックで提供してみた - LINE ENGINEERING</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">こんにちは。フィナンシャル開発センターの鈴木です。LINE証券のフロントエンドを担当しています。 以前の記事でご紹介した通り、LINE証券ではReactを使用しています。React 16.8で導入されたフックの機能は非常に革新的で、特にカスタムフックの概念によってReactにおけるコンポーネント設計は大きく様変わりしました。我々もフック時代のコンポーネント設計を試行錯誤しており、その結果はLINE証券にも反映されています。 この記事では、その中でも我々が最近ハマっている「カスタムフックを通じてコンポーネントを提供する」という、いわば“render hooks”とも言うべき設計パターンを紹介します。</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605397.468500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605397.468500">19日 10:03:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605397468500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど、memo化？して再レンダリングを抑制する？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605400.468600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634605400.468600">19日 10:03:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605400468600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分はあまり好きではない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605448.469800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605448.469800">19日 10:04:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605448469800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                斜め読み途中だけど、hooksに渡すprops相当のものが書き換わらなければ再レンダリングを抑制できるとかですかね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605493.470800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605493.470800">19日 10:04:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605493470800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                全然違った・・・
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605610.473500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634605610.473500">19日 10:06:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605610473500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                hooksの戻り値からpropsに渡してる部分のリレーを閉じ込められる（hooksの戻り値を減らせる）ので責務が分離できる的な
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605611.473600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605611.473600">19日 10:06:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605611473600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これuseChecksで単にcheckListを返す実装が飛ばされてる気がするんですけど、そんなことはない？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605642.474000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605642.474000">19日 10:07:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605642474000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Componentを直で返した方がまぁコードは多少減るか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605686.474800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605686.474800">19日 10:08:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605686474800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                hooks内でハンドラ定義するの大分怖くないです？<br>自分はこのハンドラはComponent側で定義して注入したい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605762.475800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605762.475800">19日 10:09:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605762475800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                それやるとComponentがsetCheckListに依存せざるを得ない（返り値を減らすメリットが失われる）から目的と変わっちゃうのか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605850.477800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634605850.477800">19日 10:10:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605850477800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                確かにhooksの返り値をそのまま流し込んでるコンポーネントは往々にしてよくある<br>でもhooksにjsxを書くのがあんまり好きになれない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605876.478300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605876.478300">19日 10:11:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605876478300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分はContextを返すhooksなら許容くらいですねぇ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605912.478600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634605912.478600">19日 10:11:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605912478600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Contextを直で扱うのもあまりやりたくはないんですが
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634605987.479300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-09-19/766087996341_c4b0930af904f66d8057_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">johejo</span>
+              <a href="#ts-1634605987.479300">19日 10:13:07</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634605987479300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                contextはほぼunstated-nextで書いてる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634606021.480000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-09/327298108645_48b1c10b3cf4092337c5_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ycino</span>
+              <a href="#ts-1634606021.480000">19日 10:13:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634606021480000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんでもいいんですけどState管理ライブラリに末端を押し込みたいですよね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634613077.480500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-02-25/956372982963_479264cbe2e1ea3d83ee_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">hrsh7th</span>
+              <a href="#ts-1634613077.480500">19日 12:11:17</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634613077480500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Promsie 扱うだけであれば swr とか入れたほうがシンプルにできるかもしれませんね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634618806.481700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1634618806.481700">19日 13:46:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634618806481700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ふとしたことで知ったのだけど、JavaScript で <code>9007199254740991n</code> みたいな <code>n</code> suffix な数値で BigInt リテラルになるんですね…全然知らなかった<br><a href='https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt'>https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, Tsuyoshi CHO, peacock, YABUKI Yukiharu">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">4</span>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kkiyama117">
+                              <img class="slacklog-emoji" alt="benri" title="benri" src="/slacklog/emojis/benri.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634618806.481700">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://developer.mozilla.org/apple-touch-icon.0ea0fa02.png" alt="developer.mozilla.org" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/BigInt" target="_blank" rel="noopener noreferrer">BigInt - JavaScript | MDN</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">BigInt は組み込みオブジェクトで、そのコンストラクターは bigint プリミティブ — または BigInt 値 や単に BigInt と呼ばれることもありますが — を返します。これは 2^53 - 1 (Number.MAX_SAFE_INTEGER、 number プリミティブ または Number 値で表すことができる最大の数) よりも大きな数を表すことができます。 BigInt 値は任意に巨大な整数に使用することができます。</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634619046.483000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1634619046.483000">19日 13:50:46</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634619046483000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそも BigInt の存在を知らなかったまである。どうやら BigInt はプリミティブ型なので四則演算などは普通に <code>+</code> とか <code>*</code> が使えるらしい。すごい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634619070.483300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1634619070.483300">19日 13:51:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634619070483300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                便利だな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634619132.483900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1634619132.483900">19日 13:52:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634619132483900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                常に整数で除算しても勝手に小数になったりしないらしい。この点だけでも使えるシーンありそう
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="YABUKI Yukiharu">
+                              <img class="slacklog-emoji" alt="wakaru" title="wakaru" src="/slacklog/emojis/wakaru.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634643422.486600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1634643422.486600">19日 20:37:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634643422486600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                node環境のある方々で確認されてるか質問させてください。<br><a href='https://blog.watilde.com/2020/10/14/npm-v7%E3%81%AE%E4%B8%BB%E3%81%AA%E5%A4%89%E6%9B%B4%E7%82%B9%E3%81%BE%E3%81%A8%E3%82%81/'>https://blog.watilde.com/2020/10/14/npm-v7%E3%81%AE%E4%B8%BB%E3%81%AA%E5%A4%89%E6%9B%B4%E7%82%B9%E3%81%BE%E3%81%A8%E3%82%81/</a><br>にありますがnpxの <code>--no</code> / <code>--no-install</code> の状態っていまどうなっていますか?<br>自分は <code>npx --version == 8.0.0</code> な状態で使って、<code>--no</code> がなんか変で、コマンドの引数がうまくいかなくて変だなと<br><pre> npx --no textlint -f unix</pre><br>でunix formatにならないんですよね....
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634643422.486600">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://s2.wp.com/i/webclip.png" alt="watilde&#39;s blog" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://blog.watilde.com/2020/10/14/npm-v7%E3%81%AE%E4%B8%BB%E3%81%AA%E5%A4%89%E6%9B%B4%E7%82%B9%E3%81%BE%E3%81%A8%E3%82%81/" target="_blank" rel="noopener noreferrer">npm v7の主な変更点まとめ</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">こんにちは@watildeです。趣味でnpmへのコミットをたまにしているのですが、最近はNode.js側に比重を置いているのでv7のキャッチアップに少し遅れてしまいました。キャッチアップついでに自分なりに情報をまとめたので、v7における代表的な新機能と破壊的変更について、GitHubの記事よりも少し詳しめに紹介と解説を行ってみます。なるべく参考リンクを付けているので、詳細が気になった際はリンクから一次情報に飛んで読んでみてください。<br><br><br><br>また、情報に誤りがあった場合はTwitterにて教えていただけると助かります。<br><br><br><br>背景<br><br><br><br>npmチームより、2020/10/13にnpmの新しいメジャーアップデートであるところのv7の公式リリースが発表されました。8月からbeta版のリリースを繰り返していましたが、2ヶ月かけて内部的なリファクタリングとスモークテストを繰り返して今回の発表に至ったのかと思います。また、正式なGAは来週の火曜日に予定されており、それまではクオリティ調整に使うとのことです。<br><br><br><br><br>Presenting v7.0.0 of the npm CLI<br>プロダクトチームによるアナウンス2020/10/20に予定されているNode.jsの次のメジャーアップデートのv15に同梱される予定ですが、手元でも npm i -g npm@7 を実行することでインストールができます。ただ、メジャーアップデートということで破壊的変更がいくつか含まれているので、内容を精査してから試すことをおすすめします。<br><br><br><br>詳細については、下記のnpmの作者による記事にまとまっています。<br><br><br><br>開発チームによるアナウンス代表的な新機能の紹介<br><br><br><br>Workspaceによるmonorepoのサポート<br><br><br><br>Yarnと同様に、package.json内でworkspaceの場所を指すファイルをworkspacesプロパティに指定することで、npm installを実行した際にchildパッケージのdepdendyが同時にインストールされます。<br><br><br><br>// package.jsonのworkspacesとファイル構成├── package.json { &#34;workspaces&#34;: [&#34;packages/*&#34;] } └──packages        ├── dep-a          │      └── package.json { &#34;dependencies&#34;: { &#34;dep-b&#34;: &#34;^1.0.0&#34; } }         └── dep-b                └── package.json { &#34;version&#34;: &#34;1.3.1&#34; }// インストールをした後のシンボリックリンクによるファイル構成$ npm install├── node_modules│   ├── dep-a -&gt; ./dep-a│   └── dep-b -&gt; ./dep-b└──packages├── dep-a │      └── package.json { &#34;dependencies&#34;: { &#34;dep-b&#34;: &#34;^1.0.0&#34; } }└── dep-b                └── package.json { &#34;version&#34;: &#34;1.3.1&#34; }<br><br><br><br>実装例: https://github.com/watilde/npm-workspace-example<br><br><br><br>workspacesプロパティの形式は簡略版も含めて下記の2種類が、パスはglob形式がサポートされてます。<br><br><br><br>通常版<br><br><br><br>{<br>  &#34;name&#34;: &#34;workspace-example&#34;,<br>  &#34;version&#34;: &#34;1.0.0&#34;,<br>  &#34;workspaces&#34;: {<br>    &#34;packages&#34;: [<br>      &#34;packages/*&#34;<br>    ]<br>  }<br>}<br><br><br><br>簡略版<br><br><br><br>{<br>  &#34;name&#34;: &#34;workspace-example&#34;,<br>  &#34;version&#34;: &#34;1.0.0&#34;,<br>  &#34;workspaces&#34;: [<br>    &#34;packages/*&#34;<br>  ]<br>}<br><br><br><br>参考: https://github.com/npm/rfcs/blob/13ff09b49c47b144ed35ada6a15883da31f13cf2/implemented/0026-workspaces.md<br><br><br><br>npm runのmonorepoサポート<br><br><br><br>参考: https://github.com/npm/rfcs/blob/latest/implemented/0024-npm-run-traverse-directory-tree.md<br><br><br><br>yarn.lockのサポート<br><br><br><br>npm installを実行した際に、yarn.lockファイルが利用可能であればmetaファイルとして活用されます。cacheファイルは下記の順番で優先されて利用されます。<br><br><br><br>node_modules/.package-lock.jsonnpm-shri…</div>
+      </div>
+      <div class="d-flex">
+        <div class="mt-2">
+          <img src="https://watilde.files.wordpress.com/2020/10/screen-shot-2020-10-14-at-17.00.43.png?fit=200%2C150" width="80" alt="npm v7の主な変更点まとめ" />
+        </div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634643578.487300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1634643578.487300">19日 20:39:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1634643578487300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なお、<br><a href='https://github.com/npm/cli/blob/a4e7f4e4b40d645fed97622a97c7fa72aa5da82b/docs/content/commands/npx.md'>https://github.com/npm/cli/blob/a4e7f4e4b40d645fed97622a97c7fa72aa5da82b/docs/content/commands/npx.md</a><br>にあるように<br>• The <code>--no-install</code> option is deprecated, and will be converted to <code>--no</code>.<br>なはずなんだけどな... no-installだと正常に動く
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634643578.487300">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/npm/cli/blob/a4e7f4e4b40d645fed97622a97c7fa72aa5da82b/docs/content/commands/npx.md | npx.md&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">* * *<br><br>*title: npx  <br>section: 1  <br>description: Run a command from a local or remote npm package*<br>*Synopsis*<br><br><pre><br>npm exec -- &lt;pkg&gt;[@&lt;version&gt;] [args...]<br>npm exec --package=&lt;pkg&gt;[@&lt;version&gt;] -- &lt;cmd&gt; [args...]<br>npm exec -c &#39;&lt;cmd&gt; [args...]&#39;<br>npm exec --package=foo -c &#39;&lt;cmd&gt; [args...]&#39;<br><br>npx &lt;pkg&gt;[@&lt;specifier&gt;] [args...]<br>npx -p &lt;pkg&gt;[@&lt;specifier&gt;] &lt;cmd&gt; [args...]<br>npx -c &#39;&lt;cmd&gt; [args...]&#39;<br>npx -p &lt;pkg&gt;[@&lt;specifier&gt;] -c &#39;&lt;cmd&gt; [args...]&#39;<br><br>alias: npm x, npx<br><br>--package=&lt;pkg&gt; (may be specified multiple times)<br>-p is a shorthand for --package only when using npx executable<br>-c &lt;cmd&gt; --call=&lt;cmd&gt; (may not be mixed with positional arguments)<br></pre><br><br>*Description*<br><br>This command allows you to run an arbitrary command from an npm package  <br>(either one installed locally, or fetched remotely), in a similar context  <br>as running it via <code>npm run</code>.<br><br>Whatever packages are specified by the <code>--package</code> option will be  <br>provided in the <code>PATH</code> of the executed command, along with any locally  <br>installed package executables. The <code>--package</code> option may be  <br>specified multiple times, to execute the supplied command in an environment  <br>where all specified packages are available.<br><br>If any requested packages are not present in the local project  <br>dependencies, then they are installed to a folder in the npm cache, which  <br>is added to the <code>PATH</code> environment variable in the executed process. A  <br>prompt is printed (which can be suppressed by providing either <code>--yes</code> or  <br><code>--no</code>).<br><br>Package names provided without a specifier will be matched with whatever  <br>version exists in the local project. Package names with a specifier will  <br>only be considered a match if they have the exact same name and version as  <br>the local dependency.<br><br>If no <code>-c</code> or <code>--call</code> option is provided, then the positional arguments  <br>are used to generate the command string. If no <code>--package</code> options  <br>are provided, then npm will attempt to determine the executable name from  <br>the package specifier provided as the first positional argument according  <br>to the following heuristic:<br><br>• If the package has a single entry in its <code>bin</code> field in <code>package.json</code>,  <br>    or if all entries are aliases of the same command, then that command  <br>    will be used.<br>• If the package has multiple <code>bin</code> entries, and one of them matches the  <br>    unscoped portion of the <code>name</code> field, then that command will be used.<br>• If this does not result in exactly one option (either because there are  <br>    no bin entries, or none of them match the <code>name</code> of the package), then  <br>    <code>npm exec</code> exits with an error.<br><br>To run a binary _other than_ the named binary, specify one or more  <br><code>--package</code> options, which will prevent npm from inferring the package from  <br>the first command argument.<br><br>*<code>npx</code> vs <code>npm exec</code>*<br><br>When run via the <code>npx</code> binary, all flags and options _must_ be set prior to  <br>any positional arguments. When run via <code>npm exec</code>, a double-hyphen <code>--</code>  <br>flag can be used to suppress npm&#39;s parsing of switches and options that  <br>should be sent to the executed command.<br><br>For example:<br><br><pre><br>$ npx foo@latest bar --package=@npmcli/foo<br><br></pre><br><br>In this case, npm will resolve the <code>foo</code> package name, and run the  <br>following command:<br><br><pre><br>$ foo bar --package=@npmcli/foo<br><br></pre><br><br>Since the <code>--package</code> option comes _after_ the positional arguments, it is  <br>treated as an argument to the executed command.<br><br>In contrast, due to npm&#39;s argument parsing logic, running this command is  <br>different:<br><br><pre><br>$ npm exec foo@latest bar --package=@npmcli/foo<br><br></pre><br><br>In this case, npm will parse the <code>--package</code> option first, resolving the  <br><code>@npmcli/foo</code> package. Then, it will execute the following command in that  <br>context:<br><br><pre><br>$ foo@latest bar<br><br></pre><br><br>The double-hyphen character is recommended to explicitly tell npm to stop  <br>parsing command line options and switches. The following command would  <br>thus be equivalent to the <code>npx</code> command above:<br><br><pre><br>$ npm exec -- foo@latest bar --package=@npmcli/foo<br><br></pre><br><br>*Examples*<br><br>Run the version of <code>tap</code> in the local dependencies, with the provided  <br>arguments:<br><br><pre><br>$ npm exec -- tap --bail test/foo.js<br>$ npx tap --bail test/foo.js<br><br></pre><br><br>Run a command _other than_ the command whose name matches the package name  <br>by specifying a <code>--package</code> option:<br><br><pre><br>$ npm exec --package=foo -- bar --bar-argument<br># ~ or ~<br>$ npx --package=foo bar --bar-argument<br><br></pre><br><br>Run an arbitrary shell script, in the context of the current project:<br><br><pre><br>$ npm x -c &#39;eslint &amp;&amp; say &#34;hooray, lint passed&#34;&#39;<br>$ npx -c &#39;eslint &amp;&amp; say &#34;hooray, lint passed&#34;&#39;<br><br></pre><br><br>*Compatibility with Older npx Versions*<br><br>The <code>npx</code> binary was rewritten in npm v7.0.0, and the standalone <code>npx</code>  <br>package deprecated at that time. <code>npx</code> uses the <code>npm exec</code>  <br>command instead of a separate argument parser and install process, with  <br>some affordances to maintain backwards compatibility with the arguments it  <br>accepted in previous versions.<br><br>This resulted in some shifts in its functionality:<br><br>• Any <code>npm</code> config value may be provided.<br>• To prevent security and user-experience problems from mistyping package  <br>    names, <code>npx</code> prompts before installing anything. Suppress this  <br>    prompt with the <code>-y</code> or <code>--yes</code> option.<br>• The <code>--no-install</code> option is deprecated, and will be converted to <code>--no</code>.<br>• Shell fallback functionality is removed, as it is not advisable.<br>• The <code>-p</code> argument is a shorthand for <code>--parseable</code> in npm, but shorthand  <br>    for <code>--package</code> in npx. This is maintained, but only for the <code>npx</code>  <br>    executable.<br>• The <code>--ignore-existing</code> option is removed. Locally installed bins are  <br>    always present in the executed process <code>PATH</code>.<br>• The <code>--npm</code> option is removed. <code>npx</code> will always use the <code>npm</code> it ships  <br>    with.<br>• The <code>--node-arg</code> and <code>-n</code> options are removed.<br>• The <code>--always-spawn</code> option is redundant, and thus removed.<br>• The <code>--shell</code> option is replaced with <code>--script-shell</code>, but maintained  <br>    in the <code>npx</code> executable for backwards compatibility.<br><br>*See Also*<br><br>• &lt;/commands/npm-run-script|npm run-script&gt;<br>• &lt;/using-npm/scripts|npm scripts&gt;<br>• &lt;/commands/npm-test|npm test&gt;<br>• &lt;/commands/npm-start|npm start&gt;<br>• &lt;/commands/npm-restart|npm restart&gt;<br>• &lt;/commands/npm-stop|npm stop&gt;<br>• &lt;/commands/npm-config|npm config&gt;</div>
       </div>
 
             </div>
