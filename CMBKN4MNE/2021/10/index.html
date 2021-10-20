@@ -873,6 +873,332 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1634695257.070200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1634695257.070200">20日 11:00:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634695257070200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                TIL: <a href='https://qiita.com/moriai/items/f30daae118ea7280a216'>https://qiita.com/moriai/items/f30daae118ea7280a216</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="monaqa">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634695257.070200">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://cdn.qiita.com/assets/favicons/public/apple-touch-icon-ec5ba42a24ae923f16825592efdc356f.png" alt="Qiita" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://qiita.com/moriai/items/f30daae118ea7280a216" target="_blank" rel="noopener noreferrer">Rust でしっかりとダイナミックリンク - Qiita</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">はじめに Rustのビルドシステムでは、Rustの世界ではスタティックリンク、OSの標準ライブラリとはダイナミックリンクが基本になっている。これは、Rustの標準ライブラリぐらいはダイナミックリンクにして、バイナリをスリム化する...</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634700380.070700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1634700380.070700">20日 12:26:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634700380070700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すみません、質問なんですがこのようなコードを書いた際にsが生きてないと言われる時の対策ってsをブロックの外に引っ張り出すか複製するしかないんでしょうか。<br><br>as_bytesをwrite_allの段階でやるようにして回避できたので問題にはなってないんですが、何かしらいい方法がないのか気になりました。<br><pre>use std::fs::File;<br>use std::io::Read;<br>use std::io::Write;<br><br>fn main() {<br>    let mut i = File::open(&#34;input&#34;).unwrap();<br>    let b = {<br>        let mut s = String::new();<br>        i.read_to_string(&amp;mut s);<br>        s.as_bytes()<br>    };<br>    let mut o = File::create(&#34;output&#34;).unwrap();<br>    o.write_all(b);<br>}</pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634700818.070900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1634700818.070900">20日 12:33:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634700818070900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これだけならブロック外にs引っ張り出しちゃえばいいんじゃないですか<br><a href='https://doc.rust-lang.org/std/fs/fn.read_to_string.html'>https://doc.rust-lang.org/std/fs/fn.read_to_string.html</a><br>fsにこんなのも生えてます
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <span>👀1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634700818.070900">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://doc.rust-lang.org/favicon.ico" alt="doc.rust-lang.org" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://doc.rust-lang.org/std/fs/fn.read_to_string.html" target="_blank" rel="noopener noreferrer">read_to_string in std::fs - Rust</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Read the entire contents of a file into a string.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634700861.071500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1634700861.071500">20日 12:34:21</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634700861071500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                お、そんな便利メソッドが<br>ありがとうございます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634703290.079600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/29cf965ea58c70dba203a10ec39fe4cd.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0026-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">qryxip</span>
+              <a href="#ts-1634703290.079600">20日 13:14:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634703290079600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                一般的な話としては、変数を束縛せずに関数の引数に直に突っ込んだりする分には<code>{ string }.as_bytes()</code>のようにできますがborrowed部分だけ変数を束縛するのは無理だと思います。<br>私は普段<code>String::into_bytes</code>のような関数かFrom/<code>Into</code>を使ってowned→ownedな変換をしてます。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, lambdalisue">
+                              <span>👀2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634703358.080200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1634703358.080200">20日 13:15:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634703358080200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほど、変換噛ませるしかないんですね、ありがとうございます
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634704450.090300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/29cf965ea58c70dba203a10ec39fe4cd.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0026-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">qryxip</span>
+              <a href="#ts-1634704450.090300">20日 13:34:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634704450090300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                borrowd部分だけ変数に突っ込みたいとなったら私が思いつく範囲だと、owned部分を<code>__owned</code>みたいな名前の変数に入れる<code>borrowed_only!(b = { .. } =&gt; String::as_bytes);</code>のようなマクロを用意するかですね。今スマホなので実装までは用意できませんが<code>macro_rules!</code>で数行で書けると思います。(こういうのをやっている人を今まで見たことがありませんが)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634704550.090900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1634704550.090900">20日 13:35:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634704550090900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ユーザーから見えない変数を定義してしまう感じですね、まあそこまでするならってのはありますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634737166.095900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/29cf965ea58c70dba203a10ec39fe4cd.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0026-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">qryxip</span>
+              <a href="#ts-1634737166.095900">20日 22:39:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634737166095900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                補足し忘れていましたが、<code>&amp;</code>や<code>*</code>や<code>[]</code>で参照をワンライナーで変数に入れる分には許されます。<br>&gt; If the <code>&amp;</code> or <code>&amp;mut</code> operators are applied to a <a href='https://doc.rust-lang.org/stable/reference/expressions.html#place-expressions-and-value-expressions'>value expression</a>, then a <a href='https://doc.rust-lang.org/stable/reference/expressions.html#temporaries'>temporary value</a> is created.<br><a href='https://doc.rust-lang.org/stable/reference/expressions/operator-expr.html#borrow-operators'>https://doc.rust-lang.org/stable/reference/expressions/operator-expr.html#borrow-operators</a><br><br>私はよくこんな感じに書いたりします。<br><pre>// OK<br>let s = { &#34;contents&#34;.to_owned() }; // String<br>let _ = { s };<br><br>// OK<br>let s = &amp;{ &#34;contents&#34;.to_owned() }; // &amp;String<br>let _ = { s };<br><br>// OK<br>let s = &amp;*{ &#34;contents&#34;.to_owned() }; // &amp;str<br>let _ = { s };<br><br>// OK<br>let s = &amp;{ &#34;contents&#34;.to_owned() }[..]; // &amp;str<br>let _ = { s };<br><br>// OK<br>let (s,) = (&amp;{ &#34;contents&#34;.to_owned() },);<br>let _ = { s };<br><br>// Error<br>//let s = { &#34;contents&#34;.to_owned() }.as_str();<br>//let _ = { s };<br><br>// OK (使われていないため)<br>let s = { &#34;contents&#34;.to_owned() }.as_str();</pre><br>これを悪用すれば一応マクロを使わずとも<a href='https://play.rust-lang.org/?version=stable&amp;mode=debug&amp;edition=2018&amp;gist=7fec0184fdf1972e0245a1bbd1eaa60a'>こんなこと</a>もできますね。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634737166.095900">
+              
+    <div class="d-flex">
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=7fec0184fdf1972e0245a1bbd1eaa60a" target="_blank" rel="noopener noreferrer">Rust Playground</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">A browser interface to the Rust compiler to experiment with the language</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634737349.096500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/29cf965ea58c70dba203a10ec39fe4cd.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0026-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">qryxip</span>
+              <a href="#ts-1634737349.096500">20日 22:42:29</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634737349096500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まあ同じくそこまでするなら、という感じですが。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634737936.096800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1634737936.096800">20日 22:52:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CMBKN4MNE/p1634737936096800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すごい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

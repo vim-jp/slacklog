@@ -3786,6 +3786,233 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1634656511.206800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634656511.206800">20日 00:15:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634656511206800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                特におかしい感じでは無さげでしたが、どんな具合です？
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634694864.208400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634694864.208400">20日 10:54:24</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634694864208400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/vim/vim/pull/9023'>https://github.com/vim/vim/pull/9023</a> これで直りそうという具合
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634694864.208400">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim/vim/pull/9023|#9023 Fix resource leak by closing file descriptor in mch_FullName&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Since 8.2.3468 (<a href='https://github.com/vim/vim/commit/c6376c798433bcb9ee38a8664299d11454546950'>vim/vim@c6376c7</a>), getting the absolute path of non-existing paths leaks file descriptors. The file descriptor for <code>fchdir</code> is left unclosed in specific code path. Steps to reproduce is <code>:edit notexist/x.txt</code> and look into <code>lsof -p $(pgrep vim | tail -n1)</code>.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634702203.209100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634702203.209100">20日 12:56:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634702203209100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/vim/vim/issues/8974'>https://github.com/vim/vim/issues/8974</a>　zipプラグインが影響受けて壊れてるのか
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634702203.209100">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim/vim/issues/8974|#8974 zipfile opens an empty buffer after 8.2.3468&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*To Reproduce*<br><br>1. Create a non-empty zip file, e.g. xxx.zip<br>2. Run <code>vim xxx.zip</code><br>3. Select one entry inside the zip listing and press Enter to open/view it<br>4. An empty buffer is open. Buffer name is <code>~/.../zipfile:/.../xxx.zip::xxx.txt</code>, i.e. with current directory prepended.<br><br>*Expected behavior*  <br>netrw should read the zipped xxx.txt&#39;s content into new buffer.<br><br>*Environment (please complete the following information):*<br><br>• Vim version: from 8.2.3468 (found by git bisect, first bad commit: c6376c798433bcb9ee38a8664299d11454546950) to 8.2.3486 (latest)<br>• OS: Arch Linux<br>• Terminal: GNOME Terminal</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634705919.209500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-07-31/407982080133_30e238cd92e6c88883f9_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">mattn</span>
+              <a href="#ts-1634705919.209500">20日 13:58:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634705919209500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                コメ欄に「これや」ってのが来てますね。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634706709.210500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634706709.210500">20日 14:11:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634706709210500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                プロトコルがついたパスをどう扱うべきか私あまりよく分かってないな… (Christianのパッチは正しいのかどうか)
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634707122.211400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634707122.211400">20日 14:18:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634707122211400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                terminalもprotocolつけたほうがいいのかもしれないとか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634707192.211600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634707192.211600">20日 14:19:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634707192211600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                NeoVimはついてるな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634709695.212100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634709695.212100">20日 15:01:35</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634709695212100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                すでにprotocolがついたパスは特別扱いされていたわ…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634733535.213500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/b0fac9b99a58f325a05a8afbc18dbc54.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0009-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">itchyny</span>
+              <a href="#ts-1634733535.213500">20日 21:38:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1634733535213500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                fdリークは直っていた
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Tsuyoshi CHO, kuu">
+                              <img class="slacklog-emoji" alt="goodpoem" title="goodpoem" src="/slacklog/emojis/goodpoem.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
