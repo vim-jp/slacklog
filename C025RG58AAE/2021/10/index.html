@@ -2428,6 +2428,180 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1634950372.011500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1634950372.011500">23日 09:52:52</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C025RG58AAE/p1634950372011500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                反応が来ていたのでクソ長文書きました<br><a href='https://github.com/denoland/deno/issues/12519#issuecomment-950030088'>https://github.com/denoland/deno/issues/12519#issuecomment-950030088</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1634950372.011500">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/denoland/deno/issues/12519#issuecomment-950030088|Comment on #12519 Dynamic (remote) import is quite slow and seems not cached&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">&gt; This is caused by concurrent dynamic imports of the same module, I guess all  <br>&gt; of them are fetching resources which is a bug. But if one import is awaited  <br>&gt; ahead of time the others won&#39;t perform badly.<br><br>&gt; When we are loading a module graph, we eliminate duplicates, but in the  <br>&gt; scenario of a dynamic import, each dynamic import it its own &#34;root&#34; of the  <br>&gt; graph, therefore unique up until the point where the module is actually  <br>&gt; fetched and then cached in memory, which would prevent it from being fetched  <br>&gt; from the network again.<br><br>I see. That&#39;s actually what we expected from the behavior.<br><br>&gt; It is possible to try to trap these, but is this a realistic use case?<br><br>No. As you guess, we tried to make things simple and minimal. Let me explain our  <br>situation more clearly.<br><br>*Simplified issue*<br><br>Let me simplify the issue again from different perspective.<br><br>Assume that we have <code>source1.ts</code>, <code>source2.ts</code>, and <code>source3.ts</code> like<br><br><pre><br>// source1.ts<br>export default function () {<br>  console.log(&#34;imported&#34;);<br>}<br></pre><br><br><pre><br>// source2.ts<br>export { debounce } from &#34;&lt;https://deno.land/std@0.112.0/async/mod.ts&gt;&#34;;<br><br>export default function () {<br>  console.log(&#34;imported&#34;);<br>}<br></pre><br><br><pre><br>// source3.ts<br>export { Source } from &#34;&lt;https://raw.githubusercontent.com/Shougo/ddc-around/main/denops/%40ddc-sources/around.ts&gt;&#34;;<br><br>export default function () {<br>  console.log(&#34;imported&#34;);<br>}<br></pre><br><br>And <code>test-static.ts</code> and <code>test-dynamic.ts</code> like<br><br><pre><br>// test-static.ts<br>const t0 = performance.now();<br><br>const t1 = performance.now();<br>import source1 from &#34;./source1.ts&#34;;<br>console.log(performance.now() - t1, typeof source1);<br><br>const t2 = performance.now();<br>import source2 from &#34;./source2.ts&#34;;<br>console.log(performance.now() - t2, typeof source2);<br><br>const t3 = performance.now();<br>import source3 from &#34;./source3.ts&#34;;<br>console.log(performance.now() - t3, typeof source3);<br><br>console.log(performance.now() - t0, &#34;static entire&#34;);<br></pre><br><br><pre><br>// test-dynamic.ts<br>const t0 = performance.now();<br><br>const t1 = performance.now();<br>const source1 = (await import(&#34;./source1.ts&#34;)).default;<br>console.log(performance.now() - t1, typeof source1);<br><br>const t2 = performance.now();<br>const source2 = (await import(&#34;./source2.ts&#34;)).default;<br>console.log(performance.now() - t2, typeof source2);<br><br>const t3 = performance.now();<br>const source3 = (await import(&#34;./source3.ts&#34;)).default;<br>console.log(performance.now() - t3, typeof source3);<br><br>console.log(performance.now() - t0, &#34;dynamic entire&#34;);<br></pre><br><br>When we run <code>test-static.ts</code> and <code>test-dynamic.ts</code>, we&#39;ll get quite different  <br>result like And we&#39;ll get result like<br><br><pre><br>$ deno run -A --no-check ./test-static.ts<br>0.007908000000014681 function<br>0.002322999999989861 function<br>0.00130500000000211 function<br>0.5761760000000038 static entire<br><br>$ deno run -A --no-check ./test-dynamic.ts<br>0.499715000000009 function<br>3.197168000000005 function<br>179.53152500000002 function<br>183.97954700000003 dynamic entire<br><br></pre><br><br>I understand that dynamic import has some overheads but I feel it&#39;s kind too  <br>much. Additionally, the difference among sources are only the first line thus it  <br>seems dynamic import influenced a lot by the number of remote import on the  <br>target file (0.5 ms ~ 179.5 ms)<br><br>*Realistic issue*<br><br>In real world, we faced start-up time issue of Vim/Neovim that use <a href='https://github.com/Shougo/ddc.vim'>ddc</a>  <br>that relies on <a href='https://github.com/vim-denops/denops.vim'>denops</a> that built on Deno.<br><br>The diagram below illustrates the architecture and relationship among Vim,  <br>denops, and ddc. In short, we found that <a href='https://github.com/Shougo/ddc.vim'>ddc</a> start-up is slow because it  <br>imports its plugins by dynamic imports (A box with <code>#</code> in the diagram.)<br><br><pre><br>Vim --- Run ---&gt; denops<br>                    |<br>                    +-- Invoke --&gt; Worker            #######################################<br>                    |                |               #                                     #<br>                    |                +-- dyn import -#-&gt; ddc                               #<br>                    |                                #    +-- dyn import --&gt; ddc-around    #<br>                    |                                #    +-- dyn import --&gt; ddc plugin A  #<br>                    |                                #    +-- dyn import --&gt; ddc plugin B  #<br>                    :                                #    :                                #<br>                    |                                #                                     #<br>                    |                                #######################################<br>                    +-- Invoke --&gt; Worker<br>                    |                |<br>                    |                +-- dyn import --&gt; denops plugin A<br>                    |<br>                    +-- Invoke --&gt; Worker<br>                    |                |<br>                    |                +-- dyn import --&gt; denops plugin B<br>                    :<br><br></pre><br><br>So we tried to investigate the reason of this performance issue. For example,  <br><a href='https://github.com/Shougo/ddc-around'>ddc-around</a> is a ddc plugin and  <br><code>denops/@ddc-sources/around.ts</code> is the file that imported. We measured the  <br>performance for importing that file like.<br><br><pre><br>async function main() {<br>  const t = performance.now();<br>  await import(<br>    &#34;&lt;https://raw.githubusercontent.com/Shougo/ddc-around/main/denops/%40ddc-sources/around.ts&gt;&#34;<br>  );<br>  console.log(performance.now() - t);<br>}<br>await main();<br></pre><br><br>And we found that it took approx *200 ms* to import that single file. We need  <br>to import multiple similar files, mean that we need to wait *several seconds*  <br>to get completion feature from ddc after we start up Vim.</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634951668.011800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1634951668.011800">23日 10:14:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C025RG58AAE/p1634951668011800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                超頑張った
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="Tsuyoshi CHO, kuu, kkiyama117">
+                              <img class="slacklog-emoji" alt="otz" title="otz" src="/slacklog/emojis/otz.gif"><span class="ml-1">3</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02JLMVL22J/CleanShot%202021-10-23%20at%2010.14.00.png" target="_blank" rel="noopener noreferrer">
+                  <img src="/slacklog/files/F02JLMVL22J/CleanShot%202021-10-23%20at%2010.14.00.png" width="828" height="374" alt="CleanShot 2021-10-23 at 10.14.00.png" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634952147.013300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1634952147.013300">23日 10:22:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C025RG58AAE/p1634952147013300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あえての指摘でいうなら、denops plugin A/Bは見分けのためにX/Yとかにしてもいいかも<br>(ddcとは別物なのは記述からは明確だけど、名称が同じなので)
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="lambdalisue">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634952399.013700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1634952399.013700">23日 10:26:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C025RG58AAE/p1634952399013700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                改めて dynamic import むっちゃ遅いなと思った
+              </div>
+
+              <div>
+              </div>
+              <div class="mt-2 border p-3">
+                <div>
+                  <a href="/slacklog/files/F02JTE98L3C/CleanShot%202021-10-23%20at%2010.26.18.png" target="_blank" rel="noopener noreferrer">
+                  <img src="/slacklog/files/F02JTE98L3C/CleanShot%202021-10-23%20at%2010.26.18.png" width="335" height="223" alt="CleanShot 2021-10-23 at 10.26.18.png" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634952453.014400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/2be992d8a8cd8b523ca0b1467e165376.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0010-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">lambdalisue</span>
+              <a href="#ts-1634952453.014400">23日 10:27:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C025RG58AAE/p1634952453014400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                合計で x400 くらい？ちょっといくら何でも感...
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1634952536.014800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1634952536.014800">23日 10:28:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C025RG58AAE/p1634952536014800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なんかno-checkが効いてないとかあるのかな?、遅いですねえ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
