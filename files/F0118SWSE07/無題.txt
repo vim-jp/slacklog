@@ -1,8 +1,0 @@
-function! Complete(...) abort
-  call call(function("complete"), a:000)
-  return ""
-endfunction
-
-set completeopt=menuone,noinsert
-inoremap a <C-r>=Complete(col('.'), [])<CR>
-inoremap b <C-r>=Complete(col('.'), ['hoge','piyo'])<CR>

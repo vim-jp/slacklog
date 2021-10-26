@@ -1,7 +1,0 @@
-.PHONY: logdata
-logdata: _logdata
-
-_logdata: tmp/log-data.tar.gz
-	rm -rf $@
-	mkdir -p $@
-	tar xz --strip-components=1 --exclude=.github -f tmp/log-data.tar.gz -C $@

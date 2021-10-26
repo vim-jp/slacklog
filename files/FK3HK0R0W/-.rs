@@ -1,1 +1,0 @@
-let expr = 'v:val =~? "\\(^'.a:ArgLead.'\\|^\\(\\w\\+\\.\\)\\?'.a:ArgLead.'\\)"'

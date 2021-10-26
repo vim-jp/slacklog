@@ -1,1 +1,0 @@
-./configure --with-features=huge --enable-multibyte --enable-rubyinterp --enable-python3interp --enable-pythoninterp --enable-perlinterp --enable-fontset --enable-pythoninterp

@@ -1,9 +1,0 @@
-test=# SET enable_seqscan TO 'off';
-SET
-test=# explain SELECT article_id, MAX(commented_at) FROM comments GROUP BY article_id;
-                                                      QUERY PLAN
------------------------------------------------------------------------------------------------------------------------
- GroupAggregate  (cost=0.15..77.55 rows=200 width=16)
-   Group Key: article_id
-   ->  Index Only Scan using "IDX_comments_article_id_commented_at" on comments  (cost=0.15..67.70 rows=1570 width=16)
-(3 行)

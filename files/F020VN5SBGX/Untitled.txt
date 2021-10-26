@@ -1,9 +1,0 @@
-" Markdown ファイル中の TeX 数式のハイライトをまともにする
-" https://stackoverflow.com/questions/32865744/vim-syntax-and-latex-math-inside-markdown
-" This gets rid of the nasty _ italic bug in tpope's vim-markdown
-" block $$...$$
-au Syntax markdown syn region markdownTexMath start=/\$\$/ end=/\$\$/
-" inline math
-au Syntax markdown syn match markdownTexMath '\$[^$].\{-}\$'
-" actually highlight the region we defined as "math"
-hi link markdownTexMath Statement

@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "Core": "pen:///lib/core",
-    "System": "pen:///lib/os"
-  }
-}
