@@ -1948,8 +1948,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F013Z821NHZ/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F013Z821NHZ/image.png" width="239" height="253" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013Z821NHZ/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013Z821NHZ/image.png" width="239" height="253" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -1977,8 +1977,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F014BL9HDDF/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F014BL9HDDF/image_1024.png" width="382" height="1024" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F014BL9HDDF/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F014BL9HDDF/image_1024.png" width="382" height="1024" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -3011,91 +3011,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F013Z7SQ5R8/grep.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013Z7SQ5R8/grep.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: grep.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package main
-
-import (
-	&#34;bufio&#34;
-	&#34;fmt&#34;
-	&#34;log&#34;
-	&#34;os&#34;
-	&#34;path/filepath&#34;
-	&#34;regexp&#34;
-	&#34;sync&#34;
-)
-
-var (
-	wg         sync.WaitGroup
-	results    = make(chan []string)
-	outputDone = make(chan struct{})
-)
-
-func grep(path string, re *regexp.Regexp) {
-	defer wg.Done()
-	h, err := os.Open(path)
-	if err != nil {
-		log.Printf(&#34;can&#39;t access %s&#34;, path)
-	}
-	s := bufio.NewScanner(h)
-
-	lnum := 0
-	var matches []string
-	for s.Scan() {
-		lnum++
-		t := s.Text()
-		if re.MatchString(t) {
-			res := fmt.Sprintf(&#34;%s:%d: %s&#34;, path, lnum, t)
-			matches = append(matches, res)
-		}
-	}
-
-	if len(matches) != 0 {
-		results &lt;- matches
-	}
-}
-
-func output() {
-	for r := range results {
-		for _, m := range r {
-			fmt.Println(m)
-		}
-	}
-	outputDone &lt;- struct{}{}
-}
-
-func run() error {
-	re := regexp.MustCompile(os.Args[1])
-	err := filepath.Walk(&#34;.&#34;, func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			fmt.Printf(&#34;prevent panic by handling failure accessing a path %q: %v\n&#34;, path, err)
-			return err
-		}
-
-		if info.Mode().IsRegular() {
-			wg.Add(1)
-			go grep(path, re)
-		}
-
-		return nil
-	})
-	if err != nil {
-		return err
-	}
-	go output()
-	wg.Wait()
-	close(results)
-	&lt;-outputDone
-	return nil
-}
-
-func main() {
-	err := run()
-	if err != nil {
-		log.Fatal(err)
-	}
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F013Z7SQ5R8/grep.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -4525,8 +4444,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F013P1HR4LF/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-05-22%2015.07.11.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F013P1HR4LF/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-05-22%2015.07.11_1024.png" width="1024" height="793" alt="スクリーンショット 2020-05-22 15.07.11.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013P1HR4LF/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-05-22%2015.07.11.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013P1HR4LF/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-05-22%2015.07.11_1024.png" width="1024" height="793" alt="スクリーンショット 2020-05-22 15.07.11.png" />
                   </a>
                 </div>
               </div>
@@ -4554,8 +4473,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F013P1J9ANB/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-05-22%2015.08.00.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F013P1J9ANB/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-05-22%2015.08.00_1024.png" width="1024" height="793" alt="スクリーンショット 2020-05-22 15.08.00.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013P1J9ANB/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-05-22%2015.08.00.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013P1J9ANB/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-05-22%2015.08.00_1024.png" width="1024" height="793" alt="スクリーンショット 2020-05-22 15.08.00.png" />
                   </a>
                 </div>
               </div>
@@ -6257,8 +6176,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F013P4Q24RM/Kapture%202020-05-22%20at%2016.33.18.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F013P4Q24RM/Kapture%202020-05-22%20at%2016.33.18.mp4" poster="/slacklog/files/F013P4Q24RM/Kapture%202020-05-22%20at%2016.33.18_video.jpeg" controls alt="Kapture 2020-05-22 at 16.33.18.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013P4Q24RM/Kapture%202020-05-22%20at%2016.33.18.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013P4Q24RM/Kapture%202020-05-22%20at%2016.33.18.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013P4Q24RM/Kapture%202020-05-22%20at%2016.33.18_video.jpeg" controls alt="Kapture 2020-05-22 at 16.33.18.mp4">
                   </video>
                   </a>
                 </div>
@@ -6718,8 +6637,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F013PBFM0P9/Kapture%202020-05-22%20at%2018.58.03.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F013PBFM0P9/Kapture%202020-05-22%20at%2018.58.03.mp4" poster="/slacklog/files/F013PBFM0P9/Kapture%202020-05-22%20at%2018.58.03_video.jpeg" controls alt="Kapture 2020-05-22 at 18.58.03.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013PBFM0P9/Kapture%202020-05-22%20at%2018.58.03.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013PBFM0P9/Kapture%202020-05-22%20at%2018.58.03.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013PBFM0P9/Kapture%202020-05-22%20at%2018.58.03_video.jpeg" controls alt="Kapture 2020-05-22 at 18.58.03.mp4">
                   </video>
                   </a>
                 </div>

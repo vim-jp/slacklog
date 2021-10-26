@@ -1792,31 +1792,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0116T6G8SZ/vim-relnum.vim" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0116T6G8SZ/vim-relnum.vim" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: vim-relnum.vim(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>function! s:relativenumber_toggle(mode) abort &#34; {{{
-  let recovery = a:mode ==? &#39;recovery&#39;
-
-  if recovery
-    &#34; if backup value is relativenumber is active, re-active
-    let &amp;l:relativenumber    = get(w:,&#39;relativenumber&#39;, 1)
-    unlet! w:relativenumber
-  else
-    let w:relativenumber = &amp;l:relativenumber &#34; backup
-    let onoff = a:mode ==? &#39;on&#39;
-    if onoff
-      setlocal relativenumber
-    else
-      setlocal norelativenumber
-    endif
-  endif
-endfunction &#34; }}}
-augroup MyAutoGroup
-  autocmd WinLeave,InsertEnter * nested call s:relativenumber_toggle(&#39;off&#39;)
-  autocmd WinEnter,InsertLeave * nested call s:relativenumber_toggle(&#39;recovery&#39;)
-augroup END
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0116T6G8SZ/vim-relnum.vim: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -3370,8 +3349,8 @@ augroup END
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011MB6TEUQ/generate.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011MB6TEUQ/generate.png" width="500" height="700" alt="generate.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011MB6TEUQ/generate.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011MB6TEUQ/generate.png" width="500" height="700" alt="generate.png" />
                   </a>
                 </div>
               </div>
@@ -3689,8 +3668,8 @@ augroup END
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011B2D0F17/output-onlinejpgtools.jpg" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011B2D0F17/output-onlinejpgtools.jpg" width="512" height="512" alt="output-onlinejpgtools.jpg" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011B2D0F17/output-onlinejpgtools.jpg" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011B2D0F17/output-onlinejpgtools.jpg" width="512" height="512" alt="output-onlinejpgtools.jpg" />
                   </a>
                 </div>
               </div>
@@ -5473,59 +5452,10 @@ augroup END
             </span>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011B5HKZ6X/dein_lazy.tomll" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011B5HKZ6X/dein_lazy.tomll" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: dein_lazy.tomll(TOML)]]</span>
                   </a>
-                  <pre><code class='language-toml'>[[plugins]]
-# repo = &#39;soramugi/auto-ctags.vim&#39;
-repo = &#39;tsuyoshicho/auto-ctags.vim&#39;
-rev  = &#39;feature/asyncprocess&#39;
-on_if= &#39;executable(&#34;ctags&#34;)&#39;
-hook_add = &#39;&#39;&#39;
-  &#34; in .ctags
-  let g:auto_ctags_tags_args = [&#39;--tag-relative=yes&#39;, &#39;--recurse=yes&#39;, &#39;--sort=yes&#39;, &#39;--extra=+f&#39;]
-  &#34; universal ctags need
-  let g:auto_ctags_tags_args = get(g:,&#39;auto_ctags_tags_args&#39;,[]) + [&#39;--output-format=e-ctags&#39;]
-
-  let g:auto_ctags = 1
-  &#34; let g:auto_ctags_filetype_mode = 1
-  let g:auto_ctags_directory_list = [&#39;.git&#39;, &#39;.svn&#39;, &#39;.hg&#39;, &#39;.bzr&#39;, &#39;CVS&#39;, &#39;.&#39;]
-  let g:auto_ctags_search_recursively = 1
-  let g:auto_ctags_absolute_path = 1
-  let s:home = &#39;&#39;
-  if has(&#39;path_extra&#39;)
-    let s:home = &#39;;$HOME&#39;
-  endif
-  for s:dir in g:auto_ctags_directory_list
-    if s:dir !=? &#39;.&#39;
-      execute &#39;set tags+=./&#39; . s:dir . &#39;/tags&#39; . s:home
-    endif
-  endfor
-
-  &#34; git リポジトリ内などでも直にtagsを生成する関数
-  function! DirectAutoCtags()
-    let s:ctags_list_backup = copy(g:auto_ctags_directory_list)
-    let s:ctags_search_backup = g:auto_ctags_search_recursively
-
-    &#34; set current only
-    let g:auto_ctags_directory_list = [&#39;.&#39;]
-    let g:auto_ctags_search_recursively = 1
-
-    &#34; call ctags create process
-    call auto_ctags#ctags(1)
-
-    &#34; recover backups
-    let g:auto_ctags_directory_list = copy(s:ctags_list_backup)
-    let g:auto_ctags_search_recursively = s:ctags_search_backup
-
-    unlet s:ctags_list_backup
-    unlet s:ctags_search_backup
-  endfunction
-
-  &#34; コマンド定義
-  command! CtagsDirect call DirectAutoCtags()
-&#39;&#39;&#39;
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F011B5HKZ6X/dein_lazy.tomll: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -5815,45 +5745,10 @@ hook_add = &#39;&#39;&#39;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011QJKHUAV/dein.toml" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011QJKHUAV/dein.toml" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: dein.toml(TOML)]]</span>
                   </a>
-                  <pre><code class='language-toml'>[[plugins]]
-repo = &#39;tyru/empty-prompt.vim&#39;
-depends = [&#39;vital.vim&#39;]
-hook_add = &#39;&#39;&#39;
-  &#34; : works as &lt;C-w&gt;:
-  autocmd MyAutoGroup VimEnter * call empty_prompt#map(#{lhs: &#39;:&#39;, rhs: &#39;&lt;C-w&gt;:&#39;})
-  &#34; &lt;Esc&gt; works as &lt;C-w&gt;N
-  autocmd MyAutoGroup VimEnter * call empty_prompt#map(#{lhs: &#39;&lt;Esc&gt;&#39;, rhs: &#39;&lt;C-w&gt;N&#39;})
-&#39;&#39;&#39;
-hook_post_source = &#39;&#39;&#39;
-  let s:prompt = {}
-
-  let s:prompt[&#39;cmd&#39;] = &#39;&gt;&#39;
-  let s:prompt[&#39;nix&#39;] = &#39;$&#39;
-
-  let s:starship_config = expand(g:user.dir.config_home . &#39;/starship.toml&#39;)
-  let s:starship = {}
-  if filereadable(s:starship_config)
-    let s:TOML = g:V.import(&#39;Text.TOML&#39;)
-    let s:starship = s:TOML.parse_file(s:starship_config)
-    unlet s:TOML
-  endif
-
-  let s:prompt[&#39;starship&#39;] = &#39;❯&#39;
-  if has_key(s:starship,&#39;character&#39;)
-    if has_key(s:starship.character, &#39;symbol&#39;)
-      let s:prompt[&#39;starship&#39;] = s:starship.character.symbol
-    endif
-  endif
-
-  let s:result = &#39;\(&#39; . escape(join(values(s:prompt), &#39;|&#39;), &#39;\|$&#39;)  . &#39;\)\s*$&#39;
-
-  let g:empty_prompt#pattern = s:result
-  unlet s:result
-&#39;&#39;&#39;
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F011QJKHUAV/dein.toml: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -6862,8 +6757,8 @@ hook_post_source = &#39;&#39;&#39;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011V26PC6M/2020-04-10-101100_1920x1080_scrot.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011V26PC6M/2020-04-10-101100_1920x1080_scrot_1024.png" width="1024" height="576" alt="2020-04-10-101100_1920x1080_scrot.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011V26PC6M/2020-04-10-101100_1920x1080_scrot.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011V26PC6M/2020-04-10-101100_1920x1080_scrot_1024.png" width="1024" height="576" alt="2020-04-10-101100_1920x1080_scrot.png" />
                   </a>
                 </div>
               </div>
@@ -8868,8 +8763,8 @@ hook_post_source = &#39;&#39;&#39;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011N7R9BJ9/2020-04-10-213519_800x600_scrot.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011N7R9BJ9/2020-04-10-213519_800x600_scrot.png" width="800" height="600" alt="2020-04-10-213519_800x600_scrot.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011N7R9BJ9/2020-04-10-213519_800x600_scrot.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011N7R9BJ9/2020-04-10-213519_800x600_scrot.png" width="800" height="600" alt="2020-04-10-213519_800x600_scrot.png" />
                   </a>
                 </div>
               </div>
@@ -9156,24 +9051,10 @@ hook_post_source = &#39;&#39;&#39;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011NA4CW03/~_vimfiles_vim-plug_vim-lsp-settings_installer_install-powershell-languageserver.cmd" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011NA4CW03/~_vimfiles_vim-plug_vim-lsp-settings_installer_install-powershell-languageserver.cmd" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: ~\vimfiles\vim-plug\vim-lsp-settings\installer\install-powershell-languageserver.cmd(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100     9  100     9    0     0      9      0  0:00:01 --:--:--  0:00:01    13
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   622  100   622    0     0    622      0  0:00:01 --:--:--  0:00:01   971
-100  100k  100  100k    0     0  51200      0  0:00:02  0:00:02 --:--:--  128k
-Archive:  PowerShellEditorServices.zip
-  End-of-central-directory signature not found.  Either this file is not
-  a zipfile, or it constitutes one disk of a multi-part archive.  In the
-  latter case the central directory and zipfile comment will be found on
-  the last disk(s) of this archive.
-unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
-        and cannot find PowerShellEditorServices.zip.zip, period.
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F011NA4CW03/~_vimfiles_vim-plug_vim-lsp-settings_installer_install-powershell-languageserver.cmd: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -11991,8 +11872,8 @@ unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011EMPR9U7/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-15%2017.50.55.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011EMPR9U7/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-15%2017.50.55_1024.png" width="1024" height="492" alt="スクリーンショット 2020-04-15 17.50.55.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011EMPR9U7/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-15%2017.50.55.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011EMPR9U7/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-15%2017.50.55_1024.png" width="1024" height="492" alt="スクリーンショット 2020-04-15 17.50.55.png" />
                   </a>
                 </div>
               </div>
@@ -12020,8 +11901,8 @@ unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0121JT9G4U/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-15%2017.51.38.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0121JT9G4U/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-15%2017.51.38_1024.png" width="1024" height="484" alt="スクリーンショット 2020-04-15 17.51.38.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0121JT9G4U/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-15%2017.51.38.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0121JT9G4U/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-15%2017.51.38_1024.png" width="1024" height="484" alt="スクリーンショット 2020-04-15 17.51.38.png" />
                   </a>
                 </div>
               </div>
@@ -15711,8 +15592,8 @@ unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012NJGH34Y/Kapture%202020-04-16%20at%2022.23.02.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F012NJGH34Y/Kapture%202020-04-16%20at%2022.23.02.mp4" poster="/slacklog/files/F012NJGH34Y/Kapture%202020-04-16%20at%2022.23.02_video.jpeg" controls alt="Kapture 2020-04-16 at 22.23.02.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012NJGH34Y/Kapture%202020-04-16%20at%2022.23.02.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012NJGH34Y/Kapture%202020-04-16%20at%2022.23.02.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012NJGH34Y/Kapture%202020-04-16%20at%2022.23.02_video.jpeg" controls alt="Kapture 2020-04-16 at 22.23.02.mp4">
                   </video>
                   </a>
                 </div>
@@ -16574,8 +16455,8 @@ unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0129DJV7TN/Kapture%202020-04-18%20at%2017.58.54.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F0129DJV7TN/Kapture%202020-04-18%20at%2017.58.54.mp4" poster="/slacklog/files/F0129DJV7TN/Kapture%202020-04-18%20at%2017.58.54_video.jpeg" controls alt="Kapture 2020-04-18 at 17.58.54.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0129DJV7TN/Kapture%202020-04-18%20at%2017.58.54.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0129DJV7TN/Kapture%202020-04-18%20at%2017.58.54.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0129DJV7TN/Kapture%202020-04-18%20at%2017.58.54_video.jpeg" controls alt="Kapture 2020-04-18 at 17.58.54.mp4">
                   </video>
                   </a>
                 </div>
@@ -16754,8 +16635,8 @@ unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0129UEPQHJ/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0129UEPQHJ/image.png" width="349" height="110" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0129UEPQHJ/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0129UEPQHJ/image.png" width="349" height="110" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -16805,8 +16686,8 @@ unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012GGECLEM/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-19%2020.12.14.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F012GGECLEM/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-19%2020.12.14_1024.png" width="1024" height="204" alt="スクリーンショット 2020-04-19 20.12.14.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012GGECLEM/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-19%2020.12.14.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012GGECLEM/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-19%2020.12.14_1024.png" width="1024" height="204" alt="スクリーンショット 2020-04-19 20.12.14.png" />
                   </a>
                 </div>
               </div>
@@ -17142,8 +17023,8 @@ unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0122HA6F61/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0122HA6F61/image.png" width="528" height="64" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0122HA6F61/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0122HA6F61/image.png" width="528" height="64" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -17410,8 +17291,8 @@ unzip:  cannot find zipfile directory in PowerShellEditorServices.zip,
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F013229JWV6/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-23%207.04.26.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F013229JWV6/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-23%207.04.26.png" width="962" height="172" alt="スクリーンショット 2020-04-23 7.04.26.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013229JWV6/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-23%207.04.26.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F013229JWV6/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-23%207.04.26.png" width="962" height="172" alt="スクリーンショット 2020-04-23 7.04.26.png" />
                   </a>
                 </div>
               </div>

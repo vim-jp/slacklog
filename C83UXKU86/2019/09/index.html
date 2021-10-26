@@ -987,54 +987,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FMXGBEN3F/crash______.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FMXGBEN3F/crash______.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: crashする(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>function! s:from_date(...) abort
-  let o = copy(s:DateTime)
-  let [o._year, o._month, o._day, o._hour, o._minute, o._second, tz] =
-        \   a:000 + [1970, 1, 1, 0, 0, 0, &#39;&#39;][a:0 :]
-  return o
-endfunction
-
-function! s:from_format(string, format, ...) abort
-  let o = copy(s:DateTime)
-  let locale = a:0 ? a:1 : &#39;&#39;
-  let remain = a:string
-  return o
-endfunction
-
-let s:Class = {}
-function! s:Class._clone() abort
-  &#34; return copy(self) &#34; これを使うとcrashしない
-  return filter(copy(self), &#39;1&#39;)
-endfunction
-function! s:_new_class(class) abort
-  return extend({&#39;class&#39;: a:class}, s:Class)
-endfunction
-
-let s:DateTime = s:_new_class(&#39;DateTime&#39;)
-function! s:DateTime.unix_time() abort
-  if !has_key(self, &#39;__unix_time&#39;)
-    let utc = self._clone()
-    let self.__unix_time = (0 - 2440588) *
-          \  s:SECONDS_OF_DAY + (utc._hour * s:NUM_MINUTES + utc._minute) * s:NUM_SECONDS + utc._second
-    if self.__unix_time &lt; 0
-      let self.__unix_time = -1
-    endif
-  endif
-  return self.__unix_time
-endfunction
-
-let s:NUM_SECONDS = 60
-let s:NUM_MINUTES = 60
-let s:NUM_HOURS = 24
-let s:NUM_MONTHS = 12
-let s:SECONDS_OF_HOUR = s:NUM_SECONDS * s:NUM_MINUTES
-let s:SECONDS_OF_DAY = s:SECONDS_OF_HOUR * s:NUM_HOURS
-
-call map(range(1, 12), &#39;s:from_date(1970, v:val, 1, 0, 0, 0, 0).unix_time()&#39;)
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/FMXGBEN3F/crash______.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -4987,8 +4943,8 @@ call map(range(1, 12), &#39;s:from_date(1970, v:val, 1, 0, 0, 0, 0).unix_time()&
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FMNKS7NE7/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FMNKS7NE7/image.png" width="580" height="340" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FMNKS7NE7/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FMNKS7NE7/image.png" width="580" height="340" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -5697,8 +5653,8 @@ call map(range(1, 12), &#39;s:from_date(1970, v:val, 1, 0, 0, 0, 0).unix_time()&
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FN6S56KMM/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FN6S56KMM/image.png" width="600" height="445" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FN6S56KMM/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FN6S56KMM/image.png" width="600" height="445" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -6839,8 +6795,8 @@ call map(range(1, 12), &#39;s:from_date(1970, v:val, 1, 0, 0, 0, 0).unix_time()&
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FN66X56CU/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FN66X56CU/image.png" width="482" height="358" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FN66X56CU/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FN66X56CU/image.png" width="482" height="358" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -7054,8 +7010,8 @@ call map(range(1, 12), &#39;s:from_date(1970, v:val, 1, 0, 0, 0, 0).unix_time()&
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FN6LV6D9B/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FN6LV6D9B/image.png" width="578" height="283" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FN6LV6D9B/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FN6LV6D9B/image.png" width="578" height="283" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -8174,8 +8130,8 @@ call map(range(1, 12), &#39;s:from_date(1970, v:val, 1, 0, 0, 0, 0).unix_time()&
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FN2F20EBB/Screenshot%20from%202019-09-12%2003-00-37.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FN2F20EBB/Screenshot%20from%202019-09-12%2003-00-37.png" width="606" height="130" alt="Screenshot from 2019-09-12 03-00-37.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FN2F20EBB/Screenshot%20from%202019-09-12%2003-00-37.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FN2F20EBB/Screenshot%20from%202019-09-12%2003-00-37.png" width="606" height="130" alt="Screenshot from 2019-09-12 03-00-37.png" />
                   </a>
                 </div>
               </div>
@@ -9867,13 +9823,13 @@ call map(range(1, 12), &#39;s:from_date(1970, v:val, 1, 0, 0, 0, 0).unix_time()&
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FNBT7RBFV/vim-8.1.2028.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FNBT7RBFV/vim-8.1.2028.png" width="330" height="221" alt="vim-8.1.2028.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FNBT7RBFV/vim-8.1.2028.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FNBT7RBFV/vim-8.1.2028.png" width="330" height="221" alt="vim-8.1.2028.png" />
                   </a>
                 </div>
                 <div>
-                  <a href="/slacklog/files/FNGUUVD89/vim-8.1.2029.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FNGUUVD89/vim-8.1.2029.png" width="330" height="221" alt="vim-8.1.2029.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FNGUUVD89/vim-8.1.2029.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FNGUUVD89/vim-8.1.2029.png" width="330" height="221" alt="vim-8.1.2029.png" />
                   </a>
                 </div>
               </div>

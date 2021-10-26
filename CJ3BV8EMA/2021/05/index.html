@@ -92,8 +92,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F020KQ2NY82/CleanShot%202021-05-01%20at%2001.05.53.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F020KQ2NY82/CleanShot%202021-05-01%20at%2001.05.53_1024.png" width="1024" height="794" alt="CleanShot 2021-05-01 at 01.05.53.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F020KQ2NY82/CleanShot%202021-05-01%20at%2001.05.53.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F020KQ2NY82/CleanShot%202021-05-01%20at%2001.05.53_1024.png" width="1024" height="794" alt="CleanShot 2021-05-01 at 01.05.53.png" />
                   </a>
                 </div>
               </div>
@@ -3716,208 +3716,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F021WV04B71/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F021WV04B71/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>*coc-fzf.txt*  fzf :heart: coc.nvim
-
-===============================================================================
-Contents ~
-
- 1. Introduction                            |coc-fzf-introduction|
- 2. Rationale                               |coc-fzf-rationale|
- 3. Installation                            |coc-fzf-installation|
- 4. Commands                                |coc-fzf-commands|
-  4.1. Original Sources                     |coc-fzf-original-sources|
-  4.2. Wrapper Sources                      |coc-fzf-wrapper-sources|
-  4.3. Add/Delete Sources                   |coc-fzf-add-delete-sources|
- 5. Options                                 |coc-fzf-options|
- 6. Vimrc Example                           |coc-fzf-vimrc-example|
- 7. FAQ                                     |coc-fzf-faq|
- 8. License                                 |coc-fzf-license|
- 9. References                              |coc-fzf-references|
-
-===============================================================================
-                                                         *coc-fzf-introduction*
-Introduction ~
-
-Use FZF [1] instead of coc.nvim [2] built-in fuzzy finder.
-
-  Image: (see reference [3])
-
-===============================================================================
-                                                            *coc-fzf-rationale*
-Rationale ~
-
-This plugin uses FZF [1] fuzzy finder in place of Coc [2]&#39;s built-in CocList
-sources [4] as well as Coc&#39;s jumps (definition, reference etc).
-It makes the interaction with Coc easier when you are used to FZF.
-
-The main features are:
-  - FZF preview
-  - FZF bindings for splits and tabs
-  - FZF layout (floating windows etc)
-  - FZF multi-select to populate the quickfix window
-
-It was inspired by Robert Buhren&#39;s functions [5] and coc-denite [6].
-
-===============================================================================
-                                                         *coc-fzf-installation*
-Installation ~
-
-Make sure to have the following plugins in your **vimrc**:
-&gt;
-  Plug &#39;junegunn/fzf&#39;, {&#39;dir&#39;: &#39;~/.fzf&#39;,&#39;do&#39;: &#39;./install --all&#39;}
-  Plug &#39;junegunn/fzf.vim&#39; &#34; needed for previews
-  Plug &#39;neoclide/coc.nvim&#39;, {&#39;do&#39;: &#39;yarn install --frozen-lockfile&#39;}
-  Plug &#39;antoinemadec/coc-fzf&#39;
-
-Or, if you prefer using the **release** branch:
-&gt;
-  Plug &#39;junegunn/fzf&#39;, {&#39;dir&#39;: &#39;~/.fzf&#39;,&#39;do&#39;: &#39;./install --all&#39;}
-  Plug &#39;junegunn/fzf.vim&#39; &#34; needed for previews
-  Plug &#39;neoclide/coc.nvim&#39;, {&#39;branch&#39;: &#39;release&#39;}
-  Plug &#39;antoinemadec/coc-fzf&#39;, {&#39;branch&#39;: &#39;release&#39;}
-
-Also consider installing bat [7] for colorful previews.
-
-===============================================================================
-                                                             *coc-fzf-commands*
-Commands ~
-
-| Command                     | List                       | ~
-| `:CocFzfList`                 | List all list sources      |
-| `:CocFzfList --original-only` | List only original sources |
-| `:CocFzfList {source}`        | Run a list source          |
-| `:CocFzfListResume`           | Retrieve last list source  |
-
--------------------------------------------------------------------------------
-                                                     *coc-fzf-original-sources*
-Original Sources ~
-
-These are the list sources implemented with FZF:
-
-| Source                          | List                                                   | Preview | Multi-select | Vim support |~
-| `actions`                         | Like :CocList actions                                  | -       | -            | ✅          |
-| `commands`                        | Like :CocList commands                                 | -       | -            | ✅          |
-| `diagnostics`                     | Like :CocList diagnostics                              | ✅      | ✅           | ✅          |
-| `diagnostics --current-buf`       | Like :CocList diagnostics in the current buffer only   | ✅      | ✅           | ✅          |
-| `issues`                          | Like :CocList issues. Requires coc-git [13]            | ✅      | -            | ✅          |
-| `location`                        | Like :CocList location.  Requires fzf.vim [8]          | ✅      | ✅           | ✅          |
-| `outline`                         | Like :CocList outline, with colors. Requires ctags [9] | -       | ✅           | ✅          |
-| `output `                         | Like :CocList output                                   | -       | ✅           | ✅          |
-| `services`                        | Like :CocList services                                 | -       | -            | ✅          |
-| `snippets`                        | Like :CocList snippets. Requires coc-snippets [10]     | ✅      | ✅           | ✅          |
-| `sources`                         | Like :CocList sources                                  | -       | -            | ✅          |
-| `symbols ({query})`               | Like :CocList symbols                                  | ✅      | ✅           | ❌          |
-| `symbols --kind {kind} ({query})` | Like :CocList symbols -kind {kind}                     | ✅      | ✅           | ❌          |
-| `yank`                            | Like :CocList yank. Requires coc-yank [11]             | ✅      | ✅           | ✅          |
-
-FZF bindings (default):
-  - **ctrl-t**: open in tab
-  - **ctrl-x**: open in vertical split
-  - **ctrl-s**: open in horizontal split
-  - **tab**: multi-select, populate quickfix window
-  - **?**: toggle preview window
-
--------------------------------------------------------------------------------
-                                                      *coc-fzf-wrapper-sources*
-Wrapper Sources ~
-
-Not every list source is implementable with FZF.
-For those sources, `:CocFzfList&#39; acts as a wrapper calling `:CocList&#39;
-
-Wrapper Sources appear with the **[wrapper]** mention when running `:CocFzfList`
-
--------------------------------------------------------------------------------
-                                                   *coc-fzf-add-delete-sources*
-Add/Delete Sources ~
-&gt;
-  &#34; add_list_source(name, description, command)
-  call coc_fzf#common#add_list_source(&#39;fzf-buffers&#39;, &#39;display open buffers&#39;, &#39;Buffers&#39;)
-
-  &#34; delete_list_source(name)
-  call coc_fzf#common#delete_list_source(&#39;fzf-buffers&#39;)
-&lt;
-===============================================================================
-                                                              *coc-fzf-options*
-Options ~
-
-| Option                       | Type   | Description                                                    | Default value             | ~
-| `g:coc_fzf_preview_toggle_key` | string | Change the key to toggle the preview window                    | `&#39;?&#39;`                       |
-| `g:coc_fzf_preview`            | string | Change the preview window position                             | `&#39;up:50%&#39;`                  |
-| `g:coc_fzf_opts`               | array  | Pass additional parameters to fzf, e.g. &#34;[&#39;--layout=reverse&#39;]&#34; | `[&#39;--layout=reverse-list&#39;]` |
-
-===============================================================================
-                                                        *coc-fzf-vimrc-example*
-Vimrc Example ~
-&gt;
-  &#34; allow to scroll in the preview
-  set mouse=a
-
-  &#34; mappings
-  nnoremap &lt;silent&gt; &lt;space&gt;&lt;space&gt; :&lt;C-u&gt;CocFzfList&lt;CR&gt;
-  nnoremap &lt;silent&gt; &lt;space&gt;a       :&lt;C-u&gt;CocFzfList diagnostics&lt;CR&gt;
-  nnoremap &lt;silent&gt; &lt;space&gt;b       :&lt;C-u&gt;CocFzfList diagnostics --current-buf&lt;CR&gt;
-  nnoremap &lt;silent&gt; &lt;space&gt;c       :&lt;C-u&gt;CocFzfList commands&lt;CR&gt;
-  nnoremap &lt;silent&gt; &lt;space&gt;e       :&lt;C-u&gt;CocFzfList extensions&lt;CR&gt;
-  nnoremap &lt;silent&gt; &lt;space&gt;l       :&lt;C-u&gt;CocFzfList location&lt;CR&gt;
-  nnoremap &lt;silent&gt; &lt;space&gt;o       :&lt;C-u&gt;CocFzfList outline&lt;CR&gt;
-  nnoremap &lt;silent&gt; &lt;space&gt;s       :&lt;C-u&gt;CocFzfList symbols&lt;CR&gt;
-  nnoremap &lt;silent&gt; &lt;space&gt;p       :&lt;C-u&gt;CocFzfListResume&lt;CR&gt;
-&lt;
-===============================================================================
-                                                                  *coc-fzf-faq*
-FAQ ~
-
-**Q**: How to get the FZF floating window?
-**A**: You can look at FZF Vim integration [12]:
-&gt;
-  let g:fzf_layout = { &#39;window&#39;: { &#39;width&#39;: 0.9, &#39;height&#39;: 0.6 } }
-&lt;
-**Q**: How to see references, definitions etc in a FZF window?
-**A**: It is already supported by default, just make sure to have the default coc mappings:
-&gt;
-  nmap &lt;silent&gt; gd &lt;Plug&gt;(coc-definition)
-  nmap &lt;silent&gt; gy &lt;Plug&gt;(coc-type-definition)
-  nmap &lt;silent&gt; gi &lt;Plug&gt;(coc-implementation)
-  nmap &lt;silent&gt; gr &lt;Plug&gt;(coc-references)
-&lt;
-**Q**: How to get colors in previews?
-**A**: Install bat [7].
-
-**Q**: CocFzf looks different from my other Fzf commands. How to make it the same?
-**A**: By default, CocFzf tries to mimic CocList. Here is how to change this:
-&gt;
-  let g:coc_fzf_preview = &#39;&#39;
-  let g:coc_fzf_opts = []
-&lt;
-===============================================================================
-                                                              *coc-fzf-license*
-License ~
-
-MIT
-
-===============================================================================
-                                                           *coc-fzf-references*
-References ~
-
-[1] https://github.com/junegunn/fzf
-[2] https://github.com/neoclide/coc.nvim
-[3] https://raw.githubusercontent.com/antoinemadec/gif/master/coc_fzf.gif
-[4] https://github.com/neoclide/coc.nvim/wiki/Using-coc-list#builtin-list-sources
-[5] https://gist.github.com/RobertBuhren/02e05506255c667c0038ce74ee1cef96
-[6] https://github.com/neoclide/coc-denite
-[7] https://github.com/sharkdp/bat
-[8] https://github.com/junegunn/fzf.vim
-[9] https://github.com/universal-ctags/ctags
-[10] https://github.com/neoclide/coc-snippets
-[11] https://github.com/neoclide/coc-yank
-[12] https://github.com/junegunn/fzf/blob/master/README-VIM.md
-[13] https://github.com/neoclide/coc-git
-
-vim: ft=help
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F021WV04B71/無題.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -4715,59 +4517,10 @@ vim: ft=help
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F022BTXUMK4/lua.lua" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F022BTXUMK4/lua.lua" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: lua.lua(Lua)]]</span>
                   </a>
-                  <pre><code class='language-lua'>require &#39;lsp.config&#39;.install_lsp_if_not_installed(&#39;lua&#39;)
-
-local sumneko_root_path = DATA_PATH .. &#39;/lspinstall/lua&#39;
-local sumneko_binary = sumneko_root_path .. &#39;/sumneko-lua-language-server&#39;
-local library = {}
-local path = vim.split(package.path, &#39;;&#39;)
-
-table.insert(path, &#39;lua/?.lua&#39;)
-table.insert(path, &#39;lua/?/init.lua&#39;)
--- table.insert(path, &#39;?.lua&#39;)
--- table.insert(path, &#39;?/init.lua&#39;)
-
-local function add_library(lib)
-    for _, p in pairs(vim.fn.expand(lib, false, true)) do
-        p = vim.loop.fs_realpath(p)
-        if p then
-            library[p] = true
-        end
-    end
-end
-
-add_library(&#39;$VIMRUNTIME&#39;)
-add_library(&#39;$HOME/.config/nvim&#39;)
--- add_library(&#39;$HOME/.local/share/nvim/site/pack/packer/opt/*&#39;)
--- add_library(&#39;$HOME/.local/share/nvim/site/pack/packer/start/*&#39;)
-add_library &#39;$HOME/.cache/dein/repos/github.com/*/*&#39;
-
-require(&#39;lspconfig&#39;).sumneko_lua.setup{
-    cmd = { sumneko_binary, &#39;-E&#39;, sumneko_root_path .. &#39;/main.lua&#39; },
-    on_attach = require&#39;lsp.config&#39;.cmmon_on_attach,
-    settings = {
-        Lua = {
-            runtime = {
-                version = &#39;LuaJIT&#39;,
-                path = path
-            },
-            completion = { callSnippet = &#39;Both&#39; },
-            diagnostics = {
-                globals = {&#39;vim&#39;}
-            },
-            workspace = {
-                library = library,
-                maxPreload = 10000,
-                preloadFileSize = 50000
-            },
-            -- telemetry = { enable = false }
-        }
-    }
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F022BTXUMK4/lua.lua: no such file or directory</span></pre>
                 </div>
               </div>
             </div>

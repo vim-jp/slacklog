@@ -8847,51 +8847,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01JCTVGHRC/______.md" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JCTVGHRC/______.md" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(マークダウン記法 (raw))]]</span>
                   </a>
-                  <pre><code class='language-markdown'>## 識別子は変数名として使える
-識別子は変数名としても使えます。たとえば次のコードはOKです。
-
-```go
-package main
-
-func main() {
-	nil := 1
-	println(nil) // 1
-}
-```
-
-対して、キーワードは予約語なので変数名として使えないので、次のコードではコンパイルエラーが起きます。
-
-```go
-package main
-
-func main() {
-	func := 1
-	println(func)
-}
-```
-
-識別子はプログラムの実体に名前を付けたものなので、変数名と同じ役割なため、事前に定義済みの識別子も変数名として使えるのではないかなと考えています。
-仕様書には`The following identifiers are implicitly declared in the universe block:`と書いていて、この`universe block`はすべてのGoのソースコードを含んでいます。
-厳密に説明するならば識別子は`univese block`のブロックスコープ内であれば書き換えは可能と理解しています。(自信がないので、ここ間違ってたら指摘下さい)
-
-イメージとしては次のコードになるかと思います。
-
-```go
-package main
-
-func main() {
-	// ここがuniverse blockとする
-	int := 1
-	{
-		int := &#34;a&#34;
-		println(int) // a
-	}
-	println(int) // 1
-}
-```</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01JCTVGHRC/______.md: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -9225,8 +9184,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01J5GZ01FH/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01J5GZ01FH/image.png" width="738" height="384" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01J5GZ01FH/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01J5GZ01FH/image.png" width="738" height="384" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -10131,8 +10090,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01CQF45UUA/result.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01CQF45UUA/result.png" width="955" height="270" alt="result.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01CQF45UUA/result.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01CQF45UUA/result.png" width="955" height="270" alt="result.png" />
                   </a>
                 </div>
               </div>
@@ -11748,72 +11707,10 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01J8U3R3V5/stack.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01J8U3R3V5/stack.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: stack.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>/*
-Package stack provides utility to capture stack frames.
-*/
-package stack
-
-import (
-        &#34;runtime&#34;
-        &#34;strconv&#34;
-        &#34;strings&#34;
-)
-
-// Frame represents a stack frame.
-type Frame struct {
-        File     string
-        Line     int
-        Function string
-}
-
-func (f *Frame) String() string {
-        return f.Function + &#34;() at &#34; + f.File + &#34;:&#34; + strconv.Itoa(f.Line)
-}
-
-// Frames gets stack frames with skip.
-func Frames(skip int) []*Frame {
-        var frames []*Frame
-        var pc [64]uintptr
-        skip += 2
-        for {
-                n := runtime.Callers(skip, pc[:])
-                if n == 0 {
-                        break
-                }
-                if frames == nil {
-                        frames = make([]*Frame, 0, n)
-                }
-                ff := runtime.CallersFrames(pc[:n])
-                for {
-                        f, more := ff.Next()
-                        frames = append(frames, &amp;Frame{
-                                File:     f.File,
-                                Line:     f.Line,
-                                Function: f.Function,
-                        })
-                        if !more {
-                                break
-                        }
-                }
-                skip += n
-        }
-        return frames
-}
-
-// Join concatenates formated frames as string.
-func Join(frames []*Frame, sep string) string {
-        b := strings.Builder{}
-        for i, f := range frames {
-                if i != 0 {
-                        b.WriteString(sep)
-                }
-                b.WriteString(f.String())
-        }
-        return b.String()
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01J8U3R3V5/stack.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -11911,37 +11808,10 @@ func Join(frames []*Frame, sep string) string {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01JVSMU9M2/myerr_go.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JVSMU9M2/myerr_go.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: myerr.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package myerr
-
-import (
-	&#34;fmt&#34;
-	&#34;time&#34;
-
-	&#34;./internal/stack&#34;
-)
-
-type myErr struct {
-	msg    string
-	args   []interface{}
-	frames []*stack.Frame
-	time   time.Time
-}
-
-func New(msg string, args ...interface{}) error {
-	return &amp;myErr{
-		msg:    msg,
-		args:   args,
-		frames: stack.Frames(1),
-		time:   time.Now(),
-	}
-}
-
-func (m *myErr) Error() string {
-	return fmt.Sprintf(&#34;[%s] %s:\n%s\n&#34;, m.time, fmt.Sprintf(m.msg, args...), stack.Join(m.frames))
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01JVSMU9M2/myerr_go.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -12276,12 +12146,10 @@ func (m *myErr) Error() string {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01JW4SHYKE/unwrap_go.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JW4SHYKE/unwrap_go.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: unwrap.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>for unwrapped := errors.Unwrap(err); unwrapped != nil ; unwrapped = errors.Unwrap(unwrapped) {
-    //... work with `unwrapped`
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01JW4SHYKE/unwrap_go.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -12374,14 +12242,10 @@ func (m *myErr) Error() string {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01JH6PGAGN/unwrap2.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JH6PGAGN/unwrap2.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: unwrap2.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>unwrapped := err
-for (unwrapped = errors.Unwrap(unwrapped) != nil {
-	// work with `unwrapped` ...
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01JH6PGAGN/unwrap2.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -12562,16 +12426,10 @@ for (unwrapped = errors.Unwrap(unwrapped) != nil {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01JLTCA9QV/unwrap3_go.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JLTCA9QV/unwrap3_go.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: unwrap3.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>for {
-	err = errors.Unwrap(err)
-	if err == nil {
-		break
-	}
-	// work with `err` ...
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01JLTCA9QV/unwrap3_go.go: no such file or directory</span></pre>
                 </div>
               </div>
               <details class="details-reset mt-3">
@@ -14894,23 +14752,10 @@ for (unwrapped = errors.Unwrap(unwrapped) != nil {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01JLTDBWTY/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JLTDBWTY/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>./cmd/vendor/github.com/google/pprof
-./cmd/vendor/github.com/ianlancetaylor/demangle
-./cmd/vendor/golang.org/x/arch
-./cmd/vendor/golang.org/x/crypto
-./cmd/vendor/golang.org/x/mod
-./cmd/vendor/golang.org/x/sys
-./cmd/vendor/golang.org/x/tools
-./cmd/vendor/golang.org/x/xerrors
-./vendor/golang.org/x/crypto
-./vendor/golang.org/x/net
-./vendor/golang.org/x/sys
-./vendor/golang.org/x/sys/cpu
-./vendor/golang.org/x/text
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01JLTDBWTY/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -26200,12 +26045,10 @@ for (unwrapped = errors.Unwrap(unwrapped) != nil {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01L0NT9M47/Untitled.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01L0NT9M47/Untitled.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>if d := cmp.Diff(want, got); d != &#34;&#34; {
-	t.Errorf(&#34;foo mismatch: -want +got\n%s&#34;, d)
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01L0NT9M47/Untitled.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>

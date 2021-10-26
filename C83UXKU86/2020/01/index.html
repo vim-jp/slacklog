@@ -2301,8 +2301,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FSBPL9FBP/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FSBPL9FBP/image.png" width="525" height="76" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSBPL9FBP/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSBPL9FBP/image.png" width="525" height="76" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -3245,8 +3245,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FSFDG0K7Y/cmd%202020-01-08%2010-21-24.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/FSFDG0K7Y/cmd%202020-01-08%2010-21-24.mp4" poster="/slacklog/files/FSFDG0K7Y/cmd%202020-01-08%2010-21-24_video.jpeg" controls alt="cmd 2020-01-08 10-21-24.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSFDG0K7Y/cmd%202020-01-08%2010-21-24.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSFDG0K7Y/cmd%202020-01-08%2010-21-24.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSFDG0K7Y/cmd%202020-01-08%2010-21-24_video.jpeg" controls alt="cmd 2020-01-08 10-21-24.mp4">
                   </video>
                   </a>
                 </div>
@@ -4338,8 +4338,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FSF4AETM3/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FSF4AETM3/image.png" width="371" height="186" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSF4AETM3/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSF4AETM3/image.png" width="371" height="186" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -4653,8 +4653,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FSLKBT12Q/searchcount.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FSLKBT12Q/searchcount_1024.png" width="1024" height="502" alt="searchcount.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSLKBT12Q/searchcount.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSLKBT12Q/searchcount_1024.png" width="1024" height="502" alt="searchcount.gif" />
                   </a>
                 </div>
               </div>
@@ -6477,77 +6477,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FSQ6JBPLL/list_blob.diff" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FSQ6JBPLL/list_blob.diff" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: list_blob.diff(Diff)]]</span>
                   </a>
-                  <pre><code class='language-diff'>diff --git a/src/list.c b/src/list.c
-index 68be0345..1f0fe782 100644
---- a/src/list.c
-+++ b/src/list.c
-@@ -1687,17 +1687,17 @@ filter_map(typval_T *argvars, typval_T *rettv, int map)
- 	}
- 	else if (argvars[0].v_type == VAR_BLOB)
- 	{
--	    int		i;
-+	    int		start, prev_rem, new_len;
- 	    typval_T	tv;
- 	    varnumber_T	val;
- 
- 	    // set_vim_var_nr() doesn&#39;t set the type
- 	    set_vim_var_type(VV_KEY, VAR_NUMBER);
- 
--	    for (i = 0; i &lt; b-&gt;bv_ga.ga_len; i++)
-+	    for (idx = start = prev_rem = new_len = 0; idx &lt; b-&gt;bv_ga.ga_len; idx++)
- 	    {
- 		tv.v_type = VAR_NUMBER;
--		val = blob_get(b, i);
-+		val = blob_get(b, idx);
- 		tv.vval.v_number = val;
- 		set_vim_var_nr(VV_KEY, idx);
- 		if (filter_map_one(&amp;tv, expr, map, &amp;rem) == FAIL || did_emsg)
-@@ -1710,18 +1710,32 @@ filter_map(typval_T *argvars, typval_T *rettv, int map)
- 		if (map)
- 		{
- 		    if (tv.vval.v_number != val)
--			blob_set(b, i, tv.vval.v_number);
-+			blob_set(b, idx, tv.vval.v_number);
- 		}
--		else if (rem)
-+		else if (rem != prev_rem)
- 		{
--		    char_u *p = (char_u *)argvars[0].vval.v_blob-&gt;bv_ga.ga_data;
--
--		    mch_memmove(p + i, p + i + 1,
--					      (size_t)b-&gt;bv_ga.ga_len - i - 1);
--		    --b-&gt;bv_ga.ga_len;
--		    --i;
-+		    if (rem)
-+		    {
-+			char_u *p = (char_u *)b-&gt;bv_ga.ga_data;
-+			mch_memmove(p + new_len, p + start, (size_t)(idx - start));
-+			new_len += idx - start;
-+		    }
-+		    else
-+		    {
-+			start = idx;
-+		    }
-+		    prev_rem = rem;
- 		}
--		++idx;
-+	    }
-+	    if (!map)
-+	    {
-+		if (!rem)
-+		{
-+		    char_u *p = (char_u *)b-&gt;bv_ga.ga_data;
-+		    mch_memmove(p + new_len, p + start, (size_t)(idx - start));
-+		    new_len += idx - start;
-+		}
-+		b-&gt;bv_ga.ga_len = new_len;
- 	    }
- 	}
- 	else // argvars[0].v_type == VAR_LIST
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/FSQ6JBPLL/list_blob.diff: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -8396,8 +8329,8 @@ index 68be0345..1f0fe782 100644
             </span>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FT0417BRD/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FT0417BRD/image.png" width="148" height="45" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FT0417BRD/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FT0417BRD/image.png" width="148" height="45" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -10451,8 +10384,8 @@ index 68be0345..1f0fe782 100644
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FT4AZJBT7/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/FT4AZJBT7/image.png" width="643" height="241" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FT4AZJBT7/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FT4AZJBT7/image.png" width="643" height="241" alt="image.png" />
                   </a>
                 </div>
               </div>

@@ -2274,39 +2274,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F026A4MTBQW/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F026A4MTBQW/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>test=# \d articles
-             テーブル &#34;public.articles&#34;
- 列 |   型   | 照合順序 | Null 値を許容 | デフォルト
-----+--------+----------+---------------+------------
- id | bigint |          | not null      |
-インデックス:
-    &#34;articles_pkey&#34; PRIMARY KEY, btree (id)
-参照元:
-    TABLE &#34;comments&#34; CONSTRAINT &#34;FK_comments_article_id&#34; FOREIGN KEY (article_id) REFERENCES articles(id)
-
-test=# \d comments
-                             テーブル &#34;public.comments&#34;
-      列      |             型              | 照合順序 | Null 値を許容 | デフォルト
---------------+-----------------------------+----------+---------------+------------
- id           | bigint                      |          | not null      |
- article_id   | bigint                      |          | not null      |
- commented_at | timestamp without time zone |          | not null      |
-インデックス:
-    &#34;comments_pkey&#34; PRIMARY KEY, btree (id)
-    &#34;IDX_comments_article_id_commented_at&#34; btree (article_id, commented_at)
-外部キー制約:
-    &#34;FK_comments_article_id&#34; FOREIGN KEY (article_id) REFERENCES articles(id)
-
-test=# explain SELECT article_id, MAX(commented_at) FROM comments GROUP BY article_id;
-                            QUERY PLAN
--------------------------------------------------------------------
- HashAggregate  (cost=33.55..35.55 rows=200 width=16)
-   Group Key: article_id
-   -&gt;  Seq Scan on comments  (cost=0.00..25.70 rows=1570 width=16)
-(3 行)</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F026A4MTBQW/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -2443,19 +2414,10 @@ test=# explain SELECT article_id, MAX(commented_at) FROM comments GROUP BY artic
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F026VHNG9FB/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F026VHNG9FB/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>test=# SET enable_seqscan TO &#39;off&#39;;
-SET
-test=# explain SELECT article_id, MAX(commented_at) FROM comments GROUP BY article_id;
-                                                      QUERY PLAN
------------------------------------------------------------------------------------------------------------------------
- GroupAggregate  (cost=0.15..77.55 rows=200 width=16)
-   Group Key: article_id
-   -&gt;  Index Only Scan using &#34;IDX_comments_article_id_commented_at&#34; on comments  (cost=0.15..67.70 rows=1570 width=16)
-(3 行)
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F026VHNG9FB/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -2592,23 +2554,10 @@ test=# explain SELECT article_id, MAX(commented_at) FROM comments GROUP BY artic
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0276KHM22U/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0276KHM22U/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>test=# EXPLAIN SELECT a.id, (SELECT MAX(commented_at) FROM comments WHERE article_id = a.id) as t FROM articles AS a ORDER BY t;
-                                                                    QUERY PLAN
-
---------------------------------------------------------------------------------------------------------------------------------------------------
- Sort  (cost=8480.96..8486.61 rows=2260 width=16)
-   Sort Key: ((SubPlan 2))
-   -&gt;  Seq Scan on articles a  (cost=0.00..8355.05 rows=2260 width=16)
-         SubPlan 2
-           -&gt;  Result  (cost=3.67..3.68 rows=1 width=8)
-                 InitPlan 1 (returns $1)
-                   -&gt;  Limit  (cost=0.15..3.67 rows=1 width=8)
-                         -&gt;  Index Only Scan Backward using &#34;IDX_comments_article_id_commented_at&#34; on comments  (cost=0.15..28.31 rows=8 width=8)
-                               Index Cond: ((article_id = a.id) AND (commented_at IS NOT NULL))
-(9 行)</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0276KHM22U/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -2854,21 +2803,10 @@ test=# explain SELECT article_id, MAX(commented_at) FROM comments GROUP BY artic
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F026H07SWV8/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F026H07SWV8/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>test=# EXPLAIN SELECT a.id, MAX(c.commented_at) as t FROM articles AS a LEFT OUTER JOIN comments AS c ON c.article_id = a.id GROUP BY a.id ORDER BY t DESC NULLS FIRST;
-                                      QUERY PLAN
---------------------------------------------------------------------------------------
- Sort  (cost=250.49..256.14 rows=2260 width=16)
-   Sort Key: (max(c.commented_at)) DESC
-   -&gt;  HashAggregate  (cost=101.98..124.58 rows=2260 width=16)
-         Group Key: a.id
-         -&gt;  Hash Right Join  (cost=60.85..90.68 rows=2260 width=16)
-               Hash Cond: (c.article_id = a.id)
-               -&gt;  Seq Scan on comments c  (cost=0.00..25.70 rows=1570 width=16)
-               -&gt;  Hash  (cost=32.60..32.60 rows=2260 width=8)
-                     -&gt;  Seq Scan on articles a  (cost=0.00..32.60 rows=2260 width=8)</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F026H07SWV8/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>

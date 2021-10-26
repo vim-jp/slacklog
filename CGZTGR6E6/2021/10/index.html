@@ -552,55 +552,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GTR5LDED/%E7%84%A1%E9%A1%8C.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GTR5LDED/%E7%84%A1%E9%A1%8C.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>// prismaに送るクエリの定義、prismaが型安全か守ってくれる
-const currentUserArgs = Prisma.validator&lt;Prisma.UserArgs&gt;()({
-  include: {
-    posts: true,
-});
-
-// Prismaのクエリから取得する型の生成
-export type CurrentUserGetPayload = Prisma.UserGetPayload&lt;
-  typeof currentUserArgs
-&gt;;
-
-// クライアントが使うQueryを元にCodegenしたものからResolverが返す必要がある型を生成
-export type CurrentUser = CurrentUserQuery[&#34;currentUser&#34;];
-
-// prisma to resolverの変換関数
-export const dataToCurrentUser = (data: CurrentUserGetPayload): CurrentUser =&gt; {
-  return data;
-};
-
-@Resolver(&#34;User&#34;)
-export class UserResolver {
-  constructor(private prisma: PrismaService) {}
-
-  @Query()
-  @UseGuards(JwtAuthGuard)
-  async currentUser(
-    @CurrentUserContext() currentUser: JwtPayload,
-  ): Promise&lt;CurrentUserType&gt; {
-    const data = await this.prisma.client.user.findUnique({
-      where: {
-        email: currentUser.email,
-      },
-      ...currentUserArgs,
-    });
-
-    if (data == null) {
-      throw new Error(&#34;current user not found&#34;);
-    }
-
-    const user = dataToCurrentUser(data);
-
-    // ここでfilterをし忘れると取って欲しくないプロパティがGraphQLから取れちゃう
-    return filter(CurrentUserFragmentDoc, user);
-  }
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02GTR5LDED/無題.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -5440,8 +5395,8 @@ export class UserResolver {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HQUX8L56/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-08%200.51.56.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HQUX8L56/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-08%200.51.56_1024.png" width="307" height="1024" alt="スクリーンショット 2021-10-08 0.51.56.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HQUX8L56/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-08%200.51.56.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HQUX8L56/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-08%200.51.56_1024.png" width="307" height="1024" alt="スクリーンショット 2021-10-08 0.51.56.png" />
                   </a>
                 </div>
               </div>
@@ -10577,8 +10532,8 @@ export class UserResolver {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GXHM6V8X/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GXHM6V8X/image.png" width="613" height="580" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GXHM6V8X/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GXHM6V8X/image.png" width="613" height="580" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -14006,8 +13961,8 @@ export class UserResolver {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HY2HQKJA/Screenshot_20211018-233657.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HY2HQKJA/Screenshot_20211018-233657_1024.png" width="438" height="1024" alt="Image from Android" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HY2HQKJA/Screenshot_20211018-233657.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HY2HQKJA/Screenshot_20211018-233657_1024.png" width="438" height="1024" alt="Image from Android" />
                   </a>
                 </div>
               </div>
@@ -16178,8 +16133,8 @@ export class UserResolver {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02JCHR1B6G/GAME_20211020-004219.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F02JCHR1B6G/GAME_20211020-004219.mp4" poster="/slacklog/files/F02JCHR1B6G/GAME_20211020-004219_video.jpeg" controls alt="File from Android">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JCHR1B6G/GAME_20211020-004219.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JCHR1B6G/GAME_20211020-004219.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JCHR1B6G/GAME_20211020-004219_video.jpeg" controls alt="File from Android">
                   </video>
                   </a>
                 </div>
@@ -17827,8 +17782,8 @@ export class UserResolver {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02JUA2KBRP/GAME_20211021-011450.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F02JUA2KBRP/GAME_20211021-011450.mp4" poster="/slacklog/files/F02JUA2KBRP/GAME_20211021-011450_video.jpeg" controls alt="GAME_20211021-011450.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JUA2KBRP/GAME_20211021-011450.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JUA2KBRP/GAME_20211021-011450.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JUA2KBRP/GAME_20211021-011450_video.jpeg" controls alt="GAME_20211021-011450.mp4">
                   </video>
                   </a>
                 </div>
@@ -22020,18 +21975,18 @@ export class UserResolver {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02JF22HSLF/CleanShot%202021-10-25%20at%2011.14.34.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02JF22HSLF/CleanShot%202021-10-25%20at%2011.14.34.png" width="518" height="260" alt="CleanShot 2021-10-25 at 11.14.34.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JF22HSLF/CleanShot%202021-10-25%20at%2011.14.34.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JF22HSLF/CleanShot%202021-10-25%20at%2011.14.34.png" width="518" height="260" alt="CleanShot 2021-10-25 at 11.14.34.png" />
                   </a>
                 </div>
                 <div>
-                  <a href="/slacklog/files/F02KKCDHAGG/CleanShot%202021-10-25%20at%2011.15.22.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02KKCDHAGG/CleanShot%202021-10-25%20at%2011.15.22.png" width="797" height="312" alt="CleanShot 2021-10-25 at 11.15.22.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02KKCDHAGG/CleanShot%202021-10-25%20at%2011.15.22.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02KKCDHAGG/CleanShot%202021-10-25%20at%2011.15.22.png" width="797" height="312" alt="CleanShot 2021-10-25 at 11.15.22.png" />
                   </a>
                 </div>
                 <div>
-                  <a href="/slacklog/files/F02JP0NLG86/CleanShot%202021-10-25%20at%2011.15.39.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02JP0NLG86/CleanShot%202021-10-25%20at%2011.15.39.png" width="576" height="262" alt="CleanShot 2021-10-25 at 11.15.39.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JP0NLG86/CleanShot%202021-10-25%20at%2011.15.39.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JP0NLG86/CleanShot%202021-10-25%20at%2011.15.39.png" width="576" height="262" alt="CleanShot 2021-10-25 at 11.15.39.png" />
                   </a>
                 </div>
               </div>

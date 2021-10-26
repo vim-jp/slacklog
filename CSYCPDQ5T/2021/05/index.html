@@ -502,77 +502,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F021HR662NN/template.yml.yaml" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F021HR662NN/template.yml.yaml" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: template.yml(YAML)]]</span>
                   </a>
-                  <pre><code class='language-yaml'>AWSTemplateFormatVersion: &#34;2010-09-09&#34;
-
-Transform: AWS::Serverless-2016-10-31
-
-Description: Create Applications
-
-Parameters:
-  Environment:
-    Description: Environment symbol
-    Type: String
-    AllowedValues:
-      - dev
-      - prd
-
-Globals:
-  Function:
-    Runtime: python3.8
-    Handler: index.lambda_handler
-
-Conditions:
-  IsDevelop: !Equals [!Ref Environment, dev]
-
-Resources:
-  ### Boolean 直接指定
-  FunctionA1:                   # enabledになって欲しい -&gt; enabled
-    Type: AWS::Serverless::Function
-    Properties:
-      FunctionName: Function-a1
-      InlineCode: |
-        def lambda_handler(event, context):
-            return { &#39;statusCode&#39;: 200, &#39;body&#39;: &#39;Hello from Lambda!&#39; }
-      Events:
-        Schedule:
-          Type: Schedule
-          Properties:
-            Schedule: cron(0 0 * * ? 2100)
-            Enabled: true
-
-  FunctionA2:                   # disabledになって欲しい -&gt; disabled
-    Type: AWS::Serverless::Function
-    Properties:
-      FunctionName: Function-a2
-      InlineCode: |
-        def lambda_handler(event, context):
-            return { &#39;statusCode&#39;: 200, &#39;body&#39;: &#39;Hello from Lambda!&#39; }
-      Events:
-        Schedule:
-          Type: Schedule
-          Properties:
-            Schedule: cron(0 0 * * ? 2100)
-            Enabled: false
-
-  ### IsDevelop を使う方法
-  # !If [ IsDevelop, False, True ] を使う
-  FunctionB3:                   # !If [ IsDevelop, False, True ] -&gt; disabled になって欲しい -&gt; enabled!?
-    Type: AWS::Serverless::Function
-    Properties:
-      FunctionName: Function-b3
-      InlineCode: |
-        def lambda_handler(event, context):
-            return { &#39;statusCode&#39;: 200, &#39;body&#39;: &#39;Hello from Lambda!&#39; }
-      Events:
-        Schedule:
-          Type: Schedule
-          Properties:
-            Schedule: cron(0 0 * * ? 2100)
-            Enabled: !If [ IsDevelop, False, True ]
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F021HR662NN/template.yml.yaml: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -599,8 +532,8 @@ Resources:
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F021J213E9H/Screenshot_2021-05-11_18-26-55.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F021J213E9H/Screenshot_2021-05-11_18-26-55.png" width="799" height="374" alt="Screenshot_2021-05-11_18-26-55.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F021J213E9H/Screenshot_2021-05-11_18-26-55.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F021J213E9H/Screenshot_2021-05-11_18-26-55.png" width="799" height="374" alt="Screenshot_2021-05-11_18-26-55.png" />
                   </a>
                 </div>
               </div>

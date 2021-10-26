@@ -2644,54 +2644,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01GCSJMWE5/main.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01GCSJMWE5/main.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: main.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package main
-
-import (
-	&#34;crypto/md5&#34;
-	&#34;embed&#34;
-	&#34;fmt&#34;
-	&#34;net/http&#34;
-)
-
-//go:embed &#34;static&#34;
-var static embed.FS
-
-func main() {
-	server := http.Server{
-		Addr:    &#34;:1029&#34;,
-		Handler: AssetHandler{static, &#34;static&#34;},
-	}
-	fmt.Println(&#34;serve&#34;)
-	server.ListenAndServe()
-}
-
-type AssetHandler struct {
-	Asset  embed.FS
-	Prefix string
-}
-
-func (a AssetHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
-	buf, err := a.Asset.ReadFile(a.Prefix + req.RequestURI)
-	if err != nil {
-		fmt.Println(&#34;not found&#34;)
-		res.WriteHeader(http.StatusNotFound)
-		return
-	}
-	serverTag := fmt.Sprintf(&#34;%x&#34;, md5.Sum(buf))
-	clientTag := req.Header.Get(&#34;If-None-Match&#34;)
-	if serverTag == clientTag {
-		fmt.Println(&#34;use cache&#34;)
-		res.WriteHeader(http.StatusNotModified)
-		return
-	}
-	fmt.Println(&#34;send asset&#34;)
-	res.Header().Add(&#34;ETag&#34;, serverTag)
-	res.WriteHeader(http.StatusOK)
-	res.Write(buf)
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01GCSJMWE5/main.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -2762,8 +2718,8 @@ func (a AssetHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01G1P1QT7V/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01G1P1QT7V/image.png" width="242" height="104" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01G1P1QT7V/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01G1P1QT7V/image.png" width="242" height="104" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -2835,8 +2791,8 @@ func (a AssetHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01G1P31PA7/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01G1P31PA7/image.png" width="488" height="136" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01G1P31PA7/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01G1P31PA7/image.png" width="488" height="136" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -4245,15 +4201,10 @@ func (a AssetHandler) ServeHTTP(res http.ResponseWriter, req *http.Request) {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01GRQ9K6BS/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01GRQ9K6BS/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>#!/bin/sh
-set -eu
-
-for i in base64 between concat contains foreach hash index json math parse random regexp ; do
-  ( cd $i &amp;&amp; go test -bench . -benchmem )
-done</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01GRQ9K6BS/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -9883,62 +9834,10 @@ done</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01GTS983MY/read_all_tokens.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01GTS983MY/read_all_tokens.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: read_all_tokens.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package main
-
-import (
-	&#34;bufio&#34;
-	&#34;compress/bzip2&#34;
-	&#34;encoding/xml&#34;
-	&#34;errors&#34;
-	&#34;io&#34;
-	&#34;log&#34;
-	&#34;os&#34;
-	&#34;time&#34;
-)
-
-func readAllTokens(name string) error {
-	f, err := os.Open(name)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	r1 := bufio.NewReader(f)
-	r2 := bzip2.NewReader(r1)
-	d := xml.NewDecoder(r2)
-	st := time.Now()
-	defer func() {
-		log.Printf(&#34;took %s&#34;, time.Since(st))
-	}()
-	log.Printf(&#34;start&#34;)
-	var progress int64 = 0
-	for {
-		tok, err := d.Token()
-		if err != nil {
-			if errors.Is(err, io.EOF) {
-				break
-			}
-			return err
-		}
-		switch tok.(type) {
-		case xml.StartElement:
-			progress++
-			if progress%1000000 == 0 {
-				log.Printf(&#34;progress: %d&#34;, progress)
-			}
-		}
-	}
-	return nil
-}
-
-func main() {
-	err := readAllTokens(&#34;kanto-latest.osm.bz2&#34;)
-	if err != nil {
-		log.Fatal(err)
-	}
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01GTS983MY/read_all_tokens.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -11818,8 +11717,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01H7MFEKUZ/Screenshot%20from%202020-12-14%2023-53-05.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01H7MFEKUZ/Screenshot%20from%202020-12-14%2023-53-05_1024.png" width="1024" height="450" alt="Screenshot from 2020-12-14 23-53-05.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H7MFEKUZ/Screenshot%20from%202020-12-14%2023-53-05.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H7MFEKUZ/Screenshot%20from%202020-12-14%2023-53-05_1024.png" width="1024" height="450" alt="Screenshot from 2020-12-14 23-53-05.png" />
                   </a>
                 </div>
               </div>
@@ -21218,8 +21117,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01H4M5NA1M/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01H4M5NA1M/image.png" width="757" height="211" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H4M5NA1M/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H4M5NA1M/image.png" width="757" height="211" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -23785,8 +23684,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01J3EGD325/2020-12-29_17-43.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01J3EGD325/2020-12-29_17-43.png" width="192" height="97" alt="2020-12-29_17-43.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01J3EGD325/2020-12-29_17-43.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01J3EGD325/2020-12-29_17-43.png" width="192" height="97" alt="2020-12-29_17-43.png" />
                   </a>
                 </div>
               </div>

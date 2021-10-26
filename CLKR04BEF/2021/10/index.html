@@ -169,8 +169,8 @@
             </span>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GBFBGF98/Alacritty%202021-10-01%2018-22-09.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GBFBGF98/Alacritty%202021-10-01%2018-22-09.png" width="286" height="180" alt="Alacritty 2021-10-01 18-22-09.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GBFBGF98/Alacritty%202021-10-01%2018-22-09.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GBFBGF98/Alacritty%202021-10-01%2018-22-09.png" width="286" height="180" alt="Alacritty 2021-10-01 18-22-09.png" />
                   </a>
                 </div>
               </div>
@@ -2387,8 +2387,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02H4FTQPC0/S%202021-10-02%2012.09.48.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02H4FTQPC0/S%202021-10-02%2012.09.48_1024.png" width="1024" height="50" alt="S 2021-10-02 12.09.48.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H4FTQPC0/S%202021-10-02%2012.09.48.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H4FTQPC0/S%202021-10-02%2012.09.48_1024.png" width="1024" height="50" alt="S 2021-10-02 12.09.48.png" />
                   </a>
                 </div>
               </div>
@@ -2460,8 +2460,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GESPV2RH/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GESPV2RH/image.png" width="370" height="348" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GESPV2RH/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GESPV2RH/image.png" width="370" height="348" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -4233,8 +4233,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GTQ20Q6M/CleanShot%202021-10-02%20at%2019.59.02.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GTQ20Q6M/CleanShot%202021-10-02%20at%2019.59.02.png" width="491" height="110" alt="CleanShot 2021-10-02 at 19.59.02.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GTQ20Q6M/CleanShot%202021-10-02%20at%2019.59.02.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GTQ20Q6M/CleanShot%202021-10-02%20at%2019.59.02.png" width="491" height="110" alt="CleanShot 2021-10-02 at 19.59.02.png" />
                   </a>
                 </div>
               </div>
@@ -4989,88 +4989,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GTQDMSRF/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GTQDMSRF/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>function! s:plugin_name(line) abort
-  try
-    if len(matchlist(a:line, &#39;dein#add(&#39;&#39;\(.\{-}\)&#39;&#39;.*)&#39;)) != 0
-      let matches = matchlist(a:line, &#39;dein#add(&#39;&#39;\(.\{-}\)&#39;&#39;.*)&#39;)
-      return split(matches[1], &#39;/&#39;)[-1]
-    elseif len(matchlist(a:line, &#39;dein#tap(&#39;&#39;\(.*\)&#39;&#39;)&#39;)) != 0
-      let matches = matchlist(a:line, &#39;dein#tap(&#39;&#39;\(.*\)&#39;&#39;)&#39;)
-      return matches[1]
-    else
-      echomsg &#39;Plugin not found&#39;
-      return &#39;&#39;
-    endif
-  catch
-    echomsg &#39;Plugin not found&#39;
-  endtry
-endfunction
-
-function! s:plugin_line(plugin_name, lines, start_line, end_line) abort
-  let i = a:start_line
-  while i &lt; a:end_line
-    if match(a:lines[i], &#39;dein#add(&#39;&#39;.\+/&#39; . a:plugin_name . &#39;&#39;&#39;.*)&#39;) != -1 || match(a:lines[i], &#39;dein#tap(&#39;&#39;&#39; . a:plugin_name . &#39;&#39;&#39;)&#39;) != -1
-      call setpos(&#39;.&#39;, [0, i + 1, 0, 0])
-      return v:true
-    endif
-
-    let i = i + 1
-  endwhile
-
-  return v:false
-endfunction
-
-function! s:plugin_lines(plugin_name, lines) abort
-  let lines = []
-  let i = 1
-  while i &lt; line(&#39;$&#39;)
-    if match(a:lines[i], &#39;dein#add(&#39;&#39;.\+/&#39; . a:plugin_name . &#39;&#39;&#39;.*)&#39;) != -1 || match(a:lines[i], &#39;dein#tap(&#39;&#39;&#39; . a:plugin_name . &#39;&#39;&#39;)&#39;) != -1
-      call add(lines, { &#39;filename&#39;: expand(&#39;%&#39;), &#39;lnum&#39;: i + 1, &#39;text&#39;: a:lines[i] })
-    endif
-
-    let i = i + 1
-  endwhile
-
-  call setqflist([], &#39;r&#39;, { &#39;items&#39;: lines })
-  copen
-endfunction
-
-function! s:jump_plugin(mode) abort
-  let line = getline(&#39;.&#39;)
-  let plugin_name = &lt;SID&gt;plugin_name(line)
-
-  if plugin_name ==# &#39;&#39;
-    return
-  endif
-
-  let current_line = line(&#39;.&#39;)
-  let lines = getline(0, line(&#39;$&#39;))
-
-  if a:mode ==# &#39;next&#39;
-    let result = &lt;SID&gt;plugin_line(plugin_name, lines, current_line, len(lines))
-    if !result
-      call &lt;SID&gt;plugin_line(plugin_name, lines, 1, current_line)
-    endif
-  elseif a:mode ==# &#39;prev&#39;
-    let result = &lt;SID&gt;plugin_line(plugin_name, lines, 1, current_line)
-    if !result
-      call &lt;SID&gt;plugin_line(plugin_name, lines, current_line, len(lines))
-    endif
-  elseif a:mode ==# &#39;qf&#39;
-    call &lt;SID&gt;plugin_lines(plugin_name, lines)
-  endif
-endfunction
-
-command! UsePluginPrev     call &lt;SID&gt;jump_plugin(&#39;prev&#39;)
-command! UsePluginNext     call &lt;SID&gt;jump_plugin(&#39;next&#39;)
-command! UsePluginQuickFix call &lt;SID&gt;jump_plugin(&#39;qf&#39;)
-
-nnoremap &lt;silent&gt; [p        :&lt;C-u&gt;UsePluginPrev&lt;CR&gt;
-nnoremap &lt;silent&gt; ]p        :&lt;C-u&gt;UsePluginNext&lt;CR&gt;
-nnoremap &lt;silent&gt; &lt;Leader&gt;p :&lt;C-u&gt;UsePluginQuickFix&lt;CR&gt;</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02GTQDMSRF/無題.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -7983,8 +7905,8 @@ nnoremap &lt;silent&gt; &lt;Leader&gt;p :&lt;C-u&gt;UsePluginQuickFix&lt;CR&gt;<
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GJ6MNH8U/CleanShot%202021-10-03%20at%2015.56.26.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GJ6MNH8U/CleanShot%202021-10-03%20at%2015.56.26.png" width="364" height="129" alt="CleanShot 2021-10-03 at 15.56.26.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GJ6MNH8U/CleanShot%202021-10-03%20at%2015.56.26.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GJ6MNH8U/CleanShot%202021-10-03%20at%2015.56.26.png" width="364" height="129" alt="CleanShot 2021-10-03 at 15.56.26.png" />
                   </a>
                 </div>
               </div>
@@ -8679,8 +8601,8 @@ nnoremap &lt;silent&gt; &lt;Leader&gt;p :&lt;C-u&gt;UsePluginQuickFix&lt;CR&gt;<
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02G1D89ZC7/CleanShot%202021-10-03%20at%2018.31.10.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02G1D89ZC7/CleanShot%202021-10-03%20at%2018.31.10_1024.png" width="1024" height="407" alt="CleanShot 2021-10-03 at 18.31.10.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02G1D89ZC7/CleanShot%202021-10-03%20at%2018.31.10.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02G1D89ZC7/CleanShot%202021-10-03%20at%2018.31.10_1024.png" width="1024" height="407" alt="CleanShot 2021-10-03 at 18.31.10.png" />
                   </a>
                 </div>
               </div>
@@ -8869,8 +8791,8 @@ nnoremap &lt;silent&gt; &lt;Leader&gt;p :&lt;C-u&gt;UsePluginQuickFix&lt;CR&gt;<
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GD4J5K9T/CleanShot%202021-10-03%20at%2018.38.00.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GD4J5K9T/CleanShot%202021-10-03%20at%2018.38.00.png" width="913" height="695" alt="CleanShot 2021-10-03 at 18.38.00.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GD4J5K9T/CleanShot%202021-10-03%20at%2018.38.00.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GD4J5K9T/CleanShot%202021-10-03%20at%2018.38.00.png" width="913" height="695" alt="CleanShot 2021-10-03 at 18.38.00.png" />
                   </a>
                 </div>
               </div>
@@ -10525,32 +10447,10 @@ nnoremap &lt;silent&gt; &lt;Leader&gt;p :&lt;C-u&gt;UsePluginQuickFix&lt;CR&gt;<
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GURVPW3B/______.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GURVPW3B/______.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>let g:lexima_map_escape = &#39;&lt;Plug&gt;(lexima-escape)&#39;
-let g:lexima_no_default_rules = v:true
-
-function! PumInit() abort
-  noremap! &lt;Plug&gt;(pum-next) &lt;Cmd&gt;call pum#map#select_relative(+1)&lt;CR&gt;
-  noremap! &lt;Plug&gt;(pum-prev) &lt;Cmd&gt;call pum#map#select_relative(-1)&lt;CR&gt;
-  noremap! &lt;Plug&gt;(pum-confirm) &lt;Cmd&gt;call pum#map#confirm()&lt;CR&gt;
-  noremap! &lt;Plug&gt;(pum-cancel) &lt;Cmd&gt;call pum#map#cancel()&lt;CR&gt;
-
-  imap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt; pum#visible() ? &#34;&lt;Plug&gt;(pum-next)&#34; : &#39;&lt;TAB&gt;&#39;
-  imap &lt;silent&gt;&lt;expr&gt; &lt;S-TAB&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-prev)&#39; : &#39;&lt;C-h&gt;&#39;
-  &#34;imap &lt;silent&gt;&lt;expr&gt; &lt;CR&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-confirm)&#39; : lexima#expand(&#39;&lt;CR&gt;&#39;, &#39;i&#39;)
-  inoremap &lt;silent&gt;&lt;expr&gt; &lt;CR&gt; pum#visible() ? &#39;&lt;Cmd&gt;call pum#map#confirm()&lt;CR&gt;&#39; : lexima#expand(&#39;&lt;LT&gt;CR&gt;&#39;, &#39;i&#39;)
-  imap &lt;silent&gt;&lt;expr&gt; &lt;Esc&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-cancel)&#39; : &#39;&lt;Plug&gt;(lexima-escape)&#39;
-
-  cmap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-next)&#39; : &#39;&lt;TAB&gt;&#39;
-  cmap &lt;silent&gt;&lt;expr&gt; &lt;S-TAB&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-prev)&#39; : &#39;&lt;C-h&gt;&#39;
-  cmap &lt;silent&gt;&lt;expr&gt; &lt;CR&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-confirm)&#39; : &#39;&lt;CR&gt;&#39;
-  cmap &lt;silent&gt;&lt;expr&gt; &lt;Esc&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-cancel)&#39; : &#39;&lt;C-c&gt;&#39;
-endfunction
-
-call lexima#set_default_rules()
-call PumInit()</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02GURVPW3B/______.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -10753,32 +10653,10 @@ call PumInit()</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GURVPW3B/______.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GURVPW3B/______.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>let g:lexima_map_escape = &#39;&lt;Plug&gt;(lexima-escape)&#39;
-let g:lexima_no_default_rules = v:true
-
-function! PumInit() abort
-  noremap! &lt;Plug&gt;(pum-next) &lt;Cmd&gt;call pum#map#select_relative(+1)&lt;CR&gt;
-  noremap! &lt;Plug&gt;(pum-prev) &lt;Cmd&gt;call pum#map#select_relative(-1)&lt;CR&gt;
-  noremap! &lt;Plug&gt;(pum-confirm) &lt;Cmd&gt;call pum#map#confirm()&lt;CR&gt;
-  noremap! &lt;Plug&gt;(pum-cancel) &lt;Cmd&gt;call pum#map#cancel()&lt;CR&gt;
-
-  imap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt; pum#visible() ? &#34;&lt;Plug&gt;(pum-next)&#34; : &#39;&lt;TAB&gt;&#39;
-  imap &lt;silent&gt;&lt;expr&gt; &lt;S-TAB&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-prev)&#39; : &#39;&lt;C-h&gt;&#39;
-  &#34;imap &lt;silent&gt;&lt;expr&gt; &lt;CR&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-confirm)&#39; : lexima#expand(&#39;&lt;CR&gt;&#39;, &#39;i&#39;)
-  inoremap &lt;silent&gt;&lt;expr&gt; &lt;CR&gt; pum#visible() ? &#39;&lt;Cmd&gt;call pum#map#confirm()&lt;CR&gt;&#39; : lexima#expand(&#39;&lt;LT&gt;CR&gt;&#39;, &#39;i&#39;)
-  imap &lt;silent&gt;&lt;expr&gt; &lt;Esc&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-cancel)&#39; : &#39;&lt;Plug&gt;(lexima-escape)&#39;
-
-  cmap &lt;silent&gt;&lt;expr&gt; &lt;TAB&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-next)&#39; : &#39;&lt;TAB&gt;&#39;
-  cmap &lt;silent&gt;&lt;expr&gt; &lt;S-TAB&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-prev)&#39; : &#39;&lt;C-h&gt;&#39;
-  cmap &lt;silent&gt;&lt;expr&gt; &lt;CR&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-confirm)&#39; : &#39;&lt;CR&gt;&#39;
-  cmap &lt;silent&gt;&lt;expr&gt; &lt;Esc&gt; pum#visible() ? &#39;&lt;Plug&gt;(pum-cancel)&#39; : &#39;&lt;C-c&gt;&#39;
-endfunction
-
-call lexima#set_default_rules()
-call PumInit()</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02GURVPW3B/______.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -12209,8 +12087,8 @@ call PumInit()</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02G22TDDJB/2021-10-04_08-16.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02G22TDDJB/2021-10-04_08-16.png" width="201" height="993" alt="2021-10-04_08-16.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02G22TDDJB/2021-10-04_08-16.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02G22TDDJB/2021-10-04_08-16.png" width="201" height="993" alt="2021-10-04_08-16.png" />
                   </a>
                 </div>
               </div>
@@ -19187,8 +19065,8 @@ call PumInit()</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GN934UTU/CleanShot%202021-10-05%20at%2013.37.04.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GN934UTU/CleanShot%202021-10-05%20at%2013.37.04.png" width="320" height="237" alt="CleanShot 2021-10-05 at 13.37.04.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GN934UTU/CleanShot%202021-10-05%20at%2013.37.04.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GN934UTU/CleanShot%202021-10-05%20at%2013.37.04.png" width="320" height="237" alt="CleanShot 2021-10-05 at 13.37.04.png" />
                   </a>
                 </div>
               </div>
@@ -20057,8 +19935,8 @@ call PumInit()</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GNA80TEW/CleanShot%202021-10-05%20at%2013.58.25.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GNA80TEW/CleanShot%202021-10-05%20at%2013.58.25.png" width="448" height="150" alt="CleanShot 2021-10-05 at 13.58.25.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GNA80TEW/CleanShot%202021-10-05%20at%2013.58.25.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GNA80TEW/CleanShot%202021-10-05%20at%2013.58.25.png" width="448" height="150" alt="CleanShot 2021-10-05 at 13.58.25.png" />
                   </a>
                 </div>
               </div>
@@ -20452,52 +20330,10 @@ call PumInit()</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02G7KMDZPZ/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02G7KMDZPZ/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>call wilder#set_option(&#39;pipeline&#39;, [
-\   wilder#branch(
-\     wilder#python_file_finder_pipeline({
-\       &#39;file_command&#39;: {_, arg -&gt; stridx(arg, &#39;.&#39;) != -1 ? [&#39;fd&#39;, &#39;-tf&#39;, &#39;-H&#39;] : [&#39;fd&#39;, &#39;-tf&#39;]},
-\       &#39;dir_command&#39;: [&#39;fd&#39;, &#39;-td&#39;],
-\     }),
-\     wilder#cmdline_pipeline({&#39;fuzzy&#39;: 1}),
-\     wilder#vim_search_pipeline()
-\   ),
-\ ])
-
-let wilder_cmd_line_renderer = wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-\ &#39;winblend&#39;: 20,
-\ &#39;highlighter&#39;: wilder#basic_highlighter(),
-\ &#39;highlights&#39;: {
-\   &#39;accent&#39;: wilder#make_hl(&#39;WilderAccent&#39;, &#39;Pmenu&#39;, [{}, {}, {&#39;foreground&#39;: &#39;#e27878&#39;, &#39;bold&#39;: v:true, &#39;underline&#39;: v:true}]),
-\   &#39;selected_accent&#39;: wilder#make_hl(&#39;WilderSelectedAccent&#39;, &#39;PmenuSel&#39;, [{}, {}, {&#39;foreground&#39;: &#39;#e27878&#39;, &#39;bold&#39;: v:true, &#39;underline&#39;: v:true}]),
-\ },
-\ &#39;left&#39;: [wilder#popupmenu_devicons({&#39;get_hl&#39;: wilder#devicons_get_hl_from_glyph_palette_vim()}), wilder#popupmenu_buffer_flags({&#39;flags&#39;: &#39; &#39;})],
-\ }))
-
-let wilder_search_renderer = wilder#wildmenu_renderer({
-\ &#39;highlighter&#39;: wilder#basic_highlighter(),
-\ &#39;separator&#39;: &#39;  &#39;,
-\ &#39;left&#39;: [&#39; &#39;],
-\ &#39;right&#39;: [&#39; &#39;, wilder#wildmenu_index()],
-\ &#39;border&#39;: &#39;rounded&#39;,
-\ })
-
-call wilder#setup({
-\ &#39;modes&#39;: [&#39;:&#39;, &#39;/&#39;, &#39;?&#39;],
-\ &#39;accept_key&#39;: &#39;&lt;C-e&gt;&#39;,
-\ })
-
-call wilder#set_option(
-\ &#39;renderer&#39;,
-\  wilder#renderer_mux({
-\ &#39;:&#39;: wilder_cmd_line_renderer,
-\ &#39;/&#39;: wilder_search_renderer,
-\ &#39;?&#39;: wilder_search_renderer,
-\ })
-\ )
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02G7KMDZPZ/無題.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -22082,8 +21918,8 @@ call wilder#set_option(
             </span>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GR31JL3E/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GR31JL3E/image.png" width="428" height="165" alt="tabsidebar + pum.vim" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GR31JL3E/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GR31JL3E/image.png" width="428" height="165" alt="tabsidebar + pum.vim" />
                   </a>
                 </div>
               </div>
@@ -27311,8 +27147,8 @@ call wilder#set_option(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GWC6F1MZ/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GWC6F1MZ/image_1024.png" width="1024" height="249" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GWC6F1MZ/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GWC6F1MZ/image_1024.png" width="1024" height="249" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -27340,8 +27176,8 @@ call wilder#set_option(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GPKKKW4E/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GPKKKW4E/image_1024.png" width="1024" height="155" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GPKKKW4E/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GPKKKW4E/image_1024.png" width="1024" height="155" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -27431,8 +27267,8 @@ call wilder#set_option(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GFQ5K6A3/CleanShot%202021-10-07%20at%2001.56.43.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GFQ5K6A3/CleanShot%202021-10-07%20at%2001.56.43.gif" width="800" height="486" alt="CleanShot 2021-10-07 at 01.56.43.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GFQ5K6A3/CleanShot%202021-10-07%20at%2001.56.43.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GFQ5K6A3/CleanShot%202021-10-07%20at%2001.56.43.gif" width="800" height="486" alt="CleanShot 2021-10-07 at 01.56.43.gif" />
                   </a>
                 </div>
               </div>
@@ -27460,8 +27296,8 @@ call wilder#set_option(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02H971RQ1X/ddc+pum.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F02H971RQ1X/ddc+pum.mp4" poster="/slacklog/files/F02H971RQ1X/ddc+pum_video.jpeg" controls alt="ddc+pum">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H971RQ1X/ddc+pum.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H971RQ1X/ddc+pum.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H971RQ1X/ddc+pum_video.jpeg" controls alt="ddc+pum">
                   </video>
                   </a>
                 </div>
@@ -31416,8 +31252,8 @@ call wilder#set_option(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HAR4EVAQ/%5BNo%20Name%5D%20-%20NVIM%202021-10-10%2001-06-53.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F02HAR4EVAQ/%5BNo%20Name%5D%20-%20NVIM%202021-10-10%2001-06-53.mp4" poster="/slacklog/files/F02HAR4EVAQ/%5BNo%20Name%5D%20-%20NVIM%202021-10-10%2001-06-53_video.jpeg" controls alt="[No Name] - NVIM 2021-10-10 01-06-53.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HAR4EVAQ/%5BNo%20Name%5D%20-%20NVIM%202021-10-10%2001-06-53.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HAR4EVAQ/%5BNo%20Name%5D%20-%20NVIM%202021-10-10%2001-06-53.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HAR4EVAQ/%5BNo%20Name%5D%20-%20NVIM%202021-10-10%2001-06-53_video.jpeg" controls alt="[No Name] - NVIM 2021-10-10 01-06-53.mp4">
                   </video>
                   </a>
                 </div>
@@ -33213,13 +33049,13 @@ call wilder#set_option(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02H2HWKCJ2/CleanShot%202021-10-10%20at%2017.27.44.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02H2HWKCJ2/CleanShot%202021-10-10%20at%2017.27.44_1024.png" width="1024" height="803" alt="CleanShot 2021-10-10 at 17.27.44.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H2HWKCJ2/CleanShot%202021-10-10%20at%2017.27.44.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H2HWKCJ2/CleanShot%202021-10-10%20at%2017.27.44_1024.png" width="1024" height="803" alt="CleanShot 2021-10-10 at 17.27.44.png" />
                   </a>
                 </div>
                 <div>
-                  <a href="/slacklog/files/F02H6AGD7FX/CleanShot%202021-10-10%20at%2017.28.01.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02H6AGD7FX/CleanShot%202021-10-10%20at%2017.28.01_1024.png" width="1024" height="805" alt="CleanShot 2021-10-10 at 17.28.01.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H6AGD7FX/CleanShot%202021-10-10%20at%2017.28.01.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H6AGD7FX/CleanShot%202021-10-10%20at%2017.28.01_1024.png" width="1024" height="805" alt="CleanShot 2021-10-10 at 17.28.01.png" />
                   </a>
                 </div>
               </div>
@@ -33247,89 +33083,10 @@ call wilder#set_option(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HMTYR1EV/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HMTYR1EV/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>let g:datafile = expand(&#39;~/.cache/vim/restore/data&#39;)
-
-function! Layout2Data(wins) abort
-  for win in a:wins
-    if win[0] ==# &#39;leaf&#39;
-      let file = getbufinfo(getwininfo(win[1])[0][&#39;bufnr&#39;])[0][&#39;name&#39;]
-      let win[1] = {&#39;file&#39;: filereadable(file) ? file : &#39;&#39;}
-    else
-      call Layout2Data(win[1])
-    endif
-  endfor
-endfunction
-
-function! WriteRestore() abort
-  let wins = []
-
-  let i = 1
-  while empty(winlayout(i)) == 0
-    let layout = [winlayout(i)]
-    call Layout2Data(layout)
-
-    call add(wins, layout)
-    let i += 1
-  endwhile
-
-  execute &#39;redir! &gt; &#39; . g:datafile
-     silent! echo json_encode(wins) . &#34;\n&#34;
-  redir END
-endfunction
-
-function! RestoreWins(wins) abort
-  for win in a:wins
-    if win[0] ==# &#39;row&#39;
-      let i = 1
-      while i &lt; len(win[1])
-        if i &gt;= 2
-          execute &#34;normal! \&lt;C-w&gt;p&#34;
-        endif
-        execute &#39;rightbelow vsplit&#39;
-        call RestoreWins(win[1])
-
-        let i = i + 1
-      endwhile
-    elseif win[0] ==# &#39;col&#39;
-      let i = 1
-      while i &lt; len(win[1])
-        if i &gt;= 2
-          execute &#34;normal! \&lt;C-w&gt;p&#34;
-        endif
-        execute &#39;rightbelow split&#39;
-        call RestoreWins(win[1])
-
-        let i = i + 1
-      endwhile
-    elseif win[0] ==# &#39;leaf&#39;
-      if win[1][&#39;file&#39;] !=# &#39;&#39;
-        execute &#39;edit &#39; . win[1][&#39;file&#39;]
-      endif
-    endif
-  endfor
-endfunction
-
-function! ReadRestore() abort
-  let lines = &#39;&#39;
-  for line in readfile(g:datafile)
-    let lines .= line
-  endfor
-
-  let data = json_decode(lines)
-  let i = 1
-  for tab_data in data
-    call RestoreWins(tab_data)
-    if len(data) &gt; i
-      execute &#39;tabedit&#39;
-    endif
-
-    let i = i + 1
-  endfor
-endfunction
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02HMTYR1EV/無題.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -33655,8 +33412,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02H9E2245R/layout.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02H9E2245R/layout_1024.png" width="1024" height="734" alt="layout.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H9E2245R/layout.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H9E2245R/layout_1024.png" width="1024" height="734" alt="layout.gif" />
                   </a>
                 </div>
               </div>
@@ -35927,8 +35684,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02H8UD7GR3/iOS%20%E3%81%AE%E7%94%BB%E5%83%8F.jpg" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02H8UD7GR3/iOS%20%E3%81%AE%E7%94%BB%E5%83%8F.jpg" width="268" height="288" alt="iOS の画像" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H8UD7GR3/iOS%20%E3%81%AE%E7%94%BB%E5%83%8F.jpg" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H8UD7GR3/iOS%20%E3%81%AE%E7%94%BB%E5%83%8F.jpg" width="268" height="288" alt="iOS の画像" />
                   </a>
                 </div>
               </div>
@@ -36798,8 +36555,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GXPZ951D/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GXPZ951D/image.png" width="935" height="291" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GXPZ951D/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GXPZ951D/image.png" width="935" height="291" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -36849,8 +36606,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HR8JEEJV/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HR8JEEJV/image.png" width="446" height="400" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HR8JEEJV/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HR8JEEJV/image.png" width="446" height="400" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -37677,8 +37434,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HGJ7HEUU/CleanShot%202021-10-12%20at%2009.15.36.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HGJ7HEUU/CleanShot%202021-10-12%20at%2009.15.36.png" width="382" height="208" alt="CleanShot 2021-10-12 at 09.15.36.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HGJ7HEUU/CleanShot%202021-10-12%20at%2009.15.36.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HGJ7HEUU/CleanShot%202021-10-12%20at%2009.15.36.png" width="382" height="208" alt="CleanShot 2021-10-12 at 09.15.36.png" />
                   </a>
                 </div>
               </div>
@@ -38291,8 +38048,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GZNV5F4P/CleanShot%202021-10-12%20at%2009.38.52.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GZNV5F4P/CleanShot%202021-10-12%20at%2009.38.52_1024.png" width="1024" height="426" alt="CleanShot 2021-10-12 at 09.38.52.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GZNV5F4P/CleanShot%202021-10-12%20at%2009.38.52.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GZNV5F4P/CleanShot%202021-10-12%20at%2009.38.52_1024.png" width="1024" height="426" alt="CleanShot 2021-10-12 at 09.38.52.png" />
                   </a>
                 </div>
               </div>
@@ -38736,8 +38493,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HEEB7DV1/CleanShot%202021-10-12%20at%2009.43.04.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HEEB7DV1/CleanShot%202021-10-12%20at%2009.43.04.png" width="533" height="96" alt="CleanShot 2021-10-12 at 09.43.04.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HEEB7DV1/CleanShot%202021-10-12%20at%2009.43.04.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HEEB7DV1/CleanShot%202021-10-12%20at%2009.43.04.png" width="533" height="96" alt="CleanShot 2021-10-12 at 09.43.04.png" />
                   </a>
                 </div>
               </div>
@@ -39491,8 +39248,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HEF3G8TD/CleanShot%202021-10-12%20at%2009.57.26.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HEF3G8TD/CleanShot%202021-10-12%20at%2009.57.26.png" width="938" height="259" alt="CleanShot 2021-10-12 at 09.57.26.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HEF3G8TD/CleanShot%202021-10-12%20at%2009.57.26.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HEF3G8TD/CleanShot%202021-10-12%20at%2009.57.26.png" width="938" height="259" alt="CleanShot 2021-10-12 at 09.57.26.png" />
                   </a>
                 </div>
               </div>
@@ -42300,8 +42057,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HETQ20LT/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HETQ20LT/image.png" width="869" height="202" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HETQ20LT/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HETQ20LT/image.png" width="869" height="202" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -43942,8 +43699,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02H9SU5X9U/2021-10-12-222820_800x600_scrot.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02H9SU5X9U/2021-10-12-222820_800x600_scrot.png" width="800" height="600" alt="2021-10-12-222820_800x600_scrot.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H9SU5X9U/2021-10-12-222820_800x600_scrot.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H9SU5X9U/2021-10-12-222820_800x600_scrot.png" width="800" height="600" alt="2021-10-12-222820_800x600_scrot.png" />
                   </a>
                 </div>
               </div>
@@ -44240,8 +43997,8 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02H20NQLUF/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-12%2022.39.22.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02H20NQLUF/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-12%2022.39.22_1024.png" width="1024" height="821" alt="スクリーンショット 2021-10-12 22.39.22.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H20NQLUF/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-12%2022.39.22.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H20NQLUF/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-12%2022.39.22_1024.png" width="1024" height="821" alt="スクリーンショット 2021-10-12 22.39.22.png" />
                   </a>
                 </div>
               </div>
@@ -44561,51 +44318,10 @@ endfunction
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02J6QPP2C8/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02J6QPP2C8/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>function! s:setline(line) abort
-  if strwidth(a:line) &gt; 78
-    throw &#34;78文字以下にしてください&#34;
-  endif
-  call setline(line(&#39;.&#39;), a:line)
-endfunction
-
-function! s:help_intro() abort
-  let description = input(&#39;description: &#39;)
-  let line = printf(&#39;*%s.txt* %s&#39;, expand(&#39;%:t:r&#39;), description)
-  call s:setline(line)
-endfunction
-
-function! help#set_tagline(title, tag) abort
-  let lhs = a:title
-  let rhs = printf(&#39;*%s*&#39;, a:tag)
-  let space = repeat(&#39; &#39;, 78 - len(lhs) - len(rhs))
-  let line = lhs .. space .. rhs
-  call s:setline(line)
-endfunction
-
-command! HelpTagLine call help#set_tagline(input(&#39;title: &#39;), input(&#39;tag: &#39;))
-
-command! HelpIntro call s:help_intro()
-
-function! s:help_title() abort
-  let title = input(&#39;title: &#39;)
-  let lower = tolower(title)
-  let upper = toupper(title)
-  let tag = printf(&#39;*%s-%s*&#39;, expand(&#39;%:t:r&#39;), lower)
-  let space = repeat(&#39; &#39;, 78 - len(upper) - len(tag))
-  let line = upper .. space .. tag
-  call s:setline(line)
-endfunction
-
-command! HelpTitle call s:help_title()
-
-command! HelpDitto eval {title-&gt;help#set_tagline(title, title)}(input(&#39;title: &#39;))
-
-command! HelpSkkeletonConfig eval {title-&gt;help#set_tagline(title, printf(&#39;skkeleton-config-%s&#39;, title))}(input(&#39;title: &#39;))
-command! HelpSkkeletonFunction eval {title-&gt;help#set_tagline(title, printf(&#39;skkeleton-function-%s&#39;, title))}(input(&#39;title: &#39;))
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02J6QPP2C8/無題.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -46277,8 +45993,8 @@ command! HelpSkkeletonFunction eval {title-&gt;help#set_tagline(title, printf(&#
             </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HYNTUJ6M/%5BNo%20Name%5D%20-%20NVIM%202021-10-13%2015-27-33_Trim.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F02HYNTUJ6M/%5BNo%20Name%5D%20-%20NVIM%202021-10-13%2015-27-33_Trim.mp4" poster="/slacklog/files/F02HYNTUJ6M/%5BNo%20Name%5D%20-%20NVIM%202021-10-13%2015-27-33_Trim_video.jpeg" controls alt="[No Name] - NVIM 2021-10-13 15-27-33_Trim.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HYNTUJ6M/%5BNo%20Name%5D%20-%20NVIM%202021-10-13%2015-27-33_Trim.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HYNTUJ6M/%5BNo%20Name%5D%20-%20NVIM%202021-10-13%2015-27-33_Trim.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HYNTUJ6M/%5BNo%20Name%5D%20-%20NVIM%202021-10-13%2015-27-33_Trim_video.jpeg" controls alt="[No Name] - NVIM 2021-10-13 15-27-33_Trim.mp4">
                   </video>
                   </a>
                 </div>
@@ -47741,8 +47457,8 @@ command! HelpSkkeletonFunction eval {title-&gt;help#set_tagline(title, printf(&#
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02H5SS4431/CleanShot%202021-10-13%20at%2017.34.29.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02H5SS4431/CleanShot%202021-10-13%20at%2017.34.29.png" width="524" height="455" alt="CleanShot 2021-10-13 at 17.34.29.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H5SS4431/CleanShot%202021-10-13%20at%2017.34.29.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02H5SS4431/CleanShot%202021-10-13%20at%2017.34.29.png" width="524" height="455" alt="CleanShot 2021-10-13 at 17.34.29.png" />
                   </a>
                 </div>
               </div>
@@ -47770,8 +47486,8 @@ command! HelpSkkeletonFunction eval {title-&gt;help#set_tagline(title, printf(&#
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02JA7ZV1MW/CleanShot%202021-10-13%20at%2017.38.26.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02JA7ZV1MW/CleanShot%202021-10-13%20at%2017.38.26.png" width="324" height="259" alt="CleanShot 2021-10-13 at 17.38.26.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JA7ZV1MW/CleanShot%202021-10-13%20at%2017.38.26.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JA7ZV1MW/CleanShot%202021-10-13%20at%2017.38.26.png" width="324" height="259" alt="CleanShot 2021-10-13 at 17.38.26.png" />
                   </a>
                 </div>
               </div>
@@ -47799,46 +47515,10 @@ command! HelpSkkeletonFunction eval {title-&gt;help#set_tagline(title, printf(&#
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HNQ1BQ3E/%E7%84%A1%E9%A1%8C.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HNQ1BQ3E/%E7%84%A1%E9%A1%8C.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>import { CompleteResult, ExtensionContext, sources, workspace } from &#39;coc.nvim&#39;;
-
-export type Candidate = {
-  word: string;
-  abbr?: string;
-  menu?: string;
-  info?: string;
-  kind?: string;
-  dup?: boolean;
-  user_data?: unknown;
-  __sourceName: string;
-};
-
-export const activate = async (context: ExtensionContext): Promise&lt;void&gt; =&gt; {
-  context.subscriptions.push(
-    sources.createSource({
-      name: &#39;ddc&#39;,
-      doComplete: async () =&gt; {
-        const items = await getCompletionItems();
-        return { ...items };
-      },
-    })
-  );
-};
-
-const getCompletionItems = async (): Promise&lt;CompleteResult&gt; =&gt; {
-  const candidates = (await workspace.nvim.getVar(&#39;ddc#_candidates&#39;)) as Array&lt;Candidate&gt;;
-  return {
-    items: candidates.map((item) =&gt; {
-      return {
-        ...item,
-        menu: `[${[&#39;ddc&#39;, item.__sourceName].join(&#39; &#39;)}]`,
-      };
-    }),
-  };
-};
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02HNQ1BQ3E/無題.ts: no such file or directory</span></pre>
                 </div>
               </div>
               <details class="details-reset mt-3">
@@ -50597,8 +50277,8 @@ const getCompletionItems = async (): Promise&lt;CompleteResult&gt; =&gt; {
             </span>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HAMDJPPZ/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HAMDJPPZ/image_1024.png" width="1024" height="263" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HAMDJPPZ/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HAMDJPPZ/image_1024.png" width="1024" height="263" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -51356,8 +51036,8 @@ const getCompletionItems = async (): Promise&lt;CompleteResult&gt; =&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02HP5W1RSA/CleanShot%202021-10-15%20at%2011.08.58.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02HP5W1RSA/CleanShot%202021-10-15%20at%2011.08.58_1024.png" width="1024" height="576" alt="CleanShot 2021-10-15 at 11.08.58.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HP5W1RSA/CleanShot%202021-10-15%20at%2011.08.58.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02HP5W1RSA/CleanShot%202021-10-15%20at%2011.08.58_1024.png" width="1024" height="576" alt="CleanShot 2021-10-15 at 11.08.58.png" />
                   </a>
                 </div>
               </div>
@@ -60649,8 +60329,8 @@ const getCompletionItems = async (): Promise&lt;CompleteResult&gt; =&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02JGBBAJSH/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02JGBBAJSH/image_1024.png" width="1024" height="658" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JGBBAJSH/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JGBBAJSH/image_1024.png" width="1024" height="658" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -63980,8 +63660,8 @@ const getCompletionItems = async (): Promise&lt;CompleteResult&gt; =&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02JMMEAT6Z/CleanShot%202021-10-22%20at%2021.21.38.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02JMMEAT6Z/CleanShot%202021-10-22%20at%2021.21.38.png" width="582" height="238" alt="CleanShot 2021-10-22 at 21.21.38.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JMMEAT6Z/CleanShot%202021-10-22%20at%2021.21.38.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JMMEAT6Z/CleanShot%202021-10-22%20at%2021.21.38.png" width="582" height="238" alt="CleanShot 2021-10-22 at 21.21.38.png" />
                   </a>
                 </div>
               </div>
@@ -64195,8 +63875,8 @@ const getCompletionItems = async (): Promise&lt;CompleteResult&gt; =&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02KEC7QK7A/CleanShot%202021-10-22%20at%2021.30.29.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02KEC7QK7A/CleanShot%202021-10-22%20at%2021.30.29.png" width="357" height="67" alt="CleanShot 2021-10-22 at 21.30.29.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02KEC7QK7A/CleanShot%202021-10-22%20at%2021.30.29.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02KEC7QK7A/CleanShot%202021-10-22%20at%2021.30.29.png" width="357" height="67" alt="CleanShot 2021-10-22 at 21.30.29.png" />
                   </a>
                 </div>
               </div>
@@ -65398,37 +65078,10 @@ const getCompletionItems = async (): Promise&lt;CompleteResult&gt; =&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02JR10VBA7/denite-cmdline-filter.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JR10VBA7/denite-cmdline-filter.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: denite-cmdline-filter(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>&#34; iキーでフィルタリング開始
-autocmd FileType denite
-      \ nnoremap &lt;buffer&gt;&lt;nowait&gt; i &lt;Cmd&gt;call &lt;SID&gt;start_filter()&lt;CR&gt;
-
-function! s:start_filter() abort
-  augroup denite-cmdline-filter
-    autocmd SafeState * call denite#call_map(&#39;filter&#39;, getcmdline()) | redraw
-  augroup END
-
-  &#34; フィルタリング中のマッピング
-  let filter_maps = {
-        \   &#39;&lt;C-N&gt;&#39;: &#39;&lt;Cmd&gt;normal j&lt;CR&gt;&lt;Cmd&gt;redraw&lt;CR&gt;&#39;,
-        \   &#39;&lt;C-P&gt;&#39;: &#39;&lt;Cmd&gt;normal k&lt;CR&gt;&lt;Cmd&gt;redraw&lt;CR&gt;&#39;,
-        \   &#39;&lt;CR&gt;&#39;:  &#39;&lt;Esc&gt;&lt;CR&gt;&#39;,
-        \   &#39;&lt;Tab&gt;&#39;: &#39;&lt;Esc&gt;&lt;Tab&gt;&#39;,
-        \ }
-
-  for [lhs, rhs] in items(filter_maps)
-    execute &#39;cmap &lt;silent&gt;&lt;buffer&gt;&lt;nowait&gt;&#39; lhs rhs
-  endfor
-
-  call input(&#39;&#39;, denite#get_status(&#39;input&#39;)[:-2])
-
-  for lhs in keys(filter_maps)
-    execute &#39;cunmap &lt;buffer&gt;&#39; lhs
-  endfor
-  autocmd! denite-cmdline-filter
-endfunction</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02JR10VBA7/denite-cmdline-filter.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -67112,22 +66765,10 @@ endfunction</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02JS26HBM3/skkeleton-error.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02JS26HBM3/skkeleton-error.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: skkeleton-error.txt(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>function skkeleton#request[2]..denops#request[1]..denops#server#request[4]..&lt;SNR&gt;232_request[3]..function skkeleton#request[2]..denops#request[1]..denops#server#request[4]..&lt;SNR&gt;232_request の処理中にエラーが検出されました:
-行    3:
-E605: 例外が捕捉されませんでした: Error: Failed to call &#39;toggle&#39; with []: TypeError: Cannot read properties of undefined (reading &#39;call&#39;)^@    at Module.expand (https://deno.land/x/denops_std@v2.1.2/function/_generated.ts:1247:17)^@    at init (file:///home/thinca/.local/share/vim/dein/.cache/vimrc/.dein/denops/skkeleton/main.ts:63:29)^@    at enable (file:///home/thinca/.local/share/vim/dein/.cache/vimrc/.dein/denops/skkeleton/main.ts:99:11)^@    at Session.toggle (file:///
-home/thinca/.local/share/vim/dein/.cache/vimrc/.dein/denops/skkeleton/main.ts:248:16)^@    at async Session.dispatch (https://deno.land/x/msgpack_rpc@v3.1.4/session.ts:99:12)^@    at async https://deno.land/x/msgpack_rpc@v3.1.4/session.ts:108:18^@    at async Session.handleRequest (https://deno.land/x/msgpack_rpc@v3.1.4/session.ts:104:29)^@    at Session.call (https://deno.land/x/msgpack_rpc@v3.1.4/session.ts:207:13)^@    at async Service.dispatch (file:///home/thinca/.local
-/share/vim/dein/.cache/vimrc/.dein/denops/@denops-private/serv
-[denops] TypeError: Cannot read properties of undefined (reading &#39;cmd&#39;)
-[denops]     at init (file:///home/thinca/.local/share/vim/dein/.cache/vimrc/.dein/denops/skkeleton/main.ts:37:18)
-[denops]     at enable (file:///home/thinca/.local/share/vim/dein/.cache/vimrc/.dein/denops/skkeleton/main.ts:99:11)
-[denops]     at Session.toggle (file:///home/thinca/.local/share/vim/dein/.cache/vimrc/.dein/denops/skkeleton/main.ts:248:16)
-[denops]     at async Session.dispatch (https://deno.land/x/msgpack_rpc@v3.1.4/session.ts:99:12)
-[denops]     at async https://deno.land/x/msgpack_rpc@v3.1.4/session.ts:108:18
-[denops]     at async Session.handleRequest (https://deno.land/x/msgpack_rpc@v3.1.4/session.ts:104:29)
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02JS26HBM3/skkeleton-error.txt: no such file or directory</span></pre>
                 </div>
               </div>
               <details class="details-reset mt-3">

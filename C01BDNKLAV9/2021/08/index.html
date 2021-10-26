@@ -163,8 +163,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F029DJWNSHM/Screenshot_2021-08-02_02-32-30.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F029DJWNSHM/Screenshot_2021-08-02_02-32-30.png" width="710" height="626" alt="Screenshot_2021-08-02_02-32-30.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F029DJWNSHM/Screenshot_2021-08-02_02-32-30.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F029DJWNSHM/Screenshot_2021-08-02_02-32-30.png" width="710" height="626" alt="Screenshot_2021-08-02_02-32-30.png" />
                   </a>
                 </div>
               </div>
@@ -192,8 +192,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F029GHML5PH/Screenshot_2021-08-03_00-50-26.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F029GHML5PH/Screenshot_2021-08-03_00-50-26.png" width="440" height="102" alt="Screenshot_2021-08-03_00-50-26.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F029GHML5PH/Screenshot_2021-08-03_00-50-26.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F029GHML5PH/Screenshot_2021-08-03_00-50-26.png" width="440" height="102" alt="Screenshot_2021-08-03_00-50-26.png" />
                   </a>
                 </div>
               </div>
@@ -575,75 +575,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02B0GYFGD6/generator.scm" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02B0GYFGD6/generator.scm" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: generator.scm(Scheme)]]</span>
                   </a>
-                  <pre><code class='language-scheme'>(use util.match)
-
-(define-syntax define-er-macro
-  (er-macro-transformer
-    (lambda (form rename cmp?)
-      (match form
-        [(_ name funcnames . body)
-         (quasirename rename
-           (define-syntax ,name
-             (er-macro-transformer
-               (lambda ,funcnames ,@body))))]))))
-
-(define (map-tree proc sexp)
-  (if (pair? sexp)
-      (cons (map-tree proc (car sexp)) (map-tree proc (cdr sexp)))
-      (proc sexp)))
-
-(define-er-macro define-generator (form rename cmp?)
-  (match form
-    [(_ (fn . args) . body)
-     (quasirename rename
-       (define ,fn
-         (let* ((retval #f)
-                (eval-rem #f)
-                (yield
-                  (lambda v
-                    (let/cc c
-                      (set! eval-rem c)
-                      (retval (apply values v)))))
-                (proc (lambda ,args ,@(map-tree
-                                        (lambda (atom) (if (eq? atom &#39;yield) (rename atom) atom))
-                                        body))))
-            (lambda ,args 
-              (lambda ()
-                (cond
-                  ((not eval-rem)
-                   (let/cc c
-                     (set! retval c)
-                     (proc ,@args)
-                     (set! eval-rem (eof-object))
-                     (eof-object)))
-                  ((procedure? eval-rem)
-                   (eval-rem))
-                  (else (eof-object))))))))]))
-
-(define-generator (range n)
-  (let rec ((c 0))
-    (if (= c n)
-        (eof-object)
-        (begin
-          (yield c)
-          (rec (+ c 1))))))
-
-(define r (range 10))
-(print (r))
-(print (r))
-(print (r))
-(print (r))
-(print (r))
-(print (r))
-(print (r))
-(print (r))
-(print (r))
-(print (r))
-(print (r))
-(print (r))</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02B0GYFGD6/generator.scm: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -701,8 +636,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02A2P3SF63/Screenshot_2021-08-07_20-34-11.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02A2P3SF63/Screenshot_2021-08-07_20-34-11.png" width="563" height="281" alt="Screenshot_2021-08-07_20-34-11.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02A2P3SF63/Screenshot_2021-08-07_20-34-11.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02A2P3SF63/Screenshot_2021-08-07_20-34-11.png" width="563" height="281" alt="Screenshot_2021-08-07_20-34-11.png" />
                   </a>
                 </div>
               </div>
@@ -915,8 +850,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02AHMHAND9/Screenshot_2021-08-07_20-53-09.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02AHMHAND9/Screenshot_2021-08-07_20-53-09.png" width="451" height="281" alt="Screenshot_2021-08-07_20-53-09.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02AHMHAND9/Screenshot_2021-08-07_20-53-09.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02AHMHAND9/Screenshot_2021-08-07_20-53-09.png" width="451" height="281" alt="Screenshot_2021-08-07_20-53-09.png" />
                   </a>
                 </div>
               </div>
@@ -1120,8 +1055,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02B753RYJU/Screenshot_2021-08-07_21-07-20.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02B753RYJU/Screenshot_2021-08-07_21-07-20.png" width="749" height="593" alt="Screenshot_2021-08-07_21-07-20.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02B753RYJU/Screenshot_2021-08-07_21-07-20.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02B753RYJU/Screenshot_2021-08-07_21-07-20.png" width="749" height="593" alt="Screenshot_2021-08-07_21-07-20.png" />
                   </a>
                 </div>
               </div>
@@ -1158,8 +1093,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02BB6W3UUE/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02BB6W3UUE/image.png" width="221" height="166" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02BB6W3UUE/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02BB6W3UUE/image.png" width="221" height="166" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -1231,8 +1166,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02CACGAD4H/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02CACGAD4H/image.png" width="699" height="261" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02CACGAD4H/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02CACGAD4H/image.png" width="699" height="261" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -1282,8 +1217,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02BXPSN4G2/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02BXPSN4G2/image.png" width="278" height="418" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02BXPSN4G2/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02BXPSN4G2/image.png" width="278" height="418" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -1465,8 +1400,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02C40AL6VA/2021-08-21_23-50.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02C40AL6VA/2021-08-21_23-50.png" width="236" height="221" alt="2021-08-21_23-50.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02C40AL6VA/2021-08-21_23-50.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02C40AL6VA/2021-08-21_23-50.png" width="236" height="221" alt="2021-08-21_23-50.png" />
                   </a>
                 </div>
               </div>
@@ -1538,8 +1473,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02BY09GAG3/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02BY09GAG3/image.png" width="436" height="172" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02BY09GAG3/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02BY09GAG3/image.png" width="436" height="172" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -1589,8 +1524,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02C40CJTM2/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02C40CJTM2/image.png" width="338" height="137" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02C40CJTM2/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02C40CJTM2/image.png" width="338" height="137" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -3516,8 +3451,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02BUTP8E05/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02BUTP8E05/image.png" width="347" height="212" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02BUTP8E05/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02BUTP8E05/image.png" width="347" height="212" alt="image.png" />
                   </a>
                 </div>
               </div>

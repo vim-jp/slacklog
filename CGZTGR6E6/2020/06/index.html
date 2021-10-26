@@ -701,32 +701,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F014K4J17HB/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F014K4J17HB/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>export const createGlobalVariableSelector = (store: Store) =&gt; (name: GlobalVariableName) =&gt; {
-  return store.getState().vimVariable.global[name]
-}
-
-type CreateSelector&lt;S&gt; = (store: Store) =&gt; (key: S) =&gt; VimValue
-
-export const selectVimVariables = &lt;S, R&gt;(createSelector: CreateSelector&lt;S&gt;) =&gt; (
-  selector: (selector: ReturnType&lt;CreateSelector&lt;S&gt;&gt;) =&gt; R
-) =&gt; selector(createSelector(store))
-
-export const projectFiles = () =&gt; {
-  const command = selectVimVariables&lt;GlobalVariableName, VimValue&gt;(createGlobalVariableSelector)((selector) =&gt;
-    selector(&#34;fzfPreviewFilelistCommand&#34;)
-  )
-}
-
-export const projectFilesDefaultOptions = () =&gt;
-  selectVimVariables&lt;GlobalVariableName, FzfOptions&gt;(createGlobalVariableSelector)((selector) =&gt; ({
-    &#34;--prompt&#34;: &#39;&#34;ProjectFiles&gt; &#34;&#39;,
-    &#34;--multi&#34;: true,
-    &#34;--preview&#34;: `&#34;${selector(&#34;fzfPreviewCommand&#34;)}&#34;`
-  }))
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F014K4J17HB/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -3369,20 +3347,10 @@ export const projectFilesDefaultOptions = () =&gt;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0152BWH3U4/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0152BWH3U4/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>// const fuga = () =&gt; console.log(hoge());
-// fuga();
-// const hoge = () =&gt; 42;
-
-function fuga() {
-  console.log(hoge());
-}
-fuga();
-function hoge() {
-  return 42;
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0152BWH3U4/無題.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -5854,31 +5822,10 @@ function hoge() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01590F0LRF/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01590F0LRF/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>type CreateSelector&lt;S, R&gt; = (store: Store) =&gt; (s?: S) =&gt; R
-
-export const createConnect = &lt;S, R&gt;(
-  createSelector: CreateSelector&lt;S, R&gt;,
-  process: (selected: R) =&gt; void,
-  option?: { once: boolean }
-) =&gt; (s?: S) =&gt; {
-  const selector = createSelector(store)
-  let selected = selector(s)
-
-  const unsubscribe = store.subscribe(() =&gt; {
-    const newSelected = selector(s)
-
-    if (selected !== newSelected) {
-      selected = newSelected
-      process(newSelected)
-      if (option &amp;&amp; option.once) {
-        unsubscribe()
-      }
-    }
-  })
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01590F0LRF/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
               <details class="details-reset mt-3">
@@ -7079,8 +7026,8 @@ export const createConnect = &lt;S, R&gt;(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F014HQ11R8X/Image%20from%20iOS.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F014HQ11R8X/Image%20from%20iOS_1024.png" width="473" height="1024" alt="Image from iOS" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F014HQ11R8X/Image%20from%20iOS.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F014HQ11R8X/Image%20from%20iOS_1024.png" width="473" height="1024" alt="Image from iOS" />
                   </a>
                 </div>
               </div>
@@ -11399,13 +11346,13 @@ export const createConnect = &lt;S, R&gt;(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F014Y788WKG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-07%2019.01.28.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F014Y788WKG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-07%2019.01.28.png" width="612" height="367" alt="スクリーンショット 2020-06-07 19.01.28.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F014Y788WKG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-07%2019.01.28.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F014Y788WKG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-07%2019.01.28.png" width="612" height="367" alt="スクリーンショット 2020-06-07 19.01.28.png" />
                   </a>
                 </div>
                 <div>
-                  <a href="/slacklog/files/F0154USUNKC/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-07%2019.01.49.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0154USUNKC/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-07%2019.01.49.png" width="713" height="360" alt="スクリーンショット 2020-06-07 19.01.49.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0154USUNKC/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-07%2019.01.49.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0154USUNKC/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-07%2019.01.49.png" width="713" height="360" alt="スクリーンショット 2020-06-07 19.01.49.png" />
                   </a>
                 </div>
               </div>
@@ -11631,65 +11578,10 @@ export const createConnect = &lt;S, R&gt;(
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F015UQ5D7J4/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F015UQ5D7J4/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>import { Reducer } from &#34;redux&#34;
-import { produce } from &#34;immer&#34;
-
-type Obj = {
-  id: string
-  text: string
-}
-
-export type State = {
-  item: Obj
-}
-
-export type Actions = ReturnType&lt;typeof action1&gt; | ReturnType&lt;typeof action2&gt;
-
-const initialState: State = {
-  item: {
-    id: &#34;&#34;,
-    text: &#34;&#34;
-  }
-}
-
-const ACTION_1 = &#34;ACTION_1&#34;
-const ACTION_2 = &#34;ACTION_2&#34;
-
-const action1 = (payload: { obj: Obj }) =&gt; 
-  ({
-    type: ACTION_1,
-    payload
-  } as const)
-
-const action2 = (payload: { obj: Obj }) =&gt; 
-  ({
-    type: ACTION_2,
-    payload
-  } as const)
-
-export const reducer: Reducer&lt;State, Actions&gt; = (state = initialState, action) =&gt; {
-  switch (action.type) {
-    case ACTION_1: {
-      return produce(state, draft =&gt; {
-        draft.item = action.payload.obj
-      })
-    }
-    case ACTION_2: {
-      return produce(state, draft =&gt; {
-        draft.item = action.payload.obj
-      })
-    }
-    default: {
-      const none = (_: never) =&gt; _
-      none(action)
-
-      return state
-    }
-  }
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F015UQ5D7J4/無題: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -14418,38 +14310,10 @@ export const reducer: Reducer&lt;State, Actions&gt; = (state = initialState, act
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F014R62E32B/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F014R62E32B/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>type ConvertLine = (line: string) =&gt; string
-type Process = (line: string) =&gt; void
-
-const processorCreator = (convertLine: ConvertLine) =&gt; (process: Process) =&gt; (lines: Array&lt;string&gt;) =&gt;
-  lines.map((line) =&gt; convertLine(line)).forEach((line) =&gt; process(line))
-
-type OpenCommand = &#34;edit&#34; | &#34;split&#34; | &#34;vsplit&#34; | &#34;tabedit&#34;
-
-const createOpenFileProcess = (openCommand: OpenCommand) =&gt; (line: string) =&gt; {
-  pluginCommand(`execute &#39;silent ${openCommand} ${line}&#39;`)
-}
-
-const editProcess = createOpenFileProcess(&#34;edit&#34;)
-const splitProcess = createOpenFileProcess(&#34;split&#34;)
-const vsplitProcess = createOpenFileProcess(&#34;vsplit&#34;)
-const tabeditProcess = createOpenFileProcess(&#34;tabedit&#34;)
-
-const directlyConverter = (line: string) =&gt; line
-const createDirectProcessor = processorCreator(directlyConverter)
-
-export type Processors = {
-  [key: string]: (lines: Array&lt;string&gt;) =&gt; void
-}
-const directOpenFileProcessors: Processors = {
-  &#34;&#34;: createDirectProcessor(editProcess),
-  &#34;ctrl-x&#34;: createDirectProcessor(splitProcess),
-  &#34;ctrl-v&#34;: createDirectProcessor(vsplitProcess),
-  &#34;ctrl-t&#34;: createDirectProcessor(tabeditProcess)
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F014R62E32B/無題: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16089,23 +15953,10 @@ const directOpenFileProcessors: Processors = {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F015XM87FL0/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F015XM87FL0/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>type OpenCommand = &#34;edit&#34; | &#34;split&#34; | &#34;vsplit&#34; | &#34;tabedit&#34;
-
-const openFile = (openCommand: OpenCommand, line: string) =&gt; {
-  pluginCommand(`execute &#39;silent ${openCommand} ${line}&#39;`)
-}
-
-const createEachProcess = &lt;P&gt;(params: P) =&gt; (process: (p: P, line: string) =&gt; void) =&gt; async (lines: Array&lt;string&gt;) =&gt; {
-  for await (const line of lines) {
-    process(params, line)
-  }
-}
-
-export const editProcess = createEachProcess(&#34;edit&#34; as OpenCommand)(openFile)
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F015XM87FL0/無題: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16308,26 +16159,10 @@ export const editProcess = createEachProcess(&#34;edit&#34; as OpenCommand)(open
             </span>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F015E2V7Q84/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F015E2V7Q84/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>type OpenCommand = &#34;edit&#34; | &#34;split&#34; | &#34;vsplit&#34; | &#34;tabedit&#34;
-
-const createOpenFile = (openCommand: OpenCommand) =&gt; (line: string) =&gt; {
-  pluginCommand(`execute &#39;silent ${openCommand} ${line}&#39;`)
-}
-
-const createEachProcess = (process: (line: string) =&gt; void) =&gt; async (lines: Array&lt;string&gt;) =&gt; {
-  for await (const line of lines) {
-    process(line)
-  }
-}
-
-export const editProcess = createEachProcess(createOpenFile(&#34;edit&#34;))
-export const splitProcess = createEachProcess(createOpenFile(&#34;split&#34;))
-export const vsplitProcess = createEachProcess(createOpenFile(&#34;vsplit&#34;))
-export const tabeditProcess = createEachProcess(createOpenFile(&#34;tabedit&#34;))
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F015E2V7Q84/無題: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16464,46 +16299,10 @@ export const tabeditProcess = createEachProcess(createOpenFile(&#34;tabedit&#34;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0156GKQC8M/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0156GKQC8M/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>type ConvertLine = (line: string) =&gt; string
-type Process = (lines: Array&lt;string&gt;) =&gt; void
-
-export const processorCreator = (convertLine: ConvertLine) =&gt; (process: Process) =&gt; (lines: Array&lt;string&gt;) =&gt;
-  process(lines.map((line) =&gt; convertLine(line)))
-
-export const createEachProcess = (process: (line: string) =&gt; void) =&gt; async (lines: Array&lt;string&gt;) =&gt; {
-  for await (const line of lines) {
-    process(line)
-  }
-}
-
-export const createOnceProcess = (process: (lines: Array&lt;string&gt;) =&gt; void) =&gt; (lines: Array&lt;string&gt;) =&gt; {
-  process(lines)
-}
-
-type OpenCommand = &#34;edit&#34; | &#34;split&#34; | &#34;vsplit&#34; | &#34;tabedit&#34;
-
-const createOpenFile = (openCommand: OpenCommand) =&gt; (line: string) =&gt; {
-  pluginCommand(`execute &#39;silent ${openCommand} ${line}&#39;`)
-}
-
-export const editProcess = createEachProcess(createOpenFile(&#34;edit&#34;))
-export const splitProcess = createEachProcess(createOpenFile(&#34;split&#34;))
-export const vsplitProcess = createEachProcess(createOpenFile(&#34;vsplit&#34;))
-export const tabeditProcess = createEachProcess(createOpenFile(&#34;tabedit&#34;))
-
-export const directlyConverter = (line: string) =&gt; line
-const createDirectProcessor = processorCreator(directlyConverter)
-
-export const directOpenFileProcessors: Processors = {
-  &#34;&#34;: createDirectProcessor(editProcess),
-  &#34;ctrl-x&#34;: createDirectProcessor(splitProcess),
-  &#34;ctrl-v&#34;: createDirectProcessor(vsplitProcess),
-  &#34;ctrl-t&#34;: createDirectProcessor(tabeditProcess)
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0156GKQC8M/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -17124,22 +16923,10 @@ export const directOpenFileProcessors: Processors = {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F015A81AA4T/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F015A81AA4T/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>export type Process = (lines: Array&lt;string&gt;) =&gt; void | Promise&lt;void&gt;
-
-export type Processor = {
-  execute: Process
-}
-
-export type Processors = {
-  [key: string]: Processor
-}
-
-export const processorCreator = (convertLine: ConvertLine) =&gt; (process: Process) =&gt; ({
-  execute: (lines: Array&lt;string&gt;) =&gt; process(lines.map((line) =&gt; convertLine(line)))
-})</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F015A81AA4T/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -18002,39 +17789,10 @@ export const processorCreator = (convertLine: ConvertLine) =&gt; (process: Proce
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F015NM409CH/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F015NM409CH/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>export type Process = (lines: Array&lt;string&gt;) =&gt; void | Promise&lt;void&gt;
-
-export type Processor = {
-  process: Process
-}
-
-export type Processors = {
-  [key: string]: Processor
-}
-
-export type ConvertLine = (line: string) =&gt; string
-
-export const processorCreator = (convertLine: ConvertLine) =&gt; (process: Process) =&gt; ({
-  process: (lines: Array&lt;string&gt;) =&gt; process(lines.map((line) =&gt; convertLine(line)))
-})
-
-export type SingleLineExecutor = (line: string) =&gt; void
-export type BulkLineExecutor = (lines: Array&lt;string&gt;) =&gt; void
-type Executor = SingleLineExecutor | BulkLineExecutor
-
-export type CreateProcess&lt;E extends Executor&gt; = (executor: E) =&gt; Process
-
-export const createEachProcess: CreateProcess&lt;SingleLineExecutor&gt; = (executor) =&gt; async (lines: Array&lt;string&gt;) =&gt; {
-  for await (const line of lines) {
-    executor(line)
-  }
-}
-
-export const createOnceProcess: CreateProcess&lt;BulkLineExecutor&gt; = (executor) =&gt; (lines: Array&lt;string&gt;) =&gt; executor(lines)
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F015NM409CH/無題: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -18389,22 +18147,10 @@ export const createOnceProcess: CreateProcess&lt;BulkLineExecutor&gt; = (executo
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0158ML525B/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0158ML525B/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>export type SingleLineConsume = (line: string) =&gt; void
-export type BulkLineConsume = (lines: Array&lt;string&gt;) =&gt; void
-type Consume = SingleLineConsume | BulkLineConsume
-
-export type CreateProcess&lt;T extends Consume&gt; = (consume: T) =&gt; Process
-
-export const createSingleLineProcess: CreateProcess&lt;SingleLineConsume&gt; = (consume) =&gt; async (lines: Array&lt;string&gt;) =&gt; {
-  for await (const line of lines) {
-    consume(line)
-  }
-}
-
-export const createBulkLineProcess: CreateProcess&lt;BulkLineConsume&gt; = (consume) =&gt; (lines: Array&lt;string&gt;) =&gt; consume(lines)</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0158ML525B/無題: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -18695,39 +18441,10 @@ export const createBulkLineProcess: CreateProcess&lt;BulkLineConsume&gt; = (cons
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0153BT6754/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0153BT6754/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>export type Process = (lines: Array&lt;string&gt;) =&gt; void | Promise&lt;void&gt;
-
-export type Processes = {
-  [key: string]: Process
-}
-
-export type SingleLineConsumer = {
-  consume: (line: string) =&gt; void
-  kind: &#34;single&#34;
-}
-export type BulkLineConsumer = {
-  consume: (lines: Array&lt;string&gt;) =&gt; void
-  kind: &#34;bulk&#34;
-}
-type Consumer = SingleLineConsumer | BulkLineConsumer
-
-export type CreateProcess = (consumer: Consumer) =&gt; { consume: Process }
-
-export const createProcess: CreateProcess = (consumer) =&gt; ({
-  consume: async (lines) =&gt; {
-    if (consumer.kind === &#34;single&#34;) {
-      for await (const line of lines) {
-        consumer.consume(line)
-      }
-    } else {
-      consumer.consume(lines)
-    }
-  }
-})
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0153BT6754/無題: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -19357,38 +19074,10 @@ export const createProcess: CreateProcess = (consumer) =&gt; ({
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F015G9NP6SG/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F015G9NP6SG/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>export type Process = (lines: Array&lt;string&gt;) =&gt; void
-
-export type Processes = {
-  [key: string]: Process
-}
-
-export type SingleLineConsumer = {
-  consume: (line: string) =&gt; Promise&lt;void&gt;
-  kind: &#34;single&#34;
-}
-export type BulkLineConsumer = {
-  consume: (lines: Array&lt;string&gt;) =&gt; Promise&lt;void&gt;
-  kind: &#34;bulk&#34;
-}
-type Consumer = SingleLineConsumer | BulkLineConsumer
-
-export type CreateProcess = (consumer: Consumer) =&gt; { consume: Process }
-
-export const createProcess: CreateProcess = (consumer) =&gt; ({
-  execute: async (lines) =&gt; {
-    if (consumer.kind === &#34;single&#34;) {
-      for (const line of lines) {
-        await consumer.consume(line)
-      }
-    } else {
-      consumer.consume(lines)
-    }
-  }
-})</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F015G9NP6SG/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -19743,31 +19432,10 @@ export const createProcess: CreateProcess = (consumer) =&gt; ({
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F015GA2S2MA/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F015GA2S2MA/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>const directlyConverter = (line: string) =&gt; line
-const createDirectProcessor = processorCreator(directlyConverter)
-
-const directOpenFileProcessors: Processors = {
-  &#34;&#34;: createDirectProcessor(editProcess),
-  &#34;ctrl-x&#34;: createDirectProcessor(splitProcess),
-  &#34;ctrl-v&#34;: createDirectProcessor(vsplitProcess),
-  &#34;ctrl-t&#34;: createDirectProcessor(tabeditProcess),
-  &#34;ctrl-q&#34;: createDirectProcessor(exportQuickfixProcess)
-}
-
-const splitSpacePopConverter = (line: string) =&gt; line.split(&#34; &#34;).pop() as string
-const createSplitSpacePopProcessor = processorCreator(splitSpacePopConverter)
-
-const splitSpacePopOpenFileProcessors: Processors = {
-  &#34;&#34;: createSplitSpacePopProcessor(editProcess),
-  &#34;ctrl-x&#34;: createSplitSpacePopProcessor(splitProcess),
-  &#34;ctrl-v&#34;: createSplitSpacePopProcessor(vsplitProcess),
-  &#34;ctrl-t&#34;: createSplitSpacePopProcessor(tabeditProcess),
-  &#34;ctrl-q&#34;: createSplitSpacePopProcessor(exportQuickfixProcess)
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F015GA2S2MA/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -28963,8 +28631,8 @@ const splitSpacePopOpenFileProcessors: Processors = {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F016DNPPYVA/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-29%2021.42.03.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F016DNPPYVA/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-29%2021.42.03_1024.png" width="1024" height="306" alt="スクリーンショット 2020-06-29 21.42.03.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F016DNPPYVA/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-29%2021.42.03.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F016DNPPYVA/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-29%2021.42.03_1024.png" width="1024" height="306" alt="スクリーンショット 2020-06-29 21.42.03.png" />
                   </a>
                 </div>
               </div>
@@ -29410,8 +29078,8 @@ const splitSpacePopOpenFileProcessors: Processors = {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0167Q6EZT5/Kapture%202020-06-29%20at%2021.53.43.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F0167Q6EZT5/Kapture%202020-06-29%20at%2021.53.43.mp4" poster="/slacklog/files/F0167Q6EZT5/Kapture%202020-06-29%20at%2021.53.43_video.jpeg" controls alt="Kapture 2020-06-29 at 21.53.43.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0167Q6EZT5/Kapture%202020-06-29%20at%2021.53.43.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0167Q6EZT5/Kapture%202020-06-29%20at%2021.53.43.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0167Q6EZT5/Kapture%202020-06-29%20at%2021.53.43_video.jpeg" controls alt="Kapture 2020-06-29 at 21.53.43.mp4">
                   </video>
                   </a>
                 </div>

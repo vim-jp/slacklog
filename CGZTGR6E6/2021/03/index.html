@@ -70,8 +70,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01Q0HP5333/denotest-nearest.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01Q0HP5333/denotest-nearest.gif" width="960" height="688" alt="denotest-nearest.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01Q0HP5333/denotest-nearest.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01Q0HP5333/denotest-nearest.gif" width="960" height="688" alt="denotest-nearest.gif" />
                   </a>
                 </div>
               </div>
@@ -1707,8 +1707,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01PZNSKGM8/CleanShot%202021-03-03%20at%2019.24.41.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01PZNSKGM8/CleanShot%202021-03-03%20at%2019.24.41.png" width="820" height="363" alt="CleanShot 2021-03-03 at 19.24.41.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01PZNSKGM8/CleanShot%202021-03-03%20at%2019.24.41.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01PZNSKGM8/CleanShot%202021-03-03%20at%2019.24.41.png" width="820" height="363" alt="CleanShot 2021-03-03 at 19.24.41.png" />
                   </a>
                 </div>
               </div>
@@ -3280,8 +3280,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01PZ3Z0KMM/Kapture%202021-03-06%20at%2013.31.30.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F01PZ3Z0KMM/Kapture%202021-03-06%20at%2013.31.30.mp4" poster="/slacklog/files/F01PZ3Z0KMM/Kapture%202021-03-06%20at%2013.31.30_video.jpeg" controls alt="Kapture 2021-03-06 at 13.31.30.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01PZ3Z0KMM/Kapture%202021-03-06%20at%2013.31.30.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01PZ3Z0KMM/Kapture%202021-03-06%20at%2013.31.30.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01PZ3Z0KMM/Kapture%202021-03-06%20at%2013.31.30_video.jpeg" controls alt="Kapture 2021-03-06 at 13.31.30.mp4">
                   </video>
                   </a>
                 </div>
@@ -3398,8 +3398,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01Q73YBP1C/Kapture%202021-03-06%20at%2013.36.56.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F01Q73YBP1C/Kapture%202021-03-06%20at%2013.36.56.mp4" poster="/slacklog/files/F01Q73YBP1C/Kapture%202021-03-06%20at%2013.36.56_video.jpeg" controls alt="Kapture 2021-03-06 at 13.36.56.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01Q73YBP1C/Kapture%202021-03-06%20at%2013.36.56.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01Q73YBP1C/Kapture%202021-03-06%20at%2013.36.56.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01Q73YBP1C/Kapture%202021-03-06%20at%2013.36.56_video.jpeg" controls alt="Kapture 2021-03-06 at 13.36.56.mp4">
                   </video>
                   </a>
                 </div>
@@ -3635,42 +3635,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01Q7AR1MJS/typescript.vim" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01Q7AR1MJS/typescript.vim" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: typescript.vim(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>&#34; after/ftplugin/typescript.vim
-
-function! s:is_deno() abort
-  if finddir(&#39;node_modules&#39;, expand(&#39;%:p:h&#39;) . &#39;;&#39;) ==# &#39;&#39;
-    let b:quickrun_config = get(b:, &#39;quickrun_config&#39;, {})
-    let b:quickrun_config[&#39;typescript&#39;] = extend({
-      \  &#39;type&#39;: &#39;typescript/deno&#39;,
-      \}, get(g:quickrun_config, &#39;typescript&#39;, {}), &#34;keep&#34;)
-  endif
-  call setenv(&#39;NO_COLOR&#39;, 1)
-endfunction
-
-call s:is_deno()
-
-&#34; dein settings
-  &#34; typescript
-  let g:quickrun_config[&#39;typescript&#39;] = extend({
-    \   &#39;type&#39;: executable(&#39;ts-node&#39;) ? &#39;typescript/ts-node&#39; :
-    \           executable(&#39;tsc&#39;)     ? &#39;typescript/tsc&#39;     :
-    \           executable(&#39;deno&#39;)    ? &#39;typescript/deno&#39;    :
-    \           &#39;&#39;,
-    \}, get(g:quickrun_config, &#39;typescript&#39;, {}), &#34;keep&#34;)
-
-&#34; deno
-  let g:quickrun_config[&#39;typescript/deno&#39;] = extend({
-    \  &#39;command&#39; : &#39;deno&#39;,
-    \  &#39;cmdopt&#39;  : &#39;run&#39;,
-    \  &#39;hook/output_encode/enable&#39;     : 1,
-    \  &#39;hook/output_encode/fileformat&#39; : &#39;unix&#39;,
-    \  &#39;outputter/loclist/errorformat&#39; : &#39;%A%*[^:]: TS%n [%t%*[A-Z]]: %m,%Z    at file:\/\/\/%f:%l:%n,%C    %m,%-GCheck%.%#&#39; ,
-    \}, get(g:quickrun_config, &#39;typescript/deno&#39;, {}), &#34;keep&#34;)
-
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01Q7AR1MJS/typescript.vim: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -4454,19 +4422,10 @@ call s:is_deno()
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01RS1HHN0G/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01RS1HHN0G/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>const PropsComponent: FC&lt;{ foo: string; bar: number }&gt; = (props) =&gt; &lt;div&gt;{props.foo}&lt;/div&gt;;
-type PropsComponentType = typeof PropsComponent;
-type PropsComponentPropsType = ComponentProps&lt;typeof PropsComponent&gt;;
-
-const Children: FC&lt;{ component: ReactElement&lt;PropsComponentPropsType, PropsComponentType&gt; }&gt; = (props) =&gt; (
-  &lt;div&gt;{props.component}&lt;/div&gt;
-);
-
-export const Parent: FC = () =&gt; &lt;Children component={&lt;PropsComponent foo=&#34;foo&#34; bar={1} /&gt;} /&gt;;
-export const Parent2: FC = () =&gt; &lt;Children component={&lt;div /&gt;} /&gt;; // =&gt; こっちも通っちゃう</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01RS1HHN0G/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -6872,45 +6831,10 @@ export const Parent2: FC = () =&gt; &lt;Children component={&lt;div /&gt;} /&gt;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01S2HY1856/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01S2HY1856/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>module.exports = {
-  purge: [&#39;./components/**/*.tsx&#39;, &#39;./pages/**/*.tsx&#39;],
-  theme: {
-    extend: {
-      colors: {
-        &#39;accent-1&#39;: &#39;#FAFAFA&#39;,
-        &#39;accent-2&#39;: &#39;#EAEAEA&#39;,
-        &#39;accent-7&#39;: &#39;#333&#39;,
-        success: &#39;#0070f3&#39;,
-        cyan: &#39;#79FFE1&#39;,
-      },
-      spacing: {
-        28: &#39;7rem&#39;,
-      },
-      letterSpacing: {
-        tighter: &#39;-.04em&#39;,
-      },
-      lineHeight: {
-        tight: 1.2,
-      },
-      fontSize: {
-        &#39;5xl&#39;: &#39;2.5rem&#39;,
-        &#39;6xl&#39;: &#39;2.75rem&#39;,
-        &#39;7xl&#39;: &#39;4.5rem&#39;,
-        &#39;8xl&#39;: &#39;6.25rem&#39;,
-      },
-      boxShadow: {
-        small: &#39;0 5px 10px rgba(0, 0, 0, 0.12)&#39;,
-        medium: &#39;0 8px 30px rgba(0, 0, 0, 0.12)&#39;,
-      },
-    },
-    container: {
-      center: true,
-    },
-  },
-} </code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01S2HY1856/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -7800,8 +7724,8 @@ export const Parent2: FC = () =&gt; &lt;Children component={&lt;div /&gt;} /&gt;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01R07CMPHV/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-17%201.52.16.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01R07CMPHV/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-17%201.52.16_1024.png" width="1024" height="551" alt="スクリーンショット 2021-03-17 1.52.16.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01R07CMPHV/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-17%201.52.16.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01R07CMPHV/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-17%201.52.16_1024.png" width="1024" height="551" alt="スクリーンショット 2021-03-17 1.52.16.png" />
                   </a>
                 </div>
               </div>
@@ -9549,31 +9473,10 @@ export const Parent2: FC = () =&gt; &lt;Children component={&lt;div /&gt;} /&gt;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01RHNYP3GA/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01RHNYP3GA/%E7%84%A1%E9%A1%8C" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>const GridItem = ({ size, link, image, caption }: { size: number; link: string; image: string; caption: string }) =&gt; (
-  &lt;div className={`grid-item-${size}`}&gt;
-    &lt;figure&gt;
-      &lt;p className=&#34;img avatar&#34;&gt;
-        &lt;a href={link}&gt;
-          &lt;img src={image} width=&#34;192&#34; /&gt;
-        &lt;/a&gt;
-      &lt;/p&gt;
-      &lt;figcaption&gt;
-        &lt;a href={link}&gt;{caption}&lt;/a&gt;
-      &lt;/figcaption&gt;
-    &lt;/figure&gt;
-  &lt;/div&gt;
-);
-
-const Page = () =&gt; (
-  &lt;&gt;
-    &lt;GridItem size={1} link=&#34;url&#34; image=&#34;image&#34; caption=&#34;caption&#34; /&gt;
-    &lt;GridItem size={1} link=&#34;url2&#34; image=&#34;image2&#34; caption=&#34;caption2&#34; /&gt;
-  &lt;/&gt;
-);
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01RHNYP3GA/無題: no such file or directory</span></pre>
                 </div>
               </div>
               <details class="details-reset mt-3">
@@ -14619,99 +14522,10 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01S4405GNQ/%E7%84%A1%E9%A1%8C.js" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01S4405GNQ/%E7%84%A1%E9%A1%8C.js" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(JavaScript/JSON)]]</span>
                   </a>
-                  <pre><code class='language-javascript'>module.exports = {
-  parser: &#34;@typescript-eslint/parser&#34;,
-  extends: [
-    &#34;airbnb&#34;,
-    &#34;airbnb/hooks&#34;,
-    &#34;plugin:@typescript-eslint/eslint-recommended&#34;,
-    &#34;plugin:@typescript-eslint/recommended&#34;,
-    &#34;plugin:@typescript-eslint/recommended-requiring-type-checking&#34;,
-    &#34;plugin:node/recommended&#34;,
-    &#34;plugin:import/errors&#34;,
-    &#34;plugin:import/warnings&#34;,
-    &#34;plugin:import/typescript&#34;,
-    &#34;plugin:react/recommended&#34;,
-    &#34;plugin:react-hooks/recommended&#34;,
-    &#34;plugin:prettier/recommended&#34;,
-    &#34;prettier&#34;,
-  ],
-  plugins: [
-    &#34;@typescript-eslint&#34;,
-    &#34;node&#34;,
-    &#34;import&#34;,
-    &#34;prettier&#34;,
-    &#34;simple-import-sort&#34;,
-    &#34;react&#34;,
-    &#34;react-hooks&#34;,
-    &#34;jsx-a11y&#34;,
-  ],
-  parserOptions: {
-    sourceType: &#34;module&#34;,
-    project: &#34;./tsconfig.json&#34;,
-  },
-  settings: {
-    &#34;import/resolver&#34;: {
-      typescript: {},
-    },
-    &#34;import/parsers&#34;: {
-      &#34;@typescript-eslint/parser&#34;: [&#34;.ts&#34;, &#34;.tsx&#34;],
-    },
-  },
-  rules: {
-    complexity: [&#34;error&#34;, 7],
-    &#34;no-console&#34;: &#34;off&#34;,
-    &#34;no-else-return&#34;: &#34;off&#34;,
-    &#34;object-shorthand&#34;: &#34;error&#34;,
-    &#34;no-restricted-syntax&#34;: &#34;off&#34;,
-    &#34;no-param-reassign&#34;: [
-      &#34;error&#34;,
-      {
-        props: true,
-        ignorePropertyModificationsFor: [&#34;draft&#34;, &#34;state&#34;],
-      },
-    ],
-    &#34;padding-line-between-statements&#34;: [
-      &#34;error&#34;,
-      {
-        blankLine: &#34;always&#34;,
-        prev: &#34;*&#34;,
-        next: &#34;return&#34;,
-      },
-    ],
-    &#34;no-return-await&#34;: &#34;off&#34;,
-
-    &#34;simple-import-sort/imports&#34;: &#34;warn&#34;,
-    &#34;simple-import-sort/exports&#34;: &#34;warn&#34;,
-    &#34;no-restricted-imports&#34;: [&#34;error&#34;, { patterns: [&#34;./&#34;, &#34;../&#34;] }],
-    &#34;import/prefer-default-export&#34;: &#34;off&#34;,
-    &#34;import/extensions&#34;: [&#34;error&#34;, &#34;ignorePackages&#34;, { ts: &#34;never&#34;, tsx: &#34;never&#34; }],
-    &#34;@typescript-eslint/consistent-type-imports&#34;: &#34;error&#34;,
-
-    &#34;@typescript-eslint/no-unused-vars&#34;: [&#34;error&#34;, { argsIgnorePattern: &#34;^_&#34; }],
-    &#34;@typescript-eslint/strict-boolean-expressions&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/array-type&#34;: [&#34;error&#34;, { default: &#34;generic&#34; }],
-    &#34;@typescript-eslint/no-namespace&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/no-unnecessary-type-assertion&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/restrict-plus-operands&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/explicit-function-return-type&#34;: &#34;off&#34;,
-    &#34;@typescript-eslint/ban-ts-comment&#34;: &#34;off&#34;,
-    &#34;@typescript-eslint/no-misused-promises&#34;: [&#34;error&#34;, { checksVoidReturn: false }],
-
-    &#34;node/no-unsupported-features/es-syntax&#34;: &#34;off&#34;,
-    &#34;node/no-missing-import&#34;: &#34;off&#34;,
-
-    &#34;prettier/prettier&#34;: &#34;error&#34;,
-
-    &#34;react/jsx-filename-extension&#34;: [&#34;error&#34;, { extensions: [&#34;jsx&#34;, &#34;tsx&#34;] }],
-    &#34;react/react-in-jsx-scope&#34;: &#34;off&#34;,
-    &#34;react/prop-types&#34;: &#34;off&#34;,
-  },
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01S4405GNQ/無題.js: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16204,84 +16018,10 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01RUT9AV9B/%E7%84%A1%E9%A1%8C.js" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01RUT9AV9B/%E7%84%A1%E9%A1%8C.js" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(JavaScript/JSON)]]</span>
                   </a>
-                  <pre><code class='language-javascript'>module.exports = {
-  parser: &#34;@typescript-eslint/parser&#34;,
-  extends: [
-    &#34;airbnb&#34;,
-    &#34;airbnb/hooks&#34;,
-    &#34;plugin:@typescript-eslint/eslint-recommended&#34;,
-    &#34;plugin:@typescript-eslint/recommended&#34;,
-    &#34;plugin:@typescript-eslint/recommended-requiring-type-checking&#34;,
-    &#34;plugin:node/recommended&#34;,
-    &#34;plugin:import/errors&#34;,
-    &#34;plugin:import/warnings&#34;,
-    &#34;plugin:import/typescript&#34;,
-    &#34;plugin:react/recommended&#34;,
-    &#34;plugin:react-hooks/recommended&#34;,
-    &#34;plugin:jsx-a11y/recommended&#34;,
-    &#34;plugin:prettier/recommended&#34;,
-  ],
-  plugins: [&#34;@typescript-eslint&#34;, &#34;node&#34;, &#34;import&#34;, &#34;simple-import-sort&#34;, &#34;react&#34;, &#34;react-hooks&#34;, &#34;jsx-a11y&#34;],
-  parserOptions: {
-    sourceType: &#34;module&#34;,
-    ecmaVersion: &#34;esnext&#34;,
-    project: &#34;./tsconfig.json&#34;,
-  },
-  rules: {
-    complexity: [&#34;error&#34;, 7],
-    &#34;no-console&#34;: &#34;off&#34;,
-    &#34;no-else-return&#34;: &#34;off&#34;,
-    &#34;object-shorthand&#34;: &#34;error&#34;,
-    &#34;no-restricted-syntax&#34;: &#34;off&#34;,
-    &#34;no-param-reassign&#34;: [
-      &#34;error&#34;,
-      {
-        props: true,
-        ignorePropertyModificationsFor: [&#34;draft&#34;, &#34;state&#34;],
-      },
-    ],
-    &#34;padding-line-between-statements&#34;: [
-      &#34;error&#34;,
-      {
-        blankLine: &#34;always&#34;,
-        prev: &#34;*&#34;,
-        next: &#34;return&#34;,
-      },
-    ],
-    &#34;no-return-await&#34;: &#34;off&#34;,
-
-    &#34;simple-import-sort/imports&#34;: &#34;warn&#34;,
-    &#34;simple-import-sort/exports&#34;: &#34;warn&#34;,
-    &#34;import/prefer-default-export&#34;: &#34;off&#34;,
-    &#34;import/extensions&#34;: [&#34;error&#34;, &#34;ignorePackages&#34;, { ts: &#34;never&#34;, tsx: &#34;never&#34; }],
-    &#34;@typescript-eslint/consistent-type-imports&#34;: &#34;error&#34;,
-
-    &#34;@typescript-eslint/no-unused-vars&#34;: [&#34;error&#34;, { argsIgnorePattern: &#34;^_&#34; }],
-    &#34;@typescript-eslint/strict-boolean-expressions&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/array-type&#34;: [&#34;error&#34;, { default: &#34;generic&#34; }],
-    &#34;@typescript-eslint/prefer-optional-chain&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/prefer-nullish-coalescing&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/no-namespace&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/no-unnecessary-type-assertion&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/restrict-plus-operands&#34;: &#34;error&#34;,
-    &#34;@typescript-eslint/explicit-function-return-type&#34;: &#34;off&#34;,
-    &#34;@typescript-eslint/ban-ts-comment&#34;: &#34;off&#34;,
-    &#34;@typescript-eslint/no-misused-promises&#34;: [&#34;error&#34;, { checksVoidReturn: false }],
-
-    &#34;node/no-unsupported-features/es-syntax&#34;: &#34;off&#34;,
-    &#34;node/no-missing-import&#34;: &#34;off&#34;,
-
-    &#34;prettier/prettier&#34;: &#34;error&#34;,
-
-    &#34;react/jsx-filename-extension&#34;: [&#34;error&#34;, { extensions: [&#34;jsx&#34;, &#34;tsx&#34;] }],
-    &#34;react/react-in-jsx-scope&#34;: &#34;off&#34;,
-    &#34;react/prop-types&#34;: &#34;off&#34;,
-  },
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01RUT9AV9B/無題.js: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -20370,8 +20110,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01S59MTQR1/CleanShot%202021-03-23%20at%2020.58.11.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01S59MTQR1/CleanShot%202021-03-23%20at%2020.58.11_1024.png" width="1024" height="640" alt="CleanShot 2021-03-23 at 20.58.11.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01S59MTQR1/CleanShot%202021-03-23%20at%2020.58.11.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01S59MTQR1/CleanShot%202021-03-23%20at%2020.58.11_1024.png" width="1024" height="640" alt="CleanShot 2021-03-23 at 20.58.11.png" />
                   </a>
                 </div>
               </div>
@@ -22728,8 +22468,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01TALVPDNU/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-27%2016.02.33.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01TALVPDNU/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-27%2016.02.33_1024.png" width="1024" height="517" alt="スクリーンショット 2021-03-27 16.02.33.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01TALVPDNU/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-27%2016.02.33.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01TALVPDNU/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-27%2016.02.33_1024.png" width="1024" height="517" alt="スクリーンショット 2021-03-27 16.02.33.png" />
                   </a>
                 </div>
               </div>
@@ -22757,8 +22497,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01SZFF2SP3/CleanShot%202021-03-27%20at%2016.05.22.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01SZFF2SP3/CleanShot%202021-03-27%20at%2016.05.22.png" width="767" height="333" alt="CleanShot 2021-03-27 at 16.05.22.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01SZFF2SP3/CleanShot%202021-03-27%20at%2016.05.22.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01SZFF2SP3/CleanShot%202021-03-27%20at%2016.05.22.png" width="767" height="333" alt="CleanShot 2021-03-27 at 16.05.22.png" />
                   </a>
                 </div>
               </div>
@@ -23438,30 +23178,10 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01S71B4LNB/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01S71B4LNB/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>type State =
-  | undefined
-  | {
-      Post: undefined
-      isSuccess: false
-      isLoading: true
-      error: undefined
-    }
-  | {
-      Post: Post
-      isSuccess: true
-      isLoading: false
-      error: undefined
-    }
-  | {
-      Post: null
-      isSuccess: false
-      isLoading: false
-      error: string
-    }
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01S71B4LNB/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -27742,8 +27462,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01TG51G7TJ/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01TG51G7TJ/image_1024.png" width="1024" height="552" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01TG51G7TJ/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01TG51G7TJ/image_1024.png" width="1024" height="552" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -27859,8 +27579,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01SBHNFA8P/CleanShot%202021-03-30%20at%2011.05.10.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01SBHNFA8P/CleanShot%202021-03-30%20at%2011.05.10.png" width="968" height="510" alt="CleanShot 2021-03-30 at 11.05.10.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01SBHNFA8P/CleanShot%202021-03-30%20at%2011.05.10.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01SBHNFA8P/CleanShot%202021-03-30%20at%2011.05.10.png" width="968" height="510" alt="CleanShot 2021-03-30 at 11.05.10.png" />
                   </a>
                 </div>
               </div>
@@ -27941,8 +27661,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01SBHQ1MT9/CleanShot%202021-03-30%20at%2011.06.06.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01SBHQ1MT9/CleanShot%202021-03-30%20at%2011.06.06.png" width="978" height="326" alt="CleanShot 2021-03-30 at 11.06.06.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01SBHQ1MT9/CleanShot%202021-03-30%20at%2011.06.06.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01SBHQ1MT9/CleanShot%202021-03-30%20at%2011.06.06.png" width="978" height="326" alt="CleanShot 2021-03-30 at 11.06.06.png" />
                   </a>
                 </div>
               </div>
@@ -28680,8 +28400,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01SBMHCXST/CleanShot%202021-03-30%20at%2012.35.02.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01SBMHCXST/CleanShot%202021-03-30%20at%2012.35.02.png" width="949" height="496" alt="CleanShot 2021-03-30 at 12.35.02.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01SBMHCXST/CleanShot%202021-03-30%20at%2012.35.02.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01SBMHCXST/CleanShot%202021-03-30%20at%2012.35.02.png" width="949" height="496" alt="CleanShot 2021-03-30 at 12.35.02.png" />
                   </a>
                 </div>
               </div>
@@ -28775,8 +28495,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01TG95SCRE/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01TG95SCRE/image.png" width="355" height="286" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01TG95SCRE/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01TG95SCRE/image.png" width="355" height="286" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -29711,8 +29431,8 @@ const Page = () =&gt; (
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01T043SLJG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-30%2022.25.54.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01T043SLJG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-30%2022.25.54_1024.png" width="1024" height="568" alt="スクリーンショット 2021-03-30 22.25.54.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01T043SLJG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-30%2022.25.54.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01T043SLJG/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-03-30%2022.25.54_1024.png" width="1024" height="568" alt="スクリーンショット 2021-03-30 22.25.54.png" />
                   </a>
                 </div>
               </div>

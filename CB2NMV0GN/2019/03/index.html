@@ -1044,67 +1044,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/FGV0YGFMF/matchup_rb.rb" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/FGV0YGFMF/matchup_rb.rb" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: matchup.rb(Ruby)]]</span>
                   </a>
-                  <pre><code class='language-ruby'>def silent(&amp;block)
-  $stderr = StringIO.new
-  block.call
-ensure
-  $stderr = STDERR
-end
-
-def traverse(ast, &amp;block)
-  yield ast
-  ast.children.each do |child|
-    traverse(child, &amp;block) if child.is_a?(Parser::AST::Node)
-  end
-end
-
-def include_loc?(range:, line:, col:)
-  start_line = range.line
-  end_line = range.last_line
-  start_col = range.column
-  end_col = range.last_column
-
-
-  (start_line &lt; line || (start_line == line &amp;&amp; start_col &lt;= col)) &amp;&amp;
-    (line &lt; end_line || (line == end_line &amp;&amp; col &lt;= end_col))
-end
-
-def range(node, key)
-  node.loc.respond_to?(key) &amp;&amp; node.loc.__send__(key)
-end
-
-silent do
-  require &#39;parser/ruby26&#39;
-end
-
-line = Integer ARGV[0]
-col = Integer ARGV[1]
-code = ARGV[2].then { |f| File.read(f) } || $stdin.read
-
-ast = Parser::Ruby26.parse(code)
-
-traverse(ast) do |node|
-  keyword_range = range(node, :keyword) || range(node, :begin)
-  next unless keyword_range
-  end_range = range(node, :end)
-  next unless end_range
-  ranges = {
-    keyword: keyword_range,
-    end: end_range,
-  }
-
-  ranges.each do |key, range|
-    if include_loc?(range: range, line: line, col: col)
-      r = ranges[key == :keyword ? :end : :keyword]
-      p [r.line, r.column]
-      exit
-    end
-  end
-end
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/FGV0YGFMF/matchup_rb.rb: no such file or directory</span></pre>
                 </div>
               </div>
             </div>

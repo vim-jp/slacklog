@@ -694,8 +694,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02DA3C1QUA/CleanShot%202021-09-03%20at%2010.22.45.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02DA3C1QUA/CleanShot%202021-09-03%20at%2010.22.45_1024.png" width="1024" height="640" alt="CleanShot 2021-09-03 at 10.22.45.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02DA3C1QUA/CleanShot%202021-09-03%20at%2010.22.45.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02DA3C1QUA/CleanShot%202021-09-03%20at%2010.22.45_1024.png" width="1024" height="640" alt="CleanShot 2021-09-03 at 10.22.45.png" />
                   </a>
                 </div>
               </div>
@@ -6689,48 +6689,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02DRUK5B61/%E7%84%A1%E9%A1%8C.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02DRUK5B61/%E7%84%A1%E9%A1%8C.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>export const main = async (denops: Denops): Promise&lt;void&gt; =&gt; {
-  denops.dispatcher = {
-    yankWithoutIndent: async (
-      line1: unknown,
-      line2: unknown,
-    ) =&gt; {
-      ensureNumber(line1);
-      ensureNumber(line2);
-
-      const lines = await denops.call(&#34;getline&#34;, line1, line2);
-      ensureArray(lines, isString);
-
-      const leading = Math.min(
-        ...lines.map((line) =&gt; (line.match(/\S/)?.index)).filter((
-          index,
-        ): index is number =&gt; index != null),
-      );
-
-      const p = Deno.run({
-        cmd: [&#34;pbcopy&#34;],
-        stdin: &#34;piped&#34;,
-      });
-      await p.stdin?.write(
-        encode(lines.map((line) =&gt; line.slice(leading)).join(&#34;\n&#34;)),
-      );
-      p.stdin?.close();
-      await p.status();
-    },
-  };
-
-  await helper.execute(
-    denops,
-    `
-    command! -range=0 YankWithoutIndent call denops#notify(&#39;${denops.name}&#39;, &#39;yankWithoutIndent&#39;, [&lt;line1&gt;, &lt;line2&gt;])
-    xnoremap gy :YankWithoutIndent&lt;CR&gt;
-    `,
-  );
-};
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02DRUK5B61/無題.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -7979,25 +7941,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02ER8F81JL/main.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02ER8F81JL/main.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: main.ts(C++)]]</span>
                   </a>
-                  <pre><code class='language-cpp'>import { Denops } from &#34;https://deno.land/x/denops_std@v1.9.0/mod.ts&#34;;
-
-export async function main(d: Denops): Promise&lt;void&gt; {
-  d.dispatcher = {
-    async test1(): Promise&lt;void&gt; {
-      await d.cmd(`edit /`)
-    },
-    async test2(): Promise&lt;void&gt; {
-      await d.cmd(`edit .`)
-    }
-  }
-  await d.cmd(&#39;autocmd BufEnter * echomsg &#34;test&#34;&#39;)
-  await d.cmd(&#39;command! Test1 call denops#request(&#34;denops-test&#34;, &#34;test1&#34;, [])&#39;)
-  await d.cmd(&#39;command! Test2 call denops#request(&#34;denops-test&#34;, &#34;test2&#34;, [])&#39;)
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02ER8F81JL/main.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -9744,8 +9691,8 @@ export async function main(d: Denops): Promise&lt;void&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02E537NV5H/CleanShot%202021-09-12%20at%2015.12.45.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02E537NV5H/CleanShot%202021-09-12%20at%2015.12.45_1024.png" width="1024" height="707" alt="CleanShot 2021-09-12 at 15.12.45.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02E537NV5H/CleanShot%202021-09-12%20at%2015.12.45.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02E537NV5H/CleanShot%202021-09-12%20at%2015.12.45_1024.png" width="1024" height="707" alt="CleanShot 2021-09-12 at 15.12.45.png" />
                   </a>
                 </div>
               </div>
@@ -10126,8 +10073,8 @@ export async function main(d: Denops): Promise&lt;void&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02DQC5M679/CleanShot%202021-09-12%20at%2015.49.28.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02DQC5M679/CleanShot%202021-09-12%20at%2015.49.28.png" width="806" height="320" alt="CleanShot 2021-09-12 at 15.49.28.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02DQC5M679/CleanShot%202021-09-12%20at%2015.49.28.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02DQC5M679/CleanShot%202021-09-12%20at%2015.49.28.png" width="806" height="320" alt="CleanShot 2021-09-12 at 15.49.28.png" />
                   </a>
                 </div>
               </div>
@@ -12673,8 +12620,8 @@ export async function main(d: Denops): Promise&lt;void&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02EMAVNLH1/simplescreenrecorder-2021-09-16_13.54.15.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F02EMAVNLH1/simplescreenrecorder-2021-09-16_13.54.15.mp4" poster="/slacklog/files/F02EMAVNLH1/simplescreenrecorder-2021-09-16_13.54.15_video.jpeg" controls alt="simplescreenrecorder-2021-09-16_13.54.15.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EMAVNLH1/simplescreenrecorder-2021-09-16_13.54.15.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EMAVNLH1/simplescreenrecorder-2021-09-16_13.54.15.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EMAVNLH1/simplescreenrecorder-2021-09-16_13.54.15_video.jpeg" controls alt="simplescreenrecorder-2021-09-16_13.54.15.mp4">
                   </video>
                   </a>
                 </div>
@@ -15300,8 +15247,8 @@ export async function main(d: Denops): Promise&lt;void&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02EZT9NKFW/CleanShot%202021-09-17%20at%2021.51.35.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02EZT9NKFW/CleanShot%202021-09-17%20at%2021.51.35.png" width="656" height="139" alt="CleanShot 2021-09-17 at 21.51.35.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EZT9NKFW/CleanShot%202021-09-17%20at%2021.51.35.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EZT9NKFW/CleanShot%202021-09-17%20at%2021.51.35.png" width="656" height="139" alt="CleanShot 2021-09-17 at 21.51.35.png" />
                   </a>
                 </div>
               </div>
@@ -18163,8 +18110,8 @@ export async function main(d: Denops): Promise&lt;void&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02F2NJDQJ1/CJG6v1VUMAAZkb3.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02F2NJDQJ1/CJG6v1VUMAAZkb3.png" width="499" height="374" alt="CJG6v1VUMAAZkb3.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02F2NJDQJ1/CJG6v1VUMAAZkb3.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02F2NJDQJ1/CJG6v1VUMAAZkb3.png" width="499" height="374" alt="CJG6v1VUMAAZkb3.png" />
                   </a>
                 </div>
               </div>
@@ -18613,8 +18560,8 @@ export async function main(d: Denops): Promise&lt;void&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02EXTY2K55/input%20%28fzf%29%20-%20GVIM%202021-09-23%2013-36-09.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F02EXTY2K55/input%20%28fzf%29%20-%20GVIM%202021-09-23%2013-36-09.mp4" poster="/slacklog/files/F02EXTY2K55/input%20%28fzf%29%20-%20GVIM%202021-09-23%2013-36-09_video.jpeg" controls alt="input (fzf) - GVIM 2021-09-23 13-36-09.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EXTY2K55/input%20%28fzf%29%20-%20GVIM%202021-09-23%2013-36-09.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EXTY2K55/input%20%28fzf%29%20-%20GVIM%202021-09-23%2013-36-09.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EXTY2K55/input%20%28fzf%29%20-%20GVIM%202021-09-23%2013-36-09_video.jpeg" controls alt="input (fzf) - GVIM 2021-09-23 13-36-09.mp4">
                   </video>
                   </a>
                 </div>
@@ -20370,8 +20317,8 @@ export async function main(d: Denops): Promise&lt;void&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02FS2VPKND/aaaaaaaaaa.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F02FS2VPKND/aaaaaaaaaa.mp4" poster="/slacklog/files/F02FS2VPKND/aaaaaaaaaa_video.jpeg" controls alt="aaaaaaaaaa.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FS2VPKND/aaaaaaaaaa.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FS2VPKND/aaaaaaaaaa.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FS2VPKND/aaaaaaaaaa_video.jpeg" controls alt="aaaaaaaaaa.mp4">
                   </video>
                   </a>
                 </div>
@@ -22189,38 +22136,10 @@ export async function main(d: Denops): Promise&lt;void&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02FK9C0NHY/buffer.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FK9C0NHY/buffer.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: buffer.ts(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>import { Denops } from &#34;https://deno.land/x/denops_std@v1.11.3/mod.ts&#34;;
-import * as autocmd from &#34;https://deno.land/x/denops_std@v1.11.3/autocmd/mod.ts&#34;;
-
-export default class Buffer {
-  denops: Denops
-  bufnr: number
-  buf: string[] = []
-  constructor(denops: Denops, bufnr: number) {
-    this.denops = denops
-    this.bufnr = bufnr
-  }
-  async init() {
-    this.buf = await this.denops.call(&#39;getbufline&#39;, this.bufnr, 1, &#34;$&#34;) as string[]
-    this.denops.dispatch
-    await autocmd.group(this.denops, `${this.denops.name}-${this.bufnr}`, (helper) =&gt; {
-      [&#34;TextChanged&#34;, &#34;TextChangedI&#34;, &#34;TextChangedP&#34;],
-        &#34;&lt;buffer&gt;&#34;,
-        `call denops#notify(&#34;${denops.name}&#34;, &#34;preview_reflash&#34;, [])`,
-        // ↑ここにcallbackを登録したい
-    })
-  }
-  callback() {
-    this.buf = await denops.call(&#39;getbufline&#39;, bufnr, 1, &#34;$&#34;) as string[]
-  }
-  getlines(): string[] {
-    return this.buf
-  }
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02FK9C0NHY/buffer.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -22504,71 +22423,10 @@ export default class Buffer {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02FRU6DASY/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FRU6DASY/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>import { Denops } from &#34;https://deno.land/x/denops_std@v2.0.0/mod.ts&#34;;
-import * as autocmd from &#34;https://deno.land/x/denops_std@v2.0.0/autocmd/mod.ts&#34;;
-import * as anonymous from &#34;https://deno.land/x/denops_std@v2.0.0/anonymous/mod.ts&#34;;
-
-export default class Buffer {
-  private denops: Denops;
-  private bufnr: number;
-  private buf: string[] = [];
-
-  private onTextChanged: ((buffer: Buffer) =&gt; void) | null;
-
-  constructor(
-    denops: Denops,
-    bufnr: number,
-    onTextChanged: ((buffer: Buffer) =&gt; void) | null,
-  ) {
-    this.denops = denops;
-    this.bufnr = bufnr;
-
-    this.onTextChanged = onTextChanged;
-
-    this.init();
-  }
-  private async init() {
-    this.buf = await this.denops.call(
-      &#34;getbufline&#34;,
-      this.bufnr,
-      1,
-      &#34;$&#34;,
-    ) as string[];
-    this.denops.dispatch;
-
-    // textchanged callback
-    const id = anonymous.add(this.denops, async () =&gt; {
-      this.buf = await this.denops.call(
-        &#34;getbufline&#34;,
-        this.bufnr,
-        1,
-        &#34;$&#34;,
-      ) as string[];
-      if (this.onTextChanged == null) {
-        return;
-      }
-      this.onTextChanged(this);
-    })[0];
-    await autocmd.group(
-      this.denops,
-      `${this.denops.name}-${this.bufnr}`,
-      (helper) =&gt; {
-        helper.define(
-          [&#34;TextChanged&#34;, &#34;TextChangedI&#34;, &#34;TextChangedP&#34;],
-          &#34;&lt;buffer&gt;&#34;,
-          `call denops#notify(&#34;${this.denops.name}&#34;, &#34;${id}&#34;, [])`,
-        );
-      },
-    );
-  }
-  get lines(): string[] {
-    return this.buf;
-  }
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02FRU6DASY/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -22659,8 +22517,8 @@ export default class Buffer {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02FXM7778R/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02FXM7778R/image_1024.png" width="1024" height="158" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FXM7778R/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FXM7778R/image_1024.png" width="1024" height="158" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -25954,8 +25812,8 @@ export default class Buffer {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02FF87URT8/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02FF87URT8/image.png" width="389" height="379" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FF87URT8/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FF87URT8/image.png" width="389" height="379" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -26119,8 +25977,8 @@ export default class Buffer {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02FNNYRWAH/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02FNNYRWAH/image_1024.png" width="1024" height="575" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FNNYRWAH/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FNNYRWAH/image_1024.png" width="1024" height="575" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -27250,41 +27108,10 @@ export default class Buffer {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GLHX90AU/Dockerfile.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GLHX90AU/Dockerfile.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Dockerfile(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>FROM ubuntu
-WORKDIR /root
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update \
- &amp;&amp; apt-get -y install \
-      build-essential \
-      cmake \
-      git \
-      libtinfo-dev \
-      libtool-bin \
-      pkg-config \
-      unzip \
- &amp;&amp; apt-get clean
-# vim
-RUN git clone --depth 1 -b v8.2.0662 https://github.com/vim/vim
-RUN cd vim \
- &amp;&amp; ./configure \
- &amp;&amp; make -j$(nproc) install
-# neovim
-RUN git clone --depth 1 -b release-0.4 https://github.com/neovim/neovim
-RUN apt-get -y install curl
-RUN apt-get -y install gettext
-RUN cd neovim \
- &amp;&amp; make -j$(nproc) \
- &amp;&amp; make install
-
-# deno
-RUN curl -LO https://github.com/denoland/deno/releases/download/v1.11.0/deno-x86_64-unknown-linux-gnu.zip \
- &amp;&amp; unzip deno-x86_64-unknown-linux-gnu.zip \
- &amp;&amp; mv deno /usr/bin/deno \
- &amp;&amp; rm deno-x86_64-unknown-linux-gnu.zip
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02GLHX90AU/Dockerfile.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -27355,8 +27182,8 @@ RUN curl -LO https://github.com/denoland/deno/releases/download/v1.11.0/deno-x86
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02FU5W8XC5/2021-09-28_22-33.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02FU5W8XC5/2021-09-28_22-33.png" width="486" height="27" alt="2021-09-28_22-33.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FU5W8XC5/2021-09-28_22-33.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02FU5W8XC5/2021-09-28_22-33.png" width="486" height="27" alt="2021-09-28_22-33.png" />
                   </a>
                 </div>
               </div>
@@ -28569,8 +28396,8 @@ RUN curl -LO https://github.com/denoland/deno/releases/download/v1.11.0/deno-x86
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02GM3LMJPJ/2021-09-28_23-25.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02GM3LMJPJ/2021-09-28_23-25.png" width="210" height="88" alt="2021-09-28_23-25.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GM3LMJPJ/2021-09-28_23-25.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02GM3LMJPJ/2021-09-28_23-25.png" width="210" height="88" alt="2021-09-28_23-25.png" />
                   </a>
                 </div>
               </div>

@@ -359,8 +359,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01M6A0M6P2/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01M6A0M6P2/image.png" width="253" height="259" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01M6A0M6P2/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01M6A0M6P2/image.png" width="253" height="259" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -2264,72 +2264,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01LKCSH5JP/%E7%84%A1%E9%A1%8C.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01LKCSH5JP/%E7%84%A1%E9%A1%8C.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package main
-
-import (
-	&#34;fmt&#34;
-	&#34;io/ioutil&#34;
-	&#34;log&#34;
-	&#34;os&#34;
-	&#34;path/filepath&#34;
-
-	&#34;github.com/fsnotify/fsnotify&#34;
-)
-
-func main() {
-	fileName := os.Args[1]
-	watcher, err := fsnotify.NewWatcher()
-	if err != nil {
-		log.Println(&#34;cannot watch file&#34;, err)
-		return
-	}
-	defer watcher.Close()
-
-	msg := make(chan []byte)
-
-	go func() {
-		for {
-			select {
-			case event, ok := &lt;-watcher.Events:
-				if !ok {
-					return
-				}
-
-				if event.Op&amp;fsnotify.Write == fsnotify.Write {
-					if filepath.Base(event.Name) == fileName {
-						b, err := ioutil.ReadFile(fileName)
-						if err != nil {
-							log.Println(&#34;failed to read file&#34;, err)
-							return
-						}
-
-						fmt.Println(len(b))
-						msg &lt;- b
-					}
-				}
-
-			case err, ok := &lt;-watcher.Errors:
-				if !ok {
-					return
-				}
-				log.Println(&#34;watch error&#34;, err)
-			}
-		}
-	}()
-
-	err = watcher.Add(&#34;.&#34;)
-	if err != nil {
-		log.Println(&#34;failed to add watcher&#34;, err)
-		return
-	}
-
-	for {
-		&lt;-msg
-	}
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01LKCSH5JP/無題.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -6270,19 +6208,10 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01LBS1K7QF/Untitled.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01LBS1K7QF/Untitled.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>var vcsPaths = []*vcsPath{
-	// Github
-	{
-		pathPrefix: &#34;github.com&#34;,
-		regexp:     lazyregexp.New(`^(?P&lt;root&gt;github\.com/[A-Za-z0-9_.\-]+/[A-Za-z0-9_.\-]+)(/[A-Za-z0-9_.\-]+)*$`),
-		vcs:        &#34;git&#34;,
-		repo:       &#34;https://{root}&#34;,
-		check:      noVCSSuffix,
-	},
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01LBS1K7QF/Untitled.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -8613,8 +8542,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01LLKFRHP0/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01LLKFRHP0/image.png" width="515" height="377" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01LLKFRHP0/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01LLKFRHP0/image.png" width="515" height="377" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -8809,8 +8738,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01LTN4K5GT/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01LTN4K5GT/image.png" width="487" height="252" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01LTN4K5GT/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01LTN4K5GT/image.png" width="487" height="252" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -9265,20 +9194,10 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01LY7BRQF4/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01LY7BRQF4/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>$ time swagger validate ./server/swagger.yml
-2021/02/04 14:46:16
-The swagger spec at &#34;./server/swagger.yml&#34; is valid against swagger specification 2.0
-2021/02/04 14:46:16
-The swagger spec at &#34;./server/swagger.yml&#34; showed up some valid but possibly unwanted constructs.
-2021/02/04 14:46:16 See warnings below:
-2021/02/04 14:46:16 - WARNING: definition &#34;#/definitions/MetadataNullable&#34; is not used anywhere
-
-real    1m16.096s
-user    0m0.000s
-sys     0m0.015s</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01LY7BRQF4/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -9433,8 +9352,8 @@ sys     0m0.015s</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01M54V7YFN/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01M54V7YFN/image.png" width="336" height="120" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01M54V7YFN/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01M54V7YFN/image.png" width="336" height="120" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -16131,69 +16050,10 @@ sys     0m0.015s</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01MV4983RC/sha256_seed_resolve.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01MV4983RC/sha256_seed_resolve.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: sha256_seed_resolve.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package main
-
-import (
-	&#34;bytes&#34;
-	&#34;crypto/sha256&#34;
-	&#34;encoding/hex&#34;
-	&#34;fmt&#34;
-	&#34;log&#34;
-	&#34;os&#34;
-	&#34;time&#34;
-)
-
-type counter [32]byte
-
-func (c *counter) inc() bool {
-	for i := len(c) - 1; i &gt;= 0; i-- {
-		c[i]++
-		if c[i] != 0 {
-			return true
-		}
-	}
-	return false
-}
-
-func (c counter) bytes() []byte {
-	for i := 0; i &lt; len(c); i++ {
-		if c[i] != 0 {
-			return c[i:]
-		}
-	}
-	return c[:1]
-}
-
-func main() {
-	if len(os.Args) &lt; 2 {
-		log.Fatal(&#34;please set target hash&#34;)
-	}
-	hash, err := hex.DecodeString(os.Args[1])
-	if err != nil {
-		log.Fatalf(&#34;invalid hash: %s&#34;, err)
-	} else if len(hash) != 32 {
-		log.Fatalf(&#34;invalid hash length: required 32 bytes (256 bits) but got %d&#34;, len(hash))
-	}
-
-	var c counter
-	start := time.Now()
-	for {
-		input := c.bytes()
-		b := sha256.Sum256(input)
-		if bytes.Equal(b[:], hash) {
-			fmt.Printf(&#34;resolved! result is %s\n&#34;, string(input))
-			break
-		}
-		if !c.inc() {
-			log.Fatal(&#34;not found&#34;)
-		}
-	}
-	d := time.Since(start)
-	log.Printf(&#34;elapsed %s&#34;, d)
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01MV4983RC/sha256_seed_resolve.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16611,73 +16471,10 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01MM5BT815/reverse_sha256_go.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01MM5BT815/reverse_sha256_go.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: reverse_sha256.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package main
-
-import (
-	&#34;bytes&#34;
-	&#34;strings&#34;
-	&#34;crypto/sha256&#34;
-	&#34;encoding/hex&#34;
-	&#34;errors&#34;
-	&#34;fmt&#34;
-	&#34;log&#34;
-	&#34;os&#34;
-	&#34;time&#34;
-)
-
-type counter [32]byte
-
-func (c *counter) inc() bool {
-	for i := len(c) - 1; i &gt;= 0; i-- {
-		c[i]++
-		if c[i] != 0 {
-			return true
-		}
-	}
-	return false
-}
-
-func (c *counter) input() string {
-	return strings.TrimLeft(hex.EncodeToString(c[:]), &#34;0&#34;)
-}
-
-func reverseSHA256(s string) (string, error) {
-	hash, err := hex.DecodeString(s)
-	if err != nil {
-		return &#34;&#34;, fmt.Errorf(&#34;invalid hash: %w&#34;, err)
-	}
-	if len(hash) != 32 {
-		return &#34;&#34;, fmt.Errorf(&#34;invalid hash length: required 32 bytes (256 bits) but got %d&#34;, len(hash))
-	}
-	var c counter
-	for {
-		input := c.input()
-		b := sha256.Sum256([]byte(input))
-		if bytes.Equal(b[:], hash) {
-			return input, nil
-		}
-		if !c.inc() {
-			return &#34;&#34;, errors.New(&#34;not found&#34;)
-		}
-	}
-}
-
-func main() {
-	if len(os.Args) &lt; 2 {
-		log.Fatal(&#34;please set target hash&#34;)
-	}
-	start := time.Now()
-	input, err := reverseSHA256(os.Args[1])
-	d := time.Since(start)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf(&#34;resolved! result is %s\n&#34;, input)
-	log.Printf(&#34;elapsed %s&#34;, d)
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01MM5BT815/reverse_sha256_go.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16704,29 +16501,10 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01NRPF6HEU/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01NRPF6HEU/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>$ echo -n abc | sha256sum.exe
-ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad *-
-
-$ ./reverse_sha256.exe ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
-resolved! result is abc
-2021/02/14 14:14:50 elapsed 1.0067ms
-
-$ echo -n abcd | sha256sum.exe
-88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589 *-
-
-$ ./reverse_sha256.exe 88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589
-resolved! result is abcd
-2021/02/14 14:15:09 elapsed 20.0716ms
-
-$ echo -n abcde | sha256sum.exe
-36bbe50ed96841d10443bcb670d6554f0a34b761be67ec9c4a8ad2c0c44ca42c *-
-
-$ ./reverse_sha256.exe 36bbe50ed96841d10443bcb670d6554f0a34b761be67ec9c4a8ad2c0c44ca42c
-resolved! result is abcde
-2021/02/14 14:15:35 elapsed 297.2881ms</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01NRPF6HEU/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16850,33 +16628,10 @@ resolved! result is abcde
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01MM5EQ823/reverse_sha256_test.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01MM5EQ823/reverse_sha256_test.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: reverse_sha256_test.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package main
-
-import &#34;testing&#34;
-
-func Benchmark1(b *testing.B) {
-	b.ResetTimer()
-	for i := 0; i &lt; b.N; i++ {
-		reverseSHA256(&#34;6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b&#34;)
-	}
-}
-
-func Benchmark2(b *testing.B) {
-	b.ResetTimer()
-	for i := 0; i &lt; b.N; i++ {
-		reverseSHA256(&#34;fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603&#34;)
-	}
-}
-
-func Benchmark3(b *testing.B) {
-	b.ResetTimer()
-	for i := 0; i &lt; b.N; i++ {
-		reverseSHA256(&#34;ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad&#34;)
-	}
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01MM5EQ823/reverse_sha256_test.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16903,81 +16658,10 @@ func Benchmark3(b *testing.B) {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01N27M3HR9/reverse_sha256.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01N27M3HR9/reverse_sha256.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: reverse_sha256.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>package main
-
-import (
-	&#34;bytes&#34;
-	&#34;crypto/sha256&#34;
-	&#34;encoding/hex&#34;
-	&#34;errors&#34;
-	&#34;fmt&#34;
-	&#34;log&#34;
-	&#34;os&#34;
-	&#34;time&#34;
-)
-
-type counter struct {
-	b [32]byte
-	s [64]byte
-}
-
-func (c *counter) inc() bool {
-	for i := len(c.b) - 1; i &gt;= 0; i-- {
-		c.b[i]++
-		if c.b[i] != 0 {
-			return true
-		}
-	}
-	return false
-}
-
-func (c *counter) input() []byte {
-	hex.Encode(c.s[:], c.b[:])
-	for i := 0; i &lt; len(c.s); i++ {
-		if c.s[i] != &#39;0&#39; {
-			return c.s[i:]
-		}
-	}
-	return []byte{}
-}
-
-func reverseSHA256(s string) ([]byte, error) {
-	hash, err := hex.DecodeString(s)
-	if err != nil {
-		return nil, fmt.Errorf(&#34;invalid hash: %w&#34;, err)
-	}
-	if len(hash) != 32 {
-		return nil, fmt.Errorf(&#34;invalid hash length: required 32 bytes (256 bits) but got %d&#34;, len(hash))
-	}
-	var c counter
-	for {
-		input := c.input()
-		b := sha256.Sum256(input)
-		if bytes.Equal(b[:], hash) {
-			return input, nil
-		}
-		if !c.inc() {
-			return nil, errors.New(&#34;not found&#34;)
-		}
-	}
-}
-
-func main() {
-	if len(os.Args) &lt; 2 {
-		log.Fatal(&#34;please set target hash&#34;)
-	}
-	start := time.Now()
-	input, err := reverseSHA256(os.Args[1])
-	d := time.Since(start)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf(&#34;resolved! result is %s\n&#34;, string(input))
-	log.Printf(&#34;elapsed %s&#34;, d)
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01N27M3HR9/reverse_sha256.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -23556,8 +23240,8 @@ func main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01P59FMP33/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01P59FMP33/image_1024.png" width="1024" height="442" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01P59FMP33/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01P59FMP33/image_1024.png" width="1024" height="442" alt="image.png" />
                   </a>
                 </div>
               </div>

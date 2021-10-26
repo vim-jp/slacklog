@@ -7893,8 +7893,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02EA9R72TE/CleanShot%202021-09-11%20at%2014.17.38.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02EA9R72TE/CleanShot%202021-09-11%20at%2014.17.38.png" width="844" height="223" alt="CleanShot 2021-09-11 at 14.17.38.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EA9R72TE/CleanShot%202021-09-11%20at%2014.17.38.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EA9R72TE/CleanShot%202021-09-11%20at%2014.17.38.png" width="844" height="223" alt="CleanShot 2021-09-11 at 14.17.38.png" />
                   </a>
                 </div>
               </div>
@@ -11299,24 +11299,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02EX8K456U/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EX8K456U/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>import { basename  } from &#34;https://deno.land/std@0.106.0/path/mod.ts&#34;
-
-const results = await Deno.emit(&#34;./calc.ts&#34;, {
-  compilerOptions: {
-    declaration: true,
-    declarationDir: &#34;.&#34;,
-  }
-});
-
-const files = results.files
-Object.keys(files).map(async(v) =&gt; {
-  const fileName = basename(v)
-  await Deno.writeTextFile(fileName, files[v]);
-})
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02EX8K456U/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -11365,13 +11351,10 @@ Object.keys(files).map(async(v) =&gt; {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02EDRV3L4U/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02EDRV3L4U/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: Untitled(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>/// &lt;amd-module name=&#34;file:///path/to/sample/calc.ts&#34; /&gt;
-export declare function add(x: number, y: number): number;
-export declare const sub: (x: number, y: number) =&gt; number;
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02EDRV3L4U/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -12932,8 +12915,8 @@ export declare const sub: (x: number, y: number) =&gt; number;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02DW98E1AB/CleanShot%202021-09-14%20at%2012.08.47.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F02DW98E1AB/CleanShot%202021-09-14%20at%2012.08.47.png" width="536" height="191" alt="CleanShot 2021-09-14 at 12.08.47.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02DW98E1AB/CleanShot%202021-09-14%20at%2012.08.47.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02DW98E1AB/CleanShot%202021-09-14%20at%2012.08.47.png" width="536" height="191" alt="CleanShot 2021-09-14 at 12.08.47.png" />
                   </a>
                 </div>
               </div>
@@ -14565,69 +14548,10 @@ export declare const sub: (x: number, y: number) =&gt; number;
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02E7QHU51D/______.ts" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02E7QHU51D/______.ts" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(TypeScript)]]</span>
                   </a>
-                  <pre><code class='language-typescript'>// Prismaが生成するやつ
-type User = {
-  firstName: string;
-  lastName: string;
-  posts: Array&lt;Post&gt;;
-};
-
-type Post = {
-  title: string;
-  content: string;
-};
-
-// (多分)codegenが作ってくれるやつ
-type UserModel = {
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  posts: Array&lt;PostModel&gt;;
-};
-
-type PostModel = {
-  title: string;
-  content: string;
-  captions: Array&lt;CaptionModel&gt;;
-};
-
-type CaptionModel = {
-  level: number;
-  text: string;
-};
-
-// 手書きで愚直にモデル変換書くしかない・・・？
-// 再利用性がどうなのか分からんやつ
-const userToModel = (user: User): UserModel =&gt; {
-  const fullName = `${user.firstName} ${user.lastName}`;
-  const posts = user.posts.map((post) =&gt; postToModel(post));
-
-  return {
-    ...user,
-    fullName,
-    posts,
-  };
-};
-
-const postToModel = (post: Post): PostModel =&gt; {
-  const captions = extractCaptions(post.content);
-
-  return {
-    ...post,
-    captions,
-  };
-};
-
-const extractCaptions = (_content: string): Array&lt;CaptionModel&gt; =&gt; {
-  return [];
-};
-
-let user: User;
-console.log(userToModel(user))
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02E7QHU51D/______.ts: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -18365,27 +18289,10 @@ console.log(userToModel(user))
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02F6SYQ547/%E7%84%A1%E9%A1%8C.cpp" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02F6SYQ547/%E7%84%A1%E9%A1%8C.cpp" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(C++)]]</span>
                   </a>
-                  <pre><code class='language-cpp'>class Hoge {
-  private _onHugo: ((hoge: Hoge) =&gt; void) | undefined;
-  addOnHugo (onHugo: (hoge: Hoge) =&gt; void) {
-    this._onHugo = onHugo
-  }
-  runOnHugo() {
-    if (this._onHugo == undefined) {
-      return
-    }
-    this._onHugo(this)
-  }
-}
-
-const a = new Hoge()
-a.addOnHugo((hoge) =&gt; {
-  console.log(hoge)
-})
-a.runOnHugo()</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02F6SYQ547/無題.cpp: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -18681,52 +18588,10 @@ a.runOnHugo()</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F02G0825C8H/%E7%84%A1%E9%A1%8C.cpp" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F02G0825C8H/%E7%84%A1%E9%A1%8C.cpp" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(C++)]]</span>
                   </a>
-                  <pre><code class='language-cpp'>type FooEvent = {
-  name: &#34;onFoo&#34; | &#34;onBar&#34;;
-  callback: (arg: unknown) =&gt; void;
-};
-
-class Foo {
-  private events: Array&lt;FooEvent&gt;;
-
-  constructor() {
-    this.events = [];
-  }
-
-  addEvent(event: FooEvent) {
-    this.events.push(event);
-  }
-
-  run(
-    events:
-      | ReadonlyArray&lt;{ eventName: FooEvent[&#34;name&#34;]; args: unknown }&gt;
-      | undefined,
-  ) {
-    console.log(&#34;run&#34;);
-
-    if (events != null) {
-      for (const { eventName, args } of events) {
-        this.events.find((event) =&gt; event.name === eventName)?.callback(args);
-      }
-    }
-  }
-}
-
-const foo = new Foo();
-foo.addEvent({ name: &#34;onFoo&#34;, callback: (s) =&gt; console.log(s) });
-foo.addEvent({ name: &#34;onBar&#34;, callback: (i) =&gt; console.log(i) });
-
-foo.run([{
-  eventName: &#34;onFoo&#34;,
-  args: &#34;callbackFoo&#34;,
-}, {
-  eventName: &#34;onBar&#34;,
-  args: 1,
-}]);
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F02G0825C8H/無題.cpp: no such file or directory</span></pre>
                 </div>
               </div>
             </div>

@@ -1584,62 +1584,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01G2FFAKRR/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01G2FFAKRR/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(プレーンテキスト)]]</span>
                   </a>
-                  <pre><code class='language-none'>function! gh#files#tree() abort
-  let body = json_decode(join(readfile(&#39;test_tree.json&#39;)))
-
-  call s:set_file_list(body)
-  call setline(1, json_encode(s:tree))
-endfunction
-
-function! s:set_file_list(body) abort
-  let s:tree = {
-        \ &#39;name&#39;: s:file_list.repo.name,
-        \ &#39;path&#39;: &#39;&#39;,
-        \ &#39;state&#39;: &#39;open&#39;,
-        \ &#39;children&#39;: []
-        \ }
-  for file in a:body.tree
-    let paths = split(file.path, &#39;/&#39;)
-    if len(paths) is# 1
-      let node = {
-            \ &#39;name&#39;: file.path,
-            \ &#39;path&#39;: file.path,
-            \ }
-      if file.type is# &#39;tree&#39;
-        let node[&#39;children&#39;] = []
-      endif
-      call add(s:tree.children, node)
-    else
-      call s:merge(s:tree.children, file, paths[0], paths[1:])
-    endif
-  endfor
-endfunction
-
-function! s:merge(tree, file, path, rest) abort
-  for node in a:tree
-    if node.path is# a:path
-      call s:merge(node.children, a:file, a:rest[0], a:rest[1:])
-      return
-    endif
-  endfor
-  let node = {
-        \ &#39;name&#39;: a:path,
-        \ &#39;path&#39;: a:file.path,
-        \ }
-
-  if a:file.type is# &#39;tree&#39; || len(a:rest) &gt; 0
-    let node[&#39;children&#39;] = []
-  endif
-
-  if len(a:rest) &gt; 0
-    call s:merge(node.children, a:file, a:rest[0], a:rest[1:])
-  endif
-  let tree = a:tree
-  call add(tree, node)
-endfunction</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01G2FFAKRR/無題.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -2841,8 +2789,8 @@ endfunction</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01GSGHFUAU/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01GSGHFUAU/image_1024.png" width="689" height="1024" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01GSGHFUAU/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01GSGHFUAU/image_1024.png" width="689" height="1024" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -2892,8 +2840,8 @@ endfunction</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01FVVCBCCW/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01FVVCBCCW/image_1024.png" width="605" height="1024" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01FVVCBCCW/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01FVVCBCCW/image_1024.png" width="605" height="1024" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -2921,8 +2869,8 @@ endfunction</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01GFBZH2KT/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01GFBZH2KT/image.png" width="258" height="206" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01GFBZH2KT/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01GFBZH2KT/image.png" width="258" height="206" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -8367,8 +8315,8 @@ endfunction</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01H1T0891T/printf.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01H1T0891T/printf.png" width="902" height="842" alt="printf.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H1T0891T/printf.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H1T0891T/printf.png" width="902" height="842" alt="printf.png" />
                   </a>
                 </div>
               </div>
@@ -9304,8 +9252,8 @@ endfunction</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01H9UMT4H1/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01H9UMT4H1/image.png" width="384" height="180" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H9UMT4H1/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H9UMT4H1/image.png" width="384" height="180" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -9333,8 +9281,8 @@ endfunction</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01H314PZC6/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01H314PZC6/image.png" width="192" height="120" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H314PZC6/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01H314PZC6/image.png" width="192" height="120" alt="image.png" />
                   </a>
                 </div>
               </div>

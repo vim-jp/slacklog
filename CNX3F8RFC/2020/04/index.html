@@ -405,35 +405,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F010VHZ789Z/.nyagos" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F010VHZ789Z/.nyagos" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: .nyagos(Lua)]]</span>
                   </a>
-                  <pre><code class='language-lua'>-- prompt
-nyagos.prompt = function(this)
-  -- path,title,prompt
-  local path = getCompressedPath(3):gsub(&#39;\\&#39;, &#39;/&#39;)
-  local title = path .. &#34; - NYAGOS&#34;
-  local admin = nyagos.elevated()
-  if admin then
-    title = title .. &#34;(admin)&#34;
-  end
-
-  local prompt = &#39;&#39;
-  if nyagos.which(&#34;starship&#34;) then
-    prompt = prompt .. nyagos.eval(&#39;starship prompt 2&gt; nul&#39;) .. &#39; &#39;
-  else
-    local pathBlock = &#39;&#39;
-    if admin then
-      pathBlock = &#39;$e[30;40;1m[$e[40;31;1m&#39;..path..&#39;$e[30;40;1m]$e[37;1m&#39;
-    else
-      pathBlock = &#39;$e[30;40;1m[$e[40;36;1m&#39;..path..&#39;$e[30;40;1m]$e[37;1m&#39;
-    end
-    prompt = prompt .. makePrompt(pathBlock)
-  end
-
-  return nyagos.default_prompt(prompt,title)
-end
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F010VHZ789Z/.nyagos: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -631,32 +606,10 @@ end
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F010VMACDSP/.gitconfig.alias" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F010VMACDSP/.gitconfig.alias" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: .gitconfig.alias(Shell)]]</span>
                   </a>
-                  <pre><code class='language-shell'>	sw = &#34;!f () {\
-		checkouted=0;\
-		if [ \&#34;${#}\&#34; -eq 1 -a \&#34;${1}\&#34; = \&#34;-\&#34; ]; then\
-			git switch -;\
-			checkouted=1;\
-		elif [ \&#34;${#}\&#34; -eq 1 ]; then\
-			match_num=$(git branch | sed &#39;s/^..//&#39; | grep -x \&#34;${*}\&#34; | wc -l);\
-			if [ 1 -eq \&#34;${match_num}\&#34; ]; then\
-				git switch ${*};\
-				checkouted=1;\
-			fi;\
-		fi;\
-		if [ 1 -eq \&#34;${checkouted}\&#34; ]; then\
-			:;\
-		elif which fzf &gt;/dev/null 2&gt;&amp;1; then\
-			git branch --sort=authordate | fzf  --header=&#39;local-branch&#39; --prompt=&#39;switch\\&gt; &#39; --query=\&#34;${*}\&#34; --select-1 | tr -d &#39; \\*&#39; | xargs -r -n 1 git switch;\
-		elif which peco &gt;/dev/null 2&gt;&amp;1; then\
-			git branch --sort=authordate | peco                         --prompt=&#39;switch\\&gt; &#39; --query=\&#34;${*}\&#34; --select-1 | tr -d &#39; \\*&#39; | xargs -r -n 1 git switch;\
-		elif [ \&#34;${#}\&#34; -ge 1 ]; then\
-			git switch ${*};\
-		fi;\
-	};f&#34;
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F010VMACDSP/.gitconfig.alias: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -1044,37 +997,10 @@ end
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01195WD4LW/fzf-gh-pr.sh" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01195WD4LW/fzf-gh-pr.sh" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: fzf-gh-pr(Shell)]]</span>
                   </a>
-                  <pre><code class='language-shell'>FZF_GH_PR_EXTRA_ARG=${FZF_GH_PR_EXTRA_ARG:-&#39;&#39;}
-FZF_GH_PR_BINDKEY=${FZF_GH_PR_BINDKEY:-&#39;^x^p^r&#39;}
-
-function fzf-gh-pr-selection() {
-  local out pr key fzf_command command
-
-  pr_list_command=&#39;gh pr list&#39;
-  fzf_command=&#39;fzf --query &#34;$LBUFFER&#34; --prompt=&#34;Pull Request&gt; &#34; --preview=&#34;gh pr view {1}&#34; --expect=ctrl-o,ctrl-c&#39;
-  command=&#34;$pr_list_command | $fzf_command&#34;
-
-  IFS=$&#39;\n&#39; out=$(eval $command)
-  key=$(echo &#34;$out&#34; | head -1)
-  pr=$(echo &#34;$out&#34; | head -2 | tail -1 | awk &#39;{ print $1 }&#39;)
-
-  if [[ $pr != &#34;&#34; ]]; then
-    if [[ $key == &#34;ctrl-o&#34; ]]; then
-      eval &#34;gh pr view --web $pr&#34;
-    elif [[ $key == &#34;ctrl-c&#34; ]]; then
-      BUFFER=&#34;gh pr checkout $pr&#34;
-      CURSOR=$#BUFFER
-    else
-      eval &#34;gh pr view $pr&#34;
-    fi
-  fi
-  zle reset-prompt
-}
-zle -N fzf-gh-pr-selection
-bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01195WD4LW/fzf-gh-pr.sh: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -4950,8 +4876,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011VK50Y3T/2020-04-10_17-03.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011VK50Y3T/2020-04-10_17-03.png" width="951" height="350" alt="2020-04-10_17-03.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011VK50Y3T/2020-04-10_17-03.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011VK50Y3T/2020-04-10_17-03.png" width="951" height="350" alt="2020-04-10_17-03.png" />
                   </a>
                 </div>
               </div>
@@ -5464,8 +5390,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011TFBBM36/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011TFBBM36/image.png" width="229" height="141" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011TFBBM36/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011TFBBM36/image.png" width="229" height="141" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -6289,8 +6215,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011KTFBUG6/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011KTFBUG6/image.png" width="621" height="125" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011KTFBUG6/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011KTFBUG6/image.png" width="621" height="125" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -6428,8 +6354,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0121202WTB/2020-04-13_20-50.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0121202WTB/2020-04-13_20-50.png" width="941" height="342" alt="2020-04-13_20-50.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0121202WTB/2020-04-13_20-50.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0121202WTB/2020-04-13_20-50.png" width="941" height="342" alt="2020-04-13_20-50.png" />
                   </a>
                 </div>
               </div>
@@ -6479,8 +6405,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011QD8KHEX/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011QD8KHEX/image.png" width="590" height="245" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011QD8KHEX/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011QD8KHEX/image.png" width="590" height="245" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -6561,8 +6487,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011QEQD1LM/2020-04-13_20-51.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011QEQD1LM/2020-04-13_20-51.png" width="951" height="509" alt="2020-04-13_20-51.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011QEQD1LM/2020-04-13_20-51.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011QEQD1LM/2020-04-13_20-51.png" width="951" height="509" alt="2020-04-13_20-51.png" />
                   </a>
                 </div>
               </div>
@@ -7121,8 +7047,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012EQW9WRW/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F012EQW9WRW/image.png" width="165" height="180" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012EQW9WRW/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012EQW9WRW/image.png" width="165" height="180" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -8604,8 +8530,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0121AQBF1S/screenshot.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0121AQBF1S/screenshot.gif" width="833" height="421" alt="screenshot.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0121AQBF1S/screenshot.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0121AQBF1S/screenshot.gif" width="833" height="421" alt="screenshot.gif" />
                   </a>
                 </div>
               </div>
@@ -8743,8 +8669,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011TQB4MKP/Kapture%202020-04-15%20at%2015.17.05.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F011TQB4MKP/Kapture%202020-04-15%20at%2015.17.05.mp4" poster="/slacklog/files/F011TQB4MKP/Kapture%202020-04-15%20at%2015.17.05_video.jpeg" controls alt="Kapture 2020-04-15 at 15.17.05.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011TQB4MKP/Kapture%202020-04-15%20at%2015.17.05.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011TQB4MKP/Kapture%202020-04-15%20at%2015.17.05.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011TQB4MKP/Kapture%202020-04-15%20at%2015.17.05_video.jpeg" controls alt="Kapture 2020-04-15 at 15.17.05.mp4">
                   </video>
                   </a>
                 </div>
@@ -11258,8 +11184,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011Z5VMU5T/Peek%202020-04-17%2012-21.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011Z5VMU5T/Peek%202020-04-17%2012-21.gif" width="945" height="512" alt="Peek 2020-04-17 12-21.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011Z5VMU5T/Peek%202020-04-17%2012-21.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011Z5VMU5T/Peek%202020-04-17%2012-21.gif" width="945" height="512" alt="Peek 2020-04-17 12-21.gif" />
                   </a>
                 </div>
               </div>
@@ -13558,8 +13484,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012QKLSJ72/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-17%2016.08.50.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F012QKLSJ72/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-17%2016.08.50_1024.png" width="1024" height="343" alt="スクリーンショット 2020-04-17 16.08.50.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012QKLSJ72/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-17%2016.08.50.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012QKLSJ72/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-17%2016.08.50_1024.png" width="1024" height="343" alt="スクリーンショット 2020-04-17 16.08.50.png" />
                   </a>
                 </div>
               </div>
@@ -13620,8 +13546,8 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F011ZD3A2UV/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-17%2016.09.39.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F011ZD3A2UV/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-17%2016.09.39_1024.png" width="1024" height="185" alt="スクリーンショット 2020-04-17 16.09.39.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011ZD3A2UV/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-17%2016.09.39.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F011ZD3A2UV/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-17%2016.09.39_1024.png" width="1024" height="185" alt="スクリーンショット 2020-04-17 16.09.39.png" />
                   </a>
                 </div>
               </div>
@@ -16828,50 +16754,10 @@ bindkey $FZF_GH_PR_BINDKEY fzf-gh-pr-selection</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0129TJDM52/fd.sh" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0129TJDM52/fd.sh" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: fd(Shell)]]</span>
                   </a>
-                  <pre><code class='language-shell'>&gt; fd -h
-fd 8.0.0
-
-USAGE:
-    fd [FLAGS/OPTIONS] [&lt;pattern&gt;] [&lt;path&gt;...]
-
-FLAGS:
-    -H, --hidden            Search hidden files and directories
-    -I, --no-ignore         Do not respect .(git|fd)ignore files
-    -s, --case-sensitive    Case-sensitive search (default: smart case)
-    -i, --ignore-case       Case-insensitive search (default: smart case)
-    -g, --glob              Glob-based search (default: regular expression)
-    -a, --absolute-path     Show absolute instead of relative paths
-    -l, --list-details      Use a long listing format with file metadata
-    -L, --follow            Follow symbolic links
-    -p, --full-path         Search full path (default: file-/dirname only)
-    -0, --print0            Separate results by the null character
-    -h, --help              Prints help information
-    -V, --version           Prints version information
-
-OPTIONS:
-    -d, --max-depth &lt;depth&gt;            Set maximum search depth (default: none)
-    -t, --type &lt;filetype&gt;...
-            Filter by type: file (f), directory (d), symlink (l),
-            executable (x), empty (e), socket (s), pipe (p)
-    -e, --extension &lt;ext&gt;...           Filter by file extension
-    -x, --exec &lt;cmd&gt;                   Execute a command for each search result
-    -X, --exec-batch &lt;cmd&gt;             Execute a command with all search results at once
-    -E, --exclude &lt;pattern&gt;...         Exclude entries that match the given glob pattern
-    -c, --color &lt;when&gt;                 When to use colors: never, *auto*, always
-    -S, --size &lt;size&gt;...               Limit results based on the size of files.
-        --changed-within &lt;date|dur&gt;    Filter by file modification time (newer than)
-        --changed-before &lt;date|dur&gt;    Filter by file modification time (older than)
-
-ARGS:
-    &lt;pattern&gt;    the search pattern - a regular expression unless &#39;--glob&#39; is used
-                 (optional)
-    &lt;path&gt;...    the root directory for the filesystem search (optional)
-
-Note: `fd -h` prints a short and concise overview while `fd --help` gives all details.
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0129TJDM52/fd.sh: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -16944,46 +16830,10 @@ Note: `fd -h` prints a short and concise overview while `fd --help` gives all de
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0129TJHFN0/find.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0129TJHFN0/find.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: find(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>&gt; find --help
-Usage: find [-H] [-L] [-P] [-Olevel] [-D debugopts] [path...] [expression]
-
-default path is the current directory; default expression is -print
-expression may consist of: operators, options, tests, and actions:
-operators (decreasing precedence; -and is implicit where no others are given):
-      ( EXPR )   ! EXPR   -not EXPR   EXPR1 -a EXPR2   EXPR1 -and EXPR2
-      EXPR1 -o EXPR2   EXPR1 -or EXPR2   EXPR1 , EXPR2
-positional options (always true): -daystart -follow -regextype
-
-normal options (always true, specified before other expressions):
-      -depth --help -maxdepth LEVELS -mindepth LEVELS -mount -noleaf
-      --version -xdev -ignore_readdir_race -noignore_readdir_race
-tests (N can be +N or -N or N): -amin N -anewer FILE -atime N -cmin N
-      -cnewer FILE -ctime N -empty -false -fstype TYPE -gid N -group NAME
-      -ilname PATTERN -iname PATTERN -inum N -iwholename PATTERN -iregex PATTERN
-      -links N -lname PATTERN -mmin N -mtime N -name PATTERN -newer FILE
-      -nouser -nogroup -path PATTERN -perm [-/]MODE -regex PATTERN
-      -readable -writable -executable
-      -wholename PATTERN -size N[bcwkMG] -true -type [bcdpflsD] -uid N
-      -used N -user NAME -xtype [bcdpfls]      -context CONTEXT
-
-actions: -delete -print0 -printf FORMAT -fprintf FILE FORMAT -print
-      -fprint0 FILE -fprint FILE -ls -fls FILE -prune -quit
-      -exec COMMAND ; -exec COMMAND {} + -ok COMMAND ;
-      -execdir COMMAND ; -execdir COMMAND {} + -okdir COMMAND ;
-
-Valid arguments for -D:
-exec, opt, rates, search, stat, time, tree, all, help
-Use &#39;-D help&#39; for a description of the options, or see find(1)
-
-Please see also the documentation at http://www.gnu.org/software/findutils/.
-You can report (and track progress on fixing) bugs in the &#34;find&#34;
-program via the GNU findutils bug-reporting page at
-https://savannah.gnu.org/bugs/?group=findutils or, if
-you have no web access, by sending email to &lt;bug-findutils@gnu.org&gt;.
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0129TJHFN0/find.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -19860,8 +19710,8 @@ you have no web access, by sending email to &lt;bug-findutils@gnu.org&gt;.
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012416F0EP/a.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F012416F0EP/a.png" width="236" height="73" alt="a.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012416F0EP/a.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012416F0EP/a.png" width="236" height="73" alt="a.png" />
                   </a>
                 </div>
               </div>
@@ -20188,8 +20038,8 @@ you have no web access, by sending email to &lt;bug-findutils@gnu.org&gt;.
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01242ZRZ99/Kapture%202020-04-19%20at%2018.36.51.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F01242ZRZ99/Kapture%202020-04-19%20at%2018.36.51.mp4" poster="/slacklog/files/F01242ZRZ99/Kapture%202020-04-19%20at%2018.36.51_video.jpeg" controls alt="Kapture 2020-04-19 at 18.36.51.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01242ZRZ99/Kapture%202020-04-19%20at%2018.36.51.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01242ZRZ99/Kapture%202020-04-19%20at%2018.36.51.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01242ZRZ99/Kapture%202020-04-19%20at%2018.36.51_video.jpeg" controls alt="Kapture 2020-04-19 at 18.36.51.mp4">
                   </video>
                   </a>
                 </div>
@@ -21243,8 +21093,8 @@ you have no web access, by sending email to &lt;bug-findutils@gnu.org&gt;.
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0124PFN95Y/2020-04-20_16-58.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0124PFN95Y/2020-04-20_16-58.png" width="911" height="671" alt="2020-04-20_16-58.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0124PFN95Y/2020-04-20_16-58.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0124PFN95Y/2020-04-20_16-58.png" width="911" height="671" alt="2020-04-20_16-58.png" />
                   </a>
                 </div>
               </div>
@@ -21558,40 +21408,10 @@ you have no web access, by sending email to &lt;bug-findutils@gnu.org&gt;.
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0125679GLS/%E7%84%A1%E9%A1%8C.sh" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0125679GLS/%E7%84%A1%E9%A1%8C.sh" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(Shell)]]</span>
                   </a>
-                  <pre><code class='language-shell'>typeset -g -A fzf_preview_commands=()
-
-fzf_preview_commands[(gh issue view)]=&#34;gh_issue&#34;
-fzf_preview_commands[(gh issue view --web)]=&#34;gh_issue&#34;
-
-function gh_issue() {
-  local id=&#34;gh_issue&#34;
-
-  local candidate_command=&#34;gh issue list --limit 100&#34;
-
-  local -a fzf_options
-  fzf_options+=(&#34;--ansi&#34;)
-  fzf_options+=(&#34;--height=100%&#34;)
-  fzf_options+=(&#34;--prompt=&#39;Issue&gt; &#39;&#34;)
-  fzf_options+=(&#34;--header=&#39;C-o: open, C-c: closed, C-a: all&#39;&#34;)
-  fzf_options+=(&#39;--preview=&#34;gh issue view {1}&#34;&#39;)
-
-  local -a bind=(&#34;${FZF_PREVIEW_DEFAULT_BIND}&#34;)
-  bind+=(&#34;ctrl-o:reload(gh issue list --limit 100 --state open)&#34;)
-  bind+=(&#34;ctrl-c:reload(gh issue list --limit 100 --state closed)&#34;)
-  bind+=(&#34;ctrl-a:reload(gh issue list --limit 100 --state all)&#34;)
-  fzf_options+=(&#34;--bind=\&#34;${(j:,:)bind}\&#34;&#34;)
-
-  local callback=(&#34;awk &#39;{ print \$1 }&#39;&#34;)
-
-  local complete_func_name=&#34;_fzf_complete_${id}&#34;
-  _create_complete_func $complete_func_name  &#34;${callback}&#34;
-  FZF_COMPLETION_OPTS=${(j: :)${fzf_options}}
-  eval $complete_func_name &#34;\&#34;${candidate_command}\&#34;&#34;
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0125679GLS/無題.sh: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -24425,8 +24245,8 @@ function gh_issue() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01213HHL5U/Kapture%202020-04-21%20at%2020.21.01.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F01213HHL5U/Kapture%202020-04-21%20at%2020.21.01.mp4" poster="/slacklog/files/F01213HHL5U/Kapture%202020-04-21%20at%2020.21.01_video.jpeg" controls alt="Kapture 2020-04-21 at 20.21.01.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01213HHL5U/Kapture%202020-04-21%20at%2020.21.01.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01213HHL5U/Kapture%202020-04-21%20at%2020.21.01.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01213HHL5U/Kapture%202020-04-21%20at%2020.21.01_video.jpeg" controls alt="Kapture 2020-04-21 at 20.21.01.mp4">
                   </video>
                   </a>
                 </div>
@@ -24850,8 +24670,8 @@ function gh_issue() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012RBQNHDF/gitstatus.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F012RBQNHDF/gitstatus.gif" width="804" height="602" alt="gitstatus.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012RBQNHDF/gitstatus.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012RBQNHDF/gitstatus.gif" width="804" height="602" alt="gitstatus.gif" />
                   </a>
                 </div>
               </div>
@@ -25183,74 +25003,10 @@ function gh_issue() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0132JSJ54Y/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0132JSJ54Y/%E7%84%A1%E9%A1%8C.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>function! s:preview_apply(text, ft) abort
-  if !bufexists(b:prbuf)
-    return
-  endif
-  call setbufvar(b:prbuf, &#34;&amp;ft&#34;, a:ft)
-  call deletebufline(b:prbuf, 1, &#34;$&#34;)
-  call setbufline(b:prbuf, 1, a:text)
-endfunction
-
-let s:preview_job = -1
-let s:preview_acc = []
-
-function! s:preview_cb(ch, msg) abort
-  call add(s:preview_acc, a:msg)
-endfunction
-
-function! s:preview_change() abort
-  &#34; Gitのメッセージ位置を取ってdiffするかファイルを直接読むかを決める
-  let lines = getline(1, &#34;$&#34;)
-  let nostaged = index(lines, &#34;Changes not staged for commit:&#34;)
-  let untracked = index(lines, &#34;Untracked files:&#34;)
-  let line = getline(&#34;.&#34;)
-  &#34; Ginaはファイル部分をエスケープしてくれているので利用する
-  if stridx(line, &#34;\&lt;Esc&gt;&#34;) != -1
-    let linepos = line(&#34;.&#34;)
-    if untracked != -1 &amp;&amp; linepos &gt; untracked
-      &#34; untrackedより先はファイルを直接開く
-      try
-        &#34; エスケープシーケンスを利用して切り出し
-        let line = substitute(line, &#34;\\v.*\&lt;Esc&gt;\\[\\d+m(.*)\&lt;Esc&gt;.*&#34;, &#34;\\1&#34;, &#34;&#34;)
-        call s:preview_apply(readfile(line), &#34;text&#34;)
-      catch
-        echo [v:exception, v:throwpoint]
-        call add(g:vimrc_errors, [v:exception, v:throwpoint])
-      endtry
-    else
-      &#34; もうちょっと上手くできた気がするけど面倒だし当分は放置
-      let line = substitute(line, &#34;\\v[^:]*:\\s*&#34;, &#34;&#34;, &#34;&#34;)
-      let line = substitute(line, &#34;\\v\&lt;Esc&gt;.*&#34;, &#34;&#34;, &#34;&#34;)
-      let opt = (nostaged != -1 &amp;&amp; linepos &gt; nostaged) ? &#34;&#34; : &#34;--staged&#34;
-      silent! call job_stop(s:preview_job, &#34;kill&#34;)
-      let s:preview_acc = []
-      &#34; TODO:neovimでは動かんのでそのうちなんとかする
-      let preview_job = job_start(split(printf(&#34;git diff %s %s&#34;, opt, line)), {
-      \ &#34;close_cb&#34;: {ch-&gt;s:preview_apply(s:preview_acc, &#34;diff&#34;)},
-      \ &#34;out_cb&#34;: funcref(&#34;s:preview_cb&#34;),
-      \ })
-    endif
-  endif
-endfunction
-
-function! s:preview_open() abort
-  execute &#34;lcd&#34; system(&#34;git rev-parse --show-toplevel&#34;)
-  let curwin = win_getid()
-  new
-  let prbuf = bufnr(&#34;%&#34;)
-  setlocal buftype=nofile bufhidden=hide noswapfile
-  call win_gotoid(curwin)
-  let b:prbuf = prbuf
-  autocmd CursorMoved &lt;buffer&gt; call s:preview_change()
-endfunction
-
-augroup vimrc
-  autocmd vimrc FileType gina-status nnoremap &lt;buffer&gt; pr :&lt;C-u&gt;call &lt;SID&gt;preview_open()&lt;CR&gt;
-augroup END</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0132JSJ54Y/無題.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -25552,8 +25308,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012FE74P7C/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F012FE74P7C/image.png" width="402" height="39" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012FE74P7C/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012FE74P7C/image.png" width="402" height="39" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -27506,8 +27262,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0120RWDLJ3/simplescreenrecorder-2020-04-24_15.37.08.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F0120RWDLJ3/simplescreenrecorder-2020-04-24_15.37.08.mp4" poster="/slacklog/files/F0120RWDLJ3/simplescreenrecorder-2020-04-24_15.37.08_video.jpeg" controls alt="simplescreenrecorder-2020-04-24_15.37.08.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0120RWDLJ3/simplescreenrecorder-2020-04-24_15.37.08.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0120RWDLJ3/simplescreenrecorder-2020-04-24_15.37.08.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0120RWDLJ3/simplescreenrecorder-2020-04-24_15.37.08_video.jpeg" controls alt="simplescreenrecorder-2020-04-24_15.37.08.mp4">
                   </video>
                   </a>
                 </div>
@@ -28478,8 +28234,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012A7EM4NA/Kapture%202020-04-25%20at%201.55.28.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F012A7EM4NA/Kapture%202020-04-25%20at%201.55.28.mp4" poster="/slacklog/files/F012A7EM4NA/Kapture%202020-04-25%20at%201.55.28_video.jpeg" controls alt="Kapture 2020-04-25 at 1.55.28.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012A7EM4NA/Kapture%202020-04-25%20at%201.55.28.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012A7EM4NA/Kapture%202020-04-25%20at%201.55.28.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012A7EM4NA/Kapture%202020-04-25%20at%201.55.28_video.jpeg" controls alt="Kapture 2020-04-25 at 1.55.28.mp4">
                   </video>
                   </a>
                 </div>
@@ -28693,1229 +28449,10 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012GF05P6H/a.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012GF05P6H/a.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: a(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>[0m[1m[36m575[0m-  &#34;できない！mattn脱却&#34;,
-[0m[1m[36m576[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m577[0m-  &#34;&amp;gt; いつの間にか mathn に依存していた\nいつの間にか mattnに依存していた&#34;,
-[0m[1m[36m578[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m579[0m-  &#34;:totemo: :wakaru:&#34;,
-[0m[1m[36m580[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m581[0m-  &#34;mattn 依存しているって中毒みたい :drooling_face:&#34;,
-[0m[1m[36m582[0m-  &#34;U06ECBRTJ&#34;,
-[0m[1m[36m583[0m-  &#34;mattn さんに依存して、脱却できない方に朗報！\nあなたも Github Sponsor を利用して、 mattn さんに合法的に依存しよう！&#34;,
-[0m[1m[36m584[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m585[0m:  &#34;おれはmattn依存してない！って思ってるそこのあなた。[0m[35mfzf[0m使ってるなら[0m[35mfzf[0mがmattn依存してますよ！&#34;,
-[0m[1m[36m586[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m587[0m-  &#34;windows/goツールって時点で逃げられないと思う…&#34;,
-[0m[1m[36m588[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m589[0m-  &#34;go get -vしてると頻繁に画面にmattnという文字列が表示される&#34;,
-[0m[1m[36m590[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m591[0m-  &#34;まぁ依存嫌いな人もいますね。以前あったのはウェブフレームワークの画面ログに色付いてないのを直す colorable 使った pr 送ったけど「何もしないはずの linux で遅くなるから嫌だ」と言われたなぁ。実際遅くはならないんだけど。&#34;,
-[0m[1m[36m592[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m593[0m-  &#34;最近だと同様にウェブフレームワークのコンソールログ修正 pr 出したら第三者から依存が増えるくらいなら色を消してっていうのもあった。&#34;,
-[0m[1m[36m594[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m595[0m-  &#34;まぁごもっとも。&#34;,
-[0m[1m[36m596[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m597[0m:  &#34;[0m[35mfzf[0m は流行る前から知ってたので「有名になったなぁ」と感慨深い。&#34;,
-[0m[1m[36m598[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m599[0m-  &#34;いまやデファクトになりつつある。&#34;,
-[0m[1m[36m600[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m601[0m-  &#34;qiitaの流れ見てるとpecoでああいうインタラクティブフィルタリングツールに一気に火がついたイメージ&#34;,
-[0m[1m[36m602[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m603[0m-  &#34;(国内に限る)&#34;,
-[0m[1m[36m604[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m605[0m-  &#34;percelよかった&#34;,
-[0m[1m[36m606[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m607[0m-  &#34;機能同等だけどpecoで一気に流行りましたよね&#34;,
-[0m[1m[36m608[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m609[0m-  &#34;そうですね。peco はシングルバイナリで火がついた。&#34;,
-[0m[1m[36m610[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m611[0m:  &#34;[0m[35mfzf[0m元々goじゃなかったですよね確か&#34;,
-[0m[1m[36m612[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m613[0m-  &#34;ワンバイナリの威力たるや\ngoのマッチ度たるや&#34;,
-[0m[1m[36m614[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m615[0m-  &#34;fuzzyfinder.vim ってのが昔あったのだぞ (インターネット老人)&#34;,
-[0m[1m[36m616[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m617[0m:  &#34;少ない量だと ctrlp の方が速いし未だに [0m[35mfzf[0m や gof の起動オーバーヘッド気になる。&#34;,
-[0m[1m[36m618[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m619[0m-  &#34;leaderf入れようとしたらpython要求されて :gunnyari: した&#34;,
-[0m[1m[36m620[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m621[0m-  &#34;私の知る限り、多数の候補から曖昧なワードで絞り込んでいくって UI は fuzzyfinder.vim が元祖&#34;,
-[0m[1m[36m622[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m623[0m-  &#34;たまにpython無い環境使ってるのでつらい&#34;,
-[0m[1m[36m624[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m625[0m-  &#34;もうオリジナルのリポジトリ消えちゃってないらしいな…\n&lt;https://github.com/vim-scripts/FuzzyFinder&gt;\nこれなら残ってる&#34;,
-[0m[1m[36m626[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m627[0m-  &#34;ぶっちゃけ mru が満たせたら僕は満足なので高速でメモリ食わないセレクタが欲しい。&#34;,
-[0m[1m[36m628[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m629[0m-  &#34;高速でって辺りが重要そう&#34;,
-[0m[1m[36m630[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m631[0m:  &#34;gof とか [0m[35mfzf[0m とか速いんだけど微量なタイムラグがめっちゃ気になる。&#34;,
-[0m[1m[36m632[0m-  &#34;U6XP9LZ6V&#34;,
-[0m[1m[36m633[0m-  &#34;Vimに内蔵する流れ（無い&#34;,
-[0m[1m[36m634[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m635[0m-  &#34;popup&#34;,
-[0m[1m[36m636[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m637[0m:  &#34;[0m[35mfzf[0m、自分は起動するまでのVim scriptの処理が重すぎてそっちがクリティカルだ・・・&#34;,
-[0m[1m[36m638[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m639[0m-  &#34;deviconsあたりが重い&#34;,
-[0m[1m[36m640[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m641[0m-  &#34;実際欲しいの最近使ったファイル名の10個くらいなんすよね。&#34;,
-[0m[1m[36m642[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m643[0m-  &#34;確かにそうかもしれない、統計取ってみたいな&#34;,
-[0m[1m[36m644[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m645[0m-  &#34;MRUといえばoldfilesにnofileされたバッファが混ざっててつらい&#34;,
-[0m[1m[36m646[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m647[0m-  &#34;フィルタリングするか&#34;,
---
-[0m[1m[36m661[0m-  &#34;なるほどです。。。やっぱりクラサバっぽい方式にしてプロセス活かし続けるのがよさそうですね。。。ありがとうございます。&#34;,
-[0m[1m[36m662[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m663[0m-  &#34;lsp 的にやるのアリだと思います。&#34;,
-[0m[1m[36m664[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m665[0m-  &#34;たぶん ui は Vim script でやった方がレイテンシ少なそうなイメージ。&#34;,
-[0m[1m[36m666[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m667[0m-  &#34;vim-candle はまさにそういう方式で結構早いなという体感があるんですが、コードが気持ち悪くて広める気が全く起きないのがネック。。。&#34;,
-[0m[1m[36m668[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m669[0m-  &#34;おっ。試したい。&#34;,
-[0m[1m[36m670[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m671[0m:  &#34;[0m[35mfzf[0mdほしい&#34;,
-[0m[1m[36m672[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m673[0m-  &#34;&lt;@U03C6TEAZ&gt; &lt;https://github.com/hrsh7th/vim-candle&gt; こちらです。curl があれば動くと信じています。。。（バイナリダウンロードする機能がついていまして。。。）&#34;,
-[0m[1m[36m674[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m675[0m-  &#34;後で試します。あざます。&#34;,
-[0m[1m[36m676[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m677[0m-  &#34;現状、どこにマッチしたか？のハイライトとかも作っていなくてとにかく無骨です。&#34;,
-[0m[1m[36m678[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m679[0m-  &#34;実際そんなに起動速度気になります？？\n私まったく感じないんですが・・・&#34;,
-[0m[1m[36m680[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m681[0m-  &#34;curl の起動に時間が…&#34;,
---
-[0m[1m[36m759[0m-  &#34;欲しいかもしれない&#34;,
-[0m[1m[36m760[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m761[0m-  &#34;fuzzyfinder.vim 実はまだ愛用してる。&#34;,
-[0m[1m[36m762[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m763[0m-  &#34;後続からマッチしていって欲しいという意味です。&#34;,
-[0m[1m[36m764[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m765[0m-  &#34;定義も fuzzy&#34;,
-[0m[1m[36m766[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m767[0m-  &#34;/home/mattn/hello で h タイプしたら hello 側でマッチして欲しい。&#34;,
-[0m[1m[36m768[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m769[0m:  &#34;[0m[35mfzf[0m こうなってるのかな。&#34;,
-[0m[1m[36m770[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m771[0m-  &#34;よんだー？&#34;,
-[0m[1m[36m772[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m773[0m-  &#34;`/` で区切って後ろから fuzzy マッチ。。。と思ったけど、それじゃ全体にかからないし意外と難しい。&#34;,
-[0m[1m[36m774[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m775[0m-  &#34;結局一番大事なのは開発を継続する覚悟だと思いますよ&#34;,
-[0m[1m[36m776[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m777[0m-  &#34;スペースは .* 扱いが好き。&#34;,
-[0m[1m[36m778[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m779[0m-  &#34;いかに優れたソフトウェアでも開発者が飽きて放置するというのはよくある&#34;,
---
-[0m[1m[36m843[0m-  &#34;イメージ戦略ですよ&#34;,
-[0m[1m[36m844[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m845[0m-  &#34;ジャンプしたら死ぬ&#34;,
-[0m[1m[36m846[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m847[0m-  &#34;spelunker&#34;,
-[0m[1m[36m848[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m849[0m-  &#34;弱そうなのでどうせプラグインとか大したもの作らんだろって思わせるのです&#34;,
-[0m[1m[36m850[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m851[0m-  &#34;vim-quickrun の戦闘力かなり高い&#34;,
-[0m[1m[36m852[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m853[0m:  &#34;[0m[35mfzf[0m-preview も dark power って言われてたなw そういえば&#34;,
-[0m[1m[36m854[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m855[0m-  &#34;ThinkVimって設定集？がdark powerって書いててバンドルされてました&#34;,
-[0m[1m[36m856[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m857[0m-  &#34;:thinking_face:&#34;,
-[0m[1m[36m858[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m859[0m-  &#34;みんな設定集好きだなぁ....&#34;,
-[0m[1m[36m860[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m861[0m-  &#34;SpaceVim しかり&#34;,
-[0m[1m[36m862[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m863[0m-  &#34;禅みたいなの外国人好きだからなぁ。&#34;,
---
-[0m[1m[36m903[0m-  &#34;vim-jp/copy-paste-vimrc という名前でリポジトリ作って Github Pages で公開すれば良いのでは&#34;,
-[0m[1m[36m904[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m905[0m-  &#34;まずは執筆者を募集しよう&#34;,
-[0m[1m[36m906[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m907[0m-  &#34;今のところ 4 人... ? w&#34;,
-[0m[1m[36m908[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m909[0m-  &#34;誤爆を見た&#34;,
-[0m[1m[36m910[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m911[0m-  &#34;www&#34;,
-[0m[1m[36m912[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m913[0m:  &#34;今頃気がついたけど[0m[35mfzf[0mとかで何か入れると並び替わるのってtrailing matchしてるからか&#34;,
-[0m[1m[36m914[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m915[0m-  &#34;あと、fuzzy 系のロジックはマッチ度があるので、それによってソートが変わっている可能性はあります。&#34;,
-[0m[1m[36m916[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m917[0m-  &#34;なる&#34;,
-[0m[1m[36m918[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m919[0m:  &#34;[0m[35mfzf[0m、ガンガン変わりますね&#34;,
-[0m[1m[36m920[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m921[0m-  &#34;yankroundの履歴から取ろうとしたら `--no-sort` 付けないと目的のに全く辿り着けなくて使えなかった&#34;,
-[0m[1m[36m922[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m923[0m-  &#34;目の前の物が欲しいのに打つとどこか行くのでつらかった&#34;,
-[0m[1m[36m924[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m925[0m:  &#34;[0m[35mfzf[0mはシングルクォートで後ろの単語が完全一致になってくれるのと、--no-sortをいい感じに使わないと目的のがどっかいっちゃう&#34;,
-[0m[1m[36m926[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m927[0m:  &#34;`[0m[35mfzf[0m --no-sort --query=\&#34;&#39;\&#34;` って結構やります&#34;,
-[0m[1m[36m928[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m929[0m-  &#34;近づけようと打って離れていくの切ないですよね&#34;,
-[0m[1m[36m930[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m931[0m:  &#34;知見がどんどん出てくるの[0m[35mfzf[0mマイスター感ある&#34;,
-[0m[1m[36m932[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m933[0m:  &#34;1ヶ月無限に[0m[35mfzf[0m触ってたので・・・&#34;,
-[0m[1m[36m934[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m935[0m:  &#34;たしかにいつ見ても[0m[35mfzf[0m触ってるような印象あった&#34;,
-[0m[1m[36m936[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m937[0m:  &#34;vimプラグインを作ってるはずが、[0m[35mfzf[0mの仕様に対して連携とpreview用の外部スクリプト書いたりで結構それ以外もやってた感じあります&#34;,
-[0m[1m[36m938[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m939[0m-  &#34;&lt;@U8R597E9H&gt; すみません、vim-candleですが、これって将来的にvim-lampに依存させる予定ですか？\nlamp#config呼んでいる所があって、無いとこけてしまいます&#34;,
-[0m[1m[36m940[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m941[0m-  &#34;え！それはあまりにも雑すぎてやばいですね。すぐ直します。&#34;,
-[0m[1m[36m942[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m943[0m-  &#34;流石にそれはバグです。。。すいません。。。&#34;,
-[0m[1m[36m944[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m945[0m-  &#34;消しました。ご報告ありがとうございます＞＜ 雑すぎました。&#34;,
-[0m[1m[36m946[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m947[0m:  &#34;_ちなみに、すでに [0m[35mfzf[0m をご利用中であればあえて candle を使う意味はないかもしれないです。。。_\nでも、試していただけるとこういうのが見つかるので純粋にありがたいです！ありがとうございます。&#34;,
-[0m[1m[36m948[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m949[0m:  &#34;[0m[35mfzf[0m.vimあれ入れたくないんですよね…\n後例示してある設定がとても僕好みだったというのもありまして&#34;,
-[0m[1m[36m950[0m-  &#34;UNJ2DANJC&#34;,
-[0m[1m[36m951[0m-  &#34;以前知人のvimがちょっとチューンされていたので話を聞いたらこれでした。\n&lt;https://vim-bootstrap.com/|https://vim-bootstrap.com/&gt;&#34;,
-[0m[1m[36m952[0m-  &#34;UNJ2DANJC&#34;,
-[0m[1m[36m953[0m-  &#34;需要は十分ありそう&#34;,
-[0m[1m[36m954[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m955[0m-  &#34;降ってきたvimrcをブラウザで開いたらvscodeが立ち上がった:thinking_face:&#34;,
-[0m[1m[36m956[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m957[0m-  &#34;www&#34;,
-[0m[1m[36m958[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m959[0m-  &#34;readme壊れてたのでPR投げました、空いた時間にでも確認お願いします&#34;,
---
-[0m[1m[36m4883[0m-  &#34;まあたしかに&#34;,
-[0m[1m[36m4884[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m4885[0m-  &#34;DMCAとしては、一旦停止はわりとアリな気はしますが...FUDを気にしてるのかなあ&#34;,
-[0m[1m[36m4886[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m4887[0m-  &#34;日本の警察と同じで被害届がないと動けないんでしょうね。&#34;,
-[0m[1m[36m4888[0m-  &#34;U6XP9LZ6V&#34;,
-[0m[1m[36m4889[0m-  &#34;最初のコミットが Oct 27, 1991\n&lt;https://github.com/vim/vim-history/graphs/contributors&gt;&#34;,
-[0m[1m[36m4890[0m-  &#34;UNJ2DANJC&#34;,
-[0m[1m[36m4891[0m-  &#34;技術者倫理の講習みんな受けてくれ...&#34;,
-[0m[1m[36m4892[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m4893[0m:  &#34;&lt;https://github.com/junegunn/[0m[35mfzf[0m/wiki/Windows#no---height-support-before-0210&gt;\nお、windowsでheightできるようになってる&#34;,
-[0m[1m[36m4894[0m-  &#34;UFZL441S8&#34;,
-[0m[1m[36m4895[0m-  &#34;ssh と telnet は全部 narrow width (1cell) だから WindowsTerminal も 2cell を強制的に All narrow width にしている的な話を Microsoft に振られていたことにさっき気づいた\n何言ってんのかわかんなかったし自分の読み違えのような気がすごくしていて反証の手が出ない…&#34;,
-[0m[1m[36m4896[0m-  &#34;U6XP9LZ6V&#34;,
-[0m[1m[36m4897[0m-  &#34;sshは全部narrowって、そうなのかなー？ 分からない&#34;,
-[0m[1m[36m4898[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m4899[0m-  &#34;そうなのかなー。&#34;,
-[0m[1m[36m4900[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m4901[0m-  &#34;キレときます？「こん narrow」って。&#34;,
-[0m[1m[36m4902[0m-  &#34;U7HFY4HFY&#34;,
-[0m[1m[36m4903[0m-  &#34;文字幅を扱うのはターミナルであってshやsshではないはずでは\nminttyなんかはロケール日本なら全角になりますすね&#34;,
---
-[0m[1m[36m14933[0m-  &#34;(字不明)&#34;,
-[0m[1m[36m14934[0m-  &#34;UECSGLW00&#34;,
-[0m[1m[36m14935[0m-  &#34;古いアタマなんで自分もサジェストにイラつくんだけど、もう任せる方にシフトできるようにアタマ慣らしたほうが...と思う&#34;,
-[0m[1m[36m14936[0m-  &#34;UECSGLW00&#34;,
-[0m[1m[36m14937[0m-  &#34;本音は&amp;lt;C-p&amp;gt;させて&#34;,
-[0m[1m[36m14938[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m14939[0m-  &#34;曖昧な動作するものが好きになれないのでサジェストは常に切ってる&#34;,
-[0m[1m[36m14940[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m14941[0m-  &#34;最近ファジーファインダーを許容できるようになったので成長はしてる(?)&#34;,
-[0m[1m[36m14942[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m14943[0m:  &#34;[0m[35mfzf[0m，あいまいといいながら厳密だなあという気持ちになる（いいこと）&#34;,
-[0m[1m[36m14944[0m-  &#34;UNJ2DANJC&#34;,
-[0m[1m[36m14945[0m-  &#34;綴りとか適当に調べるときとか助かってる気がする\nCtrl-n, Ctrl-p ついつい押してしまう....&#34;,
-[0m[1m[36m14946[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m14947[0m-  &#34;Vimの類語辞書とEBlookのお世話になることがけっこうある...便利&#34;,
-[0m[1m[36m14948[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m14949[0m-  &#34;辞書って自分で抜き出した奴です？&#34;,
-[0m[1m[36m14950[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m14951[0m-  &#34;はい、そうですね。\nどっちも自前で準備しました。&#34;,
-[0m[1m[36m14952[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m14953[0m-  &#34;むちゃんこ久しぶりに eblook 起動した。&#34;,
---
-[0m[1m[36m16629[0m-  &#34;トラbrew&#34;,
-[0m[1m[36m16630[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m16631[0m-  &#34;zinit-1は今のところ\nzshのプラグインのインストール、ロード\nスニペット（どっかのプラグインのここの設定だけロードみたいな）のインストール、ロード\nGitHubとかでバイナリーリリースされてるプログラムのダウンロード、パス設定\nとかができます&#34;,
-[0m[1m[36m16632[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m16633[0m-  &#34;Mac を拒絶したい人生だった (おしごとで仕方なく使ってる)&#34;,
-[0m[1m[36m16634[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m16635[0m-  &#34;3つ目便利そう&#34;,
-[0m[1m[36m16636[0m-  &#34;UGP5AJKU4&#34;,
-[0m[1m[36m16637[0m-  &#34;\&#34;zinit\&#34; (意味深)&#34;,
-[0m[1m[36m16638[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m16639[0m:  &#34;rgとかexaとか[0m[35mfzf[0mとかをzshさえ入っていればどんな環境にでもぶち込めるので便利です&#34;,
-[0m[1m[36m16640[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m16641[0m-  &#34;WSL でも使えそう&#34;,
-[0m[1m[36m16642[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m16643[0m-  &#34;WSL 普段使ってないけど…&#34;,
-[0m[1m[36m16644[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m16645[0m-  &#34;問題はWindowsバイナリをちゃんととってこれるか、ですねえ\nじゃないなら、サポートを明言しているLinuxBrew on WSLのほうが安全?&#34;,
-[0m[1m[36m16646[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m16647[0m-  &#34;zinitさえちゃんと動けばいいので、zshのバージョンだけを気にしておけばいい感じなのでだいぶ楽です。\nあとのツールは全部最新だ！っていう感じがArchと似てて私は好みです。&#34;,
-[0m[1m[36m16648[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m16649[0m-  &#34;Windowsのexeも配布されていればいけるはずです（やったことはない）&#34;,
---
-[0m[1m[36m16665[0m-  &#34;Windows native で zsh.exe を使おうと思ったことがない&#34;,
-[0m[1m[36m16666[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m16667[0m-  &#34;です。汎用インストーラー的に使う感じ。（chocolateyの代用w）&#34;,
-[0m[1m[36m16668[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m16669[0m-  &#34;あ、ネイティブなLinuxバイナリでいけるか...orzすみません&#34;,
-[0m[1m[36m16670[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m16671[0m-  &#34;Git に入ってるのは bash.exe だし別に贅沢せんでもいいかなってなるw&#34;,
-[0m[1m[36m16672[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m16673[0m-  &#34;ボケすぎ&#34;,
-[0m[1m[36m16674[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m16675[0m:  &#34;Windows の [0m[35mfzf[0m.exe はなんか変な動きする事がある。&#34;,
-[0m[1m[36m16676[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m16677[0m-  &#34;Windows の zsh は msys2 か cygwin しかないですね。むかーしむかしは本当に native な zsh あったけどもう開発止まってしまった。&#34;,
-[0m[1m[36m16678[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m16679[0m-  &#34;zinitのツールダウンロード機能でbin落とすやつやろうとしたんですけど、記述が難しくて結局お手々でバイナリダウンロードしてしまってる勢&#34;,
-[0m[1m[36m16680[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m16681[0m-  &#34;ほんと複雑すぎるんですよね・・・もういっそこのツールはこういう設定やでって感じで書いてくれたほうが楽。&#34;,
-[0m[1m[36m16682[0m-  &#34;U06ECBRTJ&#34;,
-[0m[1m[36m16683[0m-  &#34;&lt;https://github.com/Songmu/ghg&gt;\nghg でいいんじゃないですかね&#34;,
-[0m[1m[36m16684[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m16685[0m-  &#34;プログラムのダウンロードはどうやら as\&#34;null\&#34; sbin指定のforで回すのがナウいっぽいんですけどうまく動かなかった&#34;,
---
-[0m[1m[36m18011[0m-  &#34;ちゃんとバージョンも見てダウンロード版使えなさそうならビルドに fallback してやらないと挙動としてはイケてない&#34;,
-[0m[1m[36m18012[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18013[0m-  &#34;犬さんとの比較記事が待ち望まれる&#34;,
-[0m[1m[36m18014[0m-  &#34;U6XP9LZ6V&#34;,
-[0m[1m[36m18015[0m-  &#34;thincawareなのにREADME.mdがある！ってビックリしたんだけど、そういえばプラグインじゃなかったｗ&#34;,
-[0m[1m[36m18016[0m-  &#34;U0M7GCBPD&#34;,
-[0m[1m[36m18017[0m-  &#34;マンボウガチ勢だと `vim-*` で始まらないので Vim プラグインじゃないと即座に判断できます！&#34;,
-[0m[1m[36m18018[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m18019[0m-  &#34;どんな勢力だ&#34;,
-[0m[1m[36m18020[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18021[0m:  &#34;[0m[35mfzf[0mユーザでも思ったよりpreviewのスクロール機能を知らない人が多そう&#34;,
-[0m[1m[36m18022[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m18023[0m-  &#34;キー操作するより絞り込みたいことは多そう...&#34;,
-[0m[1m[36m18024[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18025[0m-  &#34;&#34;,
-[0m[1m[36m18026[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18027[0m-  &#34;べんり&#34;,
-[0m[1m[36m18028[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18029[0m-  &#34;早いのがありがたい&#34;,
-[0m[1m[36m18030[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m18031[0m:  &#34;[0m[35mfzf[0m、previewほんと強い&#34;,
-[0m[1m[36m18032[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18033[0m:  &#34;previewがあるって理由だけで[0m[35mfzf[0m選んだみたいなとこあります&#34;,
-[0m[1m[36m18034[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18035[0m-  &#34;preview、任意のコマンド実行できるので強力&#34;,
-[0m[1m[36m18036[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18037[0m-  &#34;previewをワンライナーで書くと死ぬから外部スクリプトにしたりはするんですけど、便利&#34;,
-[0m[1m[36m18038[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m18039[0m-  &#34;&lt;https://github.com/LumaKernel/vcov&gt;\nこれが気になってるけど、Vim だけで依存がないのはいいのだけど古い Vim だと動かないらしい(試してない)のがちょっと惜しい\nいっそ Go 製とかないだろうか…&#34;,
-[0m[1m[36m18040[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18041[0m-  &#34;せやったいれたかったんだった&#34;,
-[0m[1m[36m18042[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m18043[0m-  &#34;こいつ自身のテストがあるとどのバージョンまで動くのかわかって助かる\nthemis.vim は古いバージョン案外切ってないので古いバージョンでカバレッジ取りたいケースがないでもない…&#34;,
---
-[0m[1m[36m18093[0m-  &#34;あ、それも少し考えました\nまぁbdelete!が適切な気がしたのでそっちでもいいかなーと&#34;,
-[0m[1m[36m18094[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m18095[0m-  &#34;&lt;https://github.com/szymonmaszke/vimpyter&gt;&#34;,
-[0m[1m[36m18096[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m18097[0m-  &#34;よさそう。(Windows で動かない)&#34;,
-[0m[1m[36m18098[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18099[0m-  &#34;燃え尽きたわけではないけどずっとプラグイン書いてて、一通り自分がほしい機能できたからコミットが一気に減ってしまった&#34;,
-[0m[1m[36m18100[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18101[0m-  &#34;自分が使わなさそうな部分の要望のモチベーションが少し低い&#34;,
-[0m[1m[36m18102[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18103[0m:  &#34;自分もめっちゃほしくなるキラーコンテンツ誰か思いついてくれないかなー\n[0m[35mfzf[0m、なんかできそうな気はするんだけど&#34;,
-[0m[1m[36m18104[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m18105[0m:  &#34;そうなると[0m[35mfzf[0mというよりソース側の開発になる気がしますね。\nたとえば、英語例文とかコミットメッセージ例文とかGitHubソースコードとかを曖昧検索したいけどそっちを集めてくれるサービスが必要になる。&#34;,
-[0m[1m[36m18106[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18107[0m-  &#34;なるほど、resourceの実装か・・・&#34;,
-[0m[1m[36m18108[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18109[0m-  &#34;process ソースは毎回欲しくなりますね。。。&#34;,
-[0m[1m[36m18110[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18111[0m-  &#34;killとかのときに使うやつです？&#34;,
-[0m[1m[36m18112[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18113[0m-  &#34;そうです！&#34;,
-[0m[1m[36m18114[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18115[0m-  &#34;使いますねー、便利&#34;,
-[0m[1m[36m18116[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18117[0m-  &#34;ps aux | grep … ってやって、id 拾ってきてキルするのが面倒なんですよね。。。sudo にも対応させたさ。&#34;,
-[0m[1m[36m18118[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18119[0m-  &#34;何も考えずにkillallかpkillしてる&#34;,
-[0m[1m[36m18120[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18121[0m-  &#34;これでvim殺してるので何度か事故ったことある&#34;,
-[0m[1m[36m18122[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18123[0m-  &#34;_candle にそのうち入れたいと思っているけれど、面倒で。。。_&#34;,
-[0m[1m[36m18124[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18125[0m:  &#34;checkoutとかもvim + [0m[35mfzf[0mからやっちゃおうかなぁ&#34;,
-[0m[1m[36m18126[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18127[0m-  &#34;denite 向けの自作 git ソースはあります。これがあるのですべてを candle にすることができない。&#34;,
-[0m[1m[36m18128[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18129[0m-  &#34;でも、今なら gina 入れればいいんだろうな。&#34;,
-[0m[1m[36m18130[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18131[0m-  &#34;&#34;,
-[0m[1m[36m18132[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18133[0m-  &#34;今はzshからやっててこんな感じでpreview出せてはいるんですよね\n多分難しくないんだけど、ファイル開いたりgrepするのからかなり毛色が変わっちゃうから迷うなぁ&#34;,
-[0m[1m[36m18134[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m18135[0m:  &#34;それは[0m[35mfzf[0m-preview.sh側かと&#34;,
-[0m[1m[36m18136[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18137[0m-  &#34;ですよねー、shell側になんかすごいラッパーを実装していく感じになるか・・・&#34;,
-[0m[1m[36m18138[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18139[0m-  &#34;シェルスクリプト本当に書く気が起きなくてダメ&#34;,
-[0m[1m[36m18140[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m18141[0m-  &#34;けど一番価値は高いですけどね&#34;,
-[0m[1m[36m18142[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18143[0m-  &#34;いろいろ便利なことはできそうなんですよね、自作して結局使ってないのだとrspecでgit diffがあるやつだけ補完候補に出して、diffをプレビューしつついい感じに実行するとか&#34;,
-[0m[1m[36m18144[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m18145[0m:  &#34;[0m[35mfzf[0m できないんでしたっけ？&#34;,
-[0m[1m[36m18146[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m18147[0m-  &#34;プレビューがデフォじゃないんですよ&#34;,
-[0m[1m[36m18148[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m18149[0m-  &#34;簡素なんで&#34;,
-[0m[1m[36m18150[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18151[0m:  &#34;zshの補完自体をそのまま[0m[35mfzf[0mに差し替えるやつとかプラグイン化したら需要ありますかね？\n補完候補の定義とかは結局自分で書かないとですけど&#34;,
-[0m[1m[36m18152[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18153[0m-  &#34;&lt;#CNX3F8RFC|dotfiles&gt; 感出てきた&#34;,
-[0m[1m[36m18154[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m18155[0m-  &#34;だから誰かがうまいことラップしてあげる必要があります&#34;,
-[0m[1m[36m18156[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m18157[0m-  &#34;ですね&#34;,
-[0m[1m[36m18158[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18159[0m-  &#34;fern で「fern (drawer) で `:e anyfile` したら drawer でファイル開かれるんだけど」と言われ困惑した&#34;,
-[0m[1m[36m18160[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18161[0m-  &#34;そりゃ開くでしょう、ただのバッファですし&#34;,
---
-[0m[1m[36m18167[0m-  &#34;NERDTreeも:eしたらドロワで開きますね&#34;,
-[0m[1m[36m18168[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18169[0m-  &#34;Vim script書けば解決しそうな話&#34;,
-[0m[1m[36m18170[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18171[0m-  &#34;まぁ wontfix で close です。&#34;,
-[0m[1m[36m18172[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18173[0m-  &#34;この間にNERDTreeをググってPlugに記述して落とすという作業が含まれますw&#34;,
-[0m[1m[36m18174[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18175[0m-  &#34;mattnさん見習って流れてくるプラグイン大体試すようにしてるのでこのへん慣れてきた&#34;,
-[0m[1m[36m18176[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18177[0m:  &#34;`:e` はただの例で fern drawer 上で `[0m[35mfzf[0m` 系のプラグインでファイル選択した時に fern drawer で表示されるの困る、という意図だったらしい。それなら理解できる。&#34;,
-[0m[1m[36m18178[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18179[0m:  &#34;ただし fern が勝手にバッファ開く先をフックするの最悪なので [0m[35mfzf[0m とかに「ちっちゃすぎるバッファでは開かない」的なオプション足したほうがいいよと言ったら納得してもらえた&#34;,
-[0m[1m[36m18180[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18181[0m-  &#34;実は「ちっちゃすぎるバッファでは開かない」って機能は fern がこっそり持ってる機能で Unite とか、ああいう系のバッファでファイルを開かないようになってる。&#34;,
-[0m[1m[36m18182[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18183[0m-  &#34;この気持ものすごくわかります。\n自分も「edit/vsplit/split」の挙動はカスタマイズしたい。。。という気持ちが強かったので&#34;,
-[0m[1m[36m18184[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18185[0m-  &#34;そのためにこんなことをやっていた感じでした。\n&lt;https://github.com/hrsh7th/dotfiles/blob/master/.config/nvim/init.vim#L841&gt;&#34;,
-[0m[1m[36m18186[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18187[0m-  &#34;これどういう？？？？&#34;,
-[0m[1m[36m18188[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m18189[0m-  &#34;`vimrc#open()` を使いたいという感じですか？&#34;,
---
-[0m[1m[36m18269[0m-  &#34;`_` なんてモーションしらんかった&#34;,
-[0m[1m[36m18270[0m-  &#34;U0M7GCBPD&#34;,
-[0m[1m[36m18271[0m-  &#34;repeat.vim 用の PR 送ってもらった覚えがあるし本当にお世話になってばかりだなー&#34;,
-[0m[1m[36m18272[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m18273[0m-  &#34;おー&#34;,
-[0m[1m[36m18274[0m-  &#34;U9GUS1S0G&#34;,
-[0m[1m[36m18275[0m-  &#34;:muscle:&#34;,
-[0m[1m[36m18276[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18277[0m-  &#34;redditに貼ってあったけどいいな、これ &lt;https://github.com/wimstefan/vim-artesanal/&gt;&#34;,
-[0m[1m[36m18278[0m-  &#34;U72TB62UF&#34;,
-[0m[1m[36m18279[0m:  &#34;お、[0m[35mfzf[0m-previewが紹介されてる\n&lt;https://www.reddit.com/r/vim/comments/figgt9/vscodelike_preview_buffers_in_vim/&gt;&#34;,
-[0m[1m[36m18280[0m-  &#34;UNJ2DANJC&#34;,
-[0m[1m[36m18281[0m:  &#34;[0m[35mfzf[0m-previewのProjectGrepの引数なし無くなってるのか...\n代替手段あったら教えてほしいです\n&lt;https://github.com/yuki-ycino/[0m[35mfzf[0m-preview.vim/commit/8093128dce5a24eab6c221c1bcbfc3b8fa575e32#diff-1e41d5f79df677cef673d5be29f3e843|https://github.com/yuki-ycino/[0m[35mfzf[0m-preview.vim/commit/8093128dce5a24eab6c221c1bcbfc3b8fa575e32#diff-1e41d5f79df677cef673d5be29f3e843&gt;&#34;,
-[0m[1m[36m18282[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m18283[0m:  &#34;`[0m[35mFzf[0mPreviewProjectGrep .` ですね&#34;,
-[0m[1m[36m18284[0m-  &#34;U72TB62UF&#34;,
-[0m[1m[36m18285[0m-  &#34;sonictemplateについてのqiitaの記事（&lt;https://qiita.com/gorilla0513/items/d1b826137aa35890f4df&gt;）ですが、\n\n&amp;gt; $ vim ~/.vim/sonictemplate/go.stpl\n&amp;gt; は\n&amp;gt; $ vim ~/.vim/sonictemplate/go/go.stpl \nであってますでしょうか。&#34;,
-[0m[1m[36m18286[0m-  &#34;UDDCM376D&#34;,
-[0m[1m[36m18287[0m-  &#34;はい\nあっています&#34;,
-[0m[1m[36m18288[0m-  &#34;UDDCM376D&#34;,
-[0m[1m[36m18289[0m-  &#34;間違っていますね\n直しました&#34;,
-[0m[1m[36m18290[0m-  &#34;U72TB62UF&#34;,
-[0m[1m[36m18291[0m-  &#34;sonictemplate.vimで、phpだけpostfix completionが効かないのはなんでだ…golangだと問題ないのに…&#34;,
-[0m[1m[36m18292[0m-  &#34;U72TB62UF&#34;,
-[0m[1m[36m18293[0m-  &#34;最小環境でも再現するなぁ&#34;,
---
-[0m[1m[36m18693[0m-  &#34;たぶん node にも飛んでる。&#34;,
-[0m[1m[36m18694[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m18695[0m-  &#34;あー、循環キーマップ...&#34;,
-[0m[1m[36m18696[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m18697[0m-  &#34;全部ナゾが解けてスッキリ&#34;,
-[0m[1m[36m18698[0m-  &#34;U7TMPGWJ0&#34;,
-[0m[1m[36m18699[0m-  &#34;僕は補完メニューを強制的に消したいときは最近は&amp;lt;c-g&amp;gt;&amp;lt;c-g&amp;gt;とかマップが空なのをたくさん叩いて消してたりする運用してます。どの自動補完プラグインでもだいたいだいじょうぶw&#34;,
-[0m[1m[36m18700[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18701[0m-  &#34;C-gで消すのEmacsっぽい&#34;,
-[0m[1m[36m18702[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18703[0m:  &#34;[0m[35mfzf[0mあたりもC-gだからなんとなく押しちゃう&#34;,
-[0m[1m[36m18704[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m18705[0m-  &#34;補完ポップアップのキャンセルは &amp;lt;C-e&amp;gt;&#34;,
-[0m[1m[36m18706[0m-  &#34;U7TMPGWJ0&#34;,
-[0m[1m[36m18707[0m-  &#34;自動補完プラグインによっては設定追加しないとそれさえも、さえぎられちゃう場合があるので。。&#34;,
-[0m[1m[36m18708[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m18709[0m-  &#34;メニュー邪魔だなってときは normal-mode に移動してます&#34;,
-[0m[1m[36m18710[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m18711[0m-  &#34;キャンセルしたと思ったら即座に自動でまた出てくるやつだ&#34;,
-[0m[1m[36m18712[0m-  &#34;U7TMPGWJ0&#34;,
-[0m[1m[36m18713[0m-  &#34;マップが空なキーを連打してVimやプラグインに諦めてもらってインサートモードのまま続けられるみたいなそんなのですw&#34;,
---
-[0m[1m[36m18793[0m-  &#34;skk.vim の人が作り上げる前に僕が skkim.vim というチープなやつを作ってたんだけど、突如できたと 2ch で言われてビックリしたなぁ。&#34;,
-[0m[1m[36m18794[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m18795[0m-  &#34;&amp;gt; Created 8 years ago\n歴史を感じる… &amp;gt; skkim.vim&#34;,
-[0m[1m[36m18796[0m-  &#34;U0M7GCBPD&#34;,
-[0m[1m[36m18797[0m-  &#34;Vimmer は皆 SKK 作りたがる（主語デカ）&#34;,
-[0m[1m[36m18798[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m18799[0m-  &#34;&lt;https://github.com/tlhr/anderson.vim&gt;\nXresource入りは珍しい&#34;,
-[0m[1m[36m18800[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18801[0m-  &#34;カラースキームの中覗いてると`version &amp;gt; 580`って書かれてるの見かけるけど、今時そんなに古いの使ってる人おるんかな&#34;,
-[0m[1m[36m18802[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18803[0m:  &#34;プロジェクト全体のテキストを[0m[35mfzf[0mに流し込んでgrepしたい人って思ったよりいるんだなー、すぐ重くなるみたいなんだけどすごい（動く規模なら便利なのはわかる）&#34;,
-[0m[1m[36m18804[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18805[0m:  &#34;`rg .` を[0m[35mfzf[0mに流し込むやつ&#34;,
-[0m[1m[36m18806[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m18807[0m-  &#34;そういえばvim-clapにもプロジェクトじゃないけど開いてる全ファイルの行を対象にしたプロバイダーがあるな&#34;,
-[0m[1m[36m18808[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18809[0m:  &#34;どこに起因してるかは分からないんですけど、手元の14万行のを[0m[35mfzf[0mに流し込むとそこそこ遅いんですよね&#34;,
-[0m[1m[36m18810[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18811[0m-  &#34;あ、deviconが原因感ある&#34;,
-[0m[1m[36m18812[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18813[0m-  &#34;14万行にloopでdevicon付けたらそりゃ遅いわって話か&#34;,
-[0m[1m[36m18814[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m18815[0m-  &#34;さすがに画面表示ぶんだけにするなどの方法がとれないと辛そう、 &amp;gt; icon&#34;,
-[0m[1m[36m18816[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18817[0m-  &#34;globalなオプションじゃなくて、コマンド実行時に上書き指定できるようにするかなぁ&#34;,
-[0m[1m[36m18818[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18819[0m:  &#34;[0m[35mfzf[0mは最初に全部流し込む必要があるから、どっちにするか決めないとなんですよねぇ&#34;,
-[0m[1m[36m18820[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18821[0m:  &#34;deviconを付けないgrepから絞り込んだクエリでdeviconを付けたgrep呼ぶとかは頑張ればできそう\nただ[0m[35mfzf[0mで使えるクエリとrgに渡すクエリの互換性がないから変換噛まさないといけないとかになって詰むと思う&#34;,
-[0m[1m[36m18822[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m18823[0m-  &#34;画面側で加工できると...ですけど難しいですもんね&#34;,
-[0m[1m[36m18824[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18825[0m:  &#34;[0m[35mfzf[0mにロックインされてるから、その上で工夫するしかないですねぇ・・・&#34;,
-[0m[1m[36m18826[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m18827[0m:  &#34;ここからやりたいこと増やすときに[0m[35mfzf[0mのロックインが制約になってきそう&#34;,
-[0m[1m[36m18828[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m18829[0m-  &#34;そういえば僕も書いている…\nどっかのテンプレをコピペで作ってるんで、同じルーツの人がたくさんいるのかも&#34;,
-[0m[1m[36m18830[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m18831[0m-  &#34;&lt;https://github.com/Shougo/deoplete-nextword|https://github.com/Shougo/deoplete-nextword&gt;&#34;,
-[0m[1m[36m18832[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m18833[0m-  &#34;neco-lookを置き換えることのできるsourceを作りました&#34;,
-[0m[1m[36m18834[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m18835[0m-  &#34;英単語の入力にとても便利です&#34;,
-[0m[1m[36m18836[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m18837[0m-  &#34;lookコマンドに依存しませんがnextlookコマンドをインストールする必要があります&#34;,
---
-[0m[1m[36m19279[0m-  &#34;vim-plug ってなんか変でしたっけ。&#34;,
-[0m[1m[36m19280[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m19281[0m-  &#34;&lt;https://github.com/bfrg/vim-qf-preview&gt;&#34;,
-[0m[1m[36m19282[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m19283[0m-  &#34;vim-only :cry:&#34;,
-[0m[1m[36m19284[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m19285[0m-  &#34;あ、今作ってるやつに似てる&#34;,
-[0m[1m[36m19286[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m19287[0m-  &#34;期待&#34;,
-[0m[1m[36m19288[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m19289[0m:  &#34;任意バッファの任意行のプレビューを [0m[35mfzf[0m のプレビューっぽく出せるやつを作っている&#34;,
-[0m[1m[36m19290[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m19291[0m-  &#34;qfreplace の時にコンテキスト確認するとかに使いたい&#34;,
-[0m[1m[36m19292[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19293[0m-  &#34;普段は使わないでもいいけど、vim-qf-previewあると便利&#34;,
-[0m[1m[36m19294[0m-  &#34;UDDCM376D&#34;,
-[0m[1m[36m19295[0m-  &#34;プラグインじゃないけど、犬さんのvim.wasmが一番衝撃的だったな&#34;,
-[0m[1m[36m19296[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m19297[0m-  &#34;衝撃度だけで言うならNyaoVimのほうが大きかったけどあれも十分すごい&#34;,
-[0m[1m[36m19298[0m-  &#34;U06BRP8VD&#34;,
-[0m[1m[36m19299[0m-  &#34;犬さん、のツイート見てると大物をコツコツ準備してるのがわかるんですよね。&#34;,
---
-[0m[1m[36m19331[0m-  &#34;ブラウザなので sleep 無いし、無限ループさせるわけにもいかないし。&#34;,
-[0m[1m[36m19332[0m-  &#34;U010YP3BC1L&#34;,
-[0m[1m[36m19333[0m-  &#34;&lt;@U010YP3BC1L&gt; has joined the channel&#34;,
-[0m[1m[36m19334[0m-  &#34;URW9T144Q&#34;,
-[0m[1m[36m19335[0m-  &#34;&lt;@URW9T144Q&gt; has joined the channel&#34;,
-[0m[1m[36m19336[0m-  &#34;UF9UGV0C9&#34;,
-[0m[1m[36m19337[0m-  &#34;&lt;@UF9UGV0C9&gt; has joined the channel&#34;,
-[0m[1m[36m19338[0m-  &#34;U010Z7X704C&#34;,
-[0m[1m[36m19339[0m-  &#34;&lt;@U010Z7X704C&gt; has joined the channel&#34;,
-[0m[1m[36m19340[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m19341[0m:  &#34;不要不急のロマンプラグイン，fern.vimで[0m[35mfzf[0mするプラグインを作ってみました...\n&lt;https://github.com/LumaKernel/fern-mapping-[0m[35mfzf[0m.vim&gt;&#34;,
-[0m[1m[36m19342[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m19343[0m-  &#34;あんまり行儀よろしくないかもしれないけどfern.vim側のvital使ってる...&#34;,
-[0m[1m[36m19344[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m19345[0m-  &#34;これ今は `:edit` と `:Fern` だけど， `:Fern -reveal=` もありだな&#34;,
-[0m[1m[36m19346[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m19347[0m-  &#34;浪漫www&#34;,
-[0m[1m[36m19348[0m-  &#34;U8CC7MDCL&#34;,
-[0m[1m[36m19349[0m:  &#34;こう見るとホント[0m[35mFzF[0mの自由度の高さよ…&#34;,
-[0m[1m[36m19350[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m19351[0m:  &#34;これで reveal にできる\n\n```  function! s:reveal(dict) abort\n    execute printf(\&#34;Fern %s -reveal=%s\&#34;, a:dict.root_path, a:dict.full_path)\n  endfunction\n  let g:Fern_mapping_[0m[35mfzf[0m_file_sink = function(&#39;s:reveal&#39;)\n  let g:Fern_mapping_[0m[35mfzf[0m_dir_sink = function(&#39;s:reveal&#39;)```&#34;,
-[0m[1m[36m19352[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m19353[0m:  &#34;[0m[35mfzf[0mもさながら，fern.vimもなかなか自由度高い (まだあんまり使いこなせていない)&#34;,
-[0m[1m[36m19354[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m19355[0m-  &#34;初心者なのでfernただのツリーファイラーとしてしか使えてない&#34;,
-[0m[1m[36m19356[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m19357[0m-  &#34;デバッグ残ってたｗ（消した）&#34;,
-[0m[1m[36m19358[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m19359[0m-  &#34;fern ﾁｮｯﾄﾃﾞｷﾙ&#34;,
-[0m[1m[36m19360[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m19361[0m-  &#34;fern で遊びたいけど時間が取れない...&#34;,
-[0m[1m[36m19362[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m19363[0m-  &#34;お前のプラグイン、設定ファイルで相対パスで指定できんくてポータビリティねーんだけどって言われたんですけど、みなさんパスの設定とか相対パス/絶対パスどっちでも行けるようにプラグイン書いてる感じなんですかね。&#34;,
---
-[0m[1m[36m19369[0m-  &#34;英語で言い訳考えるよりコード直した方が早いことに気づきましたw&#34;,
-[0m[1m[36m19370[0m-  &#34;UFP0GQZ4K&#34;,
-[0m[1m[36m19371[0m-  &#34;LeaderF 使っている方がいるかわかりませんが\nvim-devicons のアイコン表示に対応しました :tada:\nもしよろしければ、触ってみてください！\n&lt;https://github.com/Yggdroot/LeaderF/pull/532&gt;&#34;,
-[0m[1m[36m19372[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19373[0m-  &#34;入れてはあって、たまに使う&#34;,
-[0m[1m[36m19374[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m19375[0m-  &#34;vim用ファジーファインダーいまだに一番混沌としている。１０個くらいあるのではw?&#34;,
-[0m[1m[36m19376[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m19377[0m-  &#34;ぼくのかんがえるさいきょうのファジーファインダー&#34;,
-[0m[1m[36m19378[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19379[0m:  &#34;Windows vimで[0m[35mfzf[0mのFilesが普通に使えるようになってかなりラク&#34;,
-[0m[1m[36m19380[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m19381[0m-  &#34;どうして人類はファジーファインダーを作りたがるのか、その答えを知るために(ry&#34;,
-[0m[1m[36m19382[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19383[0m-  &#34;前ちょっと変で使うのはやめてた&#34;,
-[0m[1m[36m19384[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m19385[0m-  &#34;Leaderf-filerごと使わせてもらってます:panda_dogeza:&#34;,
-[0m[1m[36m19386[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m19387[0m-  &#34;`Only support vim7.4.330`  めっちゃ良い&#34;,
-[0m[1m[36m19388[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m19389[0m:  &#34;ctrlp, unite, denite, leaderf, [0m[35mfzf[0m.vim, [0m[35mfzf[0m-preview, clap, coc-list ...&#34;,
-[0m[1m[36m19390[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m19391[0m-  &#34;誰か AI でファジーファインダ作って。&#34;,
-[0m[1m[36m19392[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m19393[0m-  &#34;AI による絞り込みにより1文字タイプしたらユーザのお気持ちを判定して1ファイルにまで絞り込む。&#34;,
-[0m[1m[36m19394[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m19395[0m-  &#34;vim-feeling-lucky&#34;,
-[0m[1m[36m19396[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19397[0m-  &#34;なお違ってても適用を強行される&#34;,
-[0m[1m[36m19398[0m-  &#34;UNJ2DANJC&#34;,
-[0m[1m[36m19399[0m-  &#34;terminal api とfloating window, popup windowのおかげでみんな作りやすくなったからかな...  古いのもあるしそうでもないか...&#34;,
---
-[0m[1m[36m19603[0m-  &#34;ww&#34;,
-[0m[1m[36m19604[0m-  &#34;U010Z8NDLTB&#34;,
-[0m[1m[36m19605[0m-  &#34;&lt;@U010Z8NDLTB&gt; has joined the channel&#34;,
-[0m[1m[36m19606[0m-  &#34;U011CJ0NPUG&#34;,
-[0m[1m[36m19607[0m-  &#34;&lt;@U011CJ0NPUG&gt; has joined the channel&#34;,
-[0m[1m[36m19608[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m19609[0m-  &#34;これはひどい。しかし、再現させようと条件を絞るうちに再現しなくなるのはよくある&#34;,
-[0m[1m[36m19610[0m-  &#34;U011ED2JQM6&#34;,
-[0m[1m[36m19611[0m-  &#34;&lt;@U011ED2JQM6&gt; has joined the channel&#34;,
-[0m[1m[36m19612[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19613[0m:  &#34;&lt;@U7B4ZD49X&gt; &lt;https://github.com/yuki-ycino/[0m[35mfzf[0m-preview.vim/issues/106&gt; あたり、なんか経緯があって `-g \\!\&#34;* *\&#34;` にしたと思ってるんですけどなんでしたっけ\nあと `\\!\&#34;* *\&#34;` が自分でも実際に何にマッチさせてるか忘れたというあれな・・・&#34;,
-[0m[1m[36m19614[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m19615[0m-  &#34;空白含むファイル名がうまくパースできないとかじゃなかったですっけ？？&#34;,
-[0m[1m[36m19616[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19617[0m-  &#34;空白問題でしたっけ、xargsの-dは覚えてるんだけどこっちもそうだっけな&#34;,
-[0m[1m[36m19618[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19619[0m-  &#34;デフォルトの設定云々はむずいな・・・&#34;,
-[0m[1m[36m19620[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19621[0m-  &#34;git ls-files or rgのデフォルト判定だからあんまり差違がないコマンドを使うようにしとけって話もわかる&#34;,
-[0m[1m[36m19622[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19623[0m:  &#34;なんか完全に名前ぶつかってるのを見つけたけど偶然かな・・・？\nコードの流用とかじゃないから別に文句はないんだけど &lt;https://github.com/chengzeyi/[0m[35mfzf[0m-preview.vim&gt;&#34;,
-[0m[1m[36m19624[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m19625[0m-  &#34;名前まんまだと、既存のがあるか調べないで作るとあるある&#34;,
-[0m[1m[36m19626[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m19627[0m:  &#34;[0m[35mfzf[0mをrtpに突っ込まないと動かないやつだたぶん&#34;,
-[0m[1m[36m19628[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19629[0m-  &#34;そして謎な動物やら物品の名前のプラグイン&#34;,
-[0m[1m[36m19630[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m19631[0m:  &#34;[0m[35mfzf[0m.vimをラップする感じか&#34;,
-[0m[1m[36m19632[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19633[0m-  &#34;f! z! f! (ラップちがい)&#34;,
-[0m[1m[36m19634[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19635[0m-  &#34;薄くwrapしてますね&#34;,
-[0m[1m[36m19636[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19637[0m:  &#34;他にも探してたらThink.vimの設定で[0m[35mfzf[0m-previewがGinaと連携してるのがデフォルト設定として入ってるのを見つけた\nこれ自分のvimrcからそのままもっていってるっぽいな・・・\n&lt;https://github.com/hardcoreplayers/ThinkVim/blob/master/keybinds/config.vim#L154-L190&gt;&#34;,
-[0m[1m[36m19638[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m19639[0m-  &#34;ひどい&#34;,
-[0m[1m[36m19640[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19641[0m-  &#34;設定の持ち込みはどうなのかな...これ自体はしょうがない?&#34;,
-[0m[1m[36m19642[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m19643[0m-  &#34;クレジットくらいはしてもいい気はしてますー。&#34;,
-[0m[1m[36m19644[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19645[0m-  &#34;別に個人的にはバグをこっちのせいにするみたいなのがなかったらいいではあるんですけど\nそういえばクレジット確認してなかった&#34;,
-[0m[1m[36m19646[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19647[0m-  &#34;READMEのプラグインリストにも入ってなかったｗｗｗｗｗｗｗ&#34;,
-[0m[1m[36m19648[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19649[0m-  &#34;Ginaもだ、まぁ悪意があるわけじゃなくて漏れなんだろうけど&#34;,
-[0m[1m[36m19650[0m-  &#34;U7JL1UKKL&#34;,
-[0m[1m[36m19651[0m-  &#34;vimrcについてはさすがに微妙なところである&#34;,
-[0m[1m[36m19652[0m-  &#34;U0M7GCBPD&#34;,
-[0m[1m[36m19653[0m-  &#34;&lt;@UDDCM376D&gt; そういえば open-browser-github で行番号が付かない件はどうなりました？&#34;,
-[0m[1m[36m19654[0m-  &#34;U72TB62UF&#34;,
-[0m[1m[36m19655[0m:  &#34;[0m[35mfzf[0mでgrepしたら、`(`をバックスペース入れないと検索できないの、雑に検索したいときちょっと面倒&#34;,
-[0m[1m[36m19656[0m-  &#34;UDDCM376D&#34;,
-[0m[1m[36m19657[0m-  &#34;仕事で死んでました…\n今日issue出しますねー&#34;,
-[0m[1m[36m19658[0m-  &#34;UR0M6D4AY&#34;,
-[0m[1m[36m19659[0m-  &#34;&lt;@UR0M6D4AY&gt; has joined the channel&#34;,
-[0m[1m[36m19660[0m-  &#34;UECSGLW00&#34;,
-[0m[1m[36m19661[0m-  &#34;|ω&#39;) めちゃめちゃ荒削りなんですけどハイライト用のスクリプトこさえたんですけど…  &lt;https://github.com/astrorobot110/vimrc/blob/master/autoload/technicolor.vim&gt;&#34;,
-[0m[1m[36m19662[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19663[0m-  &#34;自分がインストールしてるカラースキームの素性を記録して、フィルタできたりするようにした&#34;,
-[0m[1m[36m19664[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m19665[0m-  &#34;&lt;https://gist.github.com/tsuyoshicho/78f983ebf0cfcb61f8ca8ce952656d9c&gt;\nつかれた、けどこれでカラースキーム選びやすくなった&#34;,
---
-[0m[1m[36m19683[0m-  &#34;issueありがとうございます&#34;,
-[0m[1m[36m19684[0m-  &#34;U0115FQUKAP&#34;,
-[0m[1m[36m19685[0m-  &#34;&lt;@U0115FQUKAP&gt; has joined the channel&#34;,
-[0m[1m[36m19686[0m-  &#34;UDDCM376D&#34;,
-[0m[1m[36m19687[0m-  &#34;gitのプラグイン、gitに乗り換えるのを検討中&#34;,
-[0m[1m[36m19688[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m19689[0m-  &#34;ginaが便利すぎて今までどうやって暮らしてたのかわからない&#34;,
-[0m[1m[36m19690[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19691[0m-  &#34;Effective Gina、技術書典に出て欲しい&#34;,
-[0m[1m[36m19692[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m19693[0m:  &#34;Effective [0m[35mfzf[0mもほしい&#34;,
-[0m[1m[36m19694[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m19695[0m-  &#34;Effective zinitも&#34;,
-[0m[1m[36m19696[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m19697[0m-  &#34;Effective tmuxも&#34;,
-[0m[1m[36m19698[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m19699[0m-  &#34;Effective $(任意のツール)&#34;,
-[0m[1m[36m19700[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m19701[0m-  &#34;お二人が書くのが一番速そうな気がw&#34;,
-[0m[1m[36m19702[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m19703[0m-  &#34;Effective Effective Books&#34;,
---
-[0m[1m[36m20311[0m-  &#34;hhighlighterにgrepとrgサポートしたPR送ろうとしたけど時間かかるな。。。色の指定が全部違うからコンバートしないと。。。あとでやろう・・・&#34;,
-[0m[1m[36m20312[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20313[0m-  &#34;```seq 30 47 | xargs -n 1 -i{} printf \&#34;\\x1b[%dm#\\x1b[0m %d\\n\&#34; {} {}```&#34;,
-[0m[1m[36m20314[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20315[0m-  &#34;こういうのでもよさそう。&#34;,
-[0m[1m[36m20316[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20317[0m-  &#34;```  for code in {000..255}; do\n    print -nP -- \&#34;%F{$code}$code %f\&#34;;\n    if [ $((${code} % 16)) -eq 15 ]; then\n      echo \&#34;\&#34;\n    fi\n  done```\n256版も便利ですよね&#34;,
-[0m[1m[36m20318[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20319[0m-  &#34;昔はこういうの perl で書いたけど最近 perl を忘れてしまった。。。&#34;,
-[0m[1m[36m20320[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20321[0m:  &#34;ANSIカラーコード、[0m[35mfzf[0mのプレビュースクリプトに使ってますね&#34;,
-[0m[1m[36m20322[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20323[0m-  &#34;色見本が欲しいときはいつもここからダウンロードしています。&#34;,
-[0m[1m[36m20324[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20325[0m-  &#34;&lt;https://gist.github.com/k-takata/2d4f562bacf8bae6691973a540970117&gt;&#34;,
-[0m[1m[36m20326[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20327[0m-  &#34;こんなのあったんだw&#34;,
-[0m[1m[36m20328[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20329[0m-  &#34;```#!/usr/bin/env perl\n\nuse strict;\nuse warnings;\n\nmy $fg = \&#34;\\x1b[38;5;\&#34;;\nmy $bg = \&#34;\\x1b[48;5;\&#34;;\nmy $rs = \&#34;\\x1b[0m\&#34;;\n\nmy $color = 0;\n\nfor (my $row = 0; $row &amp;lt; 32; ++$row) {\nfor (my $col = 0; $col &amp;lt; 8; ++$col) {\nprint get_color($color);\n$color++;\n}\nprint \&#34;\\n\&#34;;\n}\n\nsub get_color {\n    my ($color) = @_;\n    my $number = sprintf &#39;%3d&#39;, $color;\n    return qq/${bg}${color}m ${number} ${rs} ${fg}${color}m${number}${rs} /;\n}```&#34;,
-[0m[1m[36m20330[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20331[0m-  &#34;どこかで拾ったこれ使ってます&#34;,
---
-[0m[1m[36m20571[0m-  &#34;Cが使われていたような所にRustが食いこんできてていい流れ&#34;,
-[0m[1m[36m20572[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20573[0m-  &#34;vimのヘルプも曖昧に検索できないところあるから辛いんですよね&#34;,
-[0m[1m[36m20574[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20575[0m-  &#34;なによりCLIで読むのが、ほとんど画面を占有すること...\n画面の下半分だけで上でコマンド打てるとかじゃないと作業が中断される、はあるかもしれん(あとオプション付けるに難儀する)&#34;,
-[0m[1m[36m20576[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20577[0m-  &#34;あいまい検索はほしい&#34;,
-[0m[1m[36m20578[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20579[0m-  &#34;tmuxで分割してhelp出してた時期はあった（面倒）&#34;,
-[0m[1m[36m20580[0m-  &#34;U03C71D7H&#34;,
-[0m[1m[36m20581[0m:  &#34;[0m[35mfzf[0m には help ないのか。unite とかにはあるけど&#34;,
-[0m[1m[36m20582[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20583[0m-  &#34;操作がなあ...なんですな&#34;,
-[0m[1m[36m20584[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20585[0m-  &#34;manうったらvimで表示+terminalとかやるのはありかもしれんが...&#34;,
-[0m[1m[36m20586[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20587[0m:  &#34;[0m[35mfzf[0mにもありますけどうまく引けないですね・・・私は&#34;,
-[0m[1m[36m20588[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20589[0m-  &#34;PAGERをvimpagerにすればワンチャン？（使ったことない）&#34;,
-[0m[1m[36m20590[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20591[0m-  &#34;おなじく...&#34;,
-[0m[1m[36m20592[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20593[0m-  &#34;&lt;https://github.com/isacikgoz/tldr&gt;&#34;,
-[0m[1m[36m20594[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20595[0m-  &#34;かっこいいけど Windows でビルドできない。&#34;,
-[0m[1m[36m20596[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20597[0m-  &#34;FeaturesにWindowsサポートしてるって書いてあるのに…&#34;,
---
-[0m[1m[36m20629[0m-  &#34;tldr;東京ランドディズニーリゾート&#34;,
-[0m[1m[36m20630[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20631[0m-  &#34;入れてもどうせ使わない自信あるのでインストールするのやめた。&#34;,
-[0m[1m[36m20632[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20633[0m-  &#34;tl;dr\nとどのつまり&#34;,
-[0m[1m[36m20634[0m-  &#34;UBNPMJJGM&#34;,
-[0m[1m[36m20635[0m-  &#34;TL;DRはとりあえずToo Longであることさえ覚えておけばなんとかなる\nというかそれしか覚えていなくていつも「Too Long何だっけ……あぁ、Don&#39;t? Didn&#39;t? Readか」ってなる&#34;,
-[0m[1m[36m20636[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20637[0m-  &#34;そうなんですけど私的にはバランスがわるんですよね。。。後ろがおもい感じだから前に重心を前に移したい！&#34;,
-[0m[1m[36m20638[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20639[0m:  &#34;Windows で cmd.exe から [0m[35mfzf[0m 起動して確定するとコマンドプロンプトごと落ちるのって意図してなんだろうか。&#34;,
-[0m[1m[36m20640[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20641[0m-  &#34;Vimというかコマンドによってマレになることがあるような、 ないような(確定させれなくて無視して対処)&#34;,
-[0m[1m[36m20642[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20643[0m-  &#34;git rebase途中のvimでなるとマジ面倒...&#34;,
-[0m[1m[36m20644[0m-  &#34;U03C90T1L&#34;,
-[0m[1m[36m20645[0m-  &#34;macのautomatorはじめ、macの初期設定をどうスクリプト化するか悩んでます。こうしてるよ、とかあれば教えて欲しいのですが、どなたかやってますか？&#34;,
-[0m[1m[36m20646[0m-  &#34;UDDCM376D&#34;,
-[0m[1m[36m20647[0m-  &#34;特にやっていないですね\n毎回温かい手作業&#34;,
-[0m[1m[36m20648[0m-  &#34;U03C90T1L&#34;,
-[0m[1m[36m20649[0m-  &#34;nrhd&#34;,
---
-[0m[1m[36m20677[0m-  &#34;なるほどー&#34;,
-[0m[1m[36m20678[0m-  &#34;U03C90T1L&#34;,
-[0m[1m[36m20679[0m-  &#34;めちゃ助かります感謝&#34;,
-[0m[1m[36m20680[0m-  &#34;U0M7GCBPD&#34;,
-[0m[1m[36m20681[0m-  &#34;dotfiles の各 OS でのテストを GitHub Actions で書きたいと思ってN年が経ちました&#34;,
-[0m[1m[36m20682[0m-  &#34;U0M7GCBPD&#34;,
-[0m[1m[36m20683[0m-  &#34;mac メイン、windows メインを仕事・案件ごとに交互に繰り返してるのですぐ陳腐化する&#34;,
-[0m[1m[36m20684[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20685[0m-  &#34;あとシェル周り動作確認がしんどいんですよね。。。なんかツール使わないと・・・&#34;,
-[0m[1m[36m20686[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20687[0m:  &#34;[0m[35mfzf[0mを無理矢理補完に使ってるの、この辺\n&lt;https://github.com/yukiycino-dotfiles/dotfiles/blob/master/.zshrc#L352-L382&gt;&#34;,
-[0m[1m[36m20688[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20689[0m-  &#34;需要あるのかな・・・&#34;,
-[0m[1m[36m20690[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20691[0m:  &#34;一週間前くらいに[0m[35mfzf[0mで補完する方法を探してた&#34;,
-[0m[1m[36m20692[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20693[0m-  &#34;補完候補を自前で生成するのは必要ですね&#34;,
-[0m[1m[36m20694[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20695[0m:  &#34;個人的には\nファイル検索時にプレビュー\nGrepのプレビュー\nディレクトリ移動時に直下のファイル表示\ngitのプレビュー\nあたりがひとつのプラグインで提供されているとうれしいですね。\nというかなんか[0m[35mfzf[0mの便利なやつ全部ほしい&#34;,
-[0m[1m[36m20696[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20697[0m:  &#34;&lt;https://github.com/junegunn/[0m[35mfzf[0m/wiki/examples&gt;&#34;,
-[0m[1m[36m20698[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20699[0m-  &#34;&#34;,
-[0m[1m[36m20700[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20701[0m-  &#34;補完、こんなの&#34;,
-[0m[1m[36m20702[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20703[0m-  &#34;すばら&#34;,
-[0m[1m[36m20704[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20705[0m:  &#34;[0m[35mfzf[0m職人すばら&#34;,
-[0m[1m[36m20706[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20707[0m:  &#34;&lt;https://github.com/yukiycino-dotfiles/dotfiles/blob/master/.zsh/[0m[35mfzf[0m_completions/git.zsh&gt;\n職人芸です・・・&#34;,
-[0m[1m[36m20708[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m20709[0m:  &#34;[0m[35mfzf[0m すごいな。。。外側からこんなことさせられるのか。。。&#34;,
-[0m[1m[36m20710[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20711[0m:  &#34;[0m[35mfzf[0m-preview.sh 待ちきれない&#34;,
-[0m[1m[36m20712[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20713[0m-  &#34;これ自分用だからいいんだけど、まともに提供するとなると仕様色々決めないと大変そう&#34;,
-[0m[1m[36m20714[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20715[0m-  &#34;補完はネタとしてとても熱しやすいけど冷めやすくもあるんよね。&#34;,
-[0m[1m[36m20716[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20717[0m-  &#34;なんとなく分かる気がします\n作ってる間はやる気すごい&#34;,
-[0m[1m[36m20718[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20719[0m:  &#34;[0m[35mfzf[0mがすごいのと、zshのZLEがすごい強い&#34;,
-[0m[1m[36m20720[0m-  &#34;UGKP7RFUH&#34;,
-[0m[1m[36m20721[0m:  &#34;&lt;https://github.com/Aloxaf/[0m[35mfzf[0m-tab|https://github.com/Aloxaf/[0m[35mfzf[0m-tab&gt;\n\n[0m[35mfzf[0mを補完に使うのだとこれの完成度が高いので良いと思います。&#34;,
-[0m[1m[36m20722[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20723[0m-  &#34;すごい、同じことやってる人いたんだ&#34;,
-[0m[1m[36m20724[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20725[0m:  &#34;普通の補完に[0m[35mfzf[0mは重そう・・・&#34;,
-[0m[1m[36m20726[0m-  &#34;UGKP7RFUH&#34;,
-[0m[1m[36m20727[0m:  &#34;個人的にはzshのmenuの補完も好きなので、\n&lt;https://github.com/relastle/pmy|https://github.com/relastle/pmy&gt;\n自作のこの子使ってシチュエーションベースで[0m[35mfzf[0m使っています&#34;,
-[0m[1m[36m20728[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20729[0m-  &#34;あ、これ通常の補完自体差し替えてるんですね\n自分は特定のキーワードのときに任意のソース作ってswitchでいちいち差し込んでる感じ&#34;,
-[0m[1m[36m20730[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20731[0m-  &#34;そっちのほうがいい&#34;,
-[0m[1m[36m20732[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20733[0m-  &#34;きがします&#34;,
-[0m[1m[36m20734[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20735[0m:  &#34;[0m[35mfzf[0mってある程度プレビューの効果があってかつファイル名みたいにそこそこ複雑で長いもののときに効果を発揮する気がします。&#34;,
-[0m[1m[36m20736[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20737[0m-  &#34;pmyってやつが設定jsonで書くみたいだしそんな感じですかね？&#34;,
-[0m[1m[36m20738[0m-  &#34;UGKP7RFUH&#34;,
-[0m[1m[36m20739[0m:  &#34;私もそれが良いと思ってるので[0m[35mfzf[0mtabは合いませんでした、、（実装はかなりシンプルでzstyleでもカスタムできるので、すごいなあと思うんですが）&#34;,
-[0m[1m[36m20740[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20741[0m-  &#34;zstyleでカスタムできることはカスタムできるというのかは人それぞれですね’・・・&#34;,
-[0m[1m[36m20742[0m-  &#34;UGKP7RFUH&#34;,
-[0m[1m[36m20743[0m-  &#34;yamlでも書けるので、シェルスクリプトガリガリ書くときはyaml便利ですね。jsonだとエスケープきついので、、&#34;,
-[0m[1m[36m20744[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20745[0m-  &#34;もし作るとしたら参考になりそう、ありがとうございます&#34;,
-[0m[1m[36m20746[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20747[0m:  &#34;[0m[35mfzf[0mは候補出すのと、その候補に対するプレビューの処理と、選択したあとに選択要素の何を差し込むかとかをやらないといけないから汎用化するの結構難しそうなんですよねぇ&#34;,
-[0m[1m[36m20748[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20749[0m-  &#34;git addは先頭の `M` とか `?` 落としながらプレビュー出すし、確定したときにも同じように落とすし\ngit checkoutだと色んな情報含んだ要素からブランチ名抜きだしてgit log叩くプレビューしないといけないし\n\nリストで見たり絞り込んだりする要素とプレビューがかなりの頻度で違う感じ&#34;,
-[0m[1m[36m20750[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20751[0m:  &#34;[0m[35mfzf[0m-preview.sh にはgitだけでなくgrepとかのプレビュー機能ははいりますかね？？&#34;,
-[0m[1m[36m20752[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20753[0m-  &#34;あ、それはpreviewスクリプトそのまま流用できそう？&#34;,
-[0m[1m[36m20754[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20755[0m-  &#34;できますね。あとはコマンド名とかバインドとかをどうするかくらいな感じですかね&#34;,
-[0m[1m[36m20756[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m20757[0m-  &#34;&lt;@U776661HA&gt; has joined the channel&#34;,
-[0m[1m[36m20758[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20759[0m-  &#34;zinitの作者からの新しいメッセージが届きました。&#34;,
-[0m[1m[36m20760[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20761[0m-  &#34;イ　ッ　タ　イ　ナ　ニ　ヲ　シ　テ　イ　ル　ノ&#34;,
---
-[0m[1m[36m20791[0m-  &#34;それ親友のドラえもんじゃなくて、地球破壊爆弾のドラえもんw&#34;,
-[0m[1m[36m20792[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20793[0m-  &#34;:kokyakugahontounihitsuyoudattamono:&#34;,
-[0m[1m[36m20794[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m20795[0m-  &#34;&lt;https://cdn-ak.f.st-hatena.com/images/fotolife/m/mirai_depart/20180605/20180605001430.jpg&gt;&#34;,
-[0m[1m[36m20796[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20797[0m-  &#34;&lt;https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%B3_(%E3%82%B2%E3%83%BC%E3%83%A0)&gt;&#34;,
-[0m[1m[36m20798[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m20799[0m-  &#34;これかw&#34;,
-[0m[1m[36m20800[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20801[0m:  &#34;そういえばworkaroundしちゃってますけど、  `[0m[35mfzf[0m_preview#command#file_list_command_options(&#39;[0m[35mfzf[0m&#39;)` からデフォルト値引っ張ってきても、Helptagsとかがうまく動かなかったです。（エラーがでる）\n```Error detected while processing function &amp;lt;SNR&amp;gt;292_set_[0m[35mfzf[0m_last_query:\nline    6:\nE121: Undefined variable: s:resource_func_name```\n--expect=と--promptを削除すれば動きました。\n&lt;https://github.com/yutakatay/dotfiles/blob/2c7b02e793918768d7501875260a7fb0232b64bd/.vim/rc/pluginconfig.vim#L1844&gt;&#34;,
-[0m[1m[36m20802[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20803[0m:  &#34;あとでちゃんと確認しようかと思うんですけど、その辺  `[0m[35mfzf[0m_preview#command#get_common_command_options` 使うのが適切だったりしないです？&#34;,
-[0m[1m[36m20804[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20805[0m-  &#34;中に何が入ってるかもうちゃんと覚えてない・・・&#34;,
-[0m[1m[36m20806[0m-  &#34;UD69ADC3X&#34;,
-[0m[1m[36m20807[0m-  &#34;&lt;@UD69ADC3X&gt; has joined the channel&#34;,
-[0m[1m[36m20808[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20809[0m:  &#34;`[0m[35mfzf[0m_preview#command#get_common_command_options` だとプレビューがないですね。。。まあ今のままでもよいですが。&#34;,
-[0m[1m[36m20810[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20811[0m-  &#34;zinit 完・全・復・活　！\n&lt;https://github.com/zdharma/zinit&gt;&#34;,
-[0m[1m[36m20812[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20813[0m-  &#34;元のリポジトリかこれ&#34;,
-[0m[1m[36m20814[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20815[0m-  &#34;たぶんGitHubの人がなんとかしてくれたんだと思います。問い合わせてるって言ってたので&#34;,
-[0m[1m[36m20816[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20817[0m-  &#34;nrhd&#34;,
-[0m[1m[36m20818[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20819[0m-  &#34;まあ、よかったけど...また消えたりしないよね&#34;,
---
-[0m[1m[36m20821[0m-  &#34;psprintさんも完全復活なのだろうか…！？&#34;,
-[0m[1m[36m20822[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20823[0m-  &#34;一応今までで一番長文がかかれたコメントが出てます。（今まで１−２行しかなかったんで）　&lt;https://www.reddit.com/r/zsh/comments/fhc6kg/the_proof_that_theres_nothing_going_on_with_zinit/&gt;&#34;,
-[0m[1m[36m20824[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20825[0m-  &#34;だいじなことは\n&amp;gt; There is no danger about Zinit.\n:laughing:&#34;,
-[0m[1m[36m20826[0m-  &#34;UGP5AJKU4&#34;,
-[0m[1m[36m20827[0m-  &#34;FUDやめてっていってますね。もとに戻ったし、今後を見守るのが良いんでしょうねー&#34;,
-[0m[1m[36m20828[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20829[0m-  &#34;忙しくて全然反応できてなかった、どういうインターフェイスがbetterってなんかあります？&#34;,
-[0m[1m[36m20830[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20831[0m:  &#34;いえ、オプションとってきたらそれが使える状態にあってほしいだけな感じです。\n\n[0m[35mFZF[0m_DEFAULT_OPTSがこれだとvim上ではエラーがでますね。（ちょっと私もコードまでは追えてないです。。。[0m[35mfzf[0mでは大丈夫です）\n\n```--multi --reverse --ansi --bind=ctrl-d:preview-page-down,ctrl-u:preview-page-up,?:toggle-preview   --expect=ctrl-v,ctrl-x,ctrl-q,ctrl-s,ctrl-t --prompt=\&#34;[0m[35mfzf[0m&amp;gt; \&#34;\n --preview=&#39;[[ \&#34;$(file --mime {})\&#34; =~ binary ]] &amp;amp;&amp;amp; echo \&#34;{} is a binary file\&#34; || bat --color=always --style=grid {-1}&#39;```\n現状これがほしい感じです。\n\n```--multi --reverse --ansi --bind=ctrl-d:preview-page-down,ctrl-u:preview-page-up,?:toggle-preview    --preview=&#39;[[ \&#34;$(file --mime {})\&#34; =~ binary ]] &amp;amp;&amp;amp; echo \&#34;{}\nis a binary file\&#34; || bat --color=always --style=grid {-1}&#39;```&#34;,
-[0m[1m[36m20832[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m20833[0m-  &#34;全ては romkatv が悪い (知らんけど)&#34;,
-[0m[1m[36m20834[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20835[0m-  &#34;最初は彼結構心配してる感じでしたけどねw 口調強くなかったし。&#34;,
-[0m[1m[36m20836[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m20837[0m-  &#34;今北産業&#34;,
-[0m[1m[36m20838[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20839[0m-  &#34;zinit完全復活（スターとかIssueとかも）！(GitHub社ががんばった)\n作者「zinit-2作るでー！」\nだたしいろいろ遺恨は残る・・・&#34;,
-[0m[1m[36m20840[0m-  &#34;U78A6ESHM&#34;,
-[0m[1m[36m20841[0m-  &#34;あざます！&#34;,
---
-[0m[1m[36m20849[0m-  &#34;私は `!` 使わない派ですね〜&#34;,
-[0m[1m[36m20850[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20851[0m-  &#34;癖で打ってる節ある&#34;,
-[0m[1m[36m20852[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20853[0m-  &#34;たしかに昔はよく打ってたな。\nプラグインの普及とターミナルの実装とtmuxで完全に淘汰されましたね。私の場合&#34;,
-[0m[1m[36m20854[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20855[0m-  &#34;ターミナル:benri:&#34;,
-[0m[1m[36m20856[0m-  &#34;ULSB0AGHH&#34;,
-[0m[1m[36m20857[0m-  &#34;&lt;@ULSB0AGHH&gt; has joined the channel&#34;,
-[0m[1m[36m20858[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20859[0m:  &#34;&lt;@U7B4ZD49X&gt; `zsh-syntax-highlighting: unhandled ZLE widget &#39;[0m[35mfzf[0m-snippet-selection&#39;`\nってエラー出てませんか？\n何が原因だろこれ&#34;,
-[0m[1m[36m20860[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20861[0m-  &#34;あ、こっちの設定にいらないのが残ってるだけな気がしてきた・・・？\nなんでもなかったです&#34;,
-[0m[1m[36m20862[0m-  &#34;U72TB62UF&#34;,
-[0m[1m[36m20863[0m-  &#34;iterm2を最新バージョンにしたら、フォント設定の項目からヒラギノ角ゴシックが消えた（chromeとかでは使える）のですが、同じ現象になった人はおりますでしょうか。&#34;,
-[0m[1m[36m20864[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m20865[0m-  &#34;今まで使ったことがないので気づかなかったですが、\n確かにHiragino Kaku Gothicは選択肢に出てこないですね。\n（iTerm2 3.3.9）&#34;,
-[0m[1m[36m20866[0m-  &#34;U72TB62UF&#34;,
-[0m[1m[36m20867[0m-  &#34;確認ありがとうございます。やはり自分だけではなかったのかー&#34;,
-[0m[1m[36m20868[0m-  &#34;U06ECBRTJ&#34;,
-[0m[1m[36m20869[0m-  &#34;iTerm2 って GPLv2 で公開されてたんだ…\nプロプライエタリ だと思ってた&#34;,
---
-[0m[1m[36m20935[0m-  &#34;ファイルが多いディレクトリに移動して絶望するやつですね、わかります&#34;,
-[0m[1m[36m20936[0m-  &#34;U0M7GCBPD&#34;,
-[0m[1m[36m20937[0m-  &#34;あるいは接続が悪い NFS&#34;,
-[0m[1m[36m20938[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20939[0m-  &#34;cd系だとcd-gitroot的な設定も便利ですよね。\nプロジェクトルートに戻れるやつ\nこんな感じ？\n`alias cd-gitroot=&#39;cd $(git rev-parse --show-toplevel)`&#34;,
-[0m[1m[36m20940[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20941[0m-  &#34;あとzshで便利なのは↓とかですかね。ディレクトリをブラウザみたいに戻る＋進む感じで移動できます。\n\n```zle -N dir_forward\nzle -N dir_back\nbindkey &#39;[1;6C&#39; dir_forward\nbindkey &#39;[1;6D&#39; dir_back```&#34;,
-[0m[1m[36m20942[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20943[0m-  &#34;自分は基本的にプロジェクトルートから動かないからこの辺全然使ってないですねー&#34;,
-[0m[1m[36m20944[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20945[0m:  &#34;よくよく考えたらdirstackを[0m[35mfzf[0mする設定書いてるから必要ないな&#34;,
-[0m[1m[36m20946[0m-  &#34;UL6CFN8NR&#34;,
-[0m[1m[36m20947[0m-  &#34;エイリアス関連の話題なんですが，下のリンクで紹介されてる git サブコマンドのエイリアスのネーミングがめちゃくちゃ好きなんですよ\n&lt;https://dzone.com/articles/lesser-known-git-commands&gt;&#34;,
-[0m[1m[36m20948[0m-  &#34;UL6CFN8NR&#34;,
-[0m[1m[36m20949[0m-  &#34;`--force-with-lease` 付き push -&amp;gt; `git please`\n`git init` + 空コミット -&amp;gt; `git it`\nとか，英単語のチョイスが絶妙&#34;,
-[0m[1m[36m20950[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m20951[0m-  &#34;単語選び上手なの見ると「おっ」てなる&#34;,
-[0m[1m[36m20952[0m-  &#34;UL6CFN8NR&#34;,
-[0m[1m[36m20953[0m-  &#34;名前って大事ですよねー．覚えやすさは使いやすさの第一歩&#34;,
-[0m[1m[36m20954[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m20955[0m-  &#34;`merc`は`merge commit`なのかな（なんかしっくりこなかった）&#34;,
---
-[0m[1m[36m20963[0m-  &#34;プログラム以外の物持ってこられても伝わらないわな&#34;,
-[0m[1m[36m20964[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m20965[0m-  &#34;いれた。ありがとうございます :joy:&#34;,
-[0m[1m[36m20966[0m-  &#34;U0M7GCBPD&#34;,
-[0m[1m[36m20967[0m-  &#34;git diff --cached を git dish としてるけど語感だけで決めたので全く関係ない&#34;,
-[0m[1m[36m20968[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20969[0m-  &#34;他からの流用で git me で git config --list | grep \&#34;user.\&#34; 的なものがはいってる&#34;,
-[0m[1m[36m20970[0m-  &#34;USP7RMJ1Y&#34;,
-[0m[1m[36m20971[0m-  &#34;&lt;@USP7RMJ1Y&gt; has joined the channel&#34;,
-[0m[1m[36m20972[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20973[0m:  &#34;&lt;@U8996GYBF&gt; さん、あとすみません、[0m[35mfzf[0mのことでちょっと聞いていいですか?\nCLI上での[0m[35mfzf[0mですが、プレビューのところにスクロールのキーバインドってありましたっけ? Wiki見てもちょっとわからなくて...\n(Windowsでわりと使えるようになったので、再チャレンジ中なのですが、いろいろトラブル中)&#34;,
-[0m[1m[36m20974[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20975[0m-  &#34;`--bind=ctrl-d:preview-page-down,ctrl-u:preview-page-up` こんな感じで設定出来ますね&#34;,
-[0m[1m[36m20976[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20977[0m-  &#34;デフォルトって何か設定されてるんだっけな・・・\n自分が使い始めたときにはなかった気がする&#34;,
-[0m[1m[36m20978[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20979[0m-  &#34;なるほど...自分でバインドしてか..\nありがとうございます。&#34;,
-[0m[1m[36m20980[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20981[0m:  &#34;`[0m[35mFZF[0m_DEFAULT_COMMAND` でしたっけ、それで多分オプション付きでコマンド定義しておけるんで多分そういうのを想定されてる感&#34;,
-[0m[1m[36m20982[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20983[0m:  &#34;`[0m[35mFZF[0m_DEFAULT_OPTS`  ですかね&#34;,
-[0m[1m[36m20984[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20985[0m-  &#34;とりあえず動くのは見えたので、多少楽になりそうですw&#34;,
-[0m[1m[36m20986[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m20987[0m-  &#34;あ、適当だった\nなんかそんな感じのやつです&#34;,
-[0m[1m[36m20988[0m-  &#34;U010SUJ18EQ&#34;,
-[0m[1m[36m20989[0m-  &#34;&lt;@U010SUJ18EQ&gt; has joined the channel&#34;,
-[0m[1m[36m20990[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20991[0m-  &#34;``` --header-insertion=&amp;lt;value&amp;gt;```\nでいけるのではないか感はあるが、これを個別プロジェクトだけに反映しないとか...&#34;,
-[0m[1m[36m20992[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m20993[0m-  &#34;vim-lsp-settings、ローカル読むようになったので、対応は可能と思われるが&#34;,
---
-[0m[1m[36m21175[0m-  &#34;:fish:&#34;,
-[0m[1m[36m21176[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21177[0m-  &#34;これちょっとダメだった\n再評価しないじゃんw&#34;,
-[0m[1m[36m21178[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21179[0m-  &#34;直した\n不明な関数もあるだろうけど、ニュアンスで&#34;,
-[0m[1m[36m21180[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21181[0m-  &#34;&lt;https://i.gyazo.com/06d9ca8b55660f24cb234f462e70910d.png&gt;\n現状&#34;,
-[0m[1m[36m21182[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21183[0m-  &#34;&lt;https://fromatom.hatenablog.com/entry/2020/03/31/135410&gt;\nこういうのやりたいけど、お手手でもってきちゃうw&#34;,
-[0m[1m[36m21184[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21185[0m:  &#34;prはしてないけど git sw で切り替え、不完全なら[0m[35mfzf[0mでブランチ選択とか、git rco で同じく不完全で[0m[35mfzf[0mで選択して、リモートをローカルにチェックアウトとか&#34;,
-[0m[1m[36m21186[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21187[0m-  &#34;はしてる&#34;,
-[0m[1m[36m21188[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m21189[0m:  &#34;&amp;gt; 不完全なら[0m[35mfzf[0m\nいいなこれ&#34;,
-[0m[1m[36m21190[0m-  &#34;US5UW1UNB&#34;,
-[0m[1m[36m21191[0m-  &#34;cdとかでもできそう&#34;,
-[0m[1m[36m21192[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21193[0m-  &#34;かなり長いけど、こんな感じ(もうpecoはいいかな、とも思うけど)&#34;,
-[0m[1m[36m21194[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21195[0m-  &#34;なおgitのaliasを使ってるので注意&#34;,
-[0m[1m[36m21196[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21197[0m:  &#34;[0m[35mfzf[0mは環境変数の状態にいろいろ依存しているのでチューニングしたほうがいいとは思う&#34;,
-[0m[1m[36m21198[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21199[0m-  &#34;といっても表示のしかたくらい?&#34;,
-[0m[1m[36m21200[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21201[0m-  &#34;ながいw&#34;,
-[0m[1m[36m21202[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21203[0m:  &#34;この辺[0m[35mfzf[0mのワンライナーでやれそうだから便利&#34;,
-[0m[1m[36m21204[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21205[0m-  &#34;あー、でも `gh pr list` のformatが扱いにくそう&#34;,
-[0m[1m[36m21206[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21207[0m:  &#34;以下のようなかんじw\n1. git の switchは cdライクに - で1つ前に戻る\n2. ブランチに完全一致なら[0m[35mfzf[0mにいかずにやる\n3. ブランチに複数あるなら、クエリにセットして[0m[35mfzf[0m(/peco)、そこでfuzzy matchで1つなら即座に\n4. それ以外のオプションは直に渡す(ただし動作未確認)&#34;,
-[0m[1m[36m21208[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21209[0m-  &#34;historyに実際に実行されたコマンドが残って欲しい印象はありますね&#34;,
-[0m[1m[36m21210[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21211[0m:  &#34;こういう[0m[35mfzf[0m tipsをまとめて提供してくれるプラグインほしい　← 他力本願&#34;,
-[0m[1m[36m21212[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21213[0m-  &#34;この手の、自分用に徐々にチューニングされていくから汎用性を持たせるの難しそう&#34;,
-[0m[1m[36m21214[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21215[0m-  &#34;特にgit関連だとリポジトリの運用にかなり依存しそう&#34;,
-[0m[1m[36m21216[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m21217[0m-  &#34;一応汎用だけど、まあわかる&#34;,
-[0m[1m[36m21218[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21219[0m-  &#34;そうですかね？？私はカスタマイズがそこそこ簡単だから、みんなめんどくさくて汎用性をもたせてないだけな気がしてますね。&#34;,
-[0m[1m[36m21220[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21221[0m-  &#34;`gh pr` 関連の便利な何かだけちょっとだけ書いてみようかな？&#34;,
---
-[0m[1m[36m21239[0m-  &#34;&lt;@U010XRFH7D1&gt; has joined the channel&#34;,
-[0m[1m[36m21240[0m-  &#34;UPSGJ3PE0&#34;,
-[0m[1m[36m21241[0m-  &#34;&lt;@UPSGJ3PE0&gt; has joined the channel&#34;,
-[0m[1m[36m21242[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21243[0m-  &#34;&lt;@U7B4ZD49X&gt; set the channel purpose: dotfiles(eg. .tmux.conf, .zshrc, ツールの設定ファイル, etc)と開発環境の話題や管理方法をわいわい話し合うチャンネル&#34;,
-[0m[1m[36m21244[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21245[0m-  &#34;&lt;@U7B4ZD49X&gt; set the channel topic: dotfilesと開発環境と生産性向上について語る場所です&#34;,
-[0m[1m[36m21246[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21247[0m-  &#34;&lt;@U7B4ZD49X&gt; set the channel topic: dotfilesと開発環境と生産性向上について語る場所です♪&#34;,
-[0m[1m[36m21248[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21249[0m:  &#34;Issueがぽこぽこ立ってるときに申し訳無いですが[0m[35mFzf[0mPreviewLocationList壊れてるくさいです&#34;,
-[0m[1m[36m21250[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21251[0m-  &#34;マジですか、ありがとうございます\n雑にでいいんでどんな感じか聞いてもいいです？&#34;,
-[0m[1m[36m21252[0m-  &#34;U011ED2JQM6&#34;,
-[0m[1m[36m21253[0m-  &#34;&lt;@U011ED2JQM6&gt; has joined the channel&#34;,
-[0m[1m[36m21254[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21255[0m:  &#34;あれ？普通に使うとエラーでませんかね？？\n```syntax on\nfiletype plugin indent on\n\nset runtimepath^=~/.vim/plugged/[0m[35mfzf[0m-preview.vim```\nで\n\n```Error detected while processing function [0m[35mfzf[0m_preview#initializer#initialize[28]..[0m[35mfzf[0m_preview#pa\nrameter#build_parameter[1]..&amp;lt;SNR&amp;gt;35_locationlist:\nline    2:\nE684: list index out of range: 0\nE116: Invalid arguments for function split\nE116: Invalid arguments for function len\nE15: Invalid expression: len(split(resource[0], &#39;:&#39;)) == 1\nError detected while processing function [0m[35mfzf[0m_preview#runner#[0m[35mfzf[0m_run:\nline    2:\nE715: Dictionary required\nline    3:\nE715: Dictionary required```&#34;,
-[0m[1m[36m21256[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21257[0m-  &#34;今PCない状態で外にいるんで試せなかったんですが了解です\n露骨に落ちるなら後で試してみますー&#34;,
-[0m[1m[36m21258[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21259[0m-  &#34;手元で試すと通る、なんだろう&#34;,
-[0m[1m[36m21260[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m21261[0m-  &#34;お、そうなんですね。&#34;,
-[0m[1m[36m21262[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21263[0m-  &#34;あ、エラー起きた&#34;,
-[0m[1m[36m21264[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m21265[0m-  &#34;ちょっと確認します&#34;,
---
-[0m[1m[36m22007[0m-  &#34;それ用の hack を efm に入れれるかもしれませんが。&#34;,
-[0m[1m[36m22008[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m22009[0m-  &#34;設定側が実現したくてやるなら、ラップするシェルスクリプトでも作らんとですね...&#34;,
-[0m[1m[36m22010[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m22011[0m-  &#34;要求レベルは低いので、課題の1つ、くらいの認識でもっていただけるとうれしいかな、くらいです&#34;,
-[0m[1m[36m22012[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m22013[0m-  &#34;なるほど&#34;,
-[0m[1m[36m22014[0m-  &#34;U7TMPGWJ0&#34;,
-[0m[1m[36m22015[0m-  &#34;efm-langserver の jq の linter ですが、こんな感じな設定で僕の手元では動きました。 lint-formats は他にパターンあるかも(詳しく調べてないです...すいません)\n```version: 2\ntools:\n  # ...snip\n\n  json-jq: &amp;amp;json-jq\n    lint-command: &#39;jq&#39;\n    lint-stdin: true\n    lint-offset: 1\n    lint-formats:\n      - &#39;%m at line %l, column %c&#39;\n\n  # ...snip\n\nlanguages:\n  # ...snip\n\n  json:\n    - &amp;lt;&amp;lt;: *json-jq\n\n  # ...snip```&#34;,
-[0m[1m[36m22016[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m22017[0m:  &#34;[0m[35mfzf[0mのpopup使ってると、たまにvim-lspっぽいところでエラーになってpopupが死ぬなぁ&#34;,
-[0m[1m[36m22018[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m22019[0m-  &#34;```BufWipeout Autocommands for \&#34;*\&#34; の処理中にエラーが検出されました:\nE994: ポップアップウィンドウでは許されません```\n今の所入れてるプラグインや設定でBufWipeout使ってるのvim-lspだけなのでおよそ間違いなさそう。\n\n&lt;https://github.com/prabirshrestha/vim-lsp/blob/2de8f4d479229eedcb9bf41a878b94fb7e2662ed/autoload/lsp.vim#L200&gt;&#34;,
-[0m[1m[36m22020[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m22021[0m-  &#34;こういうとき日本語化してると気軽にIssue起こせなくて面倒くさいなあ&#34;,
-[0m[1m[36m22022[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m22023[0m-  &#34;`:language messages en_US.UTF-8` しておいて再現したらまたIssue切ろう…&#34;,
-[0m[1m[36m22024[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m22025[0m-  &#34;なるほど&#34;,
-[0m[1m[36m22026[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m22027[0m-  &#34;```Error detected while processing BufWipeout Autocommands for \&#34;*\&#34;:\nE994: Not allowed in a popup window```\n出よった&#34;,
---
-[0m[1m[36m22765[0m-  &#34;引数に足すか...&#34;,
-[0m[1m[36m22766[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m22767[0m-  &#34;ちょっとバグ見付けたのでPRしないと&#34;,
-[0m[1m[36m22768[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m22769[0m-  &#34;すでに来てた&#34;,
-[0m[1m[36m22770[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22771[0m-  &#34;&lt;https://twitter.com/LightTiger2505/status/1241619069708599296&gt;&#34;,
-[0m[1m[36m22772[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22773[0m-  &#34;作りました。READMEないから怒られそう。&#34;,
-[0m[1m[36m22774[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22775[0m:  &#34;[0m[35mfzf[0mのコールが思ったより面倒でした。いや自分でセレクタ作るよりはるかに簡単なんですけど。&#34;,
-[0m[1m[36m22776[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22777[0m:  &#34;[0m[35mfzf[0mのインターフェイス慣れないとだるそう&#34;,
-[0m[1m[36m22778[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22779[0m:  &#34;[0m[35mfzf[0mのインタフェースの`[0m[35mfzf[0m#hogehoge`って[0m[35mfzf[0m.vimじゃなくて[0m[35mfzf[0m本体にあったのか。とかこのインタフェースに渡す値なんやねんみたいなつまづきポイントいっぱいありますよね。あれ、どこかに明記されてるんですかね。&#34;,
-[0m[1m[36m22780[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22781[0m-  &#34;自分はwikiのサンプルとコード読んで頑張った気がする・・・&#34;,
-[0m[1m[36m22782[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22783[0m:  &#34;[0m[35mfzf[0m入れてたら[0m[35mfzf[0m.vimいらないあたり罠ですよね、実は[0m[35mfzf[0mの方にpluginディレクトリがあるとか気付かないし&#34;,
-[0m[1m[36m22784[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22785[0m:  &#34;ですよね。なぜ[0m[35mfzf[0m.vimを作ったのにそっちにないのか。それなら[0m[35mfzf[0mだけで良いじゃないか感。&#34;,
-[0m[1m[36m22786[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m22787[0m-  &#34;(deinでマージすると事故る... / 同位置に同名のファイル)&#34;,
-[0m[1m[36m22788[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22789[0m-  &#34;（expectオプションを渡すかどうかで返ってくる値が違うとかも相当あれです）&#34;,
-[0m[1m[36m22790[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m22791[0m-  &#34;ちゃんと操作APIだけ/インタフェースで分けてあるのかも微妙&#34;,
-[0m[1m[36m22792[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m22793[0m-  &#34;同名のファイルが存在する時点でvimプラグインとしては競合してるのでマージ以前の問題である&#34;,
-[0m[1m[36m22794[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22795[0m-  &#34;sinkに渡す関数に返ってくる配列が、expectオプションありだと `[key, ...selected_lines]` 、expectオプションなしだと `[...selected_lines]` になった気がしている&#34;,
-[0m[1m[36m22796[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m22797[0m-  &#34;割とお行儀が悪い&#34;,
-[0m[1m[36m22798[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22799[0m-  &#34;自分はお行儀が悪いと思いつつ乗っちゃってるからあれなんですけど、もうちょっと綺麗になってると嬉しいですね・・・&#34;,
-[0m[1m[36m22800[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22801[0m:  &#34;自分のプラグインが[0m[35mfzf[0mを更にwrapして頑張って使ってるので、もしかしたら少し参考になるかも？\n逆によく分からなくて面倒になるかもですが&#34;,
-[0m[1m[36m22802[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22803[0m:  &#34;あと[0m[35mfzf[0m自体の引数とその使い方もそれなりに複雑、DBだとtableをリストに出してpreviweにschema表示させるとかよさそうな気がします&#34;,
-[0m[1m[36m22804[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m22805[0m-  &#34;sqls.vim のコードを読んでみましたが、封印している execute_command 関数露出したほうがこういう連携しやすそうですね。&#34;,
-[0m[1m[36m22806[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22807[0m-  &#34;&lt;@U8R597E9H&gt; CodeActionの選択肢を引数としてCodeActionに渡してあげて、選択肢をスキップしてExecuteCommand実行できても良いのかなと思いました。&#34;,
-[0m[1m[36m22808[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m22809[0m-  &#34;その機能自体は提供されていますが、CodeAction.title に対するクエリではなく、CodeAction.kind に対するクエリになっています。（source.organizeImports などと指定する）&#34;,
-[0m[1m[36m22810[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22811[0m-  &#34;なるほどあるんですね。気がつかなかった...&#34;,
-[0m[1m[36m22812[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m22813[0m-  &#34;coc.nvim なんかは、指定されたコマンドを実行する関数を提供していたりしますので、それを vim-lsp にも提供するのはありかもなぁと思った次第でした。（今は private な関数として内部に存在はしてますが）&#34;,
-[0m[1m[36m22814[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m22815[0m-  &#34;lsp#execute_command 的な形で…&#34;,
-[0m[1m[36m22816[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22817[0m-  &#34;&#34;,
-[0m[1m[36m22818[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22819[0m-  &#34;それっぽいのができたー&#34;,
-[0m[1m[36m22820[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m22821[0m:  &#34;[0m[35mfzf[0m 自由度高杉&#34;,
-[0m[1m[36m22822[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22823[0m-  &#34;ExecuteCommandは実行後の処理がわりとLanguageServerごとの色が強いので、ハンドル後の処理を柔軟に出来ないと厳しいですね。&#34;,
-[0m[1m[36m22824[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m22825[0m-  &#34;自分が lsp#execute_command を実装するなら必ず同期で実行されるようにしたくなる…。&#34;,
-[0m[1m[36m22826[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m22827[0m:  &#34;`mysql -u root -ppw -h 127.0.0.1 -N -s -e \&#34;show tables from table_name;\&#34; | [0m[35mfzf[0m --preview=\&#34;mysql -u root -ppw -h 127.0.0.1 -N -s -e &#39;show create table table_name.{};&#39; | sed &#39;s/\\\\\\\\n/\\n/g&#39;\&#34;`\nこんなのでした、previewをvim内から実行する[0m[35mfzf[0m#runのオプションに渡しちゃえばあんまり難しくないはず&#34;,
-[0m[1m[36m22828[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m22829[0m-  &#34;でもそれは微妙な気がしていて I/F 固まってないので非公開になってます。&#34;,
-[0m[1m[36m22830[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22831[0m-  &#34;ですね。ExecuteCommandを実行した結果を受け取って云々するは今のインタフェースだと結構辛い。&#34;,
-[0m[1m[36m22832[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22833[0m-  &#34;sqls.vimは半分私の実験場みたいなもので、他のLSクライアント(VSCode含め)の動作を確認しながらいい具合のExecuteCommandの実装方法を探り、最終的にLSクライアントに寄せられればなと思ってます。&#34;,
-[0m[1m[36m22834[0m-  &#34;U80CX6XDZ&#34;,
-[0m[1m[36m22835[0m-  &#34;良いですね。解釈としてはlspのdocumentSymbolとしてテーブルを返してそれを見せても良さそう。&#34;,
-[0m[1m[36m22836[0m-  &#34;U03C6TEAZ&#34;,
-[0m[1m[36m22837[0m-  &#34;sqls.vim よさそう。&#34;,
---
-[0m[1m[36m23731[0m-  &#34;大体Vim scriptの例外処理機構が貧弱なのが&#34;,
-[0m[1m[36m23732[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m23733[0m-  &#34;とりあえずvim-lspへthrowpointしこむPR作ります(罪滅ぼしw)&#34;,
-[0m[1m[36m23734[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m23735[0m-  &#34;いやそうじゃない、au User で `*` 入れてどうするんだorz、これだ&#34;,
-[0m[1m[36m23736[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m23737[0m-  &#34;clangdでvsnipのexpandが効く...文明開花の音がするw&#34;,
-[0m[1m[36m23738[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m23739[0m-  &#34;各位ほんとうにありがとうございます。\nひきづつき謎なrefreshしてるプラグインを追い詰めないとなw&#34;,
-[0m[1m[36m23740[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m23741[0m:  &#34;うーん、相変わらずvim-lspと[0m[35mfzf[0m.vimの組み合わせでpopup windowが空のまま死ぬな…&#34;,
-[0m[1m[36m23742[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m23743[0m:  &#34;何かしらのソース上のエラーがある状態でファイルを保存して、\ndiagnosticsが報告されるくらいのタイミングで [0m[35mfzf[0m を開くと再現する…&#34;,
-[0m[1m[36m23744[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m23745[0m-  &#34;つらい&#34;,
-[0m[1m[36m23746[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m23747[0m-  &#34;今日は寝よう…&#34;,
-[0m[1m[36m23748[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m23749[0m:  &#34;再現条件がわかった。\nvim-lspがpopupでdiagnosticsのメッセージを表示している状態\n```let g:lsp_diagnostics_float_cursor = 1```\nかつ、同時に[0m[35mfzf[0mがpopup windowを表示しようとしたとき\n```let g:[0m[35mfzf[0m_layout = { &#39;window&#39;: {\n      \\ &#39;width&#39;: 0.6,\n      \\ &#39;height&#39;: 0.6,\n      \\ &#39;border&#39;: &#39;ascii&#39;\n      \\ } }```\nに必ずエラー\n```Error detected while processing BufWipeout Autocommands for \&#34;*\&#34;:\nE994: Not allowed in a popup window```\nとなってしまうんだ…&#34;,
-[0m[1m[36m23750[0m-  &#34;UGXMRNBUM&#34;,
-[0m[1m[36m23751[0m-  &#34;`diagnostics_float_cursor` 、`&amp;lt;plug&amp;gt;(lsp-hover)` とカブってしまって邪魔になりがちだし、\nオフにしておいたほうが良いんだろうな…ちょっと使いづらすぎる&#34;,
-[0m[1m[36m23752[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m23753[0m:  &#34;[0m[35mfzf[0mかなにかが `BufWipeout` のautocmdを無制御で実行しているのかなあ?&#34;,
-[0m[1m[36m23754[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m23755[0m:  &#34;vim-lspのポップアップ消すやつがpopup-terminal対応してなくて（最近増えましたからね、あれ）[0m[35mfzf[0m出してると干渉して死ぬのかなと推測してみる&#34;,
-[0m[1m[36m23756[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m23757[0m-  &#34;Bram氏floatwin入れてくれ～&#34;,
-[0m[1m[36m23758[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m23759[0m-  &#34;自前のテーブルからバッファ名を検索してるから、こっちは大丈夫なんじゃないか感あるけど...どうなんだろ&#34;,
-[0m[1m[36m23760[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m23761[0m-  &#34;popup-terminal出してる間は制限かなりかかるのでそれかなと、何も試してないのであれですが&#34;,
-[0m[1m[36m23762[0m-  &#34;U9S4G0LJW&#34;,
-[0m[1m[36m23763[0m-  &#34;バッファ名云々は大丈夫そう&#34;,
-[0m[1m[36m23764[0m-  &#34;UAZ33BKV2&#34;,
-[0m[1m[36m23765[0m-  &#34;あー、なるほど&#34;,
---
-[0m[1m[36m23991[0m-  &#34;あと、**envってzsh補完ぶっ壊れてないです？\n自分で直すの書いてどうにかしたんですけど&#34;,
-[0m[1m[36m23992[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m23993[0m-  &#34;anyenvだと通るのかもしれない&#34;,
-[0m[1m[36m23994[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m23995[0m-  &#34;壊れてるかも、あまり意識してなかったです&#34;,
-[0m[1m[36m23996[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m23997[0m-  &#34;docker は辛すぎるからちゃんと書いた&#34;,
-[0m[1m[36m23998[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m23999[0m-  &#34;Qiitaに書いたスクリプトがzshプラグイン化されてるやつ\n&lt;https://github.com/ress997/zsh-completions-anyenv&gt;&#34;,
-[0m[1m[36m24000[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24001[0m:  &#34;自分はバージョンの補完効かないの結構辛かったんですよね\nローカルでは[0m[35mfzf[0mで補完させてます&#34;,
-[0m[1m[36m24002[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m24003[0m-  &#34;あ `pyenv install |` とかの時の補完なら聴きますね&#34;,
-[0m[1m[36m24004[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24005[0m-  &#34;あれ、今効くのかな&#34;,
-[0m[1m[36m24006[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m24007[0m-  &#34;anyenv だからかな？&#34;,
-[0m[1m[36m24008[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m24009[0m-  &#34;anyenv の `init` で補完出力されてますね&#34;,
-[0m[1m[36m24010[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24011[0m-  &#34;あー、更新されてるみたい&#34;,
---
-[0m[1m[36m24049[0m-  &#34;Cica、使ってたこともあるんだけどなんか癖が強い部分が気になってやめちゃった記憶が蘇ってきた&#34;,
-[0m[1m[36m24050[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24051[0m-  &#34;今zshの設定見直してたらいらないのが結構残ってそうだ&#34;,
-[0m[1m[36m24052[0m-  &#34;U776661HA&#34;,
-[0m[1m[36m24053[0m-  &#34;Cica 脳死で devicon 対応してるのが良い&#34;,
-[0m[1m[36m24054[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24055[0m-  &#34;`SF Mono Square` 使わせて貰ってる&#34;,
-[0m[1m[36m24056[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m24057[0m-  &#34;私は字体的にはJetbrains monoのほうが好きですね&#34;,
-[0m[1m[36m24058[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24059[0m:  &#34;ちょっと前までdevicon使ってなかったんですけど、[0m[35mfzf[0m + devicon対応させたら思ったより視認性が上がってよくなったんですよね&#34;,
-[0m[1m[36m24060[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24061[0m-  &#34;colorizeとdeviconは偉大だった&#34;,
-[0m[1m[36m24062[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24063[0m-  &#34;`path=(/usr/local/opt/curl/bin(N-/) $path)` こんな設定してるけどこれなんで必要なんだっけ・・・&#34;,
-[0m[1m[36m24064[0m-  &#34;U8R597E9H&#34;,
-[0m[1m[36m24065[0m-  &#34;Cousine Nerd Font Mono 使っている（有名ではなさそうですが）&#34;,
-[0m[1m[36m24066[0m-  &#34;U8996GYBF&#34;,
-[0m[1m[36m24067[0m-  &#34;ここ完全に &lt;#CNX3F8RFC|dotfiles&gt; と勘違いしてた・・・&#34;,
-[0m[1m[36m24068[0m-  &#34;U7B4ZD49X&#34;,
-[0m[1m[36m24069[0m-  &#34;まあ脱線はいつものことなんで・・・&#34;,
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F012GF05P6H/a.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -30096,8 +28633,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0137NBJP5W/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-25%2012.17.14.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0137NBJP5W/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-25%2012.17.14_1024.png" width="1024" height="663" alt="スクリーンショット 2020-04-25 12.17.14.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0137NBJP5W/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-25%2012.17.14.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0137NBJP5W/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-04-25%2012.17.14_1024.png" width="1024" height="663" alt="スクリーンショット 2020-04-25 12.17.14.png" />
                   </a>
                 </div>
               </div>
@@ -30482,8 +29019,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0137S3503A/Kapture%202020-04-25%20at%2017.30.52.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F0137S3503A/Kapture%202020-04-25%20at%2017.30.52.mp4" poster="/slacklog/files/F0137S3503A/Kapture%202020-04-25%20at%2017.30.52_video.jpeg" controls alt="Kapture 2020-04-25 at 17.30.52.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0137S3503A/Kapture%202020-04-25%20at%2017.30.52.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0137S3503A/Kapture%202020-04-25%20at%2017.30.52.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0137S3503A/Kapture%202020-04-25%20at%2017.30.52_video.jpeg" controls alt="Kapture 2020-04-25 at 17.30.52.mp4">
                   </video>
                   </a>
                 </div>
@@ -31287,8 +29824,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0123ADJJUX/Kapture%202020-04-25%20at%2018.55.52.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F0123ADJJUX/Kapture%202020-04-25%20at%2018.55.52.mp4" poster="/slacklog/files/F0123ADJJUX/Kapture%202020-04-25%20at%2018.55.52_video.jpeg" controls alt="Kapture 2020-04-25 at 18.55.52.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0123ADJJUX/Kapture%202020-04-25%20at%2018.55.52.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0123ADJJUX/Kapture%202020-04-25%20at%2018.55.52.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0123ADJJUX/Kapture%202020-04-25%20at%2018.55.52_video.jpeg" controls alt="Kapture 2020-04-25 at 18.55.52.mp4">
                   </video>
                   </a>
                 </div>
@@ -31647,8 +30184,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012WN9JAKT/Kapture%202020-04-25%20at%2020.23.36.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F012WN9JAKT/Kapture%202020-04-25%20at%2020.23.36.mp4" poster="/slacklog/files/F012WN9JAKT/Kapture%202020-04-25%20at%2020.23.36_video.jpeg" controls alt="Kapture 2020-04-25 at 20.23.36.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012WN9JAKT/Kapture%202020-04-25%20at%2020.23.36.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012WN9JAKT/Kapture%202020-04-25%20at%2020.23.36.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012WN9JAKT/Kapture%202020-04-25%20at%2020.23.36_video.jpeg" controls alt="Kapture 2020-04-25 at 20.23.36.mp4">
                   </video>
                   </a>
                 </div>
@@ -34483,8 +33020,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0139PA836U/Kapture%202020-04-27%20at%2020.00.05.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F0139PA836U/Kapture%202020-04-27%20at%2020.00.05.mp4" poster="/slacklog/files/F0139PA836U/Kapture%202020-04-27%20at%2020.00.05_video.jpeg" controls alt="Kapture 2020-04-27 at 20.00.05.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0139PA836U/Kapture%202020-04-27%20at%2020.00.05.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0139PA836U/Kapture%202020-04-27%20at%2020.00.05.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0139PA836U/Kapture%202020-04-27%20at%2020.00.05_video.jpeg" controls alt="Kapture 2020-04-27 at 20.00.05.mp4">
                   </video>
                   </a>
                 </div>
@@ -36236,8 +34773,8 @@ augroup END</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F012QV925KL/Kapture%202020-04-29%20at%2017.35.15.mp4" target="_blank" rel="noopener noreferrer">
-                  <video src="/slacklog/files/F012QV925KL/Kapture%202020-04-29%20at%2017.35.15.mp4" poster="/slacklog/files/F012QV925KL/Kapture%202020-04-29%20at%2017.35.15_video.jpeg" controls alt="Kapture 2020-04-29 at 17.35.15.mp4">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012QV925KL/Kapture%202020-04-29%20at%2017.35.15.mp4" target="_blank" rel="noopener noreferrer">
+                  <video src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012QV925KL/Kapture%202020-04-29%20at%2017.35.15.mp4" poster="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F012QV925KL/Kapture%202020-04-29%20at%2017.35.15_video.jpeg" controls alt="Kapture 2020-04-29 at 17.35.15.mp4">
                   </video>
                   </a>
                 </div>

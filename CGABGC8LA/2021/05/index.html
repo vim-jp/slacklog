@@ -1362,8 +1362,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F021C6NA3DE/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F021C6NA3DE/image_1024.png" width="1024" height="828" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F021C6NA3DE/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F021C6NA3DE/image_1024.png" width="1024" height="828" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -3832,8 +3832,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F020WRJ3FGU/screenshot.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F020WRJ3FGU/screenshot.gif" width="798" height="595" alt="screenshot.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F020WRJ3FGU/screenshot.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F020WRJ3FGU/screenshot.gif" width="798" height="595" alt="screenshot.gif" />
                   </a>
                 </div>
               </div>
@@ -5751,64 +5751,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0227UK3LQY/%E7%84%A1%E9%A1%8C.cpp" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0227UK3LQY/%E7%84%A1%E9%A1%8C.cpp" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(C++)]]</span>
                   </a>
-                  <pre><code class='language-cpp'>package main
-
-import (
-	&#34;fmt&#34;
-
-	&#34;golang.org/x/xerrors&#34;
-)
-
-type ErrorType string
-
-var (
-	ErrNotFound         ErrorType = &#34;not found&#34;
-	ErrInvalidParameter ErrorType = &#34;invalid parameter&#34;
-)
-
-type SomeError struct {
-	Type ErrorType
-	Msg  string
-}
-
-func NewSomeError(errType ErrorType, msg string) SomeError {
-	se := SomeError{
-		Type: errType,
-		Msg:  msg,
-	}
-	return se
-}
-
-func (s SomeError) Error() string {
-	return fmt.Sprintf(&#34;kind: %s, msessage: %s\n&#34;, s.Type, s.Msg)
-}
-
-func main() {
-	err := a()
-	var someError SomeError
-	if ok := xerrors.As(err, &amp;someError); !ok {
-		fmt.Println(&#34;error is not SomeError&#34;)
-		return
-	}
-
-	switch someError.Type {
-	case ErrNotFound:
-		fmt.Println(someError)
-	case ErrInvalidParameter:
-		fmt.Println(someError)
-	}
-}
-
-func a() error {
-	return xerrors.Errorf(&#34;: %w&#34;, b())
-}
-
-func b() error {
-	return NewSomeError(ErrNotFound, &#34;not found&#34;)
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F0227UK3LQY/無題.cpp: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -7855,72 +7801,10 @@ func b() error {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F022AF1HBFB/frame.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F022AF1HBFB/frame.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: frame.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>/*
-Package stack provides utility to capture stack frames.
-*/
-package stack
-
-import (
-	&#34;runtime&#34;
-	&#34;strconv&#34;
-	&#34;strings&#34;
-)
-
-// Frame represents a stack frame.
-type Frame struct {
-	File     string
-	Line     int
-	Function string
-}
-
-func (f *Frame) String() string {
-	return f.Function + &#34;() at &#34; + f.File + &#34;:&#34; + strconv.Itoa(f.Line)
-}
-
-// Frames gets stack frames with skip.
-func Frames(skip int) []*Frame {
-	var frames []*Frame
-	var pc [64]uintptr
-	skip += 2
-	for {
-		n := runtime.Callers(skip, pc[:])
-		if n == 0 {
-			break
-		}
-		if frames == nil {
-			frames = make([]*Frame, 0, n)
-		}
-		ff := runtime.CallersFrames(pc[:n])
-		for {
-			f, more := ff.Next()
-			frames = append(frames, &amp;Frame{
-				File:     f.File,
-				Line:     f.Line,
-				Function: f.Function,
-			})
-			if !more {
-				break
-			}
-		}
-		skip += n
-	}
-	return frames
-}
-
-// Join concatenates formated frames as string.
-func Join(frames []*Frame, sep string) string {
-	b := strings.Builder{}
-	for i, f := range frames {
-		if i != 0 {
-			b.WriteString(sep)
-		}
-		b.WriteString(f.String())
-	}
-	return b.String()
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F022AF1HBFB/frame.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -14282,22 +14166,10 @@ func Join(frames []*Frame, sep string) string {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F023GE343ED/fs_sub.go" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F023GE343ED/fs_sub.go" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: fs_sub.go(Go)]]</span>
                   </a>
-                  <pre><code class='language-go'>//go:embed internal/resources
-var rowEmbed embed.FS
-
-var resources io.FS
-
-func init() {
-	var err error
-	resources, err = fs.Sub(rowEmbed, &#34;internal/resources&#34;)
-	if err != nil {
-		panic(...)
-	}
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F023GE343ED/fs_sub.go: no such file or directory</span></pre>
                 </div>
               </div>
             </div>

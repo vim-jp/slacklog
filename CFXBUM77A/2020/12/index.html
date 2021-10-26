@@ -1694,82 +1694,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01HN5GNM6E/______.diff" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01HN5GNM6E/______.diff" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(Diff)]]</span>
                   </a>
-                  <pre><code class='language-diff'>diff --git a/autoload/fzf_preview/remote/consumer/git.vim b/autoload/fzf_preview/remote/consumer/git.vim
-index 1061621..a64a7de 100644
---- a/autoload/fzf_preview/remote/consumer/git.vim
-+++ b/autoload/fzf_preview/remote/consumer/git.vim
-@@ -31,6 +31,15 @@ function! fzf_preview#remote#consumer#git#patch(file) abort
-   echoerr &#39;Fugitive and Gina not installed&#39;
- endfunction
-
-+function! fzf_preview#remote#consumer#git#chaperon(file) abort
-+  if has(&#39;nvim&#39;) &amp;&amp; exists(&#39;:Gina&#39;) == 2
-+    execute &#39;Gina chaperon &#39; . a:file
-+    return
-+  endif
-+
-+  echoerr &#39;Gina not installed&#39;
-+endfunction
-+
- function! fzf_preview#remote#consumer#git#commit(option) abort
-   if match(a:option, &#39;--fixup&#39;) != -1
-     echomsg system(&#39;git commit &#39; . a:option)
-diff --git a/src/connector/git.ts b/src/connector/git.ts
-index e2a67b1..e4c6887 100644
---- a/src/connector/git.ts
-+++ b/src/connector/git.ts
-@@ -130,6 +130,10 @@ export const gitPatch = async (file: string): Promise&lt;void&gt; =&gt; {
-   await pluginCall(&#34;fzf_preview#remote#consumer#git#patch&#34;, [file])
- }
-
-+export const gitChaperon = async (file: string): Promise&lt;void&gt; =&gt; {
-+  await pluginCall(&#34;fzf_preview#remote#consumer#git#chaperon&#34;, [file])
-+}
-+
- type CommitOption =
-   | { name: &#34;--amend&#34; }
-   | { name: &#34;--amend --no-edit&#34; }
-diff --git a/src/const/git.ts b/src/const/git.ts
-index 62d7d2a..f8c8f3e 100644
---- a/src/const/git.ts
-+++ b/src/const/git.ts
-@@ -14,7 +14,7 @@ export const GIT_ACTIONS = [
-   &#34;pull&#34;,
-   &#34;toggle --no-verify&#34;,
- ] as const
--export const GIT_STATUS_ACTIONS = [&#34;add&#34;, &#34;reset&#34;, &#34;patch&#34;, &#34;checkout&#34;] as const
-+export const GIT_STATUS_ACTIONS = [&#34;add&#34;, &#34;reset&#34;, &#34;patch&#34;, &#34;checkout&#34;, &#34;chaperon&#34;] as const
- export const GIT_BRANCH_ACTIONS = [
-   &#34;diff&#34;,
-   &#34;checkout&#34;,
-diff --git a/src/fzf/process/consumer/git-status-action.ts b/src/fzf/process/consumer/git-status-action.ts
-index 50a34fa..b143b88 100644
---- a/src/fzf/process/consumer/git-status-action.ts
-+++ b/src/fzf/process/consumer/git-status-action.ts
-@@ -1,4 +1,4 @@
--import { gitAdd, gitCheckout, gitPatch, gitReset } from &#34;@/connector/git&#34;
-+import { gitAdd, gitChaperon, gitCheckout, gitPatch, gitReset } from &#34;@/connector/git&#34;
- import { chainFzfCommand, createSingleLineConsumer } from &#34;@/fzf/process/consumer&#34;
- import { unreachable } from &#34;@/util/type&#34;
-
-@@ -43,6 +43,13 @@ export const execGitStatusActionConsumer = createSingleLineConsumer(async (data)
-       await chainFzfCommand(&#34;FzfPreviewGitStatus&#34;)
-       break
-     }
-+    case &#34;chaperon&#34;: {
-+      for (const file of data.files) {
-+        // eslint-disable-next-line no-await-in-loop
-+        await gitChaperon(file)
-+      }
-+      break
-+    }
-
-     case &#34;header&#34;: {
-       break
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01HN5GNM6E/______.diff: no such file or directory</span></pre>
                 </div>
               </div>
             </div>

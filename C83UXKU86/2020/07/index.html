@@ -1212,14 +1212,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F017B4JP2QJ/if_lua.c" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F017B4JP2QJ/if_lua.c" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰: if_lua.c(C)]]</span>
                   </a>
-                  <pre><code class='language-c'>	case LUA_TFUNCTION:
-	{
-	    char_u *name;
-	    lua_pushvalue(L, pos);
-	    luaV_CFuncState *state = ALLOC_CLEAR_ONE(luaV_CFuncState);</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F017B4JP2QJ/if_lua.c: no such file or directory</span></pre>
                 </div>
               </div>
               <details class="details-reset mt-3">
@@ -1285,35 +1281,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F016WC5E1F1/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F016WC5E1F1/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰: Untitled(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>diff --git a/src/if_lua.c b/src/if_lua.c
-index f25c47b53..6867fcb33 100644
---- a/src/if_lua.c
-+++ b/src/if_lua.c
-@@ -626,8 +626,9 @@ luaV_totypval(lua_State *L, int pos, typval_T *tv)
- 	case LUA_TFUNCTION:
- 	{
- 	    char_u *name;
-+	    luaV_CFuncState *state;
- 	    lua_pushvalue(L, pos);
--	    luaV_CFuncState *state = ALLOC_CLEAR_ONE(luaV_CFuncState);
-+	    state = ALLOC_CLEAR_ONE(luaV_CFuncState);
- 	    state-&gt;lua_funcref = luaL_ref(L, LUA_REGISTRYINDEX);
- 	    state-&gt;L = L;
- 	    state-&gt;lua_tableref = LUA_NOREF;
-@@ -639,8 +640,9 @@ luaV_totypval(lua_State *L, int pos, typval_T *tv)
- 	}
- 	case LUA_TTABLE:
- 	{
-+	    int lua_tableref;
- 	    lua_pushvalue(L, pos);
--	    int lua_tableref = luaL_ref(L, LUA_REGISTRYINDEX);
-+	    lua_tableref = luaL_ref(L, LUA_REGISTRYINDEX);
- 	    if (lua_getmetatable(L, pos)) {
- 		lua_getfield(L, -1, LUA___CALL);
- 		if (lua_isfunction(L, -1)) {</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F016WC5E1F1/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -1450,12 +1421,10 @@ index f25c47b53..6867fcb33 100644
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F016WCDSLH5/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F016WCDSLH5/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰: Untitled(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>Executed:  3308 Tests
- Skipped:   261 Tests
-  FAILED:    18 Tests</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F016WCDSLH5/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -1482,452 +1451,10 @@ index f25c47b53..6867fcb33 100644
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F016WCF79EK/test_result-20200718T1314JST.log" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F016WCF79EK/test_result-20200718T1314JST.log" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰: test_result-20200718T1314JST.log(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>
-Skipped:
-	Test_quit_with_arglist(): cannot run Vim in a terminal window
-	Test_Changed_FirstTime(): only works in the terminal
-	Test_TermChanged(): only works in the terminal
-	Test_autocmd_CmdWinEnter(): cannot run Vim in a terminal window
-	Test_autocmd_SafeState(): cannot run Vim in a terminal window
-	Test_autocmd_sigusr1(): only works on Unix
-	test_balloon.vim: only works in the terminal
-	Test_bdel_with_confirm(): only works on Unix
-	Test_goto_buf_with_confirm(): only works on Unix
-	Test_appendbufline_redraw(): cannot make screendumps
-	Test_cmd_parsing(): only works on Unix
-	Test_job_exitval_and_termsig(): only works on Unix
-	Test_job_trailing_space_unix(): only works on Unix
-	Test_job_tty_in_out(): only works on Unix
-	Test_keep_pty_open(): only works on Unix
-	Test_write_to_buffer_and_scroll(): cannot make screendumps
-	Test_cmdline_revins(): does not work on MS-Windows
-	Test_cmdlineclear_tabenter(): cannot make screendumps
-	Test_cmdwin_interrupted(): cannot make screendumps
-	Test_cmdwin_restore(): cannot make screendumps
-	Test_read_shellcmd(): only works on Unix
-	Test_verbose_option(): cannot make screendumps
-	test_conceal.vim: cannot make screendumps
-	Test_cpo_R(): only works on Unix
-	test_cscope.vim: cscope program not executable
-	Test_cursorline_screenline(): cannot make screendumps
-	Test_Debugger(): cannot run Vim in a terminal window
-	Test_diff_of_diff(): cannot make screendumps
-	Test_diff_rnu(): cannot make screendumps
-	Test_diff_screen(): cannot make screendumps
-	Test_diff_with_cursorline(): cannot make screendumps
-	Test_diff_with_syntax(): cannot make screendumps
-	Test_entering_digraph(): cannot run Vim in a terminal window
-	Test_edit_long_file_name(): cannot make screendumps
-	Test_scroll_CursorLineNr_update(): cannot make screendumps
-	Test_scroll_without_region(): cannot make screendumps
-	Test_unprintable_fileformats(): cannot make screendumps
-	Test_edit_file_no_read_perm(): only works on Unix
-	Test_edit_noesckeys(): only works in the terminal
-	Test_confirm_cmd(): only works in the terminal
-	Test_confirm_cmd_cancel(): only works in the terminal
-	Test_confirm_q_wq(): only works in the terminal
-	Test_FileChangedShell_reload(): only works on Unix
-	Test_file_changed_dialog(): only works on Unix
-	Test_folds_with_rnu(): cannot make screendumps
-	Test_confirm(): only works on Unix
-	Test_echoraw(): cannot make screendumps
-	Test_readdirex_sort(): only works on Unix
-	Test_state(): cannot run Vim in a terminal window
-	Test_strptime(): strptime function missing
-	Test_getfontname_with_arg(): Test not implemented yet for this GUI
-	Test_getfontname_without_arg(): Test not implemented yet for this GUI
-	Test_quoteplus(): Feature/Option not supported by this GUI: quoteplus
-	Test_set_guifont(): Test not implemented yet for this GUI
-	Test_set_guifontset(): xfontset feature missing
-	Test_set_guifontwide(): Test not implemented yet for this GUI
-	Test_set_guiheadroom(): Feature/Option not supported by this GUI: guiheadroom
-	Test_set_guiheadroom(): Feature/Option not supported by this GUI: guiheadroom
-	Test_set_guioptions_for_p(): Feature/Option not supported by this GUI: &#39;p&#39; of guioptions
-	Test_empty_buffer(): postscript feature missing
-	Test_errors(): postscript feature missing
-	Test_fname_with_spaces(): postscript feature missing
-	Test_illegal_byte(): postscript feature missing
-	Test_printexpr(): postscript feature missing
-	Test_printmbcharset(): postscript feature missing
-	Test_colorcolumn(): cannot make screendumps
-	Test_cursorline_after_yank(): cannot make screendumps
-	Test_cursorline_with_visualmode(): cannot make screendumps
-	Test_highlight_User(): only works in the terminal
-	Test_highlight_ctermul(): only works in the terminal
-	Test_wincolor(): cannot make screendumps
-	Test_wincolor_listchars(): cannot make screendumps
-	Test_pum_with_folds_two_tabs(): cannot make screendumps
-	Test_pum_with_preview_win(): cannot make screendumps
-	Test_lua_list_table_insert_remove(): Lua version &lt; 5.3
-	Test_error_in_map_expr(): cannot run Vim in a terminal window
-	Test_expr_map_restore_cursor(): cannot make screendumps
-	Test_matchadd_other_window(): cannot run Vim in a terminal window
-	Test_matchclear_other_window(): cannot run Vim in a terminal window
-	Test_matchdelete_other_window(): cannot make screendumps
-	Test_cursor_column_in_concealed_line_after_leftcol_change(): cannot run Vim in a terminal window
-	Test_cursor_column_in_concealed_line_after_window_scroll(): cannot run Vim in a terminal window
-	test_memory_usage.vim: only works in the terminal
-	Test_show_menus(): only works in the terminal
-	Test_ask_yesno(): cannot run Vim in a terminal window
-	Test_message_more(): cannot run Vim in a terminal window
-	Test_mksession_slash(): cannot use backslash in file name
-	test_modeless.vim: only works in the terminal
-	Test_nb_quit_with_conn(): only works on Unix
-	Test_normal04_filter(): does not work on MS-Windows
-	Test_normal06_formatprg(): does not work on MS-Windows
-	Test_normal20_exmode(): does not work on MS-Windows
-	Test_normal35_g_cmd4(): output of g&lt; can&#39;t be tested currently
-	Test_normal47_autocmd(): not possible to test cursorhold autocmd while waiting for input in normal_cmd
-	Test_normal_changecase_turkish(): Turkish locale not available
-	Test_relativenumber_colors(): cannot make screendumps
-	Test_000_term_option_verbose(): only works in the terminal
-	Test_set_ttytype(): only works on Unix
-	Test_shell(): only works on Unix
-	Test_shellquote(): only works on Unix
-	test_paste.vim: does not work on MS-Windows
-	Test_menu_only_exists_in_terminal(): only works in the terminal
-	Test_popup_and_preview_autocommand(): python feature missing
-	Test_popup_and_previewwindow_dump(): cannot make screendumps
-	Test_popup_and_window_resize(): only works in the terminal
-	Test_popup_command(): cannot make screendumps
-	Test_popup_position(): cannot make screendumps
-	Test_notifications(): cannot make screendumps
-	Test_popup_all_corners(): cannot make screendumps
-	Test_popup_atcursor_pos(): cannot make screendumps
-	Test_popup_beval(): cannot make screendumps
-	Test_popup_close_with_mouse(): cannot make screendumps
-	Test_popup_cursorline(): cannot make screendumps
-	Test_popup_drag(): cannot make screendumps
-	Test_popup_drag_termwin(): only works on Unix
-	Test_popup_firstline_dump(): cannot make screendumps
-	Test_popup_menu_filter(): cannot make screendumps
-	Test_popup_menu_narrow(): cannot make screendumps
-	Test_popup_menu_screenshot(): cannot make screendumps
-	Test_popup_menu_with_maxwidth(): cannot make screendumps
-	Test_popup_menu_with_scrollbar(): cannot make screendumps
-	Test_popup_menu_wrap(): cannot make screendumps
-	Test_popup_never_behind(): cannot make screendumps
-	Test_popup_nospace(): cannot make screendumps
-	Test_popup_scrollbar(): cannot make screendumps
-	Test_popup_select(): cannot make screendumps
-	Test_popup_settext(): cannot make screendumps
-	Test_popup_title(): cannot make screendumps
-	Test_popup_with_border_and_padding(): cannot make screendumps
-	Test_popup_with_mask(): cannot make screendumps
-	Test_popup_with_matches(): cannot make screendumps
-	Test_popup_with_showbreak(): cannot make screendumps
-	Test_popup_with_syntax_setbufvar(): cannot make screendumps
-	Test_popup_with_syntax_win_execute(): cannot make screendumps
-	Test_popup_with_wrap(): cannot make screendumps
-	Test_popup_without_wrap(): cannot make screendumps
-	Test_popupmenu_info_align_menu(): cannot make screendumps
-	Test_popupmenu_info_border(): cannot make screendumps
-	Test_popupmenu_info_hidden(): cannot make screendumps
-	Test_popupmenu_info_noborder(): cannot make screendumps
-	Test_popupmenu_info_too_wide(): cannot make screendumps
-	Test_popupwin_double_width(): cannot make screendumps
-	Test_popupwin_sign(): cannot make screendumps
-	Test_popupwin_terminal_buffer(): only works on Unix
-	Test_previewpopup(): cannot make screendumps
-	Test_simple_popup(): cannot make screendumps
-	test_popupwin_textprop.vim: cannot make screendumps
-	Test_profile_typed_func(): cannot make screendumps
-	test_python2.vim: python feature missing
-	Test_unicode(): &#39;termencoding&#39; is not empty
-	test_pyx2.vim: python feature missing
-	Test_cwindow_highlight(): cannot make screendumps
-	Test_quotestar(): Test is not implemented yet for this platform.
-	Test_clipboard_regs(): only works in the terminal
-	test_ruby.vim: ruby feature missing
-	Test_incsearch_highlighting(): cannot make screendumps
-	Test_incsearch_scrolling(): cannot run Vim in a terminal window
-	Test_incsearch_search_dump(): cannot make screendumps
-	Test_incsearch_sort_dump(): cannot make screendumps
-	Test_incsearch_substitute_dump(): cannot make screendumps
-	Test_incsearch_vimgrep_dump(): cannot make screendumps
-	Test_incsearch_with_change(): cannot make screendumps
-	Test_search_cmdline8(): only works in the terminal
-	Test_search_cmdline_incsearch_highlight_attr(): only works in the terminal
-	Test_search_stat_foldopen(): cannot make screendumps
-	Test_search_stat_screendump(): cannot make screendumps
-	Test_searchcount_in_statusline(): cannot make screendumps
-	test_selectmode.vim: only works in the terminal
-	test_signals.vim: only works on Unix
-	Test_sign_cursor_position(): cannot run Vim in a terminal window
-	Test_play_event(): Playing event with callback is not supported on Windows
-	Test_play_silent(): playing a sound is not working
-	Test_spell_screendump(): cannot make screendumps
-	Test_F_arg(): only works in the terminal
-	Test_V_arg(): only works in the terminal
-	Test_default_term(): only works on Unix
-	Test_h_arg(): only works in the terminal
-	Test_invalid_args(): only works on Unix
-	Test_io_not_a_terminal(): only works in the terminal
-	Test_issue_3969(): only works in the terminal
-	Test_missing_vimrc(): cannot run Vim in a terminal window
-	Test_r_arg(): only works in the terminal
-	Test_s_arg(): only works in the terminal
-	Test_silent_ex_mode(): only works on Unix
-	Test_start_with_tabs(): cannot run Vim in a terminal window
-	Test_too_many_edit_args(): only works in the terminal
-	Test_v_argv(): only works in the terminal
-	Test_w_arg(): only works in the terminal
-	Test_statusline_removed_group(): cannot make screendumps
-	Test_swap_prompt_splitwin(): cannot run Vim in a terminal window
-	Test_bg_detection(): only works in the terminal
-	Test_syntax_c(): cannot run Vim in a terminal window
-	Test_Shellxquote(): only works on Unix
-	Test_tabpage_cmdheight(): cannot run Vim in a terminal window
-	Test_tselect(): cannot make screendumps
-	test_tcl.vim: tcl feature missing
-	test_termcodes.vim: only works in the terminal
-	test_termencoding.vim: cannot make screendumps
-	Test_terminal_all_ansi_colors(): cannot run Vim in a terminal window
-	Test_terminal_api_arg(): cannot run Vim in a terminal window
-	Test_terminal_api_call(): cannot run Vim in a terminal window
-	Test_terminal_api_call_fail_delete(): cannot run Vim in a terminal window
-	Test_terminal_api_call_fails(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin_bin(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin_binary(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin_enc(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin_encoding(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin_ff(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin_fileformat(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin_nobin(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_newwin_nobinary(): cannot run Vim in a terminal window
-	Test_terminal_api_drop_oldwin(): cannot run Vim in a terminal window
-	Test_terminal_dumpload_dump(): cannot run Vim in a terminal window
-	Test_terminal_dumpwrite_composing(): cannot run Vim in a terminal window
-	Test_terminal_dumpwrite_errors(): cannot run Vim in a terminal window
-	Test_terminal_exit(): cannot run Vim in a terminal window
-	Test_terminal_postponed_scrollback(): only works on Unix
-	Test_terminal_qall_prompt(): cannot run Vim in a terminal window
-	Test_terminal_response_to_control_sequence(): only works on Unix
-	Test_terminal_setapi_and_call(): cannot run Vim in a terminal window
-	Test_terminal_special_chars(): only works on Unix
-	Test_terminal_statusline(): only works on Unix
-	Test_terminal_write_stdin(): does not work on MS-Windows
-	Test_term_getcursor(): only works on Unix
-	Test_term_gettitle(): can&#39;t get/set title
-	Test_terminal_hidden(): only works on Unix
-	Test_terminal_hidden_and_close(): only works on Unix
-	Test_terminal_normal_mode(): cannot run Vim in a terminal window
-	Test_terminal_out_err(): only works on Unix
-	Test_terminal_termwinsize_option_fixed(): cannot run Vim in a terminal window
-	Test_termwinscroll(): only works on Unix
-	Test_term_and_startinsert(): cannot run Vim in a terminal window
-	Test_term_keycode_translation(): cannot run Vim in a terminal window
-	Test_term_modeless_selection(): only works on Unix
-	Test_term_mouse(): only works in the terminal
-	Test_terminal_altscreen(): only works on Unix
-	Test_terminal_getwinpos(): cannot run Vim in a terminal window
-	Test_terminal_in_popup(): cannot run Vim in a terminal window
-	Test_terminal_in_popup_colored_Terminal(): cannot run Vim in a terminal window
-	Test_terminal_in_popup_colored_group(): cannot run Vim in a terminal window
-	Test_terminal_in_popup_min_size(): cannot run Vim in a terminal window
-	Test_textprop_after_tab(): cannot make screendumps
-	Test_textprop_screenshot_various(): cannot make screendumps
-	Test_textprop_screenshot_visual(): cannot make screendumps
-	Test_textprop_with_syntax(): cannot make screendumps
-	Test_timer_changing_function_list(): cannot run Vim in a terminal window
-	Test_timer_error_in_timer_callback(): cannot run Vim in a terminal window
-	Test_timer_peek_and_get_char(): only works on Unix
-	Test_timer_restore_count(): cannot run Vim in a terminal window
-	Test_function_defined_line(): only works in the terminal
-	Test_hardcopy_wildcards(): only works on Unix
-	Test_silent_echo(): cannot make screendumps
-	Test_import_fails_without_script(): cannot run Vim in a terminal window
-	Test_viminfo_perm(): only works on Unix
-	Test_deep_nest(): cannot run Vim in a terminal window
-	Test_typed_script_var(): cannot run Vim in a terminal window
-	Test_write_file_mtime(): cannot run Vim in a terminal window
-	Test_write_pipe_to_cmd(): only works on Unix
-	Test_detect_ambiwidth(): cannot run Vim in a terminal window
-	Test_Ex_substitute(): cannot run Vim in a terminal window
-
--------------------------------
-Executed:  3308 Tests
- Skipped:   261 Tests
-  FAILED:    18 Tests
-
-
-Failures: 
-	From test_function_lists.vim:
-	Found errors in Test_function_lists():
-	function RunTheTest[39]..Test_function_lists line 59: &#34;:help functions&#34; not sorted or incomplete: difference at byte 2255, line 237 after &#34;mig&#34; vs &#34;min&#34;
-	function RunTheTest[39]..Test_function_lists line 78: &#34;:help functions-list&#34; incomplete: difference at byte 2255, line 237 after &#34;mig&#34; vs &#34;min&#34;
-	From test_gui.vim:
-	Found errors in Test_menu():
-	function RunTheTest[39]..Test_menu line 5: Pattern &#39;Overview&#39; does not match &#39;\n--- Menus ---\n9999 &lt;83&gt;w&lt;83&gt;&lt;8b&gt;&lt;83&gt;v(&amp;H)\n  1 --&gt;Detach\n      n*s  &lt;t_ôX&gt;&amp;Help&lt;CR&gt;\n      v*s  &lt;t_ôX&gt;&amp;Help&lt;CR&gt;\n      s*s  &lt;t_ôX&gt;&amp;Help&lt;CR&gt;\n      o*s  &lt;t_ôX&gt;&amp;Help&lt;CR&gt;\n  10 &lt;8a&gt;T&lt;97&gt;&lt;aa&gt;(&amp;O)^I&lt;F1&gt;\n      n*   :help&lt;CR&gt;\n      v*   &lt;C-C&gt;:help&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:help&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:help&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  20 &lt;83&gt;&lt;86&gt;&lt;81&gt;[&lt;83&gt;U&lt;81&gt;[&lt;83&gt;}&lt;83&gt;j&lt;83&gt;&lt;85&gt;&lt;83&gt;A&lt;83&gt;&lt;8b&gt;(&amp;U)\n      n*   :help usr_toc&lt;CR&gt;\n      v*   &lt;C-C&gt;:help usr_toc&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:help usr_toc&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:help usr_toc&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  30 &amp;How-to&lt;83&gt;&lt;8a&gt;&lt;83&gt;&lt;93&gt;&lt;83&gt;N\n      n*   :help how-to&lt;CR&gt;\n      v*   &lt;C-C&gt;:help how-to&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:help how-to&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:help how-to&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  40 &lt;8c&gt;&lt;9f&gt;&lt;8d&gt;&lt;f5&gt;(&amp;F)...\n      n*s  :call &lt;SNR&gt;1_Helpfind()&lt;CR&gt;\n      v*s  &lt;C-C&gt;:call &lt;SNR&gt;1_Helpfind()&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*s  &lt;C-C&gt;:call &lt;SNR&gt;1_Helpfind()&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*s  &lt;C-C&gt;:call &lt;SNR&gt;1_Helpfind()&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  45 -sep1-\n      n*   &lt;Nop&gt;\n      v*   &lt;Nop&gt;\n      s*   &lt;Nop&gt;\n      o*   &lt;Nop&gt;\n  50 &lt;83&gt;N&lt;83&gt;&lt;8c&gt;&lt;83&gt;W&lt;83&gt;b&lt;83&gt;g(&amp;C)\n      n*   :help credits&lt;CR&gt;\n      v*   &lt;C-C&gt;:help credits&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:help credits&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:help credits&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  60 &lt;92&gt;&lt;98&gt;&lt;8d&gt;ìŒ Œ &lt;8f&gt;&lt;ee&gt;&lt;95&gt;&lt;f1&gt;(&amp;P)\n      n*   :help copying&lt;CR&gt;\n      v*   &lt;C-C&gt;:help copying&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:help copying&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:help copying&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  70 &lt;83&gt;X&lt;83&gt;|&lt;83&gt;&lt;93&gt;&lt;83&gt;T&lt;81&gt;[/&lt;93&gt;o&lt;98&gt;^(&amp;S)\n      n*   :help sponsor&lt;CR&gt;\n      v*   &lt;C-C&gt;:help sponsor&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:help sponsor&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:help sponsor&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  70 &lt;8c&gt;Ç&lt;99&gt;(&amp;R)\n      n*   :help kcc&lt;CR&gt;\n      v*   &lt;C-C&gt;:help kcc&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:help kcc&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:help kcc&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  75 -sep2-\n      n*   &lt;Nop&gt;\n      v*   &lt;Nop&gt;\n      s*   &lt;Nop&gt;\n      o*   &lt;Nop&gt;\n  80 &lt;83&gt;o&lt;81&gt;[&lt;83&gt;W&lt;83&gt;&lt;87&gt;&lt;83&gt;&lt;93&gt;&lt;8f&gt;&lt;ee&gt;&lt;95&gt;&lt;f1&gt;(&amp;V)\n      n*   :version&lt;CR&gt;\n      v*   &lt;C-C&gt;:version&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:version&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:version&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n  90 Vim&lt;82&gt;É‚‚Â‚‚&lt;a2&gt;&lt;82&gt;&lt;c4&gt;(&amp;A)\n      n*   :intro&lt;CR&gt;\n      v*   &lt;C-C&gt;:intro&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      s*   &lt;C-C&gt;:intro&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;\n      o*   &lt;C-C&gt;:intro&lt;CR&gt;&lt;C-\\&gt;&lt;C-G&gt;&#39;
-	From test_system.vim:
-	Found errors in Test_System():
-	function RunTheTest[39]..Test_System line 10: Expected &#39;123\n&#39; but got &#39;123&#39;
-	function RunTheTest[39]..Test_System line 11: Expected [&#39;123\r&#39;] but got [&#39;123&#39;]
-	function RunTheTest[39]..Test_System line 12: Expected [&#39;as\r&#39;, &#39;df\r&#39;] but got [&#39;as\ndf&#39;]
-	function RunTheTest[39]..Test_System line 40: Expected [&#39;asdf\r&#39;, &#39;pw\r&#39;, &#39;er\r&#39;, &#39;xxxx\r&#39;] but got [&#39;asdf&#39;, &#39;pw\ner&#39;, &#39;xxxx&#39;]
-	From test_terminal.vim:
-	Found errors in Test_terminal_composing_unicode():
-	Run 1:
-	function RunTheTest[39]..Test_terminal_composing_unicode line 27: Pattern &#39;echo a¿¿ˆbc&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode[29]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;8 line 1: Expected &#39;a¿¿ˆbc&#39; but got &#39;&gt; echo a¿¿ˆbc&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 31: Expected &#39;a¿¿ˆ&#39; but got &#39;&gt;&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 32: Expected &#39;b&#39; but got &#39; &#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 33: Expected &#39;c&#39; but got &#39;e&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 39: Pattern &#39;echo ¿¿‹¿‚™¿¿¿¿‚™¿’¿¿“¿‚™&#39; does not match &#39;&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode[41]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;9 line 1: Expected &#39;¿¿‹¿‚™¿¿¿¿‚™¿’¿¿“¿‚™&#39; but got &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 43: Expected &#39;¿¿‹¿‚™&#39; but got &#39;k&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 44: Expected &#39;¿&#39; but got &#39;r&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 45: Expected &#39;¿¿¿‚™&#39; but got &#39;o&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 46: Expected &#39;¿’&#39; but got &#39;@&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 47: Expected &#39;¿¿“¿‚™&#39; but got &#39;U&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 53: Pattern &#39;echo abc ¿ ¿ˆ&#39; does not match &#39;¿¿‹¿‚™¿¿¿¿‚™¿’¿¿“¿‚™&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode[55]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;10 line 1: Expected &#39;abc ¿ ¿ˆ&#39; but got &#39;&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 57: Expected &#39; ¿ ¿ˆ&#39; but got &#39;&#39;
-	Run 2:
-	function RunTheTest[39]..Test_terminal_composing_unicode line 27: Pattern &#39;echo a¿¿ˆbc&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode[29]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;13 line 1: Expected &#39;a¿¿ˆbc&#39; but got &#39;&gt; echo a¿¿ˆbc&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 31: Expected &#39;a¿¿ˆ&#39; but got &#39;&gt;&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 32: Expected &#39;b&#39; but got &#39; &#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 33: Expected &#39;c&#39; but got &#39;e&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 39: Pattern &#39;echo ¿¿‹¿‚™¿¿¿¿‚™¿’¿¿“¿‚™&#39; does not match &#39;&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode[41]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;14 line 1: Expected &#39;¿¿‹¿‚™¿¿¿¿‚™¿’¿¿“¿‚™&#39; but got &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 43: Expected &#39;¿¿‹¿‚™&#39; but got &#39;k&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 44: Expected &#39;¿&#39; but got &#39;r&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 45: Expected &#39;¿¿¿‚™&#39; but got &#39;o&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 46: Expected &#39;¿’&#39; but got &#39;@&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 47: Expected &#39;¿¿“¿‚™&#39; but got &#39;U&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 53: Pattern &#39;echo abc ¿ ¿ˆ&#39; does not match &#39;¿¿‹¿‚™¿¿¿¿‚™¿’¿¿“¿‚™&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode[55]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;15 line 1: Expected &#39;abc ¿ ¿ˆ&#39; but got &#39;&#39;
-	function RunTheTest[39]..Test_terminal_composing_unicode line 57: Expected &#39; ¿ ¿ˆ&#39; but got &#39;&#39;
-	Flaky test failed too often, giving up
-	Found errors in Test_terminal_env():
-	Run 1:
-	function RunTheTest[39]..Test_terminal_env[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;21 line 1: Expected &#39;correct&#39; but got &#39;&gt; echo %TESTENV%&#39;
-	Run 2:
-	function RunTheTest[39]..Test_terminal_env[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;24 line 1: Expected &#39;correct&#39; but got &#39;&gt; echo %TESTENV%&#39;
-	Run 3:
-	function RunTheTest[39]..Test_terminal_env[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;27 line 1: Expected &#39;correct&#39; but got &#39;&gt; echo %TESTENV%&#39;
-	Run 4:
-	function RunTheTest[39]..Test_terminal_env[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;30 line 1: Expected &#39;correct&#39; but got &#39;&gt; echo %TESTENV%&#39;
-	Run 5:
-	function RunTheTest[39]..Test_terminal_env[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;33 line 1: Expected &#39;correct&#39; but got &#39;&gt; echo %TESTENV%&#39;
-	Flaky test failed too often, giving up
-	Found errors in Test_terminal_noblock():
-	Run 1:
-	function RunTheTest[39]..Test_terminal_noblock[26]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;53 line 1: Pattern &#39;done&#39; does not match &#39;//koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_noblock line 31: Pattern &#39;done&#39; does not match &#39;&#39;
-	Run 2:
-	function RunTheTest[39]..Test_terminal_noblock[26]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;55 line 1: Pattern &#39;done&#39; does not match &#39;//koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_noblock line 31: Pattern &#39;done&#39; does not match &#39;&#39;
-	Run 3:
-	function RunTheTest[39]..Test_terminal_noblock[26]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;57 line 1: Pattern &#39;done&#39; does not match &#39;//koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_noblock line 31: Pattern &#39;done&#39; does not match &#39;&#39;
-	Run 4:
-	function RunTheTest[39]..Test_terminal_noblock[26]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;59 line 1: Pattern &#39;done&#39; does not match &#39;//koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_noblock line 31: Pattern &#39;done&#39; does not match &#39;&#39;
-	Run 5:
-	function RunTheTest[39]..Test_terminal_noblock[26]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;61 line 1: Pattern &#39;done&#39; does not match &#39;//koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_noblock line 31: Pattern &#39;done&#39; does not match &#39;&#39;
-	Flaky test failed too often, giving up
-	Found errors in Test_terminal_paste_register():
-	Run 1:
-	function RunTheTest[39]..Test_terminal_paste_register[8]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;64 line 1: Pattern &#39;echo text to paste 42$&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_paste_register[9]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;65 line 1: Expected &#39;text to paste 42&#39; but got &#39;&gt; echo text to paste 42&#39;
-	Run 2:
-	function RunTheTest[39]..Test_terminal_paste_register[8]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;67 line 1: Pattern &#39;echo text to paste 42$&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_paste_register[9]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;68 line 1: Expected &#39;text to paste 42&#39; but got &#39;&gt; echo text to paste 42&#39;
-	Run 3:
-	function RunTheTest[39]..Test_terminal_paste_register[8]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;70 line 1: Pattern &#39;echo text to paste 42$&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_paste_register[9]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;71 line 1: Expected &#39;text to paste 42&#39; but got &#39;&gt; echo text to paste 42&#39;
-	Run 4:
-	function RunTheTest[39]..Test_terminal_paste_register[8]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;73 line 1: Pattern &#39;echo text to paste 42$&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_paste_register[9]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;74 line 1: Expected &#39;text to paste 42&#39; but got &#39;&gt; echo text to paste 42&#39;
-	Run 5:
-	function RunTheTest[39]..Test_terminal_paste_register[8]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;76 line 1: Pattern &#39;echo text to paste 42$&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_paste_register[9]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;77 line 1: Expected &#39;text to paste 42&#39; but got &#39;&gt; echo text to paste 42&#39;
-	Flaky test failed too often, giving up
-	Found errors in Test_terminal_scrape_multibyte():
-	Caught exception in Test_terminal_scrape_multibyte(): WaitFor() timed out after 5000 msec @ function RunTheTest[39]..Test_terminal_scrape_multibyte[14]..WaitFor, line 4
-	Found errors in Test_terminal_scrollback():
-	Run 1:
-	function RunTheTest[39]..Test_terminal_scrollback[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;83 line 1: Pattern &#39;149&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_scrollback line 13: Expected range 91 - 100, but got 115
-	Run 2:
-	function RunTheTest[39]..Test_terminal_scrollback[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;85 line 1: Pattern &#39;149&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_scrollback line 13: Expected range 91 - 100, but got 115
-	Run 3:
-	function RunTheTest[39]..Test_terminal_scrollback[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;87 line 1: Pattern &#39;149&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_scrollback line 13: Expected range 91 - 100, but got 115
-	Run 4:
-	function RunTheTest[39]..Test_terminal_scrollback[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;89 line 1: Pattern &#39;149&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_scrollback line 13: Expected range 91 - 100, but got 115
-	Run 5:
-	function RunTheTest[39]..Test_terminal_scrollback[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;91 line 1: Pattern &#39;149&#39; does not match &#39;koron@UNICORN D:\\home\\koron\\work\\vim\\kaoriya\\vim\\src\\testdir&#39;
-	function RunTheTest[39]..Test_terminal_scrollback line 13: Expected range 91 - 100, but got 115
-	Flaky test failed too often, giving up
-	Found errors in Test_terminal_servername():
-	Run 1:
-	function RunTheTest[39]..Test_terminal_servername[4]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;95 line 1: Expected &#39;GVIM2&#39; but got &#39;&gt; echo %VIM_SERVERNAME%&#39;
-	Run 2:
-	function RunTheTest[39]..Test_terminal_servername[4]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;98 line 1: Expected &#39;GVIM2&#39; but got &#39;&gt; echo %VIM_SERVERNAME%&#39;
-	Run 3:
-	function RunTheTest[39]..Test_terminal_servername[4]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;101 line 1: Expected &#39;GVIM2&#39; but got &#39;&gt; echo %VIM_SERVERNAME%&#39;
-	Run 4:
-	function RunTheTest[39]..Test_terminal_servername[4]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;104 line 1: Expected &#39;GVIM2&#39; but got &#39;&gt; echo %VIM_SERVERNAME%&#39;
-	Run 5:
-	function RunTheTest[39]..Test_terminal_servername[4]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;107 line 1: Expected &#39;GVIM2&#39; but got &#39;&gt; echo %VIM_SERVERNAME%&#39;
-	Flaky test failed too often, giving up
-	Found errors in Test_terminal_version():
-	Run 1:
-	function RunTheTest[39]..Test_terminal_version[1]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;115 line 1: Expected &#39;802&#39; but got &#39;&gt; echo %VIM_TERMINAL%&#39;
-	Run 2:
-	function RunTheTest[39]..Test_terminal_version[1]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;118 line 1: Expected &#39;802&#39; but got &#39;&gt; echo %VIM_TERMINAL%&#39;
-	Run 3:
-	function RunTheTest[39]..Test_terminal_version[1]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;121 line 1: Expected &#39;802&#39; but got &#39;&gt; echo %VIM_TERMINAL%&#39;
-	Run 4:
-	function RunTheTest[39]..Test_terminal_version[1]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;124 line 1: Expected &#39;802&#39; but got &#39;&gt; echo %VIM_TERMINAL%&#39;
-	Run 5:
-	function RunTheTest[39]..Test_terminal_version[1]..&lt;SNR&gt;12_test_environment[11]..WaitForAssert[2]..&lt;SNR&gt;14_WaitForCommon[11]..&lt;lambda&gt;127 line 1: Expected &#39;802&#39; but got &#39;&gt; echo %VIM_TERMINAL%&#39;
-	Flaky test failed too often, giving up
-	From test_undo.vim:
-	Found errors in Test_undofile_earlier():
-	function RunTheTest[39]..Test_undofile_earlier line 22: Expected &#39;&#39; but got &#39;\e[0m\e[0K\e[?25l\e[0;32m123\e[0K\e[1G\e[?25h\e[?1005l\e[?1000h\e[?1002h\e[?1003h\e[?1015h\e[?1006h&#39;
-	From test_winbar.vim:
-	Found errors in Test_add_remove_menu():
-	function RunTheTest[39]..Test_add_remove_menu line 5: Pattern &#39;Next    Cont&#39; does not match &#39;  ŸŸ‚¿‚¿ƒoƒƒbƒƒtƒƒ@(&amp;N)    Cont&#39;
-	Found errors in Test_click_in_other_winbar():
-	function RunTheTest[39]..Test_click_in_other_winbar[2]..SetupWinbar line 5: Pattern &#39;Next    Cont    Close&#39; does not match &#39;  ŸŸ‚¿‚¿ƒoƒƒbƒƒtƒƒ@(&amp;N)    Cont    Close&#39;
-	function RunTheTest[39]..Test_click_in_other_winbar line 21: Expected 12 but got 0
-	function RunTheTest[39]..Test_click_in_other_winbar line 29: Expected 2 but got 3
-	Found errors in Test_click_in_winbar():
-	function RunTheTest[39]..Test_click_in_winbar[2]..SetupWinbar line 5: Pattern &#39;Next    Cont    Close&#39; does not match &#39;  ŸŸ‚¿‚¿ƒoƒƒbƒƒtƒƒ@(&amp;N)    Cont    Close&#39;
-	function RunTheTest[39]..Test_click_in_winbar line 11: col 8: Expected 0 but got 11
-	function RunTheTest[39]..Test_click_in_winbar line 11: col 9: Expected 0 but got 11
-	function RunTheTest[39]..Test_click_in_winbar line 11: col 16: Expected 0 but got 11
-	function RunTheTest[39]..Test_click_in_winbar line 11: col 17: Expected 0 but got 11
-	function RunTheTest[39]..Test_click_in_winbar line 11: col 25: Expected 0 but got 11
-	function RunTheTest[39]..Test_click_in_winbar line 11: col 26: Expected 0 but got 11
-	function RunTheTest[39]..Test_click_in_winbar line 26: col 10: Expected 12 but got 0
-	function RunTheTest[39]..Test_click_in_winbar line 26: col 11: Expected 12 but got 0
-	function RunTheTest[39]..Test_click_in_winbar line 26: col 12: Expected 12 but got 0
-	function RunTheTest[39]..Test_click_in_winbar line 26: col 13: Expected 12 but got 0
-	function RunTheTest[39]..Test_click_in_winbar line 26: col 14: Expected 12 but got 0
-	function RunTheTest[39]..Test_click_in_winbar line 26: col 15: Expected 12 but got 0
-	function RunTheTest[39]..Test_click_in_winbar line 32: Expected 1 but got 2
-	Found errors in Test_redraw_after_scroll():
-	function RunTheTest[39]..Test_redraw_after_scroll line 4: Expected &#39;  Next&#39; but got &#39;  ŸŸ‚¿‚¿ƒoƒƒbƒƒtƒƒ@(&amp;N)&#39;
-	function RunTheTest[39]..Test_redraw_after_scroll line 7: Expected &#39;  Next&#39; but got &#39;  ŸŸ‚¿‚¿ƒoƒƒbƒƒtƒƒ@(&amp;N)&#39;
-	From test_alot_utf8.vim:
-	Found errors in Test_classes_re1():
-	function RunTheTest[39]..Test_classes_re1[2]..&lt;SNR&gt;21_classes_test line 139: Expected &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyzµµÀ€ÁÂ‚ÃƒÄ„Å…Æ†Ç‡ÈˆÉ‰ÊŠË‹ÌŒÍÎÏĞÑ‘Ò’Ó“Ô”Õ•Ö–×—Ø˜Ù™ÚšÛ›ÜœİŞßŸà á¡â¢ã£ä¤å¥æ¦ç§è¨é©êªë«ì¬í­î®ï¯ğ°ñ±ò²ó³ô´õµö¶÷·ø¸ù¹úºû»ü¼ı½ş¾ÿ¿&#39; but got &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz€€‚‚ƒƒ„„……††‡‡ˆˆ‰‰ŠŠ‹‹ŒŒ‘‘’’““””••––——˜˜™™šš››œœŸŸ  ¡¡¢¢££¤¤¥¥¦¦§§µµÀ€ÁÂ‚ÃƒÄ„Å…Æ†Ç‡ÈˆÉ‰ÊŠË‹ÌŒÍÎÏĞÑ‘Ò’Ó“Ô”Õ•Ö–Ø˜Ù™ÚšÛ›ÜœİŞßŸà á¡â¢ã£ä¤å¥æ¦ç§è¨é©êªë«ì¬í­î®ï¯ğ°ñ±ò²ó³ô´õµö¶ø¸ù¹úºû»ü¼ı½ş¾ÿ¿&#39;
-	Found errors in Test_classes_re2():
-	function RunTheTest[39]..Test_classes_re2[2]..&lt;SNR&gt;21_classes_test line 139: Expected &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyzµµÀ€ÁÂ‚ÃƒÄ„Å…Æ†Ç‡ÈˆÉ‰ÊŠË‹ÌŒÍÎÏĞÑ‘Ò’Ó“Ô”Õ•Ö–×—Ø˜Ù™ÚšÛ›ÜœİŞßŸà á¡â¢ã£ä¤å¥æ¦ç§è¨é©êªë«ì¬í­î®ï¯ğ°ñ±ò²ó³ô´õµö¶÷·ø¸ù¹úºû»ü¼ı½ş¾ÿ¿&#39; but got &#39;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz€€‚‚ƒƒ„„……††‡‡ˆˆ‰‰ŠŠ‹‹ŒŒ‘‘’’““””••––——˜˜™™šš››œœŸŸ  ¡¡¢¢££¤¤¥¥¦¦§§µµÀ€ÁÂ‚ÃƒÄ„Å…Æ†Ç‡ÈˆÉ‰ÊŠË‹ÌŒÍÎÏĞÑ‘Ò’Ó“Ô”Õ•Ö–Ø˜Ù™ÚšÛ›ÜœİŞßŸà á¡â¢ã£ä¤å¥æ¦ç§è¨é©êªë«ì¬í­î®ï¯ğ°ñ±ò²ó³ô´õµö¶ø¸ù¹úºû»ü¼ı½ş¾ÿ¿&#39;
-
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F016WCF79EK/test_result-20200718T1314JST.log: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -2247,15 +1774,10 @@ Failures:
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F017Q4YB6TT/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F017Q4YB6TT/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰: Untitled(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>	Found errors in Test_System():
-	function RunTheTest[39]..Test_System line 10: Expected &#39;123\n&#39; but got &#39;123&#39;
-	function RunTheTest[39]..Test_System line 11: Expected [&#39;123\r&#39;] but got [&#39;123&#39;]
-	function RunTheTest[39]..Test_System line 12: Expected [&#39;as\r&#39;, &#39;df\r&#39;] but got [&#39;as\ndf&#39;]
-	function RunTheTest[39]..Test_System line 40: Expected [&#39;asdf\r&#39;, &#39;pw\r&#39;, &#39;er\r&#39;, &#39;xxxx\r&#39;] but got [&#39;asdf&#39;, &#39;pw\ner&#39;, &#39;xxxx&#39;]
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F017Q4YB6TT/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -4075,14 +3597,10 @@ Failures:
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F017BS2AKN2/Untitled.txt" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F017BS2AKN2/Untitled.txt" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰: Untitled(Plain Text)]]</span>
                   </a>
-                  <pre><code class='language-none'>nmake -f Make_dos.mak VIMPROG=..\vim clean
-nmake -f Make_dos.mak VIMPROG=..\vim test_terminal.res
-nmake -f Make_dos.mak VIMPROG=..\vim test_undo.res
-nmake -f Make_dos.mak VIMPROG=..\vim report
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F017BS2AKN2/Untitled.txt: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -4898,8 +4416,8 @@ nmake -f Make_dos.mak VIMPROG=..\vim report
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0189LRD7G8/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0189LRD7G8/image.png" width="230" height="77" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0189LRD7G8/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0189LRD7G8/image.png" width="230" height="77" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -4927,8 +4445,8 @@ nmake -f Make_dos.mak VIMPROG=..\vim report
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01753NNHPH/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01753NNHPH/image.png" width="332" height="217" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01753NNHPH/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01753NNHPH/image.png" width="332" height="217" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -7071,8 +6589,8 @@ nmake -f Make_dos.mak VIMPROG=..\vim report
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0187PF9049/screenshot.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0187PF9049/screenshot.gif" width="796" height="521" alt="screenshot.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0187PF9049/screenshot.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0187PF9049/screenshot.gif" width="796" height="521" alt="screenshot.gif" />
                   </a>
                 </div>
               </div>
@@ -7122,8 +6640,8 @@ nmake -f Make_dos.mak VIMPROG=..\vim report
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F0181C57CS0/screenshot.gif" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F0181C57CS0/screenshot.gif" width="796" height="522" alt="screenshot.gif" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0181C57CS0/screenshot.gif" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F0181C57CS0/screenshot.gif" width="796" height="522" alt="screenshot.gif" />
                   </a>
                 </div>
               </div>

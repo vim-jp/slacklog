@@ -6288,8 +6288,8 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01HTK1PDU5/CleanShot%202021-01-03%20at%2019.49.13.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01HTK1PDU5/CleanShot%202021-01-03%20at%2019.49.13.png" width="1004" height="188" alt="CleanShot 2021-01-03 at 19.49.13.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01HTK1PDU5/CleanShot%202021-01-03%20at%2019.49.13.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01HTK1PDU5/CleanShot%202021-01-03%20at%2019.49.13.png" width="1004" height="188" alt="CleanShot 2021-01-03 at 19.49.13.png" />
                   </a>
                 </div>
               </div>
@@ -7274,66 +7274,10 @@
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01HWU41KPD/______.rs" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01HWU41KPD/______.rs" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(Rust)]]</span>
                   </a>
-                  <pre><code class='language-rust'>extern crate serde;
-extern crate serde_derive;
-
-use config::{Config, ConfigError, File};
-
-const SETTING_TYPE: &amp;&#39;static [&amp;&#39;static str] = &amp;[&#34;completions&#34;, &#34;snippets&#34;];
-
-#[derive(Debug, Deserialize)]
-pub struct Completion {
-    regexp_left: String,
-    regexp_right: String,
-    command: String,
-    fzf_command: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Snippet {
-    keyword: String,
-    snippet: String,
-}
-
-#[derive(Debug, Deserialize)]
-enum SettingType {
-    Completion,
-    Snippet,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Settings {
-    completions: Vec&lt;Completion&gt;,
-    snippets: Vec&lt;Snippet&gt;,
-}
-
-impl Settings {
-    pub fn new() -&gt; Result&lt;Self, ConfigError&gt; {
-        let home_dir = match dirs::home_dir() {
-            Some(path) =&gt; path,
-            None =&gt; {
-                println!(&#34;Home directory not found&#34;);
-                std::process::exit(1);
-            }
-        };
-
-        let setting_file = format!(
-            &#34;{}/.config/fzf-preview.zsh/config.yml&#34;,
-            home_dir.to_str().unwrap()
-        );
-
-        let mut settings = Config::new();
-        settings
-            .merge(File::with_name(&amp;setting_file).required(false))
-            .unwrap();
-
-        settings.try_into()
-    }
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01HWU41KPD/______.rs: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -8319,76 +8263,10 @@ impl Settings {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01J3K21XB6/main.rs" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01J3K21XB6/main.rs" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: main.rs(Rust)]]</span>
                   </a>
-                  <pre><code class='language-rust'>use std::collections::HashMap;
-
-use serde::Deserialize;
-
-use config::{Config, ConfigError, File, Value};
-
-const SETTING_TYPE: &amp;&#39;static [&amp;&#39;static str] = &amp;[&#34;completions&#34;, &#34;snippets&#34;];
-
-fn main() {
-    let settings = Settings::new().unwrap();
-    dbg!(settings);
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Completion {
-    regexp_left: String,
-    regexp_right: String,
-    command: String,
-    fzf_command: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Snippet {
-    keyword: String,
-    snippet: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Settings {
-    completions: Vec&lt;Completion&gt;,
-    snippets: Vec&lt;Snippet&gt;,
-}
-
-impl Settings {
-    pub fn new() -&gt; Result&lt;Self, ConfigError&gt; {
-        let home_dir = match dirs::home_dir() {
-            Some(path) =&gt; path,
-            None =&gt; {
-                println!(&#34;Home directory not found&#34;);
-                std::process::exit(1);
-            }
-        };
-
-        let setting_file = format!(
-            &#34;{}/.config/fzf-preview.zsh/config.yml&#34;,
-            home_dir.to_str().unwrap()
-        );
-
-        let mut settings = Config::new();
-        settings
-            .merge(File::with_name(&amp;setting_file).required(false))
-            .unwrap();
-
-        for setting_type in SETTING_TYPE {
-            let _ = match settings.get_array(setting_type) {
-                Ok(_) =&gt; &amp;mut settings,
-                Err(_) =&gt; {
-                    let v: Vec&lt;HashMap&lt;String, Value&gt;&gt; = vec![];
-                    settings.set(setting_type, v).unwrap()
-                }
-            };
-        }
-
-        settings.try_into()
-    }
-}
-</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01J3K21XB6/main.rs: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -9197,26 +9075,10 @@ impl Settings {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01J7JDUTGW/______.rs" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01J7JDUTGW/______.rs" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: 無題(Rust)]]</span>
                   </a>
-                  <pre><code class='language-rust'>let mut snippet = snippet.snippet;
-
-let re = Regex::new(placeholder).unwrap();
-let mat = re.find(&amp;snippet);
-
-let cursor = match mat {
-    Some(mat) =&gt; {
-        snippet = re.replace(&amp;snippet, &#34;&#34;).to_string();
-        mat.start()
-    }
-    None =&gt; snippet.len() + 1,
-};
-
-println!(&#34;success&#34;);
-println!(&#34;{} &#34;, snippet);
-println!(&#34;{}&#34;, cursor);
-break;</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01J7JDUTGW/______.rs: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -10019,28 +9881,10 @@ break;</code></pre>
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01K4GMLLKS/ls1.rs" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01K4GMLLKS/ls1.rs" target="_blank" rel="noopener noreferrer">
                   <span class="f5">[[ダウンロード: ls1.rs(Rust)]]</span>
                   </a>
-                  <pre><code class='language-rust'>use std::fs;
-use std::io;
-
-fn readdir(path: String) -&gt; Result&lt;Vec&lt;String&gt;, io::Error&gt; {
-    let r = fs::read_dir(path)?;
-    let mut files: Vec&lt;String&gt; = r
-        .flatten()
-        .flat_map(|e| e.file_name().into_string())
-        .collect();
-    files.sort();
-    return Ok(files);
-}
-
-fn main() {
-    let files = readdir(&#34;.&#34;.to_string()).unwrap();
-    for f in files.iter() {
-        println!(&#34;{}&#34;, f);
-    }
-}</code></pre>
+                  <pre><span class="file-error">no files found: open ../pages/files/F01K4GMLLKS/ls1.rs: no such file or directory</span></pre>
                 </div>
               </div>
             </div>
@@ -12951,8 +12795,8 @@ fn main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01JT3Z2D36/image.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01JT3Z2D36/image.png" width="528" height="35" alt="image.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JT3Z2D36/image.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JT3Z2D36/image.png" width="528" height="35" alt="image.png" />
                   </a>
                 </div>
               </div>
@@ -13940,8 +13784,8 @@ fn main() {
               </div>
               <div class="mt-2 border p-3">
                 <div>
-                  <a href="/slacklog/files/F01JW9NGVEH/%E8%87%AA%E5%88%86%E3%81%AE%20iPhone%20%E3%81%8B%E3%82%89%E8%87%AA%E5%88%86%E3%81%A7%E8%BB%A2%E9%80%81%E3%81%97%E3%81%9F%E6%A5%BD%E6%9B%B2%E3%82%92%E5%8F%96%E3%82%8A%E6%88%BB%E3%81%99%202021-01-18%2012-49-06.png" target="_blank" rel="noopener noreferrer">
-                  <img src="/slacklog/files/F01JW9NGVEH/%E8%87%AA%E5%88%86%E3%81%AE%20iPhone%20%E3%81%8B%E3%82%89%E8%87%AA%E5%88%86%E3%81%A7%E8%BB%A2%E9%80%81%E3%81%97%E3%81%9F%E6%A5%BD%E6%9B%B2%E3%82%92%E5%8F%96%E3%82%8A%E6%88%BB%E3%81%99%202021-01-18%2012-49-06.png" width="812" height="587" alt="自分の iPhone から自分で転送した楽曲を取り戻す 2021-01-18 12-49-06.png" />
+                  <a href="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JW9NGVEH/%E8%87%AA%E5%88%86%E3%81%AE%20iPhone%20%E3%81%8B%E3%82%89%E8%87%AA%E5%88%86%E3%81%A7%E8%BB%A2%E9%80%81%E3%81%97%E3%81%9F%E6%A5%BD%E6%9B%B2%E3%82%92%E5%8F%96%E3%82%8A%E6%88%BB%E3%81%99%202021-01-18%2012-49-06.png" target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01JW9NGVEH/%E8%87%AA%E5%88%86%E3%81%AE%20iPhone%20%E3%81%8B%E3%82%89%E8%87%AA%E5%88%86%E3%81%A7%E8%BB%A2%E9%80%81%E3%81%97%E3%81%9F%E6%A5%BD%E6%9B%B2%E3%82%92%E5%8F%96%E3%82%8A%E6%88%BB%E3%81%99%202021-01-18%2012-49-06.png" width="812" height="587" alt="自分の iPhone から自分で転送した楽曲を取り戻す 2021-01-18 12-49-06.png" />
                   </a>
                 </div>
               </div>
