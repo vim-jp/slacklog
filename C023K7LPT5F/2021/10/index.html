@@ -2269,6 +2269,1138 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1635271142.007400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-05/2146432162836_ad3dd240cc2d73477742_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">GitHub</span>
+              <a href="#ts-1635271142.007400">27日 02:59:02</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635271142007400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635271142.007400">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim-jp/slacklog-generator/pull/167|#167 Add filesBaseURL&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">To use external CDN instead of GitHub Pages for attachment files.</div>
+      </div>
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">✅ 16 other checks have passed</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635271182.009500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635271182.009500">27日 02:59:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635271182009500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                files が gh-pages に置けない問題、ひとまず解消しました。<br>pages に置くファイルには 10GB のリミットがあり、それを越えてしまっていたためデプロイができない状態でした。<br>主原因は添付ファイルで、これだけで 8GB 近く消費していました。<br>ただ、よくよく考えると、これらのファイルは pages にデプロイできていないだけで、リポジトリ上には push できており、GitHub のサイト上からも参照ができます。<br>そして添付ファイル類は html から参照されているに過ぎません。<br>と言うわけで、files は pages には含めず、外部 CDN を経由して GitHub 上のリポジトリのファイルを直接参照すればいいじゃない。と言う感じにしました。<br>最初は <a href='http://raw.githubusercontent.com'>raw.githubusercontent.com</a> を使おうかと思ったんですが、こいつは content-type を application/octet-stream で送ってくるので画像ファイルをクリックすると直接ダウンロードになってしまってアレだったので、<br><a href='https://www.jsdelivr.com/'>https://www.jsdelivr.com/</a> さんを使わせてもらうことにしました。…こんな用途に使っていいんだろうか。ちょっとわかってないのでもしもっといい選択肢をご存知の方がいたら教えてください 🙏<br><br>上記 PR はこの変更のための generator の修正になります。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="tomoya">
+                              <img class="slacklog-emoji" alt="subara" title="subara" src="/slacklog/emojis/subara.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635271182.009500">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://www.jsdelivr.com/favicon.ico" alt="jsDelivr" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://www.jsdelivr.com/" target="_blank" rel="noopener noreferrer">jsDelivr - A free, fast, and reliable CDN for Open Source</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Supports npm, GitHub, WordPress, Deno, and more. Largest network and best performance among all CDNs. Serving more than 80 billion requests per month. Built for production use.</div>
+      </div>
+      <div class="d-flex">
+        <div class="mt-2">
+          <img src="https://www.jsdelivr.com/img/logo@2x.png" width="80" alt="jsDelivr - A free, fast, and reliable CDN for Open Source" />
+        </div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635279139.012100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/d9d0ceb387e3b6de5c4562af78e8a910.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ujihisa</span>
+              <a href="#ts-1635279139.012100">27日 05:12:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635279139012100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ふむふむ &gt; jsdelivr
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635279181.012200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-05/2146432162836_ad3dd240cc2d73477742_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">GitHub</span>
+              <a href="#ts-1635279181.012200">27日 05:13:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635279181012200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635279181.012200">
+              
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><code><a href='https://github.com/vim-jp/slacklog-generator/commit/ce40036c5bc36f9cf7ab6052cf50df003cbc181a'>ce40036c</a></code> - Add filesBaseURL<br><code><a href='https://github.com/vim-jp/slacklog-generator/commit/72a4bb2d6804a72e261fdc3e8cd23f1279b6d66a'>72a4bb2d</a></code> - Merge pull request #167 from vim-jp/add-files-baseurl<br></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635279181.012300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-05/2146432162836_ad3dd240cc2d73477742_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">GitHub</span>
+              <a href="#ts-1635279181.012300">27日 05:13:01</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635279181012300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635279181.012300">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim-jp/slacklog-generator/pull/167|#167 Add filesBaseURL&gt;</div>
+    </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635281190.012600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/d9d0ceb387e3b6de5c4562af78e8a910.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ujihisa</span>
+              <a href="#ts-1635281190.012600">27日 05:46:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635281190012600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                画像ちゃんと表示されてる <a href='https://vim-jp.org/slacklog/CCLJFJ58F/2021/10/'>https://vim-jp.org/slacklog/CCLJFJ58F/2021/10/</a>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635281197.012900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/d9d0ceb387e3b6de5c4562af78e8a910.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ujihisa</span>
+              <a href="#ts-1635281197.012900">27日 05:46:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635281197012900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                jsdelivrの規約 <a href='https://www.jsdelivr.com/terms/acceptable-use-policy-jsdelivr-net'>https://www.jsdelivr.com/terms/acceptable-use-policy-jsdelivr-net</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635281197.012900">
+              
+    <div class="d-flex">
+        <div>
+          <img class="avatar avatar-small" width="32" height="32" src="https://www.jsdelivr.com/favicon.ico" alt="jsDelivr" />
+        </div>
+        <div class="flex-self-baseline f4 ml-2">
+          <span class="Label Label--outline">
+            <a href="https://www.jsdelivr.com/terms/acceptable-use-policy-jsdelivr-net" target="_blank" rel="noopener noreferrer">Acceptable Use Policy - cdn.jsdelivr.net</a>
+          </span>
+        </div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Supports npm, GitHub, WordPress, Deno, and more. Largest network and best performance among all CDNs. Serving more than 80 billion requests per month. Built for production use.</div>
+      </div>
+      <div class="d-flex">
+        <div class="mt-2">
+          <img src="https://www.jsdelivr.com/img/logo@2x.png" width="80" alt="Acceptable Use Policy - cdn.jsdelivr.net" />
+        </div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635281390.014700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/d9d0ceb387e3b6de5c4562af78e8a910.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ujihisa</span>
+              <a href="#ts-1635281390.014700">27日 05:49:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635281390014700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                1. githubの規約守ってるやつならok<br>2. sizeとかの上限がどっかにあって、それ以内ならok (規約ページには書かれてない)<br>3. あとほかにもここに書かれたゆるい規則があって、それを守ることに合意するならok。ファイルは100,000個まで<br>4. 18禁とかはだめ<br>5. 中国<br>6. その他
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635281393.015000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/d9d0ceb387e3b6de5c4562af78e8a910.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ujihisa</span>
+              <a href="#ts-1635281393.015000">27日 05:49:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635281393015000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                大丈夫そう
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="thinca">
+                              <span>🙏1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635281468.015400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/d9d0ceb387e3b6de5c4562af78e8a910.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0004-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ujihisa</span>
+              <a href="#ts-1635281468.015400">27日 05:51:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635281468015400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://vim-jp.slack.com/archives/C023K7LPT5F/p1635225656000600'>https://vim-jp.slack.com/archives/C023K7LPT5F/p1635225656000600</a> について考察してるけどなかなかむずいなあ
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635281468.015400">
+              
+    <div class="d-flex">
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">せっかく自宅サーバができたのでVJSになんらかの形で貢献したいなあ</div>
+      </div>
+      <span class="Label Label--outline">
+        <a href="/slacklog/C023K7LPT5F/2021/10/#ts-1635225656.000600">slacklog</a>
+      </span>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337304.017400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635337304.017400">27日 21:21:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337304017400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                1日ごとの JSON のログもデプロイせずに jsDelivr とかで取れるので、SPA 作りやすくなったかもしれない。誰か SPA で作り直すぜって人はいません? 👀
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ଳ (kato), Gamou Tatsumi">
+                              <img class="slacklog-emoji" alt="otxu" title="otxu" src="/slacklog/emojis/otxu.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337493.018200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635337493.018200">27日 21:24:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337493018200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あーそうか、元々日ごとにまとまってるんだった
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337537.019100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337537.019100">27日 21:25:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337537019100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                反応はしてみたものの忙しいからなかなかやれなさそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337579.020700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635337579.020700">27日 21:26:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337579020700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                今おしごとで React をやっているので、React で作り直してみると楽しいかも。他の選択肢を知らないだけとも言う。<br>ただ、コンポーネントを作ったりするのはいいんだけどデザイン力が 0 なのでデザインを一切当てられない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337582.020900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337582.020900">27日 21:26:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337582020900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそもフロントの勘を取り戻す必要がある<br>一年以上触ってない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337593.021300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337593.021300">27日 21:26:33</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337593021300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                bootstrapでいいのでは
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337597.021500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635337597.021500">27日 21:26:37</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337597021500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                フロント詳しい人がやるとよさそう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337605.022000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635337605.022000">27日 21:26:45</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337605022000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                bootstrap が何かもよくわかってないんです
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337615.022500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635337615.022500">27日 21:26:55</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337615022500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                私がやるとDeno+Reactという何とも言えない構成になる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337634.023200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337634.023200">27日 21:27:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337634023200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそもReactでいい感じにできるCSSフレームワーク何があるんだろうかという話になる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337640.023400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635337640.023400">27日 21:27:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337640023400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Deno はどこに出てくるんだろう。フロントでも使える?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337660.023700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337660.023700">27日 21:27:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337660023700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Aleph使うことになるのかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337770.024700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635337770.024700">27日 21:29:30</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337770024700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                型チェッカー兼バンドラーですね、TSXを処理できるので
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337789.025300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635337789.025300">27日 21:29:49</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337789025300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                一般的な構成でないのは重々承知してる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337816.025800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337816.025800">27日 21:30:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337816025800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                React系のSPAフレームワーク、素Reactぐらいしかないのかな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337841.026800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337841.026800">27日 21:30:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337841026800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                そもそも素Reactとはという感じですけど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337843.027000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635337843.027000">27日 21:30:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337843027000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                react-router?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337885.027700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-01-29/1690404421634_ab9da4ce3e37565521a8_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">ଳ (kato)</span>
+              <a href="#ts-1635337885.027700">27日 21:31:25</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337885027700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Next?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337888.027900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1635337888.027900">27日 21:31:28</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337888027900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                react-router v6 がいつ出る皮からニケどw
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337902.028300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1635337902.028300">27日 21:31:42</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337902028300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Next は vercel に載せるのなら便利。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337919.028700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337919.028700">27日 21:31:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337919028700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                純粋な興味からelmでSPAできるのかなと思って調べたらなかなかしんどそうだった
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337942.029300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635337942.029300">27日 21:32:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337942029300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                素ReactでSPAしたことあるけどめんどくせーと思った
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635337991.030200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-08-02/2349607810577_a7f6576845a3830deb40_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Gamou Tatsumi</span>
+              <a href="#ts-1635337991.030200">27日 21:33:11</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635337991030200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                まあ使うならreact-routerですかね<br>SPA、Nuxtでやった記憶があるかも程度
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338074.030700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2019-11-14/833953864853_aa245483338df08cd3b2_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">heavenshell</span>
+              <a href="#ts-1635338074.030700">27日 21:34:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338074030700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                remix が v1 で OSS になるって言ってるけど、それが出たら選択肢は増えるかもですねー。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338132.030900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1635338132.030900">27日 21:35:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338132030900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/slacklog_data/C011FPVKT2R/2020-04-07.json'>https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/slacklog_data/C011FPVKT2R/2020-04-07.json</a><br>json はこうか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338194.031800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635338194.031800">27日 21:36:34</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338194031800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                jsdelivr さん、20MB を超えるファイルを扱ってくれない制限があることが判明。該当するファイルは 13 ファイルほどある
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell, kuu">
+                              <img class="slacklog-emoji" alt="hee" title="hee" src="/slacklog/emojis/hee.png"><span class="ml-1">2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338336.032300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635338336.032300">27日 21:38:56</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338336032300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/vim-jp/slacklog/blob/log-data/files/F01Q4022YTU/image.png'>https://github.com/vim-jp/slacklog/blob/log-data/files/F01Q4022YTU/image.png</a> このファイルとか<br><a href='https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01Q4022YTU/image.png'>https://cdn.jsdelivr.net/gh/vim-jp/slacklog@log-data/files/F01Q4022YTU/image.png</a> 見れない
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338354.032800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1635338354.032800">27日 21:39:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338354032800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                圧縮しよう…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338378.033400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635338378.033400">27日 21:39:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338378033400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                画像はでかいファイルの場合は埋め込みはサムネイルになるので見れる
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338387.033700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1635338387.033700">27日 21:39:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338387033700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                ゴリラさんのスクショだな
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338394.033900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635338394.033900">27日 21:39:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338394033900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                元ファイルの DL がリンクからはできなくなるけど
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338418.034300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635338418.034300">27日 21:40:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338418034300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                動画は再生自体ができなくなるのでちょい面倒だな。9件ある
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338956.034800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635338956.034800">27日 21:49:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338956034800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                githubusercontent なら取れる。しかしファイルサイズによってリンク先を変えるとかは面倒だな…
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635338978.035300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2015-01-15/3417067010_04a676b32692fb2507e1_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">thinca</span>
+              <a href="#ts-1635338978.035300">27日 21:49:38</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635338978035300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                Issue に書き残して保留にするか。レアケースだと思うし
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="ଳ (kato)">
+                              <img class="slacklog-emoji" alt="yoshi" title="yoshi" src="/slacklog/emojis/yoshi.jpg"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635339588.035500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-05/2146432162836_ad3dd240cc2d73477742_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">GitHub</span>
+              <a href="#ts-1635339588.035500">27日 21:59:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C023K7LPT5F/p1635339588035500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635339588.035500">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim-jp/slacklog-generator/issues/168|#168 CDN が大きなファイルを扱えない場合がある&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">例えば jsDelivr の場合、20MB 以上のファイルを扱うことができません。<br><br><a href='https://github.com/jsdelivr/jsdelivr#restrictions'>https://github.com/jsdelivr/jsdelivr#restrictions</a><br><br><a href='http://raw.githubusercontent.com'>raw.githubusercontent.com</a> の場合はデータの取得はできますが、Content-Type が <code>application/octet-stream</code> になっているため、画像を単独で開こうとした場合に表示ではなくローカルへの保存になってしまったりしてあまり嬉しくない場合があります。<br><br>また、jsDelivr の場合は <code>access-control-allow-origin</code> 等のヘッダがありますが、githubusercontent にはありません。  <br>例えば今後、 SPA にしてログデータの JSON を取ってくるような仕組みにする場合は githubusercontent は使えないことになります。</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->

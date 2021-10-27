@@ -1,0 +1,415 @@
+<!doctype html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>vim-jp &raquo; vim-jp.slack.com log - &#35;question2 - 2021年10月</title>
+<link rel="stylesheet" href="/slacklog/assets/css/site.css" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/@primer/css/dist/primer.css" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="//vim-jp.org/rss.xml" />
+<link rel="canonical" href="/slacklog/C01DP17ANNP/2021/10/" />
+<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+<script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="/slacklog/assets/javascripts/slacklog.js"></script>
+</head>
+<body>
+  <div class="body">
+    <div id="content">
+      <!-- header -->
+      <div class="pagehead ml-3">
+        <h1>
+          <span class="author">
+            <a href="//vim-jp.org" class="url fn" >vim-jp</a>
+          </span>
+          <span class="path-divider">/</span>
+          <a href="/slacklog">slacklog</a>
+        </h1>
+      </div>
+      <!-- /header -->
+      <div>
+        <div class="m-3">
+          <nav aria-label="Breadcrumb">
+            <ol>
+              <li class="breadcrumb-item f4"><a href="/slacklog/C01DP17ANNP/">&#35;question2</a></li>
+              <li class="breadcrumb-item f4" aria-current="page">2021年10月</li>
+            </ol>
+          </nav>
+          <h4 class="text-gray pb-2 border-bottom"></h4>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327280.001900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1635327280.001900">27日 18:34:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327280001900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                statuslineいらないかもしれないと思ったんですが、laststatus=0のときの日本語訳されてる場合&#34;先頭&#34;, &#34;末尾&#34;, &#34;全て&#34;とか表示されるこれはユーザレベルで指定できるものでしょうか?
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327308.002100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327308.002100">27日 18:35:08</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327308002100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :h &#39;ruler&#39;
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327309.002200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1635327309.002200">27日 18:35:09</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327309002200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>                                         *&#39;ruler&#39;* *&#39;ru&#39;* *&#39;noruler&#39;* *&#39;noru&#39;*<br>&#39;ruler&#39; &#39;ru&#39;            切替    (既定ではオフ, |defaults.vim| 内で<br>                                                        オンに設定される)<br>                        グローバル<br>                        {|+cmdline_info| 機能付きでコンパイルされたときのみ有<br>                        効}<br>        カーソルが何行目の何列目に置かれているかを表示する {訳注: これをルー<br>        ラーと呼ぶ}。行数と列数はコンマで区切られる。幅に余裕があるときは、表<br>        示されているテキストの、ファイル内での相対位置が右端に表示される。<br>                先頭    ファイル先頭の行が表示されているとき<br>                末尾    ファイル末尾の行が表示されているとき<br>                全て    ファイル先頭と末尾の行の両方が表示されているとき<br>                45%     ファイル内での相対位置<br>        オプション &#39;rulerformat&#39; が設定されているときは、それによってルーラー<br>        の内容が指定される。ルーラーはウィンドウごとに表示される。ウィンドウに<br>        ステータス行が表示されていれば、ルーラーもそこに表示される。そうでなけ<br>        れば画面 の末尾の行に表示される。ステータス行の内容が &#39;statusline&#39; で<br>        指定されているときは (つまりその値が空でないときは)、&#39;statusline&#39; が<br>        &#39;ruler&#39; や &#39;rulerformat&#39; より優先される。<br>        表示された文字の数がテキスト上でのバイト数と違うときは (例えば、タブ文<br>        字やマルチバイト文字があるとき)、テキスト上の列数 (バイト数) と画面上<br>        の列数が、ダッシュで区切られて両方表示される。<br>        空行では &#34;0-1&#34; と表示される。<br>        空のバッファでは行数も0になり、&#34;0,0-1&#34; と表示される。<br>        このオプションは &#39;paste&#39; オプションがオンになった時にはリセットされ、<br>        &#39;paste&#39; オプションがリセットされた際には復元される。<br>        ルーラーを常に表示したくはないが、テキスト内のどこにいるのか知りたいと<br>        きは、コマンド &#34;g CTRL-G&#34; を使うこと |g_CTRL-G|。<br>        NOTE: このオプションは、&#39;compatible&#39; がオンになるとオフになるので注意。<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327347.003000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327347.003000">27日 18:35:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327347003000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これかな、書き換えたことはないけど<code>&#39;rulerformat&#39;</code>で行けそうな雰囲気ですね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327357.003300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327357.003300">27日 18:35:57</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327357003300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :h &#39;rulerformat&#39;
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327358.003400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1635327358.003400">27日 18:35:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327358003400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>                                                *&#39;rulerformat&#39;* *&#39;ruf&#39;*<br>&#39;rulerformat&#39; &#39;ruf&#39;     文字列  (既定では空)<br>                        グローバル<br>                        {|+statusline| 機能付きでコンパイルされたときのみ有効}<br>        値が空でないときは、オプション &#39;ruler&#39; によって表示されるルーラーの内<br>        容を指定する。<br>        このオプションの書式は &#39;statusline&#39; のものと同様である。<br>        &#39;modelineexpr&#39; がオフの場合は、モードラインでこのオプションを設定する<br>        ことはできない。<br> <br>        ルーラーの幅は既定では17文字である。幅を15文字にするには、値の先頭に<br>        &#34;%15(&#34; を置き、末尾に &#34;%)&#34; を置くこと。例:  <br>                :set rulerformat=%15(%c%V\ %p%%%)<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327425.003700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1635327425.003700">27日 18:37:05</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327425003700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                取っ掛かりのヒントがなにもなかったので助かりました
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327456.004200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327456.004200">27日 18:37:36</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327456004200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                確かに調べるヒント何もないよなあ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327460.004400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1635327460.004400">27日 18:37:40</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327460004400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                help全体にgrepしたい
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327463.004600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327463.004600">27日 18:37:43</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327463004600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                たまたま知ってたけどそれだけ
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327474.005000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327474.005000">27日 18:37:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327474005000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :h :helpgrep
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327474.005100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1635327474.005100">27日 18:37:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327474005100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>                                                        *:helpg* *:helpgrep*<br>:helpg[rep] {pattern}[@xx]<br>                        すべてのヘルプファイルから {pattern} を検索して、マッ<br>                        チした行の一覧を作成します。そして最初にマッチした行へ<br>                        ジャンプします。<br>                        [@xx] を指定した場合は、言語 &#34;xx&#34; のヘルプのみマッチし<br>                        ます。<br>                        |quickfix|コマンドを使ってマッチした行の一覧を順に移動<br>                        できます。例えば、|:cnext|で次の項目へジャンプしたり、<br>                        |:cwindow|でマッチした行の一覧をquickfixウィンドウに表<br>                        示できます。<br>                        {pattern} には Vim の正規表現|pattern|を使用できます。<br>                        &#39;ignorecase&#39; は影響しません。大文字と小文字を区別しな<br>                        いためには &#34;\c&#34; を使ってください。<br>                        大文字と小文字を区別して検索する例:  <br>                                :helpgrep Uganda<br>                        区別しない例:  <br>                                :helpgrep uganda\c<br>                        フランス語のヘルプを検索:  <br>                                :helpgrep backspace@fr<br>                        改行を含むパターンはサポートされていません。一行内で<br>                        マッチするようにしてください。代わりに |:grep| を使用<br>                        することもできますが、その場合は、どうにかして検索結果<br>                        からヘルプファイルの一覧を取得する必要があります。<br>                        他のコマンドを後ろに続けることはできません。すべての文<br>                        字はパターンの一部として解釈されます。必要なら<br>                        |:execute| を使ってコマンドを並べることができます。<br>                        圧縮されたヘルプファイルは検索されません(Fedoraはヘル<br>                        プファイルを圧縮します)。<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327479.005300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327479.005300">27日 18:37:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327479005300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                こんなコマンドがあります
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327490.005700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327490.005700">27日 18:38:10</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327490005700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                後はFFのソースでも作っていいかも
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327492.005900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-04-01/1942791613072_7a54a7759d2c89461558_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">octaltree</span>
+              <a href="#ts-1635327492.005900">27日 18:38:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327492005900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                最THE高
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635327519.006400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635327519.006400">27日 18:38:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C01DP17ANNP/p1635327519006400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                例えばfzf-previewにはこれ相当のソースありますね
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="clearfix"></div>
+    <div id="footer">
+      <p>
+        Powered by <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </div>
+    <!-- /footer -->
+  </div>
+</body>
