@@ -4743,6 +4743,285 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1635378622.036800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1635378622.036800">28日 08:50:22</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635378622036800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                自分のとこでは有意に遅くなった感じはしなかったが問題でているよう<br><a href='https://github.com/vim/vim/issues/9058'>https://github.com/vim/vim/issues/9058</a>
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635378622.036800">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim/vim/issues/9058|#9058 Terminal rendering is slow after 7b5f45be2197403d631b5a3d633f6a20afdf806e&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">Hi. Vim&#39;s rendering of <code>:terminal</code> got slower after 7b5f45be2197403d631b5a3d633f6a20afdf806e. It is usually a little slow but sometimes critically slow.<br><br>*Steps to reproduce*<br><br>1. [Shell] Clone a large repository<br>    <br>    <pre><br>    $ git clone &lt;https://github.com/vim/vim&gt; /tmp/vim<br>    </pre><br>2. [Shell] Change directory to the repository<br>    <br>    <pre><br>    $ cd /tmp/vim<br>    </pre><br>3. [Shell] Start Vim<br>    <br>    <pre><br>    $ vim -u NONE<br>    </pre><br>4. [Vim] Open <code>:terminal</code><br>    <br>    <pre><br>    :terminal ++rows=100<br>    <br>    </pre><br>5. [Shell] List all files<br>    <br>    <pre><br>    $ ls **/*<br>    </pre><br><br><a href='https://user-images.githubusercontent.com/694547/139068495-15c0b22e-c1f0-4748-9314-d1761428a07e.mp4'>https://user-images.githubusercontent.com/694547/139068495-15c0b22e-c1f0-4748-9314-d1761428a07e.mp4</a><br><br>*Expected behaviour*<br><br>Faster rendering is expected. The following video is the case of Vim built with <a href='https://github.com/vim/vim/files/7426195/vim_revert_7b5f45be2197403d631b5a3d633f6a20afdf806e.diff.txt'>a patch which reverts 7b5f45be2197403d631b5a3d633f6a20afdf806e</a>.<br><br><a href='https://user-images.githubusercontent.com/694547/139069087-fa8b7dd8-496a-4a7c-b0bf-92375e056128.mp4'>https://user-images.githubusercontent.com/694547/139069087-fa8b7dd8-496a-4a7c-b0bf-92375e056128.mp4</a><br><br>*Operating system*<br><br>macOS 10.15.7<br><br>*Version of Vim*<br><br>iTerm2 (v8.2.3562)<br><br>*Logs and stack traces*<br><br>_No response_</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635383892.042300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/0c3ec8434af0d4cbcbd17bd51bcf1154.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0007-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kg8m</span>
+              <a href="#ts-1635383892.042300">28日 10:18:12</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635383892042300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                • デカい領域でVimを使っているとき顕著に遅くなる<br>    ◦ 例えばtmuxで画面分割すると遅さを感じにくくなる<br>• CPU負荷が上がっていると、普段一瞬で済む表示でも数秒～十数秒かかることも<br>• Linuxだと遅さを感じにくい <br>• GUIのVimはまったく遅くなっていない<br>自分の環境だとこんな感じです。最近fzf.vimの処理がもたつくようになったなぁと思っていて、コミット特定したら先日の件でした。パッと解決策がわからなかったのでIssueだけつくってみました。とりあえずはパッチあててビルドして問題回避できてるので、お時間あるときにでも見ていただけると嬉しいです（自分でもコード読んで考えてみます）。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635386426.043300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1635386426.043300">28日 11:00:26</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635386426043300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                GUIはコード上もまったく関係ないですね、コンソール上での表示不具合を解消するパッチですので。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kg8m">
+                              <img class="slacklog-emoji" alt="tashikani" title="tashikani" src="/slacklog/emojis/tashikani.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635386474.043800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1635386474.043800">28日 11:01:14</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635386474043800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                キャッシュ機能を削除したので遅くなったんです。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kg8m">
+                              <img class="slacklog-emoji" alt="naruhodo" title="naruhodo" src="/slacklog/emojis/naruhodo.png"><span class="ml-1">1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635386993.048400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1635386993.048400">28日 11:09:53</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635386993048400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                キャッシュ実現するためにすごい冗長だったので整理したんですが。<br>実はこんなこともあろうかとキャッシュ版の実装もしてあります。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kg8m">
+                              <span>👍1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635387020.048800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1635387020.048800">28日 11:10:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635387020048800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                (キャッシュなしでいければその方がよいので入れなかった。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635387027.049000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1635387027.049000">28日 11:10:27</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635387027049000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                なるほどなぁ。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635387041.049500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/7f5a1bfaf8b64cbcdfaf82a7de92506b.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0017-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Shougo</span>
+              <a href="#ts-1635387041.049500">28日 11:10:41</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635387041049500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                結局キャッシュは必要だったというオチですか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635387104.050200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1635387104.050200">28日 11:11:44</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635387104050200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                もともと cterm だけキャッシュされてたので、<code>termguicolors</code> 時は今と速度かわらなかったはずです。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635387139.050700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1635387139.050700">28日 11:12:19</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635387139050700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あ、いや。<code>termguicolors</code> の処理はもともと不完全だったのでちょっと遅くなってるかもしれない。
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635397878.051500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-02-26/1794992588323_e2665fccd257a5f13f95_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Milly</span>
+              <a href="#ts-1635397878.051500">28日 14:11:18</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1635397878051500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                折角だから wincolor もキャッシュするか
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
