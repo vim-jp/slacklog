@@ -80704,6 +80704,207 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1635596399.132700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635596399.132700">30日 21:19:59</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CLKR04BEF/p1635596399132700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                pum.vimがskkeletonソースで誤動作するようになったので調査をしていたが、候補が最初から最後(もしかしたら1文字の時もかもしれない)まで全て不一致の場合でかつ<code>setline_insert</code>が<code>v:false</code>の場合に挿入動作をするとポップアップが閉じてしまうことが判明した
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635596413.133100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635596413.133100">30日 21:20:13</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CLKR04BEF/p1635596413133100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                最小構成でも再現するのでissue立ててもうちょい調査しよう
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635596518.134200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635596518.134200">30日 21:21:58</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CLKR04BEF/p1635596518134200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                現時点では <code>call pum#set_option(&#39;setline_insert&#39;, v:true)</code> を実行することで回避はできるけど、デフォルトで補完が2文字始まりなのでほとんどのソースでは影響ないはず
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635596792.135200">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-12-10/1571023416676_744826a904c8b4001f65_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">matsui54</span>
+              <a href="#ts-1635596792.135200">30日 21:26:32</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CLKR04BEF/p1635596792135200" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                これddc-fuzzy使ってても再現するので調べてました。<br><a href='https://github.com/Shougo/pum.vim/blob/b03c25686074575938563bf9daded069c93fb519/autoload/pum/map.vim#L191'>https://github.com/Shougo/pum.vim/blob/b03c25686074575938563bf9daded069c93fb519/autoload/pum/map.vim#L191</a><br>ここで引っかかって閉じるみたいです。
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu, tani">
+                              <span>👍2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635596792.135200">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/Shougo/pum.vim/blob/b03c25686074575938563bf9daded069c93fb519/autoload/pum/map.vim | map.vim&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2"><pre><br>          \ pum#_get().current_line != pum#_getline()[: pum#_get().startcol] |<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635598359.136700">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635598359.136700">30日 21:52:39</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CLKR04BEF/p1635598359136700" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                立てた <a href='https://github.com/Shougo/pum.vim/issues/12'>https://github.com/Shougo/pum.vim/issues/12</a>
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="matsui54, tani">
+                              <span>👍2</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1635598359.136700">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/Shougo/pum.vim/issues/12|#12 Popup closed when whole rewrites pre inserted word with feedkeys&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Problem*<br><br>Popup closed when whole rewrites pre inserted word with <code>setline_insert</code> option is <code>v:false</code><br><br>*To Reproduce*<br><br>1. Prepare following vimrc<br><br><pre><br>set runtimepath+=~/pum.vim<br>inoremap &lt;C-n&gt;   &lt;Cmd&gt;call pum#map#insert_relative(+1)&lt;CR&gt;<br>inoremap &lt;C-p&gt;   &lt;Cmd&gt;call pum#map#insert_relative(-1)&lt;CR&gt;<br>let words = map([&#39;foo&#39;, &#39;foobar&#39;, &#39;foobarbaz&#39;], &#39;{&#34;word&#34;: v:val, &#34;equal&#34;: v:true, &#34;icase&#34;: v:true}&#39;)<br>autocmd TextChangedI * eval col(&#39;.&#39;) == 2 &amp;&amp; pum#open(1, words)<br></pre><br><br>2. Run <code>vim -u vimrc -N</code><br>3. Type any characters and insert candidate  <br>    (Note: When <code>&#34;fo&#34;, &#34;foo&#34;, &#34;foob&#34;...</code>, it works fine.)<br><br>*Environment*<br><br>Vim 8.2.3565  <br>Neovim v0.6.0-dev+515-gd918759de  <br>pum.vim <a href='https://github.com/Shougo/pum.vim/commit/b03c25686074575938563bf9daded069c93fb519'>b03c256</a></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635598680.137400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-12-10/1571023416676_744826a904c8b4001f65_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">matsui54</span>
+              <a href="#ts-1635598680.137400">30日 21:58:00</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CLKR04BEF/p1635598680137400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                一応追記しました
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="kuu">
+                              <span>🙇‍♂️1</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1635599360.137900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-03-19/331496519296_b6fceab653cf61d7dd8b_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">kuu</span>
+              <a href="#ts-1635599360.137900">30日 22:09:20</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CLKR04BEF/p1635599360137900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                あざます、どう書いておこうか迷っていたので助かります
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
