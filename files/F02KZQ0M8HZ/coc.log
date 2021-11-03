@@ -1,0 +1,97 @@
+2021-11-03T12:29:01.819 INFO (pid:36032) [coc-tabnine] - Using tabnine from /Users/takets/.config/coc/extensions/coc-tabnine-data/binaries/3.8.6/x86_64-apple-darwin/TabNine
+2021-11-03T12:29:01.822 INFO (pid:36032) [plugin] - coc.nvim 0.0.80-03c9add7cd initialized with node: v16.9.1 after 263ms
+2021-11-03T12:29:02.411 INFO (pid:36032) [attach] - receive notification: runCommand [ 'fzf-preview.FromResources', 'buffer', 'mru' ]
+2021-11-03T12:29:03.465 INFO (pid:36032) [attach] - Request action: runCommand [
+  'fzf-preview.HandleResource',
+  [
+    [
+      '',
+      '   %7B%22command%22%3A%22FzfPreviewFromResources%22%2C%22type%22%3A%22file%22%2C%22file%22%3A%22%2FUsers%2Ftakets%2F.vim%2Frc%2Fwin64_gvim.vim%22%7D /Users/takets/.vim/rc/win64_gvim.vim'
+    ]
+  ]
+]
+2021-11-03T12:29:03.469 INFO (pid:36032) [attach] - Request action: runCommand [
+  'fzf-preview-callback.OpenFileEnter',
+  [
+    [
+      '   %7B%22command%22%3A%22FzfPreviewFromResources%22%2C%22type%22%3A%22file%22%2C%22file%22%3A%22%2FUsers%2Ftakets%2F.vim%2Frc%2Fwin64_gvim.vim%22%7D /Users/takets/.vim/rc/win64_gvim.vim'
+    ]
+  ]
+]
+2021-11-03T12:29:03.639 INFO (pid:36032) [services] - registered service "vimlsp"
+2021-11-03T12:29:03.640 INFO (pid:36032) [services] - vim language server state change: stopped => starting
+2021-11-03T12:29:03.837 INFO (pid:36032) [services] - vim language server state change: starting => running
+2021-11-03T12:29:03.841 INFO (pid:36032) [services] - service vimlsp started
+2021-11-03T12:29:04.111 INFO (pid:36032) [attach] - receive notification: runCommand [ 'fzf-preview.Buffers' ]
+2021-11-03T12:29:19.733 INFO (pid:36032) [attach] - receive notification: runCommand [ 'fzf-preview.FromResources', 'buffer', 'mru' ]
+2021-11-03T12:29:20.748 WARN (pid:36032) [plugin] - Slow action "runCommand" cost 16637ms
+2021-11-03T12:29:20.782 ERROR (pid:36032) [node-client] - request error on "nvim_call_function" [
+  'fzf_preview#remote#runner#fzf_run',
+  [
+    {
+      source: [Array],
+      handler: 'FzfPreviewHandleResource',
+      options: `--ansi --bind=ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,?:toggle-preview --expect="ctrl-x,ctrl-v,ctrl-t,ctrl-o,ctrl-q" --with-nth="2.." --preview-window="wrap" --reverse --prompt="ResourceFrom> " --multi --preview='[[ "$(file --mime {})" =~ binary ]] && echo "{} is a binary file" || bat --theme=ansi --color=always --plain --number {-1}' --keep-right --header="[Resources] buffer mru"`,
+      environment: 'coc'
+    }
+  ]
+] Vim(call):E861: Cannot open a second popup with a terminal Error
+    at NeovimClient2.request (/Users/takets/.vim/plugged/coc.nvim/build/index.js:10144:21)
+    at NeovimClient2.call (/Users/takets/.vim/plugged/coc.nvim/build/index.js:11361:21)
+    at t.pluginCall (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:280291)
+    at t.fzfRunner (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:279301)
+    at t.executeNormal (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:194003)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async t.executeCommand (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:195601)
+    at async /Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:282905
+    at async Commands.runCommand (/Users/takets/.vim/plugged/coc.nvim/build/index.js:64099:21)
+    at async Plugin.cocAction (/Users/takets/.vim/plugged/coc.nvim/build/index.js:68264:19)
+2021-11-03T12:29:20.783 ERROR (pid:36032) [attach] - Notification error: runCommand [ 'fzf-preview.FromResources', 'buffer', 'mru' ] Error
+    at NeovimClient2.request (/Users/takets/.vim/plugged/coc.nvim/build/index.js:10144:21)
+    at NeovimClient2.call (/Users/takets/.vim/plugged/coc.nvim/build/index.js:11361:21)
+    at t.pluginCall (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:280291)
+    at t.fzfRunner (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:279301)
+    at t.executeNormal (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:194003)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async t.executeCommand (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:195601)
+    at async /Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:282905
+    at async Commands.runCommand (/Users/takets/.vim/plugged/coc.nvim/build/index.js:64099:21)
+    at async Plugin.cocAction (/Users/takets/.vim/plugged/coc.nvim/build/index.js:68264:19)
+2021-11-03T12:29:31.871 INFO (pid:36032) [attach] - receive notification: runCommand [ 'fzf-preview.FromResources', 'buffer', 'mru' ]
+2021-11-03T12:29:33.171 INFO (pid:36032) [attach] - receive notification: runCommand [ 'fzf-preview.Buffers' ]
+2021-11-03T12:29:53.856 INFO (pid:36032) [attach] - receive notification: openLog []
+2021-11-03T12:29:53.859 INFO (pid:36032) [attach] - receive notification: runCommand [ 'fzf-preview.FromResources', 'buffer', 'mru' ]
+2021-11-03T12:29:54.508 WARN (pid:36032) [plugin] - Slow action "openLog" cost 648ms
+2021-11-03T12:29:54.656 WARN (pid:36032) [plugin] - Slow action "runCommand" cost 21484ms
+2021-11-03T12:29:54.710 ERROR (pid:36032) [node-client] - request error on "nvim_call_function" [
+  'fzf_preview#remote#runner#fzf_run',
+  [
+    {
+      source: [Array],
+      handler: 'FzfPreviewHandleResource',
+      options: `--ansi --bind=ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up,?:toggle-preview --expect="ctrl-x,ctrl-v,ctrl-t,ctrl-o,ctrl-q" --with-nth="2.." --preview-window="wrap" --reverse --prompt="ResourceFrom> " --multi --preview='[[ "$(file --mime {})" =~ binary ]] && echo "{} is a binary file" || bat --theme=ansi --color=always --plain --number {-1}' --keep-right --header="[Resources] buffer mru"`,
+      environment: 'coc'
+    }
+  ]
+] Vim(call):E861: Cannot open a second popup with a terminal Error
+    at NeovimClient2.request (/Users/takets/.vim/plugged/coc.nvim/build/index.js:10144:21)
+    at NeovimClient2.call (/Users/takets/.vim/plugged/coc.nvim/build/index.js:11361:21)
+    at t.pluginCall (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:280291)
+    at t.fzfRunner (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:279301)
+    at t.executeNormal (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:194003)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async t.executeCommand (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:195601)
+    at async /Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:282905
+    at async Commands.runCommand (/Users/takets/.vim/plugged/coc.nvim/build/index.js:64099:21)
+    at async Plugin.cocAction (/Users/takets/.vim/plugged/coc.nvim/build/index.js:68264:19)
+2021-11-03T12:29:54.711 ERROR (pid:36032) [attach] - Notification error: runCommand [ 'fzf-preview.FromResources', 'buffer', 'mru' ] Error
+    at NeovimClient2.request (/Users/takets/.vim/plugged/coc.nvim/build/index.js:10144:21)
+    at NeovimClient2.call (/Users/takets/.vim/plugged/coc.nvim/build/index.js:11361:21)
+    at t.pluginCall (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:280291)
+    at t.fzfRunner (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:279301)
+    at t.executeNormal (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:194003)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async t.executeCommand (/Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:195601)
+    at async /Users/takets/.config/coc/extensions/node_modules/coc-fzf-preview/lib/coc.js:2:282905
+    at async Commands.runCommand (/Users/takets/.vim/plugged/coc.nvim/build/index.js:64099:21)
+    at async Plugin.cocAction (/Users/takets/.vim/plugged/coc.nvim/build/index.js:68264:19)
