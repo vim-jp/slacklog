@@ -87,6 +87,38 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1636037027.055800">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2021-06-05/2146432162836_ad3dd240cc2d73477742_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">GitHub</span>
+              <a href="#ts-1636037027.055800">4日 23:43:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/C83UXKU86/p1636037027055800" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                
+              </div>
+
+              <div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1636037027.055800">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/vim-jp/issues/issues/1381|#1381 set や setlocal でオプションを変更すると curswant がリセットされる場合がある&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*不具合の内容*<br>*現象・ログ*<br><br>カーソルの上下移動の際に使われる curswant ですが、 <code>set</code> や <code>setlocal</code> でオプションを変更するとリセットされることがあります<br><br>(curswant については <code>setpos</code> や <code>winrestview</code> のヘルプを読みました)<br><br>*再現手順*<br><br><pre><br>gvim.exe -u NONE -U NONE -c &#34;call winrestview({&#39;curswant&#39;: 10})&#34; -c &#34;echo getcurpos()&#34; -c &#34;set number&amp;&#34; -c &#34;echo getcurpos()&#34;<br><br></pre><br><br>実行しているコマンドは以下です<br><br><pre><br>call winrestview({&#39;curswant&#39;: 10})<br>echo getcurpos()<br>set number&amp;<br>echo getcurpos()<br></pre><br><br>ここでは <code>number</code> を <code>:set-&amp;</code> しましたが、 <code>set number</code> や <code>set nonumber</code> でもリセットされました。  <br>また、 <code>relativenumber</code> や <code>wrap</code> 等でもリセットされました。<br><br>ただし、どんなオプションでもリセットされるわけではないようです。<br><br>*期待動作*<br><br>再現手順の例で言うと、<br><br><pre><br>[0, 1, 1, 0, 11]<br>[0, 1, 1, 0, 1]<br><br></pre><br><br>と echo 表示されますが<br><br><pre><br>[0, 1, 1, 0, 11]<br>[0, 1, 1, 0, 11]<br><br></pre><br><br>となるのが正しいと思います<br><br>*Vimのバージョン*<br><br>8.2.3565<br><br>*OSの種類/ディストリ/バージョン*<br><br>Windows 10 Home 64bit 21H1 (19043.1288)<br><br>*使用している or 関係していそうなプラグイン*<br><br>特になし<br><br>*その他*<br><br><a href='https://github.com/vim-jp/issues/issues/1219'>#1219</a> で報告されている内容が似ているように思いました</div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
