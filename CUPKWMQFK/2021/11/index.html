@@ -423,6 +423,182 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1636454536.035500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1636454536.035500">9日 19:42:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1636454536035500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :help :map-&lt;expr&gt;
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1636454536.035600">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1636454536.035600">9日 19:42:16</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1636454536035600" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>                                                *:map-&lt;expr&gt;* *:map-expression*<br>マップや短縮入力を定義するときに &#34;&lt;expr&gt;&#34; 引数を指定すると、引数が式 (スクリプ<br>ト) として扱われます。マップが実行されたときに、式が評価され、その値が {rhs}<br>として使われます。例:  <br>        :inoremap &lt;expr&gt; . &lt;SID&gt;InsertDot()<br>s:InsertDot() 関数の戻り値が挿入されます。カーソルの前のテキストをチェックし<br>て、ある条件に一致するなら omni 補完を開始する、というようなことができます。<br>グローバルな名前空間の汚染を回避するには、スクリプトローカル関数を利用すること<br>が望しいです。RHS内に &lt;SID&gt; を使ってマッピングが定義されたスクリプトを見付けら<br>れるようにします。<br> <br>短縮入力では、入力されて短縮入力展開のトリガーとなった文字が |v:char| にセット<br>されます。これを使って {lhs} の展開方法を決めることもできます。自分で v:char<br>を挿入したり変更したりすべきではありません。<br> <br>マッピングで何も実行させない場合は、評価結果が空文字列になるようにします。も<br>し、なんからの{訳註:状態などの}変更で Vim がメインループを通過する必要があるも<br>のなら (例えば、画面の更新など)、&#34;\&lt;Ignore&gt;&#34; を返すようにします。<br>これは、&#34;何もしない&#34; と同義ですが Vim はループから入力待ちに戻ります。例:  <br>        func s:OpenPopup()<br>          call popup_create(... arguments ...)<br>          return &#34;\&lt;Ignore&gt;&#34;<br>        endfunc<br>        nnoremap &lt;expr&gt; &lt;F3&gt; &lt;SID&gt;OpenPopup()<br> <br>また、前のコマンドが実行される前に、先行入力を探す時に式が評価されることがある<br>ことを覚えておいてください。例:  <br>        func StoreColumn()<br>          let g:column = col(&#39;.&#39;)<br>          return &#39;x&#39;<br>        endfunc<br>        nnoremap &lt;expr&gt; x StoreColumn()<br>        nmap ! f!x<br>g:column に &#34;f!&#34; 実行前の値がある、つまり &#34;x&#34; が評価されるのが &#34;f!&#34; の実行前で<br>あることに気付くでしょう。<br>これは評価のマッピングの文字の前に &lt;Ignore&gt; を挿入することで解決できます:  <br>        nmap ! f!&lt;Ignore&gt;x<br> <br>副作用に注意してください。式は文字の取得中に評価されるため、簡単に異常動作を起<br>こせてしまいます。そのため、次のものは制限されます:<br>- バッファのテキストの変更 |textlock|。<br>- 他のバッファの編集。<br>- |:normal| コマンド。<br>- カーソルの移動は可能ですが、後で元に戻されます。<br>以上のことを実現したい場合は、そのためのコマンド文字列を返してください。もしく<br>は代わりに |&lt;Cmd&gt;| マッピングを使用してください。<br> <br>getchar() が使用できます。先行入力があればそれが消費されます。例えば次のような<br>マップを定義します:  <br>  inoremap &lt;expr&gt; &lt;C-L&gt; nr2char(getchar())<br>  inoremap &lt;expr&gt; &lt;C-L&gt;x &#34;foo&#34;<br>そして CTRL-L を押してみます。すぐには何も起きません。どのマップを使うかを決定<br>するためには文字がもう一つ必要です。次に &#39;x&#39; を押すと後者のマップが使われ、<br>&#34;foo&#34; が挿入されます。他のキーを押すと前者のマップが使われ、その文字が<br>getchar() によって取得され、返されます。<br> <br>例を示します。リスト番号を自動的に増加させつつ挿入します:  <br>        let counter = 0<br>        inoremap &lt;expr&gt; &lt;C-L&gt; ListItem()<br>        inoremap &lt;expr&gt; &lt;C-R&gt; ListReset()<br> <br>        func ListItem()<br>          let g:counter += 1<br>          return g:counter . &#39;. &#39;<br>        endfunc<br> <br>        func ListReset()<br>          let g:counter = 0<br>          return &#39;&#39;<br>        endfunc<br> <br>CTRL-L で次の番号を挿入し、CTRL-R で番号をリセットします。CTRL-R は空文字列を<br>返すので、何も挿入されません。<br> <br>Note: テキストの末尾以外で 0x80 をシングルバイトとして使った場合、それは機能し<br>ません。特殊キーとして認識されます。<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1636454567.036000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-05-31/373472791093_ed16847a152da533e013_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">Tsuyoshi CHO</span>
+              <a href="#ts-1636454567.036000">9日 19:42:47</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1636454567036000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :help :map-&lt;expr&gt;@en
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1636454568.036100">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1636454568.036100">9日 19:42:48</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1636454568036100" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>                                                *:map-&lt;expr&gt;* *:map-expression*<br>If the first argument to one of these commands is &#34;&lt;expr&gt;&#34; and it is used to<br>define a new mapping or abbreviation, the argument is an expression.  The<br>expression is evaluated to obtain the {rhs} that is used.  Example:  <br>        :inoremap &lt;expr&gt; . &lt;SID&gt;InsertDot()<br>The result of the s:InsertDot() function will be inserted.  It could check the<br>text before the cursor and start omni completion when some condition is met.<br>Using a script-local function is preferred, to avoid polluting the global<br>namespace.  Use &lt;SID&gt; in the RHS so that the script that the mapping was<br>defined in can be found.<br> <br>For abbreviations |v:char| is set to the character that was typed to trigger<br>the abbreviation.  You can use this to decide how to expand the {lhs}.  You<br>should not either insert or change the v:char.<br> <br>In case you want the mapping to not do anything, you can have the expression<br>evaluate to an empty string.  If something changed that requires Vim to<br>go through the main loop (e.g. to update the display), return &#34;\&lt;Ignore&gt;&#34;.<br>This is similar to &#34;nothing&#34; but makes Vim return from the loop that waits for<br>input. Example:  <br>        func s:OpenPopup()<br>          call popup_create(... arguments ...)<br>          return &#34;\&lt;Ignore&gt;&#34;<br>        endfunc<br>        nnoremap &lt;expr&gt; &lt;F3&gt; &lt;SID&gt;OpenPopup()<br> <br>Also, keep in mind that the expression may be evaluated when looking for<br>typeahead, before the previous command has been executed.  For example:  <br>        func StoreColumn()<br>          let g:column = col(&#39;.&#39;)<br>          return &#39;x&#39;<br>        endfunc<br>        nnoremap &lt;expr&gt; x StoreColumn()<br>        nmap ! f!x<br>You will notice that g:column has the value from before executing &#34;f!&#34;,<br>because &#34;x&#34; is evaluated before &#34;f!&#34; is executed.<br>This can be solved by inserting &lt;Ignore&gt; before the character that is<br>expression-mapped:  <br>        nmap ! f!&lt;Ignore&gt;x<br> <br>Be very careful about side effects!  The expression is evaluated while<br>obtaining characters, you may very well make the command dysfunctional.<br>For this reason the following is blocked:<br>- Changing the buffer text |textlock|.<br>- Editing another buffer.<br>- The |:normal| command.<br>- Moving the cursor is allowed, but it is restored afterwards.<br>If you want the mapping to do any of these let the returned characters do<br>that, or use a |&lt;Cmd&gt;| mapping instead.<br> <br>You can use getchar(), it consumes typeahead if there is any. E.g., if you<br>have these mappings:  <br>  inoremap &lt;expr&gt; &lt;C-L&gt; nr2char(getchar())<br>  inoremap &lt;expr&gt; &lt;C-L&gt;x &#34;foo&#34;<br>If you now type CTRL-L nothing happens yet, Vim needs the next character to<br>decide what mapping to use.  If you type &#39;x&#39; the second mapping is used and<br>&#34;foo&#34; is inserted.  If you type any other key the first mapping is used,<br>getchar() gets the typed key and returns it.<br> <br>Here is an example that inserts a list number that increases:  <br>        let counter = 0<br>        inoremap &lt;expr&gt; &lt;C-L&gt; ListItem()<br>        inoremap &lt;expr&gt; &lt;C-R&gt; ListReset()<br> <br>        func ListItem()<br>          let g:counter += 1<br>          return g:counter . &#39;. &#39;<br>        endfunc<br> <br>        func ListReset()<br>          let g:counter = 0<br>          return &#39;&#39;<br>        endfunc<br> <br>CTRL-L inserts the next number, CTRL-R resets the count.  CTRL-R returns an<br>empty string, so that nothing is inserted.<br> <br>Note that using 0x80 as a single byte before other text does not work, it will<br>be seen as a special key.<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1636454930.036400">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-09-23/442107143383_29fb96601f522825702a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">rbtnn</span>
+              <a href="#ts-1636454930.036400">9日 19:48:50</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1636454930036400" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :help :map-&lt;ignore&gt;@en
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1636454931.036500">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1636454931.036500">9日 19:48:51</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1636454931036500" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                E661: 残念ですが &#39;en&#39; のヘルプが :map-&lt;ignore&gt; にはありません
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1636454946.036900">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2018-09-23/442107143383_29fb96601f522825702a_48.jpg" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">rbtnn</span>
+              <a href="#ts-1636454946.036900">9日 19:49:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1636454946036900" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                :help &lt;ignore&gt;@en
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix m-3" id="ts-1636454946.037000">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://avatars.slack-edge.com/2020-11-07/1490761289812_fdff01c40c53cad518c0_48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">vim-jp-bot</span>
+              <a href="#ts-1636454946.037000">9日 19:49:06</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CUPKWMQFK/p1636454946037000" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <pre><br>                wait for a character without doing anything.  *&lt;Ignore&gt;*<br> <br>                {mode} is a String, which can contain these character flags:<br>                &#39;m&#39;     Remap keys. This is default.  If {mode} is absent,<br>                        keys are remapped.<br>                &#39;n&#39;     Do not remap keys.<br>                &#39;t&#39;     Handle keys as if typed; otherwise they are handled as<br>                        if coming from a mapping.  This matters for undo,<br>                        opening folds, etc.<br>                &#39;L&#39;     Lowlevel input.  Only works for Unix or when using the<br>                        GUI. Keys are used as if they were coming from the<br></pre>
+              </div>
+
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
