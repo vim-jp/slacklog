@@ -1,0 +1,13 @@
+diff --git a/denops/@ddc-sources/file.ts b/denops/@ddc-sources/file.ts
+index 47efd4e..c360511 100644
+--- a/denops/@ddc-sources/file.ts
++++ b/denops/@ddc-sources/file.ts
+@@ -139,7 +139,7 @@ export class Source extends BaseSource<Params> {
+ 
+     // point from cwd
+     findPointsAsync.push({
+-      dir: Deno.cwd(),
++      dir: await args.denops.call("getcwd") as string,
+       max: p.cwdMaxCandidates,
+       menu: p.displayCwd,
+       asRoot: p.cwdAsRoot,
