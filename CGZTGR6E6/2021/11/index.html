@@ -10293,6 +10293,47 @@
             </div>
           </div>
         </div>
+        <div class="clearfix m-3" id="ts-1637718954.043300">
+          <div class="border-bottom">
+            <div class="float-left mr-2">
+              <img class="avatar" width="36" height="36" src="https://secure.gravatar.com/avatar/35b032d7b2d4182b0c2de1ef85ba91f2.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0012-48.png" />
+            </div>
+            <div>
+              <span class="text-bold mr-1">raa0121</span>
+              <a href="#ts-1637718954.043300">24日 10:55:54</a>
+              <span class="Label Label--outline">
+                <a href="https://vim-jp.slack.com/archives/CGZTGR6E6/p1637718954043300" target="_blank" rel="noopener noreferrer">Slack</a>
+              </span>
+            </div>
+            <div class="overflow-hidden mb-3">
+              <div class="pt-1 pb-1">
+                <a href='https://github.com/OpenAPITools/openapi-generator/issues/6140'>https://github.com/OpenAPITools/openapi-generator/issues/6140</a><br>1年8ヶ月経ってようやっと直った
+              </div>
+
+              <div>
+                  <div>
+                    <ul class="d-flex list-style-none flex-justify-start pt-2">
+                        <li>
+                          <span class="tooltipped tooltipped-ne tooltipped-align-left-1 p-1" aria-label="heavenshell, kuu, YABUKI Yukiharu, Shougo, 一瀬喜弘">
+                              <img class="slacklog-emoji" alt="blob_tada" title="blob_tada" src="/slacklog/emojis/blob_tada.gif"><span class="ml-1">5</span>
+                          </span>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+            <div class="mt-2 border p-2" id="ts-1637718954.043300">
+              
+    <div class="d-flex">
+        <div>&lt;https://github.com/OpenAPITools/openapi-generator/issues/6140|#6140 [BUG] [typescript-fetch] Circular import generated&gt;</div>
+    </div>
+      <div class="d-flex">
+        <div class="mt-2">*Bug Report Checklist*<br><br>☑︎ Have you provided a full/*minimal* spec to reproduce the issue?<br>☑︎ Have you validated the input using an OpenAPI validator (<a href='https://apidevtools.org/swagger-parser/online/'>example</a>)?<br>☑︎ What&#39;s the version of OpenAPI Generator used?<br>☑︎ Have you search for related issues/PRs?<br>☑︎ What&#39;s the actual output vs expected output?<br><br>*Description*<br><br>The typescript-fetch generator is generating a circular import. In my provided reproducible example, it&#39;s<br><br>models/index.ts -&gt; models/HTTPValidationError.ts -&gt; models/index.ts<br><br>The actual code is:<br><br><pre><br>// models/HTTPValidationError.ts<br>import {<br>    ValidationError,<br>    ValidationErrorFromJSON,<br>    ValidationErrorFromJSONTyped,<br>    ValidationErrorToJSON,<br>} from &#39;./&#39;;<br><br></pre><br><br>This produces some annoying warning messages but doesn&#39;t seem to actually break the code.<br><br>*openapi-generator version*<br><br>4.3.0<br><br>*OpenAPI declaration file content or url*<br>Click to expand<br><br><pre><br>{<br>  &#34;openapi&#34;: &#34;3.0.2&#34;,<br>  &#34;info&#34;: {<br>    &#34;title&#34;: &#34;Some API&#34;,<br>    &#34;version&#34;: &#34;0.1.0&#34;<br>  },<br>  &#34;paths&#34;: {<br>  },<br>  &#34;components&#34;: {<br>    &#34;schemas&#34;: {<br>      &#34;HTTPValidationError&#34;: {<br>        &#34;title&#34;: &#34;HTTPValidationError&#34;,<br>        &#34;type&#34;: &#34;object&#34;,<br>        &#34;properties&#34;: {<br>          &#34;detail&#34;: {<br>            &#34;title&#34;: &#34;Detail&#34;,<br>            &#34;type&#34;: &#34;array&#34;,<br>            &#34;items&#34;: {<br>              &#34;$ref&#34;: &#34;#/components/schemas/ValidationError&#34;<br>            }<br>          }<br>        }<br>      },<br>      &#34;ValidationError&#34;: {<br>        &#34;title&#34;: &#34;ValidationError&#34;,<br>        &#34;required&#34;: [&#34;loc&#34;, &#34;msg&#34;, &#34;type&#34;],<br>        &#34;type&#34;: &#34;object&#34;,<br>        &#34;properties&#34;: {<br>          &#34;loc&#34;: {<br>            &#34;title&#34;: &#34;Location&#34;,<br>            &#34;type&#34;: &#34;array&#34;,<br>            &#34;items&#34;: {<br>              &#34;type&#34;: &#34;string&#34;<br>            }<br>          },<br>          &#34;msg&#34;: {<br>            &#34;title&#34;: &#34;Message&#34;,<br>            &#34;type&#34;: &#34;string&#34;<br>          },<br>          &#34;type&#34;: {<br>            &#34;title&#34;: &#34;Error Type&#34;,<br>            &#34;type&#34;: &#34;string&#34;<br>          }<br>        }<br>      }<br>    }<br>  }<br>}<br></pre><br><br>*Command line used for generation*<br><br><code>openapi-generator generate -g typescript-fetch -i test-input.json -o api-client</code><br><br>*Steps to reproduce*<br><br>Run command line with provided input.<br><br>*Related issues/PRs*<br><br>Nope<br><br>*Suggest a fix*<br><br>I&#39;m pretty sure this can be fixed by re-working the import statements in <code>modelGeneric.mustache</code> and <code>modelOneOf.mustache</code>. Instead of importing from <code>./</code>, it should be possible to import directly from the thing you&#39;re importing. For example, in the code above, it could import from <code>./ValidationError</code> instead of <code>./</code>.<br><br>A diff might look like (forgive me, I&#39;m not entirely familiar with mustache syntax):<br><br><pre><br>diff --git a/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache b/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>index bd593da1..263f80ac 100644<br>--- a/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>+++ b/modules/openapi-generator/src/main/resources/typescript-fetch/modelGeneric.mustache<br>@@ -1,13 +1,13 @@<br> import { exists, mapValues } from &#39;../runtime&#39;;<br> &#123;&#123;#hasImports}}<br>+&#123;&#123;#imports}}<br> import {<br>-    &#123;&#123;#imports}}<br>     &#123;&#123;{.}}},<br>     &#123;&#123;.}}FromJSON,<br>     &#123;&#123;.}}FromJSONTyped,<br>     &#123;&#123;.}}ToJSON,<br>-    &#123;&#123;/imports}}<br>-} from &#39;./&#39;;<br>+} from &#39;./&#123;&#123;.}}&#39;;<br>+&#123;&#123;/imports}}<br> <br> &#123;&#123;/hasImports}}<br> &#123;&#123;#discriminator}}<br></pre></div>
+      </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- footer -->
